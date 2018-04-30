@@ -12,6 +12,10 @@
     "API",
     "Wrapper"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PolyMagic/Mal.js.git"
+  },
   "author": "Poly",
   "license": "ISC",
   "dependencies": {
