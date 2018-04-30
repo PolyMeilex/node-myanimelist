@@ -10,7 +10,7 @@ npm i node-myanimelist
 ```
 # Examples
 ```js
-import  Mal  from  'mal.js';
+import  Mal  from  'node-myanimelist';
 
 // Jikan Methods
 Mal.anime(1).then( j  =>  console.log(j));

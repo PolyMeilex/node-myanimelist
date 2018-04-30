@@ -1,6 +1,6 @@
 {
   "name": "node-myanimelist",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Node.js wrappers for MAL.",
   "main": "index.js",
   "scripts": {
