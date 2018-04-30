@@ -1,6 +1,6 @@
 {
   "name": "node-myanimelist",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Node.js wrappers for MAL.",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/PolyMagic/Mal.js.git"
+    "url": "https://github.com/PolyMagic/node-myanimelist.git"
   },
   "author": "Poly",
   "license": "ISC",
