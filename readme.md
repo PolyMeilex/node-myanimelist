@@ -10,7 +10,11 @@ npm i node-myanimelist
 ```
 # Examples
 ```js
-import  Mal  from  'node-myanimelist';
+
+
+const Mal = require('node-myanimelist').default;
+// Or
+// import  Mal  from  'node-myanimelist';
 
 // Jikan Methods
 Mal.anime(1).then( j  =>  console.log(j));
