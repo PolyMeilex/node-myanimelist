@@ -1,0 +1,24 @@
+{
+  "name": "mal.js",
+  "version": "1.0.0",
+  "description": "Node.js wrappers for MAL.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MAL",
+    "jikan",
+    "API",
+    "Wrapper"
+  ],
+  "author": "Poly",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^10.0.0",
+    "cheerio": "^1.0.0-rc.2",
+    "request": "^2.85.0",
+    "request-promise-native": "^1.0.5",
+    "xml2js": "^0.4.19"
+  }
+}
