@@ -1,5 +1,5 @@
 {
-  "name": "mal.js",
+  "name": "node-myanimelist",
   "version": "1.0.0",
   "description": "Node.js wrappers for MAL.",
   "main": "index.js",

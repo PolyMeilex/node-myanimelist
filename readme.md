@@ -1,6 +1,11 @@
 # Mal.JS
 Mal.Js is a small promise based package for downloading information from MyAnimeList.
 Mal.Js is using Jikan.moe API and flew methods created by me specially for this package 
+
+# Instalation
+```
+npm i node-myanimelist
+```
 # Examples
 ```js
 import  Mal  from  'mal.js';
