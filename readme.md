@@ -1,8 +1,8 @@
 ![matomari API Banner](https://i.imgur.com/IcBShyO.png)
 
-# Mal.JS
-Mal.Js is a small promise based package for downloading information from MyAnimeList.
-Mal.Js is using Jikan.moe API and flew methods created by me specially for this package 
+# Node-MyAnimeList
+Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
+Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package 
 
 # Instalation
 ```
