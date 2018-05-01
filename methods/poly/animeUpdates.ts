@@ -46,7 +46,11 @@ module.exports = (name:string) => {
         else if(plan_to_watch){
           color=12829635;
         }
-        let obj = {title,link,ep,score,img,date,color}
+
+        ep = parseInt(ep);
+        score = parseInt(score);
+
+        let obj = {title,link, ep,score,img,date,color}
         array.push(obj)
       });
   

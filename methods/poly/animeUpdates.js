@@ -45,6 +45,8 @@ module.exports = function (name) {
                 else if (plan_to_watch) {
                     color = 12829635;
                 }
+                ep = parseInt(ep);
+                score = parseInt(score);
                 var obj = { title: title, link: link, ep: ep, score: score, img: img, date: date, color: color };
                 array.push(obj);
             });
