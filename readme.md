@@ -1,4 +1,4 @@
-![matomari API Banner](https://i.imgur.com/IcBShyO.png)
+![NodeMal API Banner](https://i.imgur.com/IcBShyO.png)
 
 # Node-MyAnimeList
 Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
