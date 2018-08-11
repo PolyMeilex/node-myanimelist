@@ -35,15 +35,15 @@ Mal.list("PolyMagic").then(j => {}); // Api is down
 Mal.animeUpdates("PolyMagic").then(j => {});
 
 // Poly's Methods Created Because Of Dead Api
-Mal.days("PolyMagic").then(j => {});
+Mal.days("PolyMagic").then(j => {}); // get days stats without mal api
 Mal.days("PolyMagic", "manga").then(j => {});
 
-Mal.login("PolyMagic", "**Pas**").then(log => {});
+Mal.login("PolyMagic", "**Pas**").then(log => {}); // login without mal api
 
-Mal.notyfications(log);
+Mal.notyfications(log); // get user mal notyfications
 ```
 
-#Get Notyfications Example
+# Get Notyfications Example
 
 ```js
 async () => {
