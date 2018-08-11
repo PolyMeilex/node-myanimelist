@@ -1,61 +1,71 @@
 ![NodeMal API Banner](https://i.imgur.com/IcBShyO.png)
 
 # Node-MyAnimeList
+
 Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
-Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package 
+Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package
 
 # Instalation
+
 ```
 npm i node-myanimelist
 ```
+
 # Examples
+
 ```js
-
-
-const Mal = require('node-myanimelist').default;
+const Mal = require("node-myanimelist");
 // Or
 // import  Mal  from  'node-myanimelist';
 
 // Jikan Methods
-Mal.anime(1).then( j  =>  console.log(j));
-Mal.manga(1).then( j  =>  console.log(j));
-Mal.person(1).then( j  =>  console.log(j));
-Mal.character(1).then( j  =>  console.log(j));
+Mal.anime(1).then(j => {});
+Mal.manga(1).then(j => {});
+Mal.person(1).then(j => {});
+Mal.character(1).then(j => {});
 
-Mal.search('anime', 'gears').then( j  =>  console.log(j));
-Mal.season(2018, 'winter').then( j  =>  console.log(j));
-Mal.schedule('monday').then( j  =>  console.log(j));
-Mal.top('anime').then( j  =>  console.log(j));
+Mal.search("anime", "gears").then(j => {});
+Mal.season(2018, "winter").then(j => {});
+Mal.schedule("monday").then(j => {});
+Mal.top("anime").then(j => {});
 
-// Other
-Mal.avatar('PolyMagic').then( j  =>  console.log(j));
-Mal.list('PolyMagic').then( j  =>  console.log(j));
-Mal.animeUpdates('PolyMagic').then( j  =>  console.log(j));
+// Poly's Methods
+Mal.avatar("PolyMagic").then(j => {});
+Mal.list("PolyMagic").then(j => {}); // Api is down
+Mal.animeUpdates("PolyMagic").then(j => {});
+
+// Poly's Methods Created Because Of Dead Api
+Mal.days("PolyMagic").then(j => {});
+Mal.days("PolyMagic", "manga").then(j => {});
 ```
+
 # Reference
+
 ```ts
-anime(id:Number,[request:String,parameter:Number])
-manga(id:Number,[request:String])
-person(id:Number,[request:String])
-character(id:Number,[request:String])
+anime(id:number,[request:string,parameter:number])
+manga(id:number,[request:string])
+person(id:number,[request:string])
+character(id:number,[request:string])
 
-search(type:String,query:String,[page:Number])
-season(year:Number,season:String)
-schedule(day:String)
-top(type:String,[page:Number,subtype:String])
+search(type:string,query:string,[page:number])
+season(year:number,season:string)
+schedule(day:string)
+top(type:string,[page:number,subtype:string])
 
-avatar(name:String)
-list(name:String)
-animeUpdates(name:String)
+avatar(name:string)
+list(name:string)
+animeUpdates(name:string)
+
+days(name:string,[type:string]) //type="anime"/"manga" "anime" by default
 ```
-
 
 # Response Example
 
 ```ts
-avatar(name) ----> Url:String
+avatar(name) ----> Url:string
+days(name,type) ----> DaysSpendWatchingAnime:number
 
-list(name) ---> 
+list(name) --->
 interface ListsOBJ {
     myinfo:{
         user_id:string;
@@ -90,15 +100,15 @@ interface ListsOBJ {
     }]
 }
 
-animeUpdates(name) ---> 
+animeUpdates(name) --->
 interface animeUpdatesOBJ {
     title: string;
     link: string;
-    ep:Number;
-    score:Number;
-    img:String;
-    date:String;
-    color:Number;
+    ep:number;
+    score:number;
+    img:string;
+    date:string;
+    color:number;
 }
 ```
 
