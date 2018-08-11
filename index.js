@@ -41,6 +41,12 @@ var Mal = /** @class */ (function () {
         this.days = function (name, type) {
             return require("./methods/poly/days")(name, type);
         };
+        this.login = function (login, password) {
+            return require("./methods/poly/noApiLogin")(login, password);
+        };
+        this.notyfications = function (log) {
+            return require("./methods/poly/loginRequired/notifications")(log);
+        };
     }
     return Mal;
 }());

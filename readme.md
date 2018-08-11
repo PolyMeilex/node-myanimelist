@@ -37,7 +37,25 @@ Mal.animeUpdates("PolyMagic").then(j => {});
 // Poly's Methods Created Because Of Dead Api
 Mal.days("PolyMagic").then(j => {});
 Mal.days("PolyMagic", "manga").then(j => {});
+
+Mal.login("PolyMagic", "**Pas**").then(log => {});
+
+Mal.notyfications(log);
 ```
+
+#Get Notyfications Example
+
+```js
+async () => {
+  const log = await Mal.login("PolyMagic", "**Pas**");
+
+  let notyfications = await Mal.notyfications(log);
+
+  console.log(notyfications);
+};
+```
+
+[Example Notyfications Response](https://github.com/PolyMagic/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json)
 
 # Reference
 
@@ -57,13 +75,23 @@ list(name:string)
 animeUpdates(name:string)
 
 days(name:string,[type:string]) //type="anime"/"manga" "anime" by default
+
+login(login: string, password: string)
 ```
 
 # Response Example
 
+[Notyfications Response](https://github.com/PolyMagic/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json)
+
 ```ts
 avatar(name) ----> Url:string
-days(name,type) ----> DaysSpendWatchingAnime:number
+days(name,type) ----> DaysSpendWatching:number
+
+login() --->
+interface LoginData {
+  MALSESSIONID: string;
+  csrf_token: string;
+}
 
 list(name) --->
 interface ListsOBJ {
@@ -112,4 +140,4 @@ interface animeUpdatesOBJ {
 }
 ```
 
-Jikan methods return same values as described on jikan.docs.apiary.io
+Jikan methods return same values as described on [jikan.docs.apiary.io](https://jikan.docs.apiary.io/)

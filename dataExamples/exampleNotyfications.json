@@ -1,0 +1,88 @@
+{
+  "items": [
+    {
+      "id": "102806839",
+      "typeIdentifier": "related_anime_add",
+      "categoryName": "New Related Anime",
+      "createdAt": 1533741242,
+      "createdAtForDisplay": "Aug 8, 5:14 PM",
+      "isRead": true,
+      "url": "https://myanimelist.net/anime/38149/Full_Metal_Panic_Invisible_Victory_Intermission",
+      "isDeleted": false,
+      "anime": {
+        "title": "Full Metal Panic! Invisible Victory Intermission",
+        "mediaType": "Special"
+      }
+    },
+    {
+      "id": "102576050",
+      "typeIdentifier": "related_anime_add",
+      "categoryName": "New Related Anime",
+      "createdAt": 1533322807,
+      "createdAtForDisplay": "Aug 3, 9:00 PM",
+      "isRead": true,
+      "url": "https://myanimelist.net/anime/38104/Mahou_Shoujo_Site_Recaps",
+      "isDeleted": false,
+      "anime": {
+        "title": "Mahou Shoujo Site Recaps",
+        "mediaType": "Special"
+      }
+    },
+    {
+      "id": "101805612",
+      "typeIdentifier": "related_anime_add",
+      "categoryName": "New Related Anime",
+      "createdAt": 1533144625,
+      "createdAtForDisplay": "Aug 1, 7:30 PM",
+      "isRead": true,
+      "url": "https://myanimelist.net/anime/37987/Violet_Evergarden_Movie",
+      "isDeleted": false,
+      "anime": {
+        "title": "Violet Evergarden Movie",
+        "mediaType": "Movie"
+      }
+    },
+    {
+      "id": "100378005",
+      "typeIdentifier": "related_anime_add",
+      "categoryName": "New Related Anime",
+      "createdAt": 1533056516,
+      "createdAtForDisplay": "Jul 31, 7:01 PM",
+      "isRead": true,
+      "url": "https://myanimelist.net/anime/38055/Evangelion__Another_Impact_VR",
+      "isDeleted": false,
+      "anime": {
+        "title": "Evangelion: Another Impact (VR)",
+        "mediaType": "Movie"
+      }
+    },
+    {
+      "id": "98974359",
+      "typeIdentifier": "related_anime_add",
+      "categoryName": "New Related Anime",
+      "createdAt": 1533049766,
+      "createdAtForDisplay": "Jul 31, 5:09 PM",
+      "isRead": true,
+      "url": "https://myanimelist.net/anime/37975/Piano_no_Mori_TV_2nd_Season",
+      "isDeleted": false,
+      "anime": {
+        "title": "Piano no Mori (TV) 2nd Season",
+        "mediaType": "TV"
+      }
+    },
+    {
+      "id": "98766760",
+      "typeIdentifier": "related_anime_add",
+      "categoryName": "New Related Anime",
+      "createdAt": 1533048080,
+      "createdAtForDisplay": "Jul 31, 4:41 PM",
+      "isRead": true,
+      "url": "https://myanimelist.net/anime/37956/3D_Kanojo__Real_Girl_2nd_Season",
+      "isDeleted": false,
+      "anime": {
+        "title": "3D Kanojo: Real Girl 2nd Season",
+        "mediaType": "TV"
+      }
+    }
+  ]
+}

@@ -40,6 +40,14 @@ class Mal {
   days = (name: string, type?: string): Promise<number> => {
     return require("./methods/poly/days")(name, type);
   };
+
+  login = (login: string, password: string): Promise<LoginData> => {
+    return require("./methods/poly/noApiLogin")(login, password);
+  };
+
+  notyfications = (log: LoginData): Promise<any> => {
+    return require("./methods/poly/loginRequired/notifications")(log);
+  };
 }
 
 const obj = new Mal();
@@ -49,6 +57,11 @@ module.exports.default = obj;
 export default obj;
 
 // Types Definitions
+
+interface LoginData {
+  MALSESSIONID: string;
+  csrf_token: string;
+}
 
 interface ListsOBJ {
   myinfo: {
