@@ -41,6 +41,16 @@ Mal.days("PolyMagic", "manga").then(j => {});
 Mal.login("PolyMagic", "**Pas**").then(log => {}); // login without mal api
 
 Mal.notyfications(log); // get user mal notyfications
+
+Mal.animeEdit(
+  {
+    num_watched_episodes: 20,
+    anime_id: 24833,
+    status: 1
+    // csrf_token will be added automaticly, no nedd to add it here
+  },
+  log // log data returned by Mal.login()
+);
 ```
 
 # Get Notyfications Example
@@ -77,6 +87,8 @@ animeUpdates(name:string)
 days(name:string,[type:string]) //type="anime"/"manga" "anime" by default
 
 login(login: string, password: string)
+
+animeEdit(requestBody,log)
 ```
 
 # Response Example

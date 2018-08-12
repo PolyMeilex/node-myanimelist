@@ -48,6 +48,10 @@ class Mal {
   notyfications = (log: LoginData): Promise<any> => {
     return require("./methods/poly/loginRequired/notifications")(log);
   };
+
+  animeEdit = (sendJsonBody: any, log: LoginData): Promise<any> => {
+    return require("./methods/poly/loginRequired/animeEdit")(sendJsonBody, log);
+  };
 }
 
 const obj = new Mal();

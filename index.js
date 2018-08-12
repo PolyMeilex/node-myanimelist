@@ -47,6 +47,9 @@ var Mal = /** @class */ (function () {
         this.notyfications = function (log) {
             return require("./methods/poly/loginRequired/notifications")(log);
         };
+        this.animeEdit = function (sendJsonBody, log) {
+            return require("./methods/poly/loginRequired/animeEdit")(sendJsonBody, log);
+        };
     }
     return Mal;
 }());

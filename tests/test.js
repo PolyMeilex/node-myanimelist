@@ -38,16 +38,18 @@ var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var __1 = require("../");
 (function () { return __awaiter(_this, void 0, void 0, function () {
-    var log, notyfications;
+    var log;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, __1.default.login("PolyMagic", "**Pas**")];
             case 1:
                 log = _a.sent();
-                return [4 /*yield*/, __1.default.notyfications(log)];
-            case 2:
-                notyfications = _a.sent();
-                console.log(notyfications);
+                //   let notyfications = await Mal.notyfications(log);
+                __1.default.animeEdit({
+                    num_watched_episodes: 20,
+                    anime_id: 24833,
+                    status: 1
+                }, log);
                 return [2 /*return*/];
         }
     });
