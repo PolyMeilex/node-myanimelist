@@ -40,7 +40,7 @@ Mal.days("PolyMagic", "manga").then(j => {});
 
 Mal.login("PolyMagic", "**Pas**").then(log => {}); // login without mal api
 
-Mal.notyfications(log); // get user mal notyfications
+Mal.notifications(log); // get user mal notifications
 
 Mal.animeEdit(
   {
@@ -53,15 +53,15 @@ Mal.animeEdit(
 );
 ```
 
-# Get Notyfications Example
+# Get Notifications Example
 
 ```js
 async () => {
   const log = await Mal.login("PolyMagic", "**Pas**");
 
-  let notyfications = await Mal.notyfications(log);
+  let notifications = await Mal.notifications(log);
 
-  console.log(notyfications);
+  console.log(notifications);
 };
 ```
 
@@ -93,7 +93,7 @@ animeEdit(requestBody,log)
 
 # Response Example
 
-[Notyfications Response](https://github.com/PolyMagic/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json)
+[Notifications Response](https://github.com/PolyMagic/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json)
 
 ```ts
 avatar(name) ----> Url:string

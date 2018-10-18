@@ -44,7 +44,7 @@ var Mal = /** @class */ (function () {
         this.login = function (login, password) {
             return require("./methods/poly/noApiLogin")(login, password);
         };
-        this.notyfications = function (log) {
+        this.notifications = function (log) {
             return require("./methods/poly/loginRequired/notifications")(log);
         };
         this.animeEdit = function (sendJsonBody, log) {

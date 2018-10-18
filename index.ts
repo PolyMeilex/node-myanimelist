@@ -45,7 +45,7 @@ class Mal {
     return require("./methods/poly/noApiLogin")(login, password);
   };
 
-  notyfications = (log: LoginData): Promise<any> => {
+  notifications = (log: LoginData): Promise<any> => {
     return require("./methods/poly/loginRequired/notifications")(log);
   };
 
