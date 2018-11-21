@@ -18,11 +18,24 @@ class Mal {
   season = (year: number, season: string): Promise<any> => {
     return require("./methods/jikan/season")(year, season);
   };
+  seasonArchive = (): Promise<any> => {
+    return require("./methods/jikan/seasonArchive")();
+  };
   schedule = (day: string): Promise<any> => {
     return require("./methods/jikan/schedule")(day);
   };
   top = (type: string, page?: number, subtype?: string): Promise<any> => {
     return require("./methods/jikan/top")(type, page, subtype);
+  };
+  genre = (type:String,genre_id?:Number,page?:Number): Promise<any> => {
+    return require("./methods/jikan/genre")(type,genre_id,page);
+  };
+  producer = (producer_id:Number,page?:Number): Promise<any> => {
+    return require("./methods/jikan/producer")(producer_id,page);
+  };
+
+  user = (username:String,request?:String,argument?:any,argument2?:any): Promise<any> => {
+    return require("./methods/jikan/user")(username,request,argument,argument2);
   };
 
   //Poly Methods
@@ -53,6 +66,8 @@ class Mal {
     return require("./methods/poly/loginRequired/animeEdit")(sendJsonBody, log);
   };
 }
+
+global['jikanBaseUrl'] = "https://api.jikan.moe/v3"
 
 const obj = new Mal();
 module.exports = obj;

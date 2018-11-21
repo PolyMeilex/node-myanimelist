@@ -8,7 +8,7 @@ module.exports = function (type, query, page) {
             pageS = '/' + page;
     }
     return new Promise(function (res, rej) {
-        rp("https://api.jikan.moe/search/" + type + queryS + pageS)
+        rp(global['jikanBaseUrl'] + ("/search/" + type + queryS + pageS))
             .then(function (res) { return JSON.parse(res); })
             .then(function (json) { return res(json); })
             .catch(function (err) { return rej("Error"); });

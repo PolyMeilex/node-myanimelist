@@ -8,7 +8,7 @@ module.exports = function (id, request, parameter) {
             parameterS = '/' + parameter;
     }
     return new Promise(function (res, rej) {
-        rp("https://api.jikan.moe/anime/" + id + requestS + parameterS)
+        rp(global['jikanBaseUrl'] + ("/anime/" + id + requestS + parameterS))
             .then(function (res) { return JSON.parse(res); })
             .then(function (json) { return res(json); })
             .catch(function (err) { return rej("Error"); });

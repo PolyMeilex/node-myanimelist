@@ -9,7 +9,7 @@ module.exports = function (type, page, subtype) {
         }
     }
     return new Promise(function (res, rej) {
-        rp("https://api.jikan.moe/top/" + type + pageS + subtypeS)
+        rp(global['jikanBaseUrl'] + ("/top/" + type + pageS + subtypeS))
             .then(function (res) { return JSON.parse(res); })
             .then(function (json) { return res(json); })
             .catch(function (err) { return rej("Error"); });

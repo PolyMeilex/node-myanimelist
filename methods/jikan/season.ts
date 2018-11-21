@@ -7,7 +7,7 @@ module.exports = (year:Number,season:String) => {
     }
 
     return new Promise( (res, rej) => {
-        rp(`https://api.jikan.moe/season/${year}${seasonS}`)
+        rp(global['jikanBaseUrl']+`/season/${year}${seasonS}`)
         .then( res => JSON.parse(res) )
         .then( json => res(json) )
         .catch( err => rej("Error") )

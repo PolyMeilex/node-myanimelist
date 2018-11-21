@@ -9,7 +9,7 @@ module.exports = (type:String,query:String,page:Number) => {
     }
 
     return new Promise( (res, rej) => {        
-        rp(`https://api.jikan.moe/search/${type}${queryS}${pageS}`)
+        rp(global['jikanBaseUrl']+`/search/${type}${queryS}${pageS}`)
         .then( res => JSON.parse(res) )
         .then( json => res(json) )
         .catch( err => rej("Error") )

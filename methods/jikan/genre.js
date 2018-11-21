@@ -1,11 +1,14 @@
-module.exports = function (year, season) {
+module.exports = function (type, genre_id, page) {
     var rp = require('request-promise-native');
-    var seasonS = '';
-    if (season) {
-        seasonS = '/' + season;
+    var genre_idS = '';
+    var pageS = '';
+    if (genre_id) {
+        genre_idS = '/' + genre_id;
+        if (page)
+            pageS = '/' + page;
     }
     return new Promise(function (res, rej) {
-        rp(global['jikanBaseUrl'] + ("/season/" + year + seasonS))
+        rp(global['jikanBaseUrl'] + ("/genre/" + type + genre_idS + pageS))
             .then(function (res) { return JSON.parse(res); })
             .then(function (json) { return res(json); })
             .catch(function (err) { return rej("Error"); });

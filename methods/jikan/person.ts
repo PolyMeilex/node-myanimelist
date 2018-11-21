@@ -8,7 +8,7 @@ module.exports = (id:Number,request:String) => {
     }
 
     return new Promise( (res, rej) => {
-        rp(`https://api.jikan.moe/person/${id}${requestS}`)
+        rp(global['jikanBaseUrl']+`/person/${id}${requestS}`)
         .then( res => JSON.parse(res) )
         .then( json => res(json) )
         .catch( err => rej("Error") )

@@ -12,7 +12,7 @@ module.exports = (type:String,page:Number,subtype:String) => {
     }
 
     return new Promise( (res, rej) => {
-        rp(`https://api.jikan.moe/top/${type}${pageS}${subtypeS}`)
+        rp(global['jikanBaseUrl']+`/top/${type}${pageS}${subtypeS}`)
         .then( res => JSON.parse(res) )
         .then( json => res(json) )
         .catch( err => rej("Error") )

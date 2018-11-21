@@ -6,7 +6,7 @@ module.exports = function (id, request) {
         requestS = '/' + request;
     }
     return new Promise(function (res, rej) {
-        rp("https://api.jikan.moe/manga/" + id + requestS)
+        rp(global['jikanBaseUrl'] + ("/manga/" + id + requestS))
             .then(function (res) { return JSON.parse(res); })
             .then(function (json) { return res(json); })
             .catch(function (err) { return rej("Error"); });

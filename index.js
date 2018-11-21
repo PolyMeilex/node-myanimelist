@@ -21,11 +21,23 @@ var Mal = /** @class */ (function () {
         this.season = function (year, season) {
             return require("./methods/jikan/season")(year, season);
         };
+        this.seasonArchive = function () {
+            return require("./methods/jikan/seasonArchive")();
+        };
         this.schedule = function (day) {
             return require("./methods/jikan/schedule")(day);
         };
         this.top = function (type, page, subtype) {
             return require("./methods/jikan/top")(type, page, subtype);
+        };
+        this.genre = function (type, genre_id, page) {
+            return require("./methods/jikan/genre")(type, genre_id, page);
+        };
+        this.producer = function (producer_id, page) {
+            return require("./methods/jikan/producer")(producer_id, page);
+        };
+        this.user = function (username, request, argument, argument2) {
+            return require("./methods/jikan/user")(username, request, argument, argument2);
         };
         //Poly Methods
         this.avatar = function (name) {
@@ -53,6 +65,7 @@ var Mal = /** @class */ (function () {
     }
     return Mal;
 }());
+global['jikanBaseUrl'] = "https://api.jikan.moe/v3";
 var obj = new Mal();
 module.exports = obj;
 module.exports.default = obj;

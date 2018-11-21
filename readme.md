@@ -26,8 +26,19 @@ Mal.character(1).then(j => {});
 
 Mal.search("anime", "gears").then(j => {});
 Mal.season(2018, "winter").then(j => {});
+Mal.seasonArchive().then(j => {});
 Mal.schedule("monday").then(j => {});
 Mal.top("anime").then(j => {});
+Mal.genre("anime",1,1).then(j => {});
+Mal.producer(1,1).then(j => {});
+
+Mal.user("PolyMagic").then(j=>{});
+Mal.user("PolyMagic","history").then(j=>{});
+Mal.user("PolyMagic","friends",1).then(j=>{});
+Mal.user("PolyMagic","animelist","all").then(j=>{});
+```
+[All posible /user endpoits](https://jikan.docs.apiary.io/#reference/0/user)
+```js
 
 // Poly's Methods
 Mal.avatar("PolyMagic").then(j => {});
@@ -70,23 +81,29 @@ async () => {
 # Reference
 
 ```ts
-anime(id:number,[request:string,parameter:number])
-manga(id:number,[request:string])
-person(id:number,[request:string])
-character(id:number,[request:string])
+anime(id:Number,[request:String,parameter:Number])
+manga(id:Number,[request:String])
+person(id:Number,[request:String])
+character(id:Number,[request:String])
 
-search(type:string,query:string,[page:number])
-season(year:number,season:string)
-schedule(day:string)
-top(type:string,[page:number,subtype:string])
+search(type:String,query:String,[page:Number])
+season(year:Number,season:String)
+seasonArchive()
+schedule(day:String)
+top(type:String,[page:Number,subtype:String])
+genre(type:String,[genre_id:Number,page:Number])
+producer(producer_id:Number,[page:Number])
 
-avatar(name:string)
-list(name:string)
-animeUpdates(name:string)
+user(username:String,[request:String,argument:any,argument2:any])
 
-days(name:string,[type:string]) //type="anime"/"manga" "anime" by default
 
-login(login: string, password: string)
+avatar(name:String)
+list(name:String)
+animeUpdates(name:String)
+
+days(name:String,[type:String]) //type="anime"/"manga" "anime" by default
+
+login(login: String, password: String)
 
 animeEdit(requestBody,log)
 ```
