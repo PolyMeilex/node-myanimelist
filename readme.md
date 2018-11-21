@@ -36,9 +36,7 @@ Mal.user("PolyMagic").then(j=>{});
 Mal.user("PolyMagic","history").then(j=>{});
 Mal.user("PolyMagic","friends",1).then(j=>{});
 Mal.user("PolyMagic","animelist","all").then(j=>{});
-```
-[All posible /user endpoits](https://jikan.docs.apiary.io/#reference/0/user)
-```js
+//All posible /user endpoints https://jikan.docs.apiary.io/#reference/0/user
 
 // Poly's Methods
 Mal.avatar("PolyMagic").then(j => {});
