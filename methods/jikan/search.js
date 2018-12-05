@@ -10,6 +10,7 @@ module.exports = function (type, query, page, limit) {
         if (limit)
             limitS = '&limit=' + limit;
     }
+    console.log(global['jikanBaseUrl'] + ("/search/" + type + "?q=" + queryS + pageS + limitS))
     return new Promise(function (res, rej) {
         rp(global['jikanBaseUrl'] + ("/search/" + type + "?q=" + queryS + pageS + limitS))
             .then(function (res) { return JSON.parse(res); })
