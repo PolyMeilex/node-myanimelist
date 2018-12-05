@@ -12,8 +12,8 @@ class Mal {
   character = (id: number, request?: string): Promise<any> => {
     return require("./methods/jikan/character")(id, request);
   };
-  search = (type: string, query: string, page?: number): Promise<any> => {
-    return require("./methods/jikan/search")(type, query, page);
+  search = (type: string, query: string, filter?: object): Promise<any> => {
+    return require("./methods/jikan/search")(type, query, filter);
   };
   season = (year: number, season: string): Promise<any> => {
     return require("./methods/jikan/season")(year, season);
