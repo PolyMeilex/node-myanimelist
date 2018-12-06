@@ -15,8 +15,8 @@ var Mal = /** @class */ (function () {
         this.character = function (id, request) {
             return require("./methods/jikan/character")(id, request);
         };
-        this.search = function (type, query, page) {
-            return require("./methods/jikan/search")(type, query, page);
+        this.search = function (type, query, filter) {
+            return require("./methods/jikan/search")(type, query, filter);
         };
         this.season = function (year, season) {
             return require("./methods/jikan/season")(year, season);

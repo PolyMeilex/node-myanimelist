@@ -84,7 +84,7 @@ manga(id:Number,[request:String])
 person(id:Number,[request:String])
 character(id:Number,[request:String])
 
-search(type:String,query:String,[page:Number])
+search(type:String,query:String,[filter:Object]) //filter= {limit: Number, Page: Number}
 season(year:Number,season:String)
 seasonArchive()
 schedule(day:String)
