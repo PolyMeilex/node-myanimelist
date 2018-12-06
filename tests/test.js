@@ -1,5 +1,6 @@
 "use strict";
- Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(exports, "__esModule", { value: true });
+// Mal.search("","",{page:0,limit:0})
 // (async () => {
 //   const log = await Mal.login("PolyMagic", "**Pas**");
 //   //   let notyfications = await Mal.notyfications(log);

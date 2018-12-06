@@ -1,5 +1,8 @@
 import Mal from "../";
 
+
+// Mal.search("","",{page:0,limit:0})
+
 // (async () => {
 //   const log = await Mal.login("PolyMagic", "**Pas**");
 

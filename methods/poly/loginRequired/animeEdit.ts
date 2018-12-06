@@ -25,8 +25,3 @@ module.exports = (sendJsonBody: any, log: LoginData) => {
       .catch(err => rej("Error"));
   });
 };
-
-interface LoginData {
-  MALSESSIONID: string;
-  csrf_token: string;
-}

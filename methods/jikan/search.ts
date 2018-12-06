@@ -1,4 +1,4 @@
-module.exports = (type:String,query:String,filter:Object) => {
+module.exports = (type:String,query:String,filter:SearchFilter) => {
     const rp = require('request-promise-native');
     let queryS:String = '';
     let pageS:String = '';
@@ -16,4 +16,9 @@ module.exports = (type:String,query:String,filter:Object) => {
         .then( json => res(json) )
         .catch( err => rej("Error") )
     });
+}
+
+interface SearchFilter {
+    page?: Number;
+    limit?: Number;
 }

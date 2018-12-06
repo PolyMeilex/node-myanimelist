@@ -20,7 +20,3 @@ module.exports = (log: LoginData) => {
   });
 };
 
-interface LoginData {
-  MALSESSIONID: string;
-  csrf_token: string;
-}

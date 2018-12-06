@@ -9,3 +9,8 @@ module.exports = (login: string, password: string) => {
       .catch(err => rej(err));
   });
 };
+
+interface LoginData {
+  MALSESSIONID: string;
+  csrf_token: string;
+}
