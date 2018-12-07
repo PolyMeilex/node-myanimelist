@@ -6,9 +6,9 @@ module.exports = function (type, query, filter) {
     if (query) {
         queryS = '?q=' + query;
         if (filter.page)
-            pageS = '&' + filter.page + '=';
+            pageS = '&page=' + filter.page;
         if (filter.limit)
-            limitS = '&' + filter.limit + '=';
+            limitS = '&limit=' + filter.limit;
     }
     return new Promise(function (res, rej) {
         rp(global['jikanBaseUrl'] + ("/search/" + type + queryS + pageS + limitS))
