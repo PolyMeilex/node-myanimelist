@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// Mal.search("","",{page:0,limit:0})
+var __1 = require("../");
+__1.default.search("anime", "sao", { limit: 1, page: 2 }).then(function (a) { return console.log(a); });
 // (async () => {
 //   const log = await Mal.login("PolyMagic", "**Pas**");
 //   //   let notyfications = await Mal.notyfications(log);

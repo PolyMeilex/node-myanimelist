@@ -1,8 +1,8 @@
 import Mal from "../";
 
 
-// Mal.search("","",{page:0,limit:0})
 
+// Mal.search("anime","sao",{limit:1,page:2}).then(a => console.log(a));
 // (async () => {
 //   const log = await Mal.login("PolyMagic", "**Pas**");
 
