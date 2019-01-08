@@ -6,8 +6,8 @@ module.exports = (type:String,query:String,filter:SearchFilter) => {
 
     if(query) {
         queryS = '?q=' + query;
-        if(filter.page) pageS = '&' + filter.page + '=';
-        if(filter.limit) limitS = '&' + filter.limit + '=';
+        if(filter.page) pageS = '&page=' + filter.page;
+        if(filter.limit) limitS = '&limit=' + filter.limit;
     }
 
     return new Promise( (res, rej) => {        
