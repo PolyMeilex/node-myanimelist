@@ -1,0 +1,9 @@
+# NPM
+node_modules
+.git
+.vscode
+.gitattributes
+.gitignore
+tests/
+tsconfig.json
+readme.md
