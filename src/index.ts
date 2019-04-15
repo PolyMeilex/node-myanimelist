@@ -4,7 +4,7 @@ import { ListsOBJ } from "./methods/poly/list";
 import { LoginData } from "./methods/poly/noApiLogin";
 import { animeUpdatesOBJ } from "./methods/poly/animeUpdates";
 
-class Mal {
+class MalClient {
   //Jikan API
   public anime(id: number, request?: string, parameter?: number): Promise<any> {
     return require("./methods/jikan/anime")(id, request, parameter);
@@ -75,8 +75,7 @@ class Mal {
 
 global["jikanBaseUrl"] = "https://api.jikan.moe/v3"
 
-const obj = new Mal();
-module.exports = obj;
-module.exports.default = obj;
-
-export default obj;
+const Mal = new MalClient();
+const { version } = require('../package.json');
+export { Mal, version, MalClient };
+export default Mal;
