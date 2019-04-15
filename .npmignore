@@ -7,3 +7,5 @@ node_modules
 tests/
 tsconfig.json
 readme.md
+src/
+dataExamples/
