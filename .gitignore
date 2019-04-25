@@ -56,3 +56,4 @@ jspm_packages/
 
 # Others
 tests/test.ts
+dist/

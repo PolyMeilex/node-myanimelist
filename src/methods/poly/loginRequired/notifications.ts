@@ -1,6 +1,6 @@
 import { LoginData } from "../noApiLogin";
 
-module.exports = (log: LoginData) => {
+export default (log: LoginData) => {
   const rp = require("request-promise-native");
 
   var options = {

@@ -1,4 +1,4 @@
-module.exports = (year:number,season:string) => {
+export default (year:number,season:string) => {
     const rp = require('request-promise-native');
     let seasonS:String = '';
 

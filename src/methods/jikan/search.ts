@@ -3,7 +3,7 @@ export interface SearchFilter {
     limit?: Number;
 }
 
-module.exports = (type:string,query:string,filter:SearchFilter) => {
+export default (type:string,query:string,filter?:SearchFilter) => {
     const rp = require('request-promise-native');
     let queryS:String = '';
     let pageS:String = '';
