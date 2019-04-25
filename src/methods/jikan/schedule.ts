@@ -1,4 +1,4 @@
-module.exports = (day:string) => {
+export default (day:string) => {
     const rp = require('request-promise-native');
 
     return new Promise( (res, rej) => {

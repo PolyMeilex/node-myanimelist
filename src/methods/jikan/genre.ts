@@ -1,4 +1,4 @@
-module.exports = (type:string,genre_id:number,page:number) => {
+export default (type:string,genre_id?:number,page?:number) => {
     const rp = require('request-promise-native');
     let genre_idS:String = '';
     let pageS:String = '';

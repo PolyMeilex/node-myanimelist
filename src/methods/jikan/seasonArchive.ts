@@ -1,4 +1,4 @@
-module.exports = () => {
+export default () => {
     const rp = require('request-promise-native');
 
     return new Promise( (res, rej) => {
