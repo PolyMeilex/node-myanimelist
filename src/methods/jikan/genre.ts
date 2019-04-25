@@ -1,17 +1,21 @@
-export default (type:string,genre_id?:number,page?:number) => {
-    const rp = require('request-promise-native');
-    let genre_idS:String = '';
-    let pageS:String = '';
+import * as urljoin from 'url-join';
+import * as rp from 'request-promise-native';
 
-    if(genre_id) {
-        genre_idS = '/' + genre_id;
-        if(page) pageS = '/' + page;
-    }
+type type = 'anime' | 'manga';
 
-    return new Promise( (res, rej) => {
-        rp(global['jikanBaseUrl']+`/genre/${type}${genre_idS}${pageS}`)
-        .then( res => JSON.parse(res) )
-        .then( json => res(json) )
-        .catch( err => rej(`Error: ${err}`) )
+/**
+ * ### Anime/Manga items of the genre
+ * @param type anime,manga.
+ * @param genre_id Genre ID from MyAnimeList.
+ * @param page Page.
+ */
+export default function (type: type, genre_id: number, page: number | string = '') {
+    const link = urljoin(global['jikanBaseUrl'], 'genre', type, String(genre_id), String(page));
+
+    return new Promise((res, rej) => {
+        rp(link)
+            .then(res => JSON.parse(res))
+            .then(json => res(json))
+            .catch(err => rej(`Error: ${err}`))
     });
 }

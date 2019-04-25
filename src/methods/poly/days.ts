@@ -1,7 +1,7 @@
-export default (name: string, type: string = "anime") => {
-  const rp = require("request-promise-native");
-  const cheerio = require("cheerio");
+import * as rp from "request-promise-native";
+import * as cheerio from "cheerio";
 
+export default function (name: string, type: string = "anime") {
   return new Promise((res, rej) => {
     rp(`https://myanimelist.net/profile/${name}`)
       .then(res => cheerio.load(res))

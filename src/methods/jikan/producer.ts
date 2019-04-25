@@ -1,14 +1,16 @@
-export default (producer_id:number,page?:number) => {
-    const rp = require('request-promise-native');
-    let pageS:String = '';
-    
+import * as urljoin from 'url-join';
+import * as rp from 'request-promise-native';
 
-    if(page) {
-        pageS = '/' + page;
-    }
+/**
+ * ### Anime by this Producer/Studio/Licensor
+ * @param producer_id Producer ID from MyAnimeList.
+ * @param page Page.
+ */
+export default function(producer_id:number,page:number | string = '') {
+    const link = urljoin(global['jikanBaseUrl'],'producer',String(producer_id),String(page));
 
     return new Promise( (res, rej) => {
-        rp(global['jikanBaseUrl']+`/producer/${producer_id}${pageS}`)
+        rp(link)
         .then( res => JSON.parse(res) )
         .then( json => res(json) )
         .catch( err => rej(`Error: ${err}`) )

@@ -1,8 +1,7 @@
 import { LoginData } from "../noApiLogin";
+import * as rp from "request-promise-native"
 
-export default (sendJsonBody: any, log: LoginData) => {
-  const rp = require("request-promise-native");
-
+export default function(sendJsonBody: any, log: LoginData) {
   let jsonBody = sendJsonBody;
   jsonBody.csrf_token = log.csrf_token;
 

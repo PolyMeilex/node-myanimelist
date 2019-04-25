@@ -1,7 +1,6 @@
-module.exports = (login: string, password: string, startData: any) => {
-  //   const rp = require("request-promise-native");
-  const request = require("request");
+import * as request from "request";
 
+module.exports = (login: string, password: string, startData: any) => {
   var options = {
     method: "POST",
     url: "https://myanimelist.net/login.php",

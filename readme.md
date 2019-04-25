@@ -5,6 +5,9 @@
 Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
 Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package
 
+## Intellisens Support (Typescript and JSDoc)
+![Gif](https://i.imgur.com/DH5EEVw.gif)
+
 # Instalation
 
 ```
@@ -13,7 +16,7 @@ npm i node-myanimelist
 
 # Examples
 
-```js
+```ts
 const { Mal } = require("node-myanimelist");
 // Or
 import { Mal } from 'node-myanimelist';
@@ -24,7 +27,11 @@ Mal.manga(1).then(j => {});
 Mal.person(1).then(j => {});
 Mal.character(1).then(j => {});
 
-Mal.search("anime", "gears").then(j => {});
+Mal.search("anime", {
+    q: "gears",
+    page: 2,
+    limit: 2
+}).then(j => {});
 Mal.season(2018, "winter").then(j => {});
 Mal.seasonArchive().then(j => {});
 Mal.schedule("monday").then(j => {});
@@ -84,7 +91,21 @@ manga(id:Number,[request:String])
 person(id:Number,[request:String])
 character(id:Number,[request:String])
 
-search(type:String,query:String,[filter:SearchFilter]) //filter= {limit: Number, Page: Number}
+
+interface SearchParameters {
+    q: string;
+    [page?: number;
+    type?: filterTypeT;
+    status?: statusT;
+    rated?: ratedT;
+    genre?: number;
+    score?: number;
+    start_date?: string;
+    end_date?: string;
+    genre_exclude?: 0 | 1;
+    limit?: number;]
+}
+search(type:String,sp : SearchParameters)
 season(year:Number,season:String)
 seasonArchive()
 schedule(day:String)

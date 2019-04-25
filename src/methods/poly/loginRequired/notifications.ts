@@ -1,8 +1,7 @@
 import { LoginData } from "../noApiLogin";
+import * as rp from "request-promise-native"
 
-export default (log: LoginData) => {
-  const rp = require("request-promise-native");
-
+export default function(log: LoginData) {
   var options = {
     method: "POST",
     url: "https://myanimelist.net/notification/api/request-items.json",

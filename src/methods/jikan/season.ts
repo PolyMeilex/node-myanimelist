@@ -1,13 +1,18 @@
-export default (year:number,season:string) => {
-    const rp = require('request-promise-native');
-    let seasonS:String = '';
+import * as urljoin from 'url-join';
+import * as rp from 'request-promise-native';
 
-    if(season) {
-        seasonS = '/' + season;
-    }
+type season = 'summer' | 'spring' | 'fall' | 'winter';
+
+/**
+ * ### Anime of the specified season
+ * @param year Year.
+ * @param season summer,spring,fall,winter.
+ */
+export default function(year:number,season:season) {
+    let link = urljoin(global['jikanBaseUrl'], "season", String(year), String(season));
 
     return new Promise( (res, rej) => {
-        rp(global['jikanBaseUrl']+`/season/${year}${seasonS}`)
+        rp(link)
         .then( res => JSON.parse(res) )
         .then( json => res(json) )
         .catch( err => rej(`Error: ${err}`) )

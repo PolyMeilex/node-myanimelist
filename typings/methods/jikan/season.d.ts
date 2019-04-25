@@ -1,2 +1,8 @@
-declare const _default: (year: number, season: string) => Promise<{}>;
-export default _default;
+declare type season = 'summer' | 'spring' | 'fall' | 'winter';
+/**
+ * ### Anime of the specified season
+ * @param year Year.
+ * @param season summer,spring,fall,winter.
+ */
+export default function (year: number, season: season): Promise<{}>;
+export {};
