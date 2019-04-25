@@ -1,7 +1,7 @@
-export default (name:string) => {
-    const rp = require('request-promise-native');
-    const toJson = require('xml2js').parseString;
+import * as rp from "request-promise-native";
+import {parseString as toJson} from "xml2js";
 
+export default function(name:string) {
     const reMap = (XmlToJson) => {
         const myanimelist = XmlToJson.myanimelist;
         const myinfo = myanimelist.myinfo[0];

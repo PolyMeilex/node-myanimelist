@@ -1,2 +1,9 @@
-declare const _default: (type: string, genre_id?: number, page?: number) => Promise<{}>;
-export default _default;
+declare type type = 'anime' | 'manga';
+/**
+ * ### Anime/Manga items of the genre
+ * @param type anime,manga.
+ * @param genre_id Genre ID from MyAnimeList.
+ * @param page Page.
+ */
+export default function (type: type, genre_id: number, page?: number | string): Promise<{}>;
+export {};

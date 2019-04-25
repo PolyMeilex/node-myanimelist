@@ -1,5 +1,4 @@
-declare const _default: (name: string) => Promise<{}>;
-export default _default;
+export default function (name: string): Promise<{}>;
 export interface animeUpdatesOBJ {
     title: string;
     link: string;

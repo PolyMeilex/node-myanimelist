@@ -1,2 +1,8 @@
-declare const _default: (id: number, request?: string) => Promise<{}>;
-export default _default;
+declare type request = '' | 'pictures';
+/**
+ * ### A single character object with all its details
+ * @param id Id on MyAnimeList.
+ * @param request Request types: 'pictures'.
+ */
+export default function (id: number, request?: request): Promise<{}>;
+export {};

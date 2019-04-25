@@ -1,6 +1,6 @@
 const {Mal, MalMobileClient} = require('../dist/index');
 
-MalMobileClient.token("PolyMagic","**Pas**").then( j => console.log(j) );
+// MalMobileClient.token("PolyMagic","**Pas**").then( j => console.log(j) );
 
 // return Mal.search('anime', 'one piece').then(x => console.log(x));
 
@@ -22,3 +22,5 @@ MalMobileClient.token("PolyMagic","**Pas**").then( j => console.log(j) );
 // Mal.producer(1,1).then(j => console.log(JSON.stringify(j)))
 // Mal.user("PolyMagic","friends",1).then(j=> console.log(JSON.stringify(j)))
 // Mal.user("PolyMagic","animelist","all",2).then(j=> console.log(JSON.stringify(j)))
+
+Mal.search("anime",).then(j=> console.log(j))

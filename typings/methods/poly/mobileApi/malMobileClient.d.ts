@@ -1,4 +1,5 @@
+import token from "./auth/token";
 declare const _default: {
-    token: (username: string, password: string, grant_type?: string, client_id?: string) => Promise<{}>;
+    token: typeof token;
 };
 export default _default;

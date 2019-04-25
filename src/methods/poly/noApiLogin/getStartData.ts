@@ -1,7 +1,7 @@
-module.exports = () => {
-  const rp = require("request-promise-native");
-  const cheerio = require("cheerio");
+import * as rp from "request-promise-native";
+import * as cheerio from "cheerio";
 
+module.exports = () => {
   const parseResponse = res => {
     const $ = cheerio.load(res.body);
 

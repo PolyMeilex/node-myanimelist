@@ -1,16 +1,22 @@
-export default (id:number,request?:string) => {
-    const rp = require('request-promise-native');
-    let requestS:String = '';
-    
+import * as urljoin from 'url-join';
+import * as rp from 'request-promise-native';
 
-    if(request) {
-        requestS = '/' + request;
-    }
+type request =
+    | ''
+    | 'pictures';
 
-    return new Promise( (res, rej) => {
-        rp(global['jikanBaseUrl']+`/character/${id}${requestS}`)
-        .then( res => JSON.parse(res) )
-        .then( json => res(json) )
-        .catch( err => rej(`Error: ${err}`) )
+/**
+ * ### A single character object with all its details
+ * @param id Id on MyAnimeList.
+ * @param request Request types: 'pictures'.
+ */
+export default function (id: number, request: request = '') {
+    let link = urljoin(global['jikanBaseUrl'], "character", String(id), request);
+
+    return new Promise((res, rej) => {
+        rp(link)
+            .then(res => JSON.parse(res))
+            .then(json => res(json))
+            .catch(err => rej(`Error: ${err}`))
     });
 }

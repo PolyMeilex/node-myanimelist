@@ -1,2 +1,1 @@
-declare const _default: (name: string, type?: string) => Promise<{}>;
-export default _default;
+export default function (name: string, type?: string): Promise<{}>;
