@@ -11,7 +11,7 @@ declare class MalClient {
     top: (type: string, page?: number, subtype?: string) => Promise<{}>;
     genre: (type: string, genre_id?: number, page?: number) => Promise<{}>;
     producer: (producer_id: number, page?: number) => Promise<{}>;
-    user: (username: string, request?: string, argument?: any, argument2?: any) => Promise<{}>;
+    user: (username: string, request?: "profile" | "history" | "friends" | "animelist" | "mangalist", argument?: any, argument2?: any) => Promise<{}>;
     avatar: (name: string) => Promise<{}>;
     list: (name: string) => Promise<{}>;
     animeUpdates: (name: string) => Promise<{}>;
