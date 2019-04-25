@@ -2,9 +2,11 @@
   "name": "node-myanimelist",
   "version": "1.1.2",
   "description": "Node.js wrappers for MAL.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "typings/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp",
+    "test": "gulp && node --trace-warnings tests/test.js"
   },
   "keywords": [
     "MAL",
@@ -20,10 +22,19 @@
   "author": "Poly",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^10.0.0",
     "cheerio": "^1.0.0-rc.2",
-    "request": "^2.85.0",
+    "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
     "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.11",
+    "@types/node": "^10.0.0",
+    "fs-nextra": "^0.4.5",
+    "gulp": "^4.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-typescript": "^5.0.1",
+    "merge2": "^1.2.3",
+    "typescript": "^3.4.3"
   }
 }
