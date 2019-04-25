@@ -1,3 +1,5 @@
+declare const _default: (name: string) => Promise<{}>;
+export default _default;
 export interface ListsOBJ {
     myinfo: {
         user_id: string;

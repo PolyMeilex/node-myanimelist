@@ -1,4 +1,4 @@
-module.exports = (type:string,page:number,subtype:string) => {
+export default (type:string,page?:number,subtype?:string) => {
     const rp = require('request-promise-native');
 
     let pageS:String = '';

@@ -1,4 +1,4 @@
-module.exports = (id:number,request:string,parameter:number) => {
+export default (id:number,request?:string,parameter?:number) => {
     const rp = require('request-promise-native');
     let requestS:String = '';
     let parameterS:String = '';

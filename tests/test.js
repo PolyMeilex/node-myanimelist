@@ -1,4 +1,4 @@
- const Mal = require('../dist/index');
+const {Mal} = require('../dist/index');
 
 return Mal.search('anime', 'one piece').then(x => console.log(x));
 

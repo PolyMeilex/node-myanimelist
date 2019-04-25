@@ -1,4 +1,4 @@
-module.exports = (producer_id:number,page?:number) => {
+export default (producer_id:number,page?:number) => {
     const rp = require('request-promise-native');
     let pageS:String = '';
     

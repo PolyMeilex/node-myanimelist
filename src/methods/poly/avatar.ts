@@ -1,4 +1,4 @@
-module.exports = (name:string) =>{
+export default (name:string) =>{
     const rp = require('request-promise-native');
     const cheerio = require('cheerio');
 

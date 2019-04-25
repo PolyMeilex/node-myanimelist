@@ -1,4 +1,4 @@
-module.exports = (username:string,request?:string,argument?:any,argument2?:any) => {
+export default (username:string,request?:string,argument?:any,argument2?:any) => {
     const rp = require('request-promise-native');
     let requestS:String = '';
 
