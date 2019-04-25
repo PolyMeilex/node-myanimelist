@@ -1,3 +1,4 @@
+import MalMobileClient from "./methods/poly/mobileApi/malMobileClient";
 declare class MalClient {
     anime: (id: number, request?: string, parameter?: number) => Promise<{}>;
     manga: (id: number, request?: string) => Promise<{}>;
@@ -21,5 +22,5 @@ declare class MalClient {
 }
 declare const Mal: MalClient;
 declare const version: any;
-export { Mal, version, MalClient };
+export { Mal, version, MalClient, MalMobileClient };
 export default Mal;
