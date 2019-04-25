@@ -1,6 +1,6 @@
 import { LoginData } from "../noApiLogin";
 
-module.exports = (sendJsonBody: any, log: LoginData) => {
+export default (sendJsonBody: any, log: LoginData) => {
   const rp = require("request-promise-native");
 
   let jsonBody = sendJsonBody;
