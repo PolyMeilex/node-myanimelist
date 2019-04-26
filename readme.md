@@ -9,6 +9,7 @@ Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially
 ![Gif](https://i.imgur.com/DH5EEVw.gif)
 
 # Instalation
+[![NPM](https://nodei.co/npm/node-myanimelist.png)](https://nodei.co/npm/node-myanimelist/)
 
 ```
 npm i node-myanimelist
