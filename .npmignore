@@ -4,6 +4,7 @@ node_modules
 .vscode
 .gitattributes
 .gitignore
+gulpfile.js
 tests/
 tsconfig.json
 readme.md
