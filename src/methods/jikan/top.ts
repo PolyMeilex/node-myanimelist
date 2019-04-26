@@ -1,5 +1,6 @@
 import * as urljoin from 'url-join';
 import * as rp from 'request-promise-native';
+import baseUrl from './jikanApi'
 
 type type = 'anime' | 'manga' | 'people' | 'characters'
 type subtype = '' |
@@ -17,7 +18,7 @@ type subtype = '' |
  * - Both: bypopularity, favorite
  */
 export default function (type: type, page: number | string = '', subtype: subtype = '') {
-    const link = urljoin(global['jikanBaseUrl'], 'top', type, String(page), subtype);
+    const link = urljoin(baseUrl, 'top', type, String(page), subtype);
 
     return new Promise((res, rej) => {
         rp(link)

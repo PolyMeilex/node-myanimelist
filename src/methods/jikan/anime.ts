@@ -1,5 +1,6 @@
 import * as urljoin from 'url-join';
 import * as rp from 'request-promise-native';
+import baseUrl from './jikanApi'
 
 type request =
     | ''
@@ -22,7 +23,7 @@ type request =
  * @param parameter Page number.
  */
 export default function (id: number, request: request = '', parameter: number | string = '') {
-    let link = urljoin(global['jikanBaseUrl'], "anime", String(id), request, String(parameter));
+    let link = urljoin(baseUrl, "anime", String(id), request, String(parameter));
 
     return new Promise((res, rej) => {
         rp(link)

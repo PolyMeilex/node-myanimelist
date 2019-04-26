@@ -1,5 +1,6 @@
 import * as urljoin from 'url-join';
 import * as rp from 'request-promise-native';
+import baseUrl from './jikanApi'
 
 /**
  * ### Anime by this Producer/Studio/Licensor
@@ -7,7 +8,7 @@ import * as rp from 'request-promise-native';
  * @param page Page.
  */
 export default function(producer_id:number,page:number | string = '') {
-    const link = urljoin(global['jikanBaseUrl'],'producer',String(producer_id),String(page));
+    const link = urljoin(baseUrl,'producer',String(producer_id),String(page));
 
     return new Promise( (res, rej) => {
         rp(link)

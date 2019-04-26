@@ -1,5 +1,6 @@
 import * as urljoin from 'url-join';
 import * as rp from 'request-promise-native';
+import baseUrl from './jikanApi'
 
 type season = 'summer' | 'spring' | 'fall' | 'winter';
 
@@ -9,7 +10,7 @@ type season = 'summer' | 'spring' | 'fall' | 'winter';
  * @param season summer,spring,fall,winter.
  */
 export default function(year:number,season:season) {
-    let link = urljoin(global['jikanBaseUrl'], "season", String(year), String(season));
+    let link = urljoin(baseUrl, "season", String(year), String(season));
 
     return new Promise( (res, rej) => {
         rp(link)

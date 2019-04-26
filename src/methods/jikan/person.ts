@@ -1,5 +1,6 @@
 import * as urljoin from 'url-join';
 import * as rp from 'request-promise-native';
+import baseUrl from './jikanApi'
 
 type request =
     | ''
@@ -11,7 +12,7 @@ type request =
  * @param request Request types: 'pictures'.
  */
 export default function (id: number, request: request = '') {
-    let link = urljoin(global['jikanBaseUrl'], "person", String(id), request);
+    let link = urljoin(baseUrl, "person", String(id), request);
  
     return new Promise( (res, rej) => {
         rp(link)

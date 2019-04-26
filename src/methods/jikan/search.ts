@@ -1,5 +1,6 @@
 import * as urljoin from 'url-join';
 import * as rp from 'request-promise-native';
+import baseUrl from './jikanApi'
 
 type searchTypeT = 'anime' | 'manga' | 'person' | 'character';
 type statusT = 'airing' | 'completed' | 'complete' | 'tba' | 'upcoming';
@@ -57,7 +58,7 @@ export default function (type: searchTypeT, sp: SearchParameters) {
         .map(k => `${k}=${encodeURIComponent(sp[k])}`)
         .join('&');
 
-    let link = urljoin(global['jikanBaseUrl'], "search", type, `?${params}`);
+    let link = urljoin(baseUrl, "search", type, `?${params}`);
     console.log(link)
     return new Promise((res, rej) => {
         rp(link)

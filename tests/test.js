@@ -23,4 +23,4 @@ const {Mal, MalMobileClient} = require('../dist/index');
 // Mal.user("PolyMagic","friends",1).then(j=> console.log(JSON.stringify(j)))
 // Mal.user("PolyMagic","animelist","all",2).then(j=> console.log(JSON.stringify(j)))
 
-Mal.search("anime",).then(j=> console.log(j))
+Mal.top("anime").then( j => console.log(j))

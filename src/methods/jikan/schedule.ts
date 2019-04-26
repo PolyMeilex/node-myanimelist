@@ -1,5 +1,6 @@
 import * as urljoin from 'url-join';
 import * as rp from 'request-promise-native';
+import baseUrl from './jikanApi'
 
 type day = '' | 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday' | 'other' | 'unknown';
 
@@ -9,7 +10,7 @@ type day = '' | 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'sa
  * @param day Day of week: monday, tuesday, wednesday, thursday, friday, saturday, sunday, other, unknown.
  */
 export default function (day: day = '') {
-    const link = urljoin(global['jikanBaseUrl'],'schedule',String(day));
+    const link = urljoin(baseUrl,'schedule',String(day));
 
     return new Promise((res, rej) => {
         rp(link)

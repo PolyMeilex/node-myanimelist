@@ -54,8 +54,6 @@ class MalClient {
   public animeEdit = animeEdit;
 }
 
-global["jikanBaseUrl"] = "https://api.jikan.moe/v3"
-
 const Mal = new MalClient();
 const { version } = require('../package.json');
 export { Mal, version, MalClient, MalMobileClient };
