@@ -55,5 +55,5 @@ jspm_packages/
 .env
 
 # Others
-tests/test.ts
+tests/
 dist/

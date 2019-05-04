@@ -1,15 +1,14 @@
 import * as rp from "request-promise-native";
-import { baseURL } from "../mobileApis";
+import { secondaryApiUrl } from "../mobileApis";
 
-export default function (username: string, password: string, grant_type: string = "password", client_id: string = '6114d00ca681b7701d1e15fe11a4987e') {
+export default function (refresh_token: string, grant_type: string = "refresh_token", client_id: string = '6114d00ca681b7701d1e15fe11a4987e') {
     const request = {
         method: 'POST',
-        url: baseURL + '/auth/token',
+        url: secondaryApiUrl + '/oauth2/token',
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         form: {
             client_id,
-            username,
-            password,
+            refresh_token,
             grant_type
         }
     };
