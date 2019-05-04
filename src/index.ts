@@ -24,7 +24,7 @@ import login from "./methods/poly/noApiLogin";
 import notifications from "./methods/poly/loginRequired/notifications";
 import animeEdit from "./methods/poly/loginRequired/animeEdit";
 // Mal Mobile Api
-import MalMobileClient from "./methods/poly/mobileApi/malMobileClient"
+import MalMobileClient from "./methods/mobileApi/malMobileClient"
 
 class MalClient {
   //Jikan API

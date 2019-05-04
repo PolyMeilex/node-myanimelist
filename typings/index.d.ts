@@ -17,7 +17,7 @@ import days from "./methods/poly/days";
 import login from "./methods/poly/noApiLogin";
 import notifications from "./methods/poly/loginRequired/notifications";
 import animeEdit from "./methods/poly/loginRequired/animeEdit";
-import MalMobileClient from "./methods/poly/mobileApi/malMobileClient";
+import MalMobileClient from "./methods/mobileApi/malMobileClient";
 declare class MalClient {
     anime: typeof anime;
     manga: typeof manga;
