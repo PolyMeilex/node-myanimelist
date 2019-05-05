@@ -5,6 +5,6 @@ import profile from "./users/profile";
 import animelist from "./users/animelist";
 
 export default {
-  auth:{token,refreshToken},
-  users:{profile,animelist}
-}
+  auth: { token, refreshToken },
+  users: { profile, animelist }
+};

@@ -1,5 +1,5 @@
 import { LoginData } from "../noApiLogin";
-import * as rp from "request-promise-native"
+import * as rp from "request-promise-native";
 
 export default function(log: LoginData) {
   var options = {
@@ -19,4 +19,4 @@ export default function(log: LoginData) {
       .then(json => res(json))
       .catch(err => rej("Notyfications Not Found"));
   });
-};
+}
