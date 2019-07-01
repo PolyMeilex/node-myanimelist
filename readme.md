@@ -48,8 +48,8 @@ Mal.user("PolyMagic","animelist","all").then(j=>{});
 
 // Poly's Methods
 Mal.avatar("PolyMagic").then(j => {});
-Mal.list("PolyMagic").then(j => {}); // Api is down
-Mal.animeUpdates("PolyMagic").then(j => {});
+//Mal.list("PolyMagic").then(j => {}); // Api is down
+Mal.animeUpdates("PolyMagic").then(j => {}); //Gets "Last Anime Updates" from Mal profile
 
 // Poly's Methods Created Because Of Dead Api
 Mal.days("PolyMagic").then(j => {}); // get days stats without mal api
@@ -118,7 +118,7 @@ user(username:String,[request:String,argument:any,argument2:any])
 
 
 avatar(name:String)
-list(name:String)
+//list(name:String)
 animeUpdates(name:String)
 
 days(name:String,[type:String]) //type="anime"/"manga" "anime" by default

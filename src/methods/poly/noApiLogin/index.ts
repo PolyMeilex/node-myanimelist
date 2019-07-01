@@ -13,4 +13,4 @@ export default function(login: string, password: string) {
       .then(logData => res(logData))
       .catch(err => rej(err));
   });
-};
+}

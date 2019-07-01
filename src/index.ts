@@ -24,7 +24,7 @@ import login from "./methods/poly/noApiLogin";
 import notifications from "./methods/poly/loginRequired/notifications";
 import animeEdit from "./methods/poly/loginRequired/animeEdit";
 // Mal Mobile Api
-import MalMobileClient from "./methods/poly/mobileApi/malMobileClient"
+import MalMobileClient from "./methods/mobileApi/malMobileClient";
 
 class MalClient {
   //Jikan API
@@ -54,9 +54,7 @@ class MalClient {
   public animeEdit = animeEdit;
 }
 
-global["jikanBaseUrl"] = "https://api.jikan.moe/v3"
-
 const Mal = new MalClient();
-const { version } = require('../package.json');
+const { version } = require("../package.json");
 export { Mal, version, MalClient, MalMobileClient };
 export default Mal;

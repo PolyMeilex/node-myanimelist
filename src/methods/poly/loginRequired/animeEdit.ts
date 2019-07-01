@@ -1,5 +1,5 @@
 import { LoginData } from "../noApiLogin";
-import * as rp from "request-promise-native"
+import * as rp from "request-promise-native";
 
 export default function(sendJsonBody: any, log: LoginData) {
   let jsonBody = sendJsonBody;
@@ -25,4 +25,4 @@ export default function(sendJsonBody: any, log: LoginData) {
       })
       .catch(err => rej(`Error: ${err}`));
   });
-};
+}
