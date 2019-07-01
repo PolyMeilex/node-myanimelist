@@ -59,7 +59,6 @@ export default function(type: searchTypeT, sp: SearchParameters) {
     .join("&");
 
   let link = urljoin(baseUrl, "search", type, `?${params}`);
-  console.log(link);
   return new Promise((res, rej) => {
     rp(link)
       .then(res => JSON.parse(res))
