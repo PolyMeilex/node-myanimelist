@@ -4,13 +4,15 @@ import baseUrl from "./jikanApi";
 import AnimeGenre from "./types/animeGenre";
 import MangaGenre from "./types/mangaGenre";
 
+import axios from "axios";
+
 class Genre {
   private baseUrl: string;
   constructor() {
     this.baseUrl = `${baseUrl}/genre`;
   }
   private jikanGet(url: string) {
-    console.log(url);
+    return axios.get(url);
   }
   anime(genre: AnimeGenre, p?: number) {
     let params: string[] = ["anime", String(genre)];

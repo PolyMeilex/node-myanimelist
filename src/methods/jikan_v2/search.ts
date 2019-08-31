@@ -16,6 +16,8 @@ import MangaOrderBy from "./types/mangaOrderBy";
 import Sort from "./types/sort";
 import Rating from "./types/rating";
 
+import axios from "axios";
+
 interface AdvancedSearchParameters {
   q?: string;
   page?: number;
@@ -41,7 +43,7 @@ class Search {
     this.baseUrl = `${baseUrl}/search`;
   }
   private jikanGet(url: string) {
-    console.log(url);
+    return axios.get(url);
   }
   search(type: string, params: AdvancedSearchParameters) {
     let qparams = Object.keys(params)

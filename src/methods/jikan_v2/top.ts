@@ -1,6 +1,8 @@
 import { joinUrl } from "./url";
 import baseUrl from "./jikanApi";
 
+import axios from "axios";
+
 class TopAnime {
   private parent: Top;
   constructor(parent: Top) {
@@ -121,7 +123,7 @@ class Top {
     this.baseUrl = `${baseUrl}/top`;
   }
   private jikanGet(url: string) {
-    console.log(url);
+    return axios.get(url);
   }
   anime(): TopAnime {
     return new TopAnime(this);

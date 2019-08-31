@@ -30,11 +30,11 @@ declare class Search {
     private baseUrl;
     constructor();
     private jikanGet;
-    search(type: string, params: AdvancedSearchParameters): void;
-    anime(params: AdvancedSearchParameters): void;
-    manga(params: AdvancedSearchParameters): void;
-    person(params: AdvancedSearchParameters): void;
-    character(params: AdvancedSearchParameters): void;
+    search(type: string, params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
+    anime(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
+    manga(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
+    person(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
+    character(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
 }
 export default function (): Search;
 export {};

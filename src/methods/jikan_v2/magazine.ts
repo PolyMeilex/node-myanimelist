@@ -1,13 +1,15 @@
 import { joinUrl } from "./url";
 import baseUrl from "./jikanApi";
 
+import axios from "axios";
+
 class Magazine {
   private baseUrl: string;
   constructor() {
     this.baseUrl = `${baseUrl}/magazine`;
   }
   private jikanGet(url: string) {
-    console.log(url);
+    return axios.get(url);
   }
   info(id: number, p?: number) {
     let params = [String(id)];
