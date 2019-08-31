@@ -32,6 +32,8 @@
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.11",
+    "@types/expect": "^1.20.4",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^10.0.0",
     "fs-nextra": "^0.4.5",
     "gulp": "^4.0.0",

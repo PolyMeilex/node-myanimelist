@@ -1,4 +1,4 @@
-const { Mal } = require("../");
+import Mal from "../";
 
 const assert = require("assert");
 
@@ -11,6 +11,7 @@ function jikanIt(a, b) {
 describe("/anime", () => {
   let anime = Mal.anime(1);
   // Return url instead of calling jikan api
+  // @ts-ignore
   anime.jikanGet = s => s;
 
   describe("/", () => {
@@ -57,6 +58,7 @@ describe("/anime", () => {
 describe("/manga", () => {
   let manga = Mal.manga(1);
   // Return url instead of calling jikan api
+  // @ts-ignore
   manga.jikanGet = s => s;
 
   describe("/", () => {
@@ -96,6 +98,7 @@ describe("/manga", () => {
 describe("/person", () => {
   let person = Mal.person(1);
   // Return url instead of calling jikan api
+  // @ts-ignore
   person.jikanGet = s => s;
 
   describe("/", () => {
@@ -109,6 +112,7 @@ describe("/person", () => {
 describe("/character", () => {
   let character = Mal.character(1);
   // Return url instead of calling jikan api
+  // @ts-ignore
   character.jikanGet = s => s;
 
   describe("/", () => {
@@ -122,6 +126,7 @@ describe("/character", () => {
 describe("/search", () => {
   let search = Mal.search();
   // Return url instead of calling jikan api
+  // @ts-ignore
   search.jikanGet = s => s;
 
   describe("/anime", () => {
@@ -171,6 +176,7 @@ describe("/season/later", () => {
 describe("/schedule", () => {
   let schedule = Mal.schedule();
   // Return url instead of calling jikan api
+  // @ts-ignore
   schedule.jikanGet = s => s;
 
   describe("/", () => {
@@ -208,6 +214,7 @@ describe("/schedule", () => {
 describe("/top", () => {
   let top = Mal.top();
   // Return url instead of calling jikan api
+  // @ts-ignore
   top.jikanGet = s => s;
 
   describe("/anime", () => {
@@ -310,6 +317,7 @@ describe("/top", () => {
 describe("/genre", () => {
   let genre = Mal.genre();
   // Return url instead of calling jikan api
+  // @ts-ignore
   genre.jikanGet = s => s;
 
   describe("/anime", () => {
@@ -348,4 +356,18 @@ describe("/genre", () => {
       `${jikanUrl}/genre/manga/2/1`
     );
   });
+});
+
+describe("/producer", () => {
+  jikanIt(Mal.producer.debug(1), `${jikanUrl}/producer/1`);
+  jikanIt(Mal.producer.debug(2), `${jikanUrl}/producer/2`);
+  jikanIt(Mal.producer.debug(1, 2), `${jikanUrl}/producer/1/2`);
+  jikanIt(Mal.producer.debug(2, 1), `${jikanUrl}/producer/2/1`);
+});
+
+describe("/magazine", () => {
+  jikanIt(Mal.magazine.debug(1), `${jikanUrl}/magazine/1`);
+  jikanIt(Mal.magazine.debug(2), `${jikanUrl}/magazine/2`);
+  jikanIt(Mal.magazine.debug(1, 2), `${jikanUrl}/magazine/1/2`);
+  jikanIt(Mal.magazine.debug(2, 1), `${jikanUrl}/magazine/2/1`);
 });

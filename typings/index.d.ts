@@ -9,6 +9,8 @@ import seasonLater from "./methods/jikan_v2/seasonLater";
 import schedule from "./methods/jikan_v2/schedule";
 import top from "./methods/jikan_v2/top";
 import genre from "./methods/jikan_v2/genre";
+import producer from "./methods/jikan_v2/producer";
+import magazine from "./methods/jikan_v2/magazine";
 import AnimeGenre from "./methods/jikan_v2/types/animeGenre";
 import MangaGenre from "./methods/jikan_v2/types/mangaGenre";
 import AnimeType from "./methods/jikan_v2/types/animeType";
@@ -31,6 +33,8 @@ declare class JikanClient {
     schedule: typeof schedule;
     top: typeof top;
     genre: typeof genre;
+    producer: typeof producer;
+    magazine: typeof magazine;
     types: {
         AnimeGenre: typeof AnimeGenre;
         MangaGenre: typeof MangaGenre;

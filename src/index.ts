@@ -69,6 +69,9 @@ import schedule from "./methods/jikan_v2/schedule";
 import top from "./methods/jikan_v2/top";
 import genre from "./methods/jikan_v2/genre";
 
+import producer from "./methods/jikan_v2/producer";
+import magazine from "./methods/jikan_v2/magazine";
+
 // Types
 import AnimeGenre from "./methods/jikan_v2/types/animeGenre";
 import MangaGenre from "./methods/jikan_v2/types/mangaGenre";
@@ -102,6 +105,9 @@ class JikanClient {
   public schedule = schedule;
   public top = top;
   public genre = genre;
+
+  public producer = producer;
+  public magazine = magazine;
 
   public types = {
     AnimeGenre,
