@@ -1,6 +1,5 @@
-/**
- * ### Anime by this Producer/Studio/Licensor
- * @param producer_id Producer ID from MyAnimeList.
- * @param page Page.
- */
-export default function (producer_id: number, page?: number | string): Promise<{}>;
+declare function producer(id: number, p?: number): Promise<any>;
+declare namespace producer {
+    var debug: (id: number, p?: number) => string;
+}
+export default producer;

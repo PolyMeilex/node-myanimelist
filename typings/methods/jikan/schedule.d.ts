@@ -1,8 +1,17 @@
-declare type day = "" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday" | "sunday" | "other" | "unknown";
-/**
- * ### Anime of the specified season
- * **Note:** If you don't pass the day parameter, it'll return the schedule for all days of the week
- * @param day Day of week: monday, tuesday, wednesday, thursday, friday, saturday, sunday, other, unknown.
- */
-export default function (day?: day): Promise<{}>;
+declare class Schedule {
+    private baseUrl;
+    constructor();
+    private jikanGet;
+    all(): Promise<import("axios").AxiosResponse<any>>;
+    monday(): Promise<import("axios").AxiosResponse<any>>;
+    tuesday(): Promise<import("axios").AxiosResponse<any>>;
+    wednesday(): Promise<import("axios").AxiosResponse<any>>;
+    thursday(): Promise<import("axios").AxiosResponse<any>>;
+    friday(): Promise<import("axios").AxiosResponse<any>>;
+    saturday(): Promise<import("axios").AxiosResponse<any>>;
+    sunday(): Promise<import("axios").AxiosResponse<any>>;
+    other(): Promise<import("axios").AxiosResponse<any>>;
+    unknown(): Promise<import("axios").AxiosResponse<any>>;
+}
+export default function (): Schedule;
 export {};

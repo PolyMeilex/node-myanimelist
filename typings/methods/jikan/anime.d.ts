@@ -1,9 +1,19 @@
-declare type request = "" | "characters_staff" | "episodes" | "news" | "pictures" | "videos" | "stats" | "forum" | "moreinfo" | "reviews" | "recommendations" | "userupdates";
-/**
- * ### A single anime object with all its details
- * @param id Id on MyAnimeList.
- * @param request Request types: 'characters_staff','episodes','news','pictures','videos','stats','forum','moreinfo','reviews','recommendations','userupdates'.
- * @param parameter Page number.
- */
-export default function (id: number, request?: request, parameter?: number | string): Promise<{}>;
+declare class Anime {
+    private baseUrl;
+    constructor(id: number);
+    private jikanGet;
+    info(): Promise<any>;
+    charactersStaff(): Promise<any>;
+    episodes(p?: number): Promise<any>;
+    news(): Promise<any>;
+    pictures(): Promise<any>;
+    videos(): Promise<any>;
+    stats(): Promise<any>;
+    forum(): Promise<any>;
+    moreInfo(): Promise<any>;
+    reviews(p?: number): Promise<any>;
+    recommendations(): Promise<any>;
+    userUpdates(p?: number): Promise<any>;
+}
+export default function (id: number): Anime;
 export {};

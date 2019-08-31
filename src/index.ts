@@ -1,96 +1,40 @@
-// //Jikan API
-// import anime from "./methods/jikan/anime";
-// import manga from "./methods/jikan/manga";
-// import person from "./methods/jikan/person";
-// import character from "./methods/jikan/character";
+import anime from "./methods/jikan/anime";
+import manga from "./methods/jikan/manga";
+import person from "./methods/jikan/person";
+import character from "./methods/jikan/character";
 
-// import season from "./methods/jikan/season";
-// import seasonArchive from "./methods/jikan/seasonArchive";
-// import schedule from "./methods/jikan/schedule";
-// import search from "./methods/jikan/search";
+import search from "./methods/jikan/search";
 
-// import top from "./methods/jikan/top";
-// import genre from "./methods/jikan/genre";
-// import producer from "./methods/jikan/producer";
-// import user from "./methods/jikan/user";
-// //Poly Methods
-// import avatar from "./methods/poly/avatar";
-// import list from "./methods/poly/list";
-// import animeUpdates from "./methods/poly/animeUpdates";
+import season from "./methods/jikan/season";
+import seasonArchive from "./methods/jikan/seasonArchive";
+import seasonLater from "./methods/jikan/seasonLater";
 
-// import days from "./methods/poly/days";
-// import login from "./methods/poly/noApiLogin";
+import schedule from "./methods/jikan/schedule";
+import top from "./methods/jikan/top";
+import genre from "./methods/jikan/genre";
 
-// import notifications from "./methods/poly/loginRequired/notifications";
-// import animeEdit from "./methods/poly/loginRequired/animeEdit";
-// // Mal Mobile Api
-// import MalMobileClient from "./methods/mobileApi/malMobileClient";
+import producer from "./methods/jikan/producer";
+import magazine from "./methods/jikan/magazine";
 
-// class MalClient {
-//   //Jikan API
-//   public anime = anime;
-//   public manga = manga;
-//   public person = person;
-//   public character = character;
-//   public search = search;
-//   public season = season;
-//   public seasonArchive = seasonArchive;
-//   public schedule = schedule;
-//   public top = top;
-//   public genre = genre;
-//   public producer = producer;
-//   public user = user;
+import user from "./methods/jikan/user";
 
-//   //Poly Methods
-//   public avatar = avatar;
-//   public list = list;
-//   public animeUpdates = animeUpdates;
-
-//   //Poly Methods (Api is down methods)
-//   public days = days;
-//   public login = login;
-
-//   public notifications = notifications;
-//   public animeEdit = animeEdit;
-// }
-
-import anime from "./methods/jikan_v2/anime";
-import manga from "./methods/jikan_v2/manga";
-import person from "./methods/jikan_v2/person";
-import character from "./methods/jikan_v2/character";
-
-import search from "./methods/jikan_v2/search";
-
-import season from "./methods/jikan_v2/season";
-import seasonArchive from "./methods/jikan_v2/seasonArchive";
-import seasonLater from "./methods/jikan_v2/seasonLater";
-
-import schedule from "./methods/jikan_v2/schedule";
-import top from "./methods/jikan_v2/top";
-import genre from "./methods/jikan_v2/genre";
-
-import producer from "./methods/jikan_v2/producer";
-import magazine from "./methods/jikan_v2/magazine";
-
-import user from "./methods/jikan_v2/user";
-
-import club from "./methods/jikan_v2/club";
+import club from "./methods/jikan/club";
 
 // Types
-import AnimeGenre from "./methods/jikan_v2/types/animeGenre";
-import MangaGenre from "./methods/jikan_v2/types/mangaGenre";
+import AnimeGenre from "./methods/jikan/types/animeGenre";
+import MangaGenre from "./methods/jikan/types/mangaGenre";
 
-import AnimeType from "./methods/jikan_v2/types/animeType";
-import MangaType from "./methods/jikan_v2/types/mangaType";
+import AnimeType from "./methods/jikan/types/animeType";
+import MangaType from "./methods/jikan/types/mangaType";
 
-import AnimeStatus from "./methods/jikan_v2/types/animeStatus";
-import MangaStatus from "./methods/jikan_v2/types/mangaStatus";
+import AnimeStatus from "./methods/jikan/types/animeStatus";
+import MangaStatus from "./methods/jikan/types/mangaStatus";
 
-import AnimeOrderBy from "./methods/jikan_v2/types/animeOrderBy";
-import MangaOrderBy from "./methods/jikan_v2/types/mangaOrderBy";
+import AnimeOrderBy from "./methods/jikan/types/animeOrderBy";
+import MangaOrderBy from "./methods/jikan/types/mangaOrderBy";
 
-import Sort from "./methods/jikan_v2/types/sort";
-import Rating from "./methods/jikan_v2/types/rating";
+import Sort from "./methods/jikan/types/sort";
+import Rating from "./methods/jikan/types/rating";
 //
 
 class JikanClient {
@@ -131,7 +75,17 @@ class JikanClient {
   };
 }
 
+import login from "./methods/poly/noApiLogin";
+import notifications from "./methods/poly/loginRequired/notifications";
+import animeEdit from "./methods/poly/loginRequired/animeEdit";
+
+class ScraperClient {
+  public login = login;
+  public notifications = notifications;
+  public animeEdit = animeEdit;
+}
+
 const Mal = new JikanClient();
 const { version } = require("../package.json");
-export { Mal, version, JikanClient };
+export { Mal, version, JikanClient, ScraperClient };
 export default Mal;
