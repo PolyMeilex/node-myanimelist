@@ -2,6 +2,7 @@ import anime from "./methods/jikan_v2/anime";
 import manga from "./methods/jikan_v2/manga";
 import person from "./methods/jikan_v2/person";
 import character from "./methods/jikan_v2/character";
+import search from "./methods/jikan_v2/search";
 import season from "./methods/jikan_v2/season";
 import seasonArchive from "./methods/jikan_v2/seasonArchive";
 import seasonLater from "./methods/jikan_v2/seasonLater";
@@ -13,6 +14,7 @@ declare class JikanClient {
     manga: typeof manga;
     person: typeof person;
     character: typeof character;
+    search: typeof search;
     season: typeof season;
     seasonArchive: typeof seasonArchive;
     seasonLater: typeof seasonLater;

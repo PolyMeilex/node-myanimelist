@@ -59,7 +59,7 @@ import manga from "./methods/jikan_v2/manga";
 import person from "./methods/jikan_v2/person";
 import character from "./methods/jikan_v2/character";
 
-// import search from "./methods/jikan_v2/search";
+import search from "./methods/jikan_v2/search";
 
 import season from "./methods/jikan_v2/season";
 import seasonArchive from "./methods/jikan_v2/seasonArchive";
@@ -78,7 +78,7 @@ class JikanClient {
   public person = person;
   public character = character;
 
-  // public search = search;
+  public search = search;
 
   public season = season;
   public seasonArchive = seasonArchive;

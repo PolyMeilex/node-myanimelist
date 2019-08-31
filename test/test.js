@@ -120,7 +120,17 @@ describe("/character", () => {
 });
 
 describe("/search", () => {
-  it("UNIMPLEMENTED!", () => assert.equal("UNIMPLEMENTED", "IMPLEMENTED"));
+  let search = Mal.search();
+  // Return url instead of calling jikan api
+  search.jikanGet = s => s;
+
+  describe("/anime", () => {
+    jikanIt(search.anime({ q: "sao" }), `${jikanUrl}/search/anime?q=sao`);
+    jikanIt(
+      search.anime({ q: "sao", page: 2 }),
+      `${jikanUrl}/search/anime?q=sao&page=2`
+    );
+  });
 });
 
 describe("/season", () => {

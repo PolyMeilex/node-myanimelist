@@ -33,12 +33,10 @@ Mal.person(id).pictures();
 Mal.character(id).info();
 Mal.character(id).pictures();
 
-let search = Mal.search().anime();
-//                       .manga()
-//                       .person()
-//                       .character()
-
-search.parameters({ q: "Fate" });
+let search = Mal.search().anime({ q: "Fate", page: 2 });
+//                       .manga({ q: "Fate" });
+//                       .person({ q: "Fate" });
+//                       .character({ q: "Fate" });
 
 Mal.season(2018, "winter");
 Mal.seasonArchive();
