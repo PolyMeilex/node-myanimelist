@@ -7,7 +7,7 @@
   "scripts": {
     "build": "gulp",
     "dev": "gulp dev",
-    "test": "gulp && node --trace-warnings tests/test.js"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "keywords": [
     "MAL",

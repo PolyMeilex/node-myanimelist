@@ -7,6 +7,7 @@ import seasonArchive from "./methods/jikan_v2/seasonArchive";
 import seasonLater from "./methods/jikan_v2/seasonLater";
 import schedule from "./methods/jikan_v2/schedule";
 import top from "./methods/jikan_v2/top";
+import genre from "./methods/jikan_v2/genre";
 declare class JikanClient {
     anime: typeof anime;
     manga: typeof manga;
@@ -17,6 +18,11 @@ declare class JikanClient {
     seasonLater: typeof seasonLater;
     schedule: typeof schedule;
     top: typeof top;
+    genre: typeof genre;
+    Genres: {
+        AnimeGenre: typeof import("./methods/jikan_v2/genreTypes").AnimeGenre;
+        MangaGenre: typeof import("./methods/jikan_v2/genreTypes").MangaGenre;
+    };
 }
 declare const Mal: JikanClient;
 declare const version: any;

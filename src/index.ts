@@ -68,6 +68,9 @@ import seasonLater from "./methods/jikan_v2/seasonLater";
 import schedule from "./methods/jikan_v2/schedule";
 import top from "./methods/jikan_v2/top";
 
+import Genres from "./methods/jikan_v2/genreTypes";
+import genre from "./methods/jikan_v2/genre";
+
 class JikanClient {
   //Jikan API
   public anime = anime;
@@ -83,6 +86,8 @@ class JikanClient {
 
   public schedule = schedule;
   public top = top;
+  public genre = genre;
+  public Genres = Genres;
 }
 
 const Mal = new JikanClient();

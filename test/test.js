@@ -284,3 +284,46 @@ describe("/top", () => {
     });
   });
 });
+
+describe("/genre", () => {
+  let genre = Mal.genre();
+  // Return url instead of calling jikan api
+  genre.jikanGet = s => s;
+
+  describe("/anime", () => {
+    jikanIt(
+      genre.anime(Mal.Genres.AnimeGenre.Action),
+      `${jikanUrl}/genre/anime/1`
+    );
+    jikanIt(
+      genre.anime(Mal.Genres.AnimeGenre.Action, 1),
+      `${jikanUrl}/genre/anime/1/1`
+    );
+    jikanIt(
+      genre.anime(Mal.Genres.AnimeGenre.Action, 2),
+      `${jikanUrl}/genre/anime/1/2`
+    );
+    jikanIt(
+      genre.anime(Mal.Genres.AnimeGenre.Adventure, 1),
+      `${jikanUrl}/genre/anime/2/1`
+    );
+  });
+  describe("/manga", () => {
+    jikanIt(
+      genre.manga(Mal.Genres.MangaGenre.Action),
+      `${jikanUrl}/genre/manga/1`
+    );
+    jikanIt(
+      genre.manga(Mal.Genres.MangaGenre.Action, 1),
+      `${jikanUrl}/genre/manga/1/1`
+    );
+    jikanIt(
+      genre.manga(Mal.Genres.MangaGenre.Action, 2),
+      `${jikanUrl}/genre/manga/1/2`
+    );
+    jikanIt(
+      genre.manga(Mal.Genres.MangaGenre.Adventure, 1),
+      `${jikanUrl}/genre/manga/2/1`
+    );
+  });
+});
