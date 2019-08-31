@@ -72,6 +72,8 @@ import genre from "./methods/jikan_v2/genre";
 import producer from "./methods/jikan_v2/producer";
 import magazine from "./methods/jikan_v2/magazine";
 
+import club from "./methods/jikan_v2/club";
+
 // Types
 import AnimeGenre from "./methods/jikan_v2/types/animeGenre";
 import MangaGenre from "./methods/jikan_v2/types/mangaGenre";
@@ -108,6 +110,8 @@ class JikanClient {
 
   public producer = producer;
   public magazine = magazine;
+
+  public club = club;
 
   public types = {
     AnimeGenre,

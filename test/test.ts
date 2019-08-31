@@ -371,3 +371,22 @@ describe("/magazine", () => {
   jikanIt(Mal.magazine.debug(1, 2), `${jikanUrl}/magazine/1/2`);
   jikanIt(Mal.magazine.debug(2, 1), `${jikanUrl}/magazine/2/1`);
 });
+
+describe("/user", () => {
+  jikanIt("UNIMPLEMENTED!", "IMPLEMENTED!");
+});
+
+describe("/club", () => {
+  let club = Mal.club(1);
+  // Return url instead of calling jikan api
+  // @ts-ignore
+  club.jikanGet = s => s;
+
+  describe("/", () => {
+    jikanIt(club.info(), `${jikanUrl}/club/1`);
+  });
+  describe("/members", () => {
+    jikanIt(club.members(), `${jikanUrl}/club/1/members`);
+    jikanIt(club.members(1), `${jikanUrl}/club/1/members/1`);
+  });
+});
