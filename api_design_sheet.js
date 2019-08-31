@@ -79,8 +79,8 @@ top.manhua(p);
 top.byPopularity(p);
 top.favorite(p);
 
-Mal.genre().anime(Mal.Genres.AnimeGenre.Action, p);
-//         .manga(Mal.Genres.MangaGenre.Action,p)
+Mal.genre().anime(Mal.types.AnimeGenre.Action, p);
+//         .manga(Mal.types.MangaGenre.Action,p)
 
 Mal.producer(id, p);
 Mal.magazine(id, p);

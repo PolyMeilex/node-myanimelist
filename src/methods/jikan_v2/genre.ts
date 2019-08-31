@@ -1,7 +1,8 @@
 import { joinUrl } from "./url";
 import baseUrl from "./jikanApi";
 
-import { AnimeGenre, MangaGenre } from "./genreTypes";
+import AnimeGenre from "./types/animeGenre";
+import MangaGenre from "./types/mangaGenre";
 
 class Genre {
   private baseUrl: string;

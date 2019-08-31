@@ -67,9 +67,24 @@ import seasonLater from "./methods/jikan_v2/seasonLater";
 
 import schedule from "./methods/jikan_v2/schedule";
 import top from "./methods/jikan_v2/top";
-
-import Genres from "./methods/jikan_v2/genreTypes";
 import genre from "./methods/jikan_v2/genre";
+
+// Types
+import AnimeGenre from "./methods/jikan_v2/types/animeGenre";
+import MangaGenre from "./methods/jikan_v2/types/mangaGenre";
+
+import AnimeType from "./methods/jikan_v2/types/animeType";
+import MangaType from "./methods/jikan_v2/types/mangaType";
+
+import AnimeStatus from "./methods/jikan_v2/types/animeStatus";
+import MangaStatus from "./methods/jikan_v2/types/mangaStatus";
+
+import AnimeOrderBy from "./methods/jikan_v2/types/animeOrderBy";
+import MangaOrderBy from "./methods/jikan_v2/types/mangaOrderBy";
+
+import Sort from "./methods/jikan_v2/types/sort";
+import Rating from "./methods/jikan_v2/types/rating";
+//
 
 class JikanClient {
   //Jikan API
@@ -87,7 +102,19 @@ class JikanClient {
   public schedule = schedule;
   public top = top;
   public genre = genre;
-  public Genres = Genres;
+
+  public types = {
+    AnimeGenre,
+    MangaGenre,
+    AnimeType,
+    MangaType,
+    AnimeStatus,
+    MangaStatus,
+    AnimeOrderBy,
+    MangaOrderBy,
+    Sort,
+    Rating
+  };
 }
 
 const Mal = new JikanClient();

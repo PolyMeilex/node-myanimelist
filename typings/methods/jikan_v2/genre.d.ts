@@ -1,4 +1,5 @@
-import { AnimeGenre, MangaGenre } from "./genreTypes";
+import AnimeGenre from "./types/animeGenre";
+import MangaGenre from "./types/mangaGenre";
 declare class Genre {
     private baseUrl;
     constructor();

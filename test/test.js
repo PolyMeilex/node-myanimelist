@@ -125,10 +125,22 @@ describe("/search", () => {
   search.jikanGet = s => s;
 
   describe("/anime", () => {
-    jikanIt(search.anime({ q: "sao" }), `${jikanUrl}/search/anime?q=sao`);
+    jikanIt(search.anime({ q: "fate" }), `${jikanUrl}/search/anime?q=fate`);
     jikanIt(
-      search.anime({ q: "sao", page: 2 }),
-      `${jikanUrl}/search/anime?q=sao&page=2`
+      search.anime({ q: "fate", page: 2 }),
+      `${jikanUrl}/search/anime?q=fate&page=2`
+    );
+  });
+  describe("/manga", () => {
+    jikanIt(search.manga({ q: "fate" }), `${jikanUrl}/search/manga?q=fate`);
+  });
+  describe("/person", () => {
+    jikanIt(search.person({ q: "fate" }), `${jikanUrl}/search/person?q=fate`);
+  });
+  describe("/character", () => {
+    jikanIt(
+      search.character({ q: "fate" }),
+      `${jikanUrl}/search/character?q=fate`
     );
   });
 });
@@ -302,37 +314,37 @@ describe("/genre", () => {
 
   describe("/anime", () => {
     jikanIt(
-      genre.anime(Mal.Genres.AnimeGenre.Action),
+      genre.anime(Mal.types.AnimeGenre.Action),
       `${jikanUrl}/genre/anime/1`
     );
     jikanIt(
-      genre.anime(Mal.Genres.AnimeGenre.Action, 1),
+      genre.anime(Mal.types.AnimeGenre.Action, 1),
       `${jikanUrl}/genre/anime/1/1`
     );
     jikanIt(
-      genre.anime(Mal.Genres.AnimeGenre.Action, 2),
+      genre.anime(Mal.types.AnimeGenre.Action, 2),
       `${jikanUrl}/genre/anime/1/2`
     );
     jikanIt(
-      genre.anime(Mal.Genres.AnimeGenre.Adventure, 1),
+      genre.anime(Mal.types.AnimeGenre.Adventure, 1),
       `${jikanUrl}/genre/anime/2/1`
     );
   });
   describe("/manga", () => {
     jikanIt(
-      genre.manga(Mal.Genres.MangaGenre.Action),
+      genre.manga(Mal.types.MangaGenre.Action),
       `${jikanUrl}/genre/manga/1`
     );
     jikanIt(
-      genre.manga(Mal.Genres.MangaGenre.Action, 1),
+      genre.manga(Mal.types.MangaGenre.Action, 1),
       `${jikanUrl}/genre/manga/1/1`
     );
     jikanIt(
-      genre.manga(Mal.Genres.MangaGenre.Action, 2),
+      genre.manga(Mal.types.MangaGenre.Action, 2),
       `${jikanUrl}/genre/manga/1/2`
     );
     jikanIt(
-      genre.manga(Mal.Genres.MangaGenre.Adventure, 1),
+      genre.manga(Mal.types.MangaGenre.Adventure, 1),
       `${jikanUrl}/genre/manga/2/1`
     );
   });
