@@ -1,7 +1,7 @@
 declare class Character {
     private baseUrl;
     constructor(id: number);
-    jikanGet(url: string): void;
+    private jikanGet;
     info(): void;
     pictures(): void;
 }

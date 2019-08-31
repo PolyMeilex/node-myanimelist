@@ -6,7 +6,7 @@ class Anime {
   constructor(id: number) {
     this.baseUrl = `${baseUrl}/anime/${id}`;
   }
-  jikanGet(url: string) {
+  private jikanGet(url: string) {
     console.log(url);
   }
   info() {

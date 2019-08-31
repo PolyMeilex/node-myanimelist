@@ -1,7 +1,7 @@
 declare class Anime {
     private baseUrl;
     constructor(id: number);
-    jikanGet(url: string): void;
+    private jikanGet;
     info(): void;
     charactersStaff(): void;
     episodes(p?: number): void;

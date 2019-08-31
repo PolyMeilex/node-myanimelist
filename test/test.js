@@ -182,3 +182,49 @@ describe("/schedule", () => {
     jikanIt(schedule.unknown(), `${jikanUrl}/schedule/unknown`);
   });
 });
+
+describe("/top", () => {
+  let top = Mal.top();
+  // Return url instead of calling jikan api
+  top.jikanGet = s => s;
+
+  describe("/anime", () => {
+    let topAnime = top.anime();
+    describe("/all", () => {
+      jikanIt(topAnime.all(), `${jikanUrl}/top/1`);
+      jikanIt(topAnime.all(2), `${jikanUrl}/top/2`);
+    });
+    describe("/airing", () => {
+      jikanIt(topAnime.airing(), `${jikanUrl}/top/1/airing`);
+      jikanIt(topAnime.airing(2), `${jikanUrl}/top/2/airing`);
+    });
+    describe("/upcoming", () => {
+      jikanIt(topAnime.upcoming(), `${jikanUrl}/top/1/upcoming`);
+      jikanIt(topAnime.upcoming(2), `${jikanUrl}/top/2/upcoming`);
+    });
+    describe("/tv", () => {
+      jikanIt(topAnime.tv(), `${jikanUrl}/top/1/tv`);
+      jikanIt(topAnime.tv(2), `${jikanUrl}/top/2/tv`);
+    });
+    describe("/movie", () => {
+      jikanIt(topAnime.movie(), `${jikanUrl}/top/1/movie`);
+      jikanIt(topAnime.movie(2), `${jikanUrl}/top/2/movie`);
+    });
+    describe("/ova", () => {
+      jikanIt(topAnime.ova(), `${jikanUrl}/top/1/ova`);
+      jikanIt(topAnime.ova(2), `${jikanUrl}/top/2/ova`);
+    });
+    describe("/special", () => {
+      jikanIt(topAnime.special(), `${jikanUrl}/top/1/special`);
+      jikanIt(topAnime.special(2), `${jikanUrl}/top/2/special`);
+    });
+    describe("/bypopularity", () => {
+      jikanIt(topAnime.byPopularity(), `${jikanUrl}/top/1/bypopularity`);
+      jikanIt(topAnime.byPopularity(2), `${jikanUrl}/top/2/bypopularity`);
+    });
+    describe("/favorite", () => {
+      jikanIt(topAnime.favorite(), `${jikanUrl}/top/1/favorite`);
+      jikanIt(topAnime.favorite(2), `${jikanUrl}/top/2/favorite`);
+    });
+  });
+});

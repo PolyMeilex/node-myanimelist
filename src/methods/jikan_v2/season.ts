@@ -6,7 +6,7 @@ class Season {
   constructor(year: number, season: season) {
     this.baseUrl = `${baseUrl}/season/${year}/${season}`;
   }
-  jikanGet(url: string) {
+  private jikanGet(url: string) {
     console.log(url);
   }
   info() {
@@ -25,6 +25,7 @@ function season(year: number, season: season): Promise<any> {
 season.debug = (year: number, season: season): string => {
   let s = new Season(year, season);
   // Return url instead of calling jikan api
+  // @ts-ignore
   s.jikanGet = s => s;
   // @ts-ignore
   return s.info();

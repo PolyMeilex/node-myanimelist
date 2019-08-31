@@ -1,7 +1,7 @@
 declare class Schedule {
     private baseUrl;
     constructor();
-    jikanGet(url: string): void;
+    private jikanGet;
     all(): void;
     monday(): void;
     tuesday(): void;

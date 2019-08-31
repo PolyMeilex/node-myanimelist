@@ -66,6 +66,7 @@ import seasonArchive from "./methods/jikan_v2/seasonArchive";
 import seasonLater from "./methods/jikan_v2/seasonLater";
 
 import schedule from "./methods/jikan_v2/schedule";
+import top from "./methods/jikan_v2/top";
 
 class JikanClient {
   //Jikan API
@@ -81,6 +82,7 @@ class JikanClient {
   public seasonLater = seasonLater;
 
   public schedule = schedule;
+  public top = top;
 }
 
 const Mal = new JikanClient();

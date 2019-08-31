@@ -6,7 +6,7 @@ class Character {
   constructor(id: number) {
     this.baseUrl = `${baseUrl}/character/${id}`;
   }
-  jikanGet(url: string) {
+  private jikanGet(url: string) {
     console.log(url);
   }
   info() {

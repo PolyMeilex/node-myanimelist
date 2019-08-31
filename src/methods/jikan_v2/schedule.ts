@@ -6,7 +6,7 @@ class Schedule {
   constructor() {
     this.baseUrl = `${baseUrl}/schedule`;
   }
-  jikanGet(url: string) {
+  private jikanGet(url: string) {
     console.log(url);
   }
   all() {

@@ -1,7 +1,7 @@
 declare class Manga {
     private baseUrl;
     constructor(id: number);
-    jikanGet(url: string): void;
+    private jikanGet;
     info(): void;
     characters(): void;
     news(): void;

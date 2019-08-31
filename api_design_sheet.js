@@ -78,7 +78,7 @@ top.doujin(p)
 top.manhwa(p)
 top.manhua(p)
 // Anime & Manga Subtypes
-top.bypopularity(p)
+top.byPopularity(p)
 top.favorite(p)
 
 import {GenreAnime,GenreManga} from Genre

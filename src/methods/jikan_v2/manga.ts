@@ -6,7 +6,7 @@ class Manga {
   constructor(id: number) {
     this.baseUrl = `${baseUrl}/manga/${id}`;
   }
-  jikanGet(url: string) {
+  private jikanGet(url: string) {
     console.log(url);
   }
   info() {
