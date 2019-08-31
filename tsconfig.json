@@ -1,18 +1,14 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "lib": [
-            "es2016"
-        ],
-        "declaration": true,
-        "sourceMap": true,
-        "removeComments": false,
-        "outDir": "./dist/",
-        "declarationDir": "./typings/"
-    },
-    "include": [
-        "./src"
-    ]
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": ["es2016"],
+    "declaration": true,
+    "sourceMap": true,
+    "removeComments": false,
+    "outDir": "./dist/",
+    "declarationDir": "./typings/"
+  },
+  "include": ["./src"]
 }

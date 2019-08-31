@@ -1,4 +1,4 @@
-declare type request = '' | 'characters_staff' | 'episodes' | 'news' | 'pictures' | 'videos' | 'stats' | 'forum' | 'moreinfo' | 'reviews' | 'recommendations' | 'userupdates';
+declare type request = "" | "characters_staff" | "episodes" | "news" | "pictures" | "videos" | "stats" | "forum" | "moreinfo" | "reviews" | "recommendations" | "userupdates";
 /**
  * ### A single anime object with all its details
  * @param id Id on MyAnimeList.

@@ -1,0 +1,18 @@
+const { Mal } = require("../");
+
+let anime = Mal.anime(1);
+
+anime.jikanGet = s => s;
+
+console.log(anime.info());
+anime.charactersStaff();
+anime.episodes(1);
+anime.news();
+anime.pictures();
+anime.videos();
+anime.stats();
+anime.forum();
+anime.moreInfo();
+anime.reviews(1);
+anime.recommendations();
+anime.userUpdates(1);

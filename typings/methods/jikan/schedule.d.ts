@@ -1,4 +1,4 @@
-declare type day = '' | 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday' | 'other' | 'unknown';
+declare type day = "" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday" | "sunday" | "other" | "unknown";
 /**
  * ### Anime of the specified season
  * **Note:** If you don't pass the day parameter, it'll return the schedule for all days of the week

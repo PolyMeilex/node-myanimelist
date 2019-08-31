@@ -1,4 +1,4 @@
-declare type request = '' | 'characters' | 'news' | 'pictures' | 'stats' | 'forum' | 'moreinfo' | 'reviews' | 'recommendations' | 'userupdates';
+declare type request = "" | "characters" | "news" | "pictures" | "stats" | "forum" | "moreinfo" | "reviews" | "recommendations" | "userupdates";
 /**
  * ### A single manga object with all its details
  * @param id Id on MyAnimeList.

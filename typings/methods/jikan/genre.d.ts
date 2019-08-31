@@ -1,4 +1,4 @@
-declare type type = 'anime' | 'manga';
+declare type type = "anime" | "manga";
 /**
  * ### Anime/Manga items of the genre
  * @param type anime,manga.

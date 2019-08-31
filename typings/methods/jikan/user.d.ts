@@ -1,4 +1,4 @@
-declare type request = '' | 'profile' | 'history' | 'friends' | 'animelist' | 'mangalist';
+declare type request = "" | "profile" | "history" | "friends" | "animelist" | "mangalist";
 /**
  * ### User related data
  * @param username Username on MyAnimeList.

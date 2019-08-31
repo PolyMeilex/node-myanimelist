@@ -1,5 +1,10 @@
-declare type type = 'anime' | 'manga' | 'people' | 'characters';
-declare type subtype = '' | 'airing' | 'upcoming' | 'tv' | 'movie' | 'ova' | 'special' | 'manga' | 'novels' | 'oneshots' | 'doujin' | 'manhwa' | 'manhua' | 'bypopularity' | 'favorite';
+declare enum type {
+    anime = "anime",
+    manga = "manga",
+    people = "people",
+    characters = "characters"
+}
+declare type subtype = "" | "airing" | "upcoming" | "tv" | "movie" | "ova" | "special" | "manga" | "novels" | "oneshots" | "doujin" | "manhwa" | "manhua" | "bypopularity" | "favorite";
 /**
  * ### Top items on MyAnimeList
  * @param type Top items of this type: anime, manga, people, characters
