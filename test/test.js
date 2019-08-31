@@ -92,3 +92,93 @@ describe("/manga", () => {
     jikanIt(manga.userUpdates(2), `${jikanUrl}/manga/1/userupdates/2`);
   });
 });
+
+describe("/person", () => {
+  let person = Mal.person(1);
+  // Return url instead of calling jikan api
+  person.jikanGet = s => s;
+
+  describe("/", () => {
+    jikanIt(person.info(), `${jikanUrl}/person/1`);
+  });
+  describe("/pictures", () => {
+    jikanIt(person.pictures(), `${jikanUrl}/person/1/pictures`);
+  });
+});
+
+describe("/character", () => {
+  let character = Mal.character(1);
+  // Return url instead of calling jikan api
+  character.jikanGet = s => s;
+
+  describe("/", () => {
+    jikanIt(character.info(), `${jikanUrl}/character/1`);
+  });
+  describe("/pictures", () => {
+    jikanIt(character.pictures(), `${jikanUrl}/character/1/pictures`);
+  });
+});
+
+describe("/search", () => {
+  it("UNIMPLEMENTED!", () => assert.equal("UNIMPLEMENTED", "IMPLEMENTED"));
+});
+
+describe("/season", () => {
+  describe("/2018/winter", () => {
+    jikanIt(Mal.season.debug(2018, "winter"), `${jikanUrl}/season/2018/winter`);
+  });
+  describe("/2019/winter", () => {
+    jikanIt(Mal.season.debug(2019, "winter"), `${jikanUrl}/season/2019/winter`);
+  });
+  describe("/2018/summer", () => {
+    jikanIt(Mal.season.debug(2018, "summer"), `${jikanUrl}/season/2018/summer`);
+  });
+  describe("/2019/summer", () => {
+    jikanIt(Mal.season.debug(2019, "summer"), `${jikanUrl}/season/2019/summer`);
+  });
+});
+
+describe("/season/archive", () => {
+  jikanIt(Mal.seasonArchive.debug(), `${jikanUrl}/season/archive`);
+});
+
+describe("/season/later", () => {
+  jikanIt(Mal.seasonLater.debug(), `${jikanUrl}/season/later`);
+});
+
+describe("/schedule", () => {
+  let schedule = Mal.schedule();
+  // Return url instead of calling jikan api
+  schedule.jikanGet = s => s;
+
+  describe("/", () => {
+    jikanIt(schedule.all(), `${jikanUrl}/schedule`);
+  });
+  describe("/monday", () => {
+    jikanIt(schedule.monday(), `${jikanUrl}/schedule/monday`);
+  });
+  describe("/tuesday", () => {
+    jikanIt(schedule.tuesday(), `${jikanUrl}/schedule/tuesday`);
+  });
+  describe("/wednesday", () => {
+    jikanIt(schedule.wednesday(), `${jikanUrl}/schedule/wednesday`);
+  });
+  describe("/thursday", () => {
+    jikanIt(schedule.thursday(), `${jikanUrl}/schedule/thursday`);
+  });
+  describe("/friday", () => {
+    jikanIt(schedule.friday(), `${jikanUrl}/schedule/friday`);
+  });
+  describe("/saturday", () => {
+    jikanIt(schedule.saturday(), `${jikanUrl}/schedule/saturday`);
+  });
+  describe("/sunday", () => {
+    jikanIt(schedule.sunday(), `${jikanUrl}/schedule/sunday`);
+  });
+  describe("/other", () => {
+    jikanIt(schedule.other(), `${jikanUrl}/schedule/other`);
+  });
+  describe("/unknown", () => {
+    jikanIt(schedule.unknown(), `${jikanUrl}/schedule/unknown`);
+  });
+});

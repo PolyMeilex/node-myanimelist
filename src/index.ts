@@ -56,10 +56,31 @@
 
 import anime from "./methods/jikan_v2/anime";
 import manga from "./methods/jikan_v2/manga";
+import person from "./methods/jikan_v2/person";
+import character from "./methods/jikan_v2/character";
+
+// import search from "./methods/jikan_v2/search";
+
+import season from "./methods/jikan_v2/season";
+import seasonArchive from "./methods/jikan_v2/seasonArchive";
+import seasonLater from "./methods/jikan_v2/seasonLater";
+
+import schedule from "./methods/jikan_v2/schedule";
+
 class JikanClient {
   //Jikan API
   public anime = anime;
   public manga = manga;
+  public person = person;
+  public character = character;
+
+  // public search = search;
+
+  public season = season;
+  public seasonArchive = seasonArchive;
+  public seasonLater = seasonLater;
+
+  public schedule = schedule;
 }
 
 const Mal = new JikanClient();

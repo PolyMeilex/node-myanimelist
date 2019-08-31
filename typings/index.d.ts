@@ -1,9 +1,22 @@
 import anime from "./methods/jikan_v2/anime";
 import manga from "./methods/jikan_v2/manga";
-declare class MalClient {
+import person from "./methods/jikan_v2/person";
+import character from "./methods/jikan_v2/character";
+import season from "./methods/jikan_v2/season";
+import seasonArchive from "./methods/jikan_v2/seasonArchive";
+import seasonLater from "./methods/jikan_v2/seasonLater";
+import schedule from "./methods/jikan_v2/schedule";
+declare class JikanClient {
     anime: typeof anime;
     manga: typeof manga;
+    person: typeof person;
+    character: typeof character;
+    season: typeof season;
+    seasonArchive: typeof seasonArchive;
+    seasonLater: typeof seasonLater;
+    schedule: typeof schedule;
 }
-declare const Mal: MalClient;
-export { Mal };
+declare const Mal: JikanClient;
+declare const version: any;
+export { Mal, version, JikanClient };
 export default Mal;
