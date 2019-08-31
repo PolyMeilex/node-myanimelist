@@ -2,7 +2,12 @@ import * as urljoin from "url-join";
 import * as rp from "request-promise-native";
 import baseUrl from "./jikanApi";
 
-type type = "anime" | "manga" | "people" | "characters";
+enum type {
+  anime = "anime",
+  manga = "manga",
+  people = "people",
+  characters = "characters"
+}
 type subtype =
   | ""
   | "airing"

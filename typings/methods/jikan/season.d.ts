@@ -1,4 +1,4 @@
-declare type season = 'summer' | 'spring' | 'fall' | 'winter';
+declare type season = "summer" | "spring" | "fall" | "winter";
 /**
  * ### Anime of the specified season
  * @param year Year.

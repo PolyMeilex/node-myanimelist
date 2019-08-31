@@ -1,7 +1,7 @@
-declare type searchTypeT = 'anime' | 'manga' | 'person' | 'character';
-declare type statusT = 'airing' | 'completed' | 'complete' | 'tba' | 'upcoming';
-declare type ratedT = 'g' | 'pg' | 'pg13' | 'r17' | 'r' | 'rx';
-declare type filterTypeT = 'tv' | 'ova' | 'movie' | 'special' | 'ona' | 'music' | 'manga' | 'novel' | 'oneshot' | 'doujin' | 'manhwa' | 'manhua';
+declare type searchTypeT = "anime" | "manga" | "person" | "character";
+declare type statusT = "airing" | "completed" | "complete" | "tba" | "upcoming";
+declare type ratedT = "g" | "pg" | "pg13" | "r17" | "r" | "rx";
+declare type filterTypeT = "tv" | "ova" | "movie" | "special" | "ona" | "music" | "manga" | "novel" | "oneshot" | "doujin" | "manhwa" | "manhua";
 /**
  * ### Advanced Search Parameters
  * - q

@@ -1,4 +1,4 @@
-declare type request = '' | 'pictures';
+declare type request = "" | "pictures";
 /**
  * ### A single person object with all its details
  * @param id Id on MyAnimeList.

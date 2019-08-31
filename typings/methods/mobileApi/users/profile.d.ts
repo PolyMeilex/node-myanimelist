@@ -1,4 +1,4 @@
-declare type fields = 'anime_statistics' | 'is_supporter';
+declare type fields = "anime_statistics" | "is_supporter";
 /**
  * ### Profile of logged in user
  * @param auth Auth OBJ.
