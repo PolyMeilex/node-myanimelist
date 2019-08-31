@@ -322,37 +322,37 @@ describe("/genre", () => {
 
   describe("/anime", () => {
     jikanIt(
-      genre.anime(Mal.types.AnimeGenre.Action),
+      genre.anime(Mal.types.AnimeGenre.action),
       `${jikanUrl}/genre/anime/1`
     );
     jikanIt(
-      genre.anime(Mal.types.AnimeGenre.Action, 1),
+      genre.anime(Mal.types.AnimeGenre.action, 1),
       `${jikanUrl}/genre/anime/1/1`
     );
     jikanIt(
-      genre.anime(Mal.types.AnimeGenre.Action, 2),
+      genre.anime(Mal.types.AnimeGenre.action, 2),
       `${jikanUrl}/genre/anime/1/2`
     );
     jikanIt(
-      genre.anime(Mal.types.AnimeGenre.Adventure, 1),
+      genre.anime(Mal.types.AnimeGenre.adventure, 1),
       `${jikanUrl}/genre/anime/2/1`
     );
   });
   describe("/manga", () => {
     jikanIt(
-      genre.manga(Mal.types.MangaGenre.Action),
+      genre.manga(Mal.types.MangaGenre.action),
       `${jikanUrl}/genre/manga/1`
     );
     jikanIt(
-      genre.manga(Mal.types.MangaGenre.Action, 1),
+      genre.manga(Mal.types.MangaGenre.action, 1),
       `${jikanUrl}/genre/manga/1/1`
     );
     jikanIt(
-      genre.manga(Mal.types.MangaGenre.Action, 2),
+      genre.manga(Mal.types.MangaGenre.action, 2),
       `${jikanUrl}/genre/manga/1/2`
     );
     jikanIt(
-      genre.manga(Mal.types.MangaGenre.Adventure, 1),
+      genre.manga(Mal.types.MangaGenre.adventure, 1),
       `${jikanUrl}/genre/manga/2/1`
     );
   });
