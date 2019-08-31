@@ -191,40 +191,96 @@ describe("/top", () => {
   describe("/anime", () => {
     let topAnime = top.anime();
     describe("/all", () => {
-      jikanIt(topAnime.all(), `${jikanUrl}/top/1`);
-      jikanIt(topAnime.all(2), `${jikanUrl}/top/2`);
+      jikanIt(topAnime.all(), `${jikanUrl}/top/anime/1`);
+      jikanIt(topAnime.all(2), `${jikanUrl}/top/anime/2`);
     });
     describe("/airing", () => {
-      jikanIt(topAnime.airing(), `${jikanUrl}/top/1/airing`);
-      jikanIt(topAnime.airing(2), `${jikanUrl}/top/2/airing`);
+      jikanIt(topAnime.airing(), `${jikanUrl}/top/anime/1/airing`);
+      jikanIt(topAnime.airing(2), `${jikanUrl}/top/anime/2/airing`);
     });
     describe("/upcoming", () => {
-      jikanIt(topAnime.upcoming(), `${jikanUrl}/top/1/upcoming`);
-      jikanIt(topAnime.upcoming(2), `${jikanUrl}/top/2/upcoming`);
+      jikanIt(topAnime.upcoming(), `${jikanUrl}/top/anime/1/upcoming`);
+      jikanIt(topAnime.upcoming(2), `${jikanUrl}/top/anime/2/upcoming`);
     });
     describe("/tv", () => {
-      jikanIt(topAnime.tv(), `${jikanUrl}/top/1/tv`);
-      jikanIt(topAnime.tv(2), `${jikanUrl}/top/2/tv`);
+      jikanIt(topAnime.tv(), `${jikanUrl}/top/anime/1/tv`);
+      jikanIt(topAnime.tv(2), `${jikanUrl}/top/anime/2/tv`);
     });
     describe("/movie", () => {
-      jikanIt(topAnime.movie(), `${jikanUrl}/top/1/movie`);
-      jikanIt(topAnime.movie(2), `${jikanUrl}/top/2/movie`);
+      jikanIt(topAnime.movie(), `${jikanUrl}/top/anime/1/movie`);
+      jikanIt(topAnime.movie(2), `${jikanUrl}/top/anime/2/movie`);
     });
     describe("/ova", () => {
-      jikanIt(topAnime.ova(), `${jikanUrl}/top/1/ova`);
-      jikanIt(topAnime.ova(2), `${jikanUrl}/top/2/ova`);
+      jikanIt(topAnime.ova(), `${jikanUrl}/top/anime/1/ova`);
+      jikanIt(topAnime.ova(2), `${jikanUrl}/top/anime/2/ova`);
     });
     describe("/special", () => {
-      jikanIt(topAnime.special(), `${jikanUrl}/top/1/special`);
-      jikanIt(topAnime.special(2), `${jikanUrl}/top/2/special`);
+      jikanIt(topAnime.special(), `${jikanUrl}/top/anime/1/special`);
+      jikanIt(topAnime.special(2), `${jikanUrl}/top/anime/2/special`);
     });
     describe("/bypopularity", () => {
-      jikanIt(topAnime.byPopularity(), `${jikanUrl}/top/1/bypopularity`);
-      jikanIt(topAnime.byPopularity(2), `${jikanUrl}/top/2/bypopularity`);
+      jikanIt(topAnime.byPopularity(), `${jikanUrl}/top/anime/1/bypopularity`);
+      jikanIt(topAnime.byPopularity(2), `${jikanUrl}/top/anime/2/bypopularity`);
     });
     describe("/favorite", () => {
-      jikanIt(topAnime.favorite(), `${jikanUrl}/top/1/favorite`);
-      jikanIt(topAnime.favorite(2), `${jikanUrl}/top/2/favorite`);
+      jikanIt(topAnime.favorite(), `${jikanUrl}/top/anime/1/favorite`);
+      jikanIt(topAnime.favorite(2), `${jikanUrl}/top/anime/2/favorite`);
+    });
+  });
+
+  describe("/manga", () => {
+    let topManga = top.manga();
+    describe("/all", () => {
+      jikanIt(topManga.all(), `${jikanUrl}/top/manga/1`);
+      jikanIt(topManga.all(2), `${jikanUrl}/top/manga/2`);
+    });
+    describe("/manga", () => {
+      jikanIt(topManga.manga(), `${jikanUrl}/top/manga/1/manga`);
+      jikanIt(topManga.manga(2), `${jikanUrl}/top/manga/2/manga`);
+    });
+    describe("/novels", () => {
+      jikanIt(topManga.novels(), `${jikanUrl}/top/manga/1/novels`);
+      jikanIt(topManga.novels(2), `${jikanUrl}/top/manga/2/novels`);
+    });
+    describe("/oneshots", () => {
+      jikanIt(topManga.oneshots(), `${jikanUrl}/top/manga/1/oneshots`);
+      jikanIt(topManga.oneshots(2), `${jikanUrl}/top/manga/2/oneshots`);
+    });
+    describe("/doujin", () => {
+      jikanIt(topManga.doujin(), `${jikanUrl}/top/manga/1/doujin`);
+      jikanIt(topManga.doujin(2), `${jikanUrl}/top/manga/2/doujin`);
+    });
+    describe("/manhwa", () => {
+      jikanIt(topManga.manhwa(), `${jikanUrl}/top/manga/1/manhwa`);
+      jikanIt(topManga.manhwa(2), `${jikanUrl}/top/manga/2/manhwa`);
+    });
+    describe("/special", () => {
+      jikanIt(topManga.manhua(), `${jikanUrl}/top/manga/1/manhua`);
+      jikanIt(topManga.manhua(2), `${jikanUrl}/top/manga/2/manhua`);
+    });
+    describe("/bypopularity", () => {
+      jikanIt(topManga.byPopularity(), `${jikanUrl}/top/manga/1/bypopularity`);
+      jikanIt(topManga.byPopularity(2), `${jikanUrl}/top/manga/2/bypopularity`);
+    });
+    describe("/favorite", () => {
+      jikanIt(topManga.favorite(), `${jikanUrl}/top/manga/1/favorite`);
+      jikanIt(topManga.favorite(2), `${jikanUrl}/top/manga/2/favorite`);
+    });
+  });
+
+  describe("/people", () => {
+    let topPeople = top.people();
+    describe("/all", () => {
+      jikanIt(topPeople.all(), `${jikanUrl}/top/people/1`);
+      jikanIt(topPeople.all(2), `${jikanUrl}/top/people/2`);
+    });
+  });
+
+  describe("/characters", () => {
+    let topCharacters = top.characters();
+    describe("/all", () => {
+      jikanIt(topCharacters.all(), `${jikanUrl}/top/characters/1`);
+      jikanIt(topCharacters.all(2), `${jikanUrl}/top/characters/2`);
     });
   });
 });

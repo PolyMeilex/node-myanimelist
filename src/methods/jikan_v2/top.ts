@@ -7,10 +7,10 @@ class TopAnime {
     this.parent = parent;
   }
   private topGet(p: number, subType: string) {
-    let params: string[] = [];
-    if (p != null) params[0] = String(p);
-    else params[0] = "1";
-    params.push(subType);
+    let params: string[] = ["anime"];
+    if (p != null) params[1] = String(p);
+    else params[1] = "1";
+    params[2] = subType;
 
     // @ts-ignore
     const url = joinUrl(this.parent.baseUrl, params);
@@ -46,6 +46,75 @@ class TopAnime {
   }
 }
 
+class TopManga {
+  private parent: Top;
+  constructor(parent: Top) {
+    this.parent = parent;
+  }
+  private topGet(p: number, subType: string) {
+    let params: string[] = ["manga"];
+    if (p != null) params[1] = String(p);
+    else params[1] = "1";
+    params[2] = subType;
+
+    // @ts-ignore
+    const url = joinUrl(this.parent.baseUrl, params);
+    // @ts-ignore
+    return this.parent.jikanGet(url);
+  }
+  all(p?: number) {
+    return this.topGet(p, "");
+  }
+  manga(p?: number) {
+    return this.topGet(p, "manga");
+  }
+  novels(p?: number) {
+    return this.topGet(p, "novels");
+  }
+  oneshots(p?: number) {
+    return this.topGet(p, "oneshots");
+  }
+  doujin(p?: number) {
+    return this.topGet(p, "doujin");
+  }
+  manhwa(p?: number) {
+    return this.topGet(p, "manhwa");
+  }
+  manhua(p?: number) {
+    return this.topGet(p, "manhua");
+  }
+  byPopularity(p?: number) {
+    return this.topGet(p, "bypopularity");
+  }
+  favorite(p?: number) {
+    return this.topGet(p, "favorite");
+  }
+}
+
+// Class For "people" And "characters"
+class TopSimple {
+  private parent: Top;
+  private type: string;
+  constructor(parent: Top, type: string) {
+    this.parent = parent;
+    this.type = type;
+  }
+  private topGet(p: number, subType: string) {
+    let params: string[] = [this.type];
+    if (p != null) params[1] = String(p);
+    else params[1] = "1";
+    params[2] = subType;
+
+    // @ts-ignore
+    const url = joinUrl(this.parent.baseUrl, params);
+    // @ts-ignore
+    return this.parent.jikanGet(url);
+  }
+  all(p?: number) {
+    return this.topGet(p, "");
+  }
+}
+
 class Top {
   private baseUrl: string;
   constructor() {
@@ -56,6 +125,15 @@ class Top {
   }
   anime(): TopAnime {
     return new TopAnime(this);
+  }
+  manga(): TopManga {
+    return new TopManga(this);
+  }
+  people(): TopSimple {
+    return new TopSimple(this, "people");
+  }
+  characters(): TopSimple {
+    return new TopSimple(this, "characters");
   }
 }
 
