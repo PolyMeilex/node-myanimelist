@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - dev-api-redesign
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: npm install, build and test
+      run: |
+        npm install
+        npm run build
+        npm run test
