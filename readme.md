@@ -60,7 +60,10 @@ manga.recommendations();
 manga.userUpdates(p);
 ```
 ```ts
-let search = Mal.search().anime({ q: "Fate", page: 2 });
+let type = Mal.types.AnimeType.tv;
+let genre = Mal.types.AnimeGenre.action;
+
+let search = Mal.search().anime({ q: "Fate", page: 2, type, genre });
 //                       .manga({ q: "Fate" });
 //                       .person({ q: "Fate" });
 //                       .character({ q: "Fate" });
