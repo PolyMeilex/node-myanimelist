@@ -373,7 +373,127 @@ describe("/magazine", () => {
 });
 
 describe("/user", () => {
-  jikanIt("UNIMPLEMENTED!", "IMPLEMENTED!");
+  let user = Mal.user("PolyMagic");
+  // Return url instead of calling jikan api
+  // @ts-ignore
+  user.jikanGet = s => s;
+
+  describe("/profile", () => {
+    jikanIt(user.profile(), `${jikanUrl}/user/PolyMagic/profile`);
+  });
+  describe("/history", () => {
+    jikanIt(user.history().all(), `${jikanUrl}/user/PolyMagic/history`);
+    jikanIt(user.history().anime(), `${jikanUrl}/user/PolyMagic/history/anime`);
+    jikanIt(user.history().manga(), `${jikanUrl}/user/PolyMagic/history/manga`);
+  });
+  describe("/friends", () => {
+    jikanIt(user.friends(), `${jikanUrl}/user/PolyMagic/friends`);
+    jikanIt(user.friends(2), `${jikanUrl}/user/PolyMagic/friends/2`);
+  });
+  describe("/animelist", () => {
+    describe("/all", () => {
+      jikanIt(
+        user.animelist().all(),
+        `${jikanUrl}/user/PolyMagic/animelist/all/1`
+      );
+      jikanIt(
+        user.animelist(2).all(),
+        `${jikanUrl}/user/PolyMagic/animelist/all/2`
+      );
+    });
+    describe("/watching", () => {
+      jikanIt(
+        user.animelist().watching(),
+        `${jikanUrl}/user/PolyMagic/animelist/watching/1`
+      );
+      jikanIt(
+        user.animelist(2).watching(),
+        `${jikanUrl}/user/PolyMagic/animelist/watching/2`
+      );
+    });
+    describe("/onhold", () => {
+      jikanIt(
+        user.animelist().onhold(),
+        `${jikanUrl}/user/PolyMagic/animelist/onhold/1`
+      );
+      jikanIt(
+        user.animelist(2).onhold(),
+        `${jikanUrl}/user/PolyMagic/animelist/onhold/2`
+      );
+    });
+    describe("/dropped", () => {
+      jikanIt(
+        user.animelist().dropped(),
+        `${jikanUrl}/user/PolyMagic/animelist/dropped/1`
+      );
+      jikanIt(
+        user.animelist(2).dropped(),
+        `${jikanUrl}/user/PolyMagic/animelist/dropped/2`
+      );
+    });
+    describe("/plantowatch", () => {
+      jikanIt(
+        user.animelist().plantowatch(),
+        `${jikanUrl}/user/PolyMagic/animelist/plantowatch/1`
+      );
+      jikanIt(
+        user.animelist(2).plantowatch(),
+        `${jikanUrl}/user/PolyMagic/animelist/plantowatch/2`
+      );
+    });
+  });
+  describe("/mangalist", () => {
+    describe("/all", () => {
+      jikanIt(
+        user.mangalist().all(),
+        `${jikanUrl}/user/PolyMagic/mangalist/all/1`
+      );
+      jikanIt(
+        user.mangalist(2).all(),
+        `${jikanUrl}/user/PolyMagic/mangalist/all/2`
+      );
+    });
+    describe("/reading", () => {
+      jikanIt(
+        user.mangalist().reading(),
+        `${jikanUrl}/user/PolyMagic/mangalist/reading/1`
+      );
+      jikanIt(
+        user.mangalist(2).reading(),
+        `${jikanUrl}/user/PolyMagic/mangalist/reading/2`
+      );
+    });
+    describe("/onhold", () => {
+      jikanIt(
+        user.mangalist().onhold(),
+        `${jikanUrl}/user/PolyMagic/mangalist/onhold/1`
+      );
+      jikanIt(
+        user.mangalist(2).onhold(),
+        `${jikanUrl}/user/PolyMagic/mangalist/onhold/2`
+      );
+    });
+    describe("/dropped", () => {
+      jikanIt(
+        user.mangalist().dropped(),
+        `${jikanUrl}/user/PolyMagic/mangalist/dropped/1`
+      );
+      jikanIt(
+        user.mangalist(2).dropped(),
+        `${jikanUrl}/user/PolyMagic/mangalist/dropped/2`
+      );
+    });
+    describe("/plantowatch", () => {
+      jikanIt(
+        user.mangalist().plantoread(),
+        `${jikanUrl}/user/PolyMagic/mangalist/plantoread/1`
+      );
+      jikanIt(
+        user.mangalist(2).plantoread(),
+        `${jikanUrl}/user/PolyMagic/mangalist/plantoread/2`
+      );
+    });
+  });
 });
 
 describe("/club", () => {

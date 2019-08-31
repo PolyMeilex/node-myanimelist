@@ -72,6 +72,8 @@ import genre from "./methods/jikan_v2/genre";
 import producer from "./methods/jikan_v2/producer";
 import magazine from "./methods/jikan_v2/magazine";
 
+import user from "./methods/jikan_v2/user";
+
 import club from "./methods/jikan_v2/club";
 
 // Types
@@ -110,6 +112,8 @@ class JikanClient {
 
   public producer = producer;
   public magazine = magazine;
+
+  public user = user;
 
   public club = club;
 

@@ -1,3 +1,19 @@
+declare class Top {
+    private baseUrl;
+    constructor();
+    private jikanGet;
+    anime(): TopAnime;
+    manga(): TopManga;
+    people(): TopSimple;
+    characters(): TopSimple;
+}
+declare class TopSimple {
+    private parent;
+    private type;
+    constructor(parent: Top, type: string);
+    private topGet;
+    all(p?: number): Promise<import("axios").AxiosResponse<any>>;
+}
 declare class TopAnime {
     private parent;
     constructor(parent: Top);
@@ -25,22 +41,6 @@ declare class TopManga {
     manhua(p?: number): Promise<import("axios").AxiosResponse<any>>;
     byPopularity(p?: number): Promise<import("axios").AxiosResponse<any>>;
     favorite(p?: number): Promise<import("axios").AxiosResponse<any>>;
-}
-declare class TopSimple {
-    private parent;
-    private type;
-    constructor(parent: Top, type: string);
-    private topGet;
-    all(p?: number): Promise<import("axios").AxiosResponse<any>>;
-}
-declare class Top {
-    private baseUrl;
-    constructor();
-    private jikanGet;
-    anime(): TopAnime;
-    manga(): TopManga;
-    people(): TopSimple;
-    characters(): TopSimple;
 }
 export default function (): Top;
 export {};

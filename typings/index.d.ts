@@ -11,6 +11,7 @@ import top from "./methods/jikan_v2/top";
 import genre from "./methods/jikan_v2/genre";
 import producer from "./methods/jikan_v2/producer";
 import magazine from "./methods/jikan_v2/magazine";
+import user from "./methods/jikan_v2/user";
 import club from "./methods/jikan_v2/club";
 import AnimeGenre from "./methods/jikan_v2/types/animeGenre";
 import MangaGenre from "./methods/jikan_v2/types/mangaGenre";
@@ -36,6 +37,7 @@ declare class JikanClient {
     genre: typeof genre;
     producer: typeof producer;
     magazine: typeof magazine;
+    user: typeof user;
     club: typeof club;
     types: {
         AnimeGenre: typeof AnimeGenre;
