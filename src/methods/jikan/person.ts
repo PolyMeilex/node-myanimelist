@@ -1,21 +1,24 @@
-import * as urljoin from "url-join";
-import * as rp from "request-promise-native";
+import { joinUrl } from "./url";
 import baseUrl from "./jikanApi";
 
-type request = "" | "pictures";
+import axios from "axios";
 
-/**
- * ### A single person object with all its details
- * @param id Id on MyAnimeList.
- * @param request Request types: 'pictures'.
- */
-export default function(id: number, request: request = "") {
-  let link = urljoin(baseUrl, "person", String(id), request);
+class Person {
+  private baseUrl: string;
+  constructor(id: number) {
+    this.baseUrl = `${baseUrl}/person/${id}`;
+  }
+  private jikanGet(url: string) {
+    return axios.get(url);
+  }
+  info() {
+    return this.jikanGet(this.baseUrl);
+  }
+  pictures() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["pictures"]));
+  }
+}
 
-  return new Promise((res, rej) => {
-    rp(link)
-      .then(res => JSON.parse(res))
-      .then(json => res(json))
-      .catch(err => rej(`Error: ${err}`));
-  });
+export default function(id: number): Person {
+  return new Person(id);
 }

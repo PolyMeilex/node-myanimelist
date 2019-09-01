@@ -1,4 +1,4 @@
-export default function (name: string): Promise<{}>;
+export default function (name: string): Promise<unknown>;
 export interface animeUpdatesOBJ {
     title: string;
     link: string;

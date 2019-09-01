@@ -1,11 +1,13 @@
-import * as rp from "request-promise-native";
+import axios from "axios";
+
 import * as cheerio from "cheerio";
 
 export default function(name: string) {
   return new Promise((res, rej) => {
     let $ = null;
-    rp(`https://myanimelist.net/profile/${name}`)
-      .then(body => cheerio.load(body))
+    axios
+      .get(`https://myanimelist.net/profile/${name}`)
+      .then(res => cheerio.load(res.data))
       .then(ch => {
         $ = ch;
         const updatesA = $("div.statistics-updates", "div.updates.anime");

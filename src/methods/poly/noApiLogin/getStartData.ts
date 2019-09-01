@@ -1,9 +1,9 @@
-import * as rp from "request-promise-native";
+import axios from "axios";
 import * as cheerio from "cheerio";
 
 module.exports = () => {
   const parseResponse = res => {
-    const $ = cheerio.load(res.body);
+    const $ = cheerio.load(res.data);
 
     let cookies = res.headers["set-cookie"];
 
@@ -32,10 +32,8 @@ module.exports = () => {
   };
 
   return new Promise((res, rej) => {
-    rp({
-      url: `https://myanimelist.net/about.php?go=contact`,
-      resolveWithFullResponse: true
-    })
+    axios
+      .get("https://myanimelist.net/about.php?go=contact")
       .then(res => parseResponse(res))
       .then(outObj => res(outObj))
       .catch(err => rej("Tokens Not Found"));

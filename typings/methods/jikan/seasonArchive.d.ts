@@ -1,4 +1,5 @@
-/**
- * ### All the years & their respective seasons that can be parsed from MyAnimeList
- */
-export default function (): Promise<{}>;
+declare function seasonArchive(): Promise<any>;
+declare namespace seasonArchive {
+    var debug: () => string;
+}
+export default seasonArchive;

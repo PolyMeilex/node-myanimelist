@@ -1,19 +1,36 @@
-import * as urljoin from "url-join";
-import * as rp from "request-promise-native";
+import { joinUrl } from "./url";
 import baseUrl from "./jikanApi";
 
-/**
- * ### Anime by this Producer/Studio/Licensor
- * @param producer_id Producer ID from MyAnimeList.
- * @param page Page.
- */
-export default function(producer_id: number, page: number | string = "") {
-  const link = urljoin(baseUrl, "producer", String(producer_id), String(page));
+import axios from "axios";
 
-  return new Promise((res, rej) => {
-    rp(link)
-      .then(res => JSON.parse(res))
-      .then(json => res(json))
-      .catch(err => rej(`Error: ${err}`));
+class Producer {
+  private baseUrl: string;
+  constructor() {
+    this.baseUrl = `${baseUrl}/producer`;
+  }
+  private jikanGet(url: string) {
+    return axios.get(url);
+  }
+  info(id: number, p?: number) {
+    let params = [String(id)];
+    if (p != null) params[1] = String(p);
+    return this.jikanGet(joinUrl(this.baseUrl, params));
+  }
+}
+
+function producer(id: number, p?: number): Promise<any> {
+  return new Promise(resolve => {
+    resolve(new Producer().info(id, p));
   });
 }
+
+producer.debug = (id: number, p?: number): string => {
+  let s = new Producer();
+  // Return url instead of calling jikan api
+  // @ts-ignore
+  s.jikanGet = s => s;
+  // @ts-ignore
+  return s.info(id, p);
+};
+
+export default producer;

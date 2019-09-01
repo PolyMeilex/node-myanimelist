@@ -5,8 +5,8 @@
 Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
 Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package
 
-## Intellisens Support (Typescript and JSDoc)
-![Gif](https://i.imgur.com/DH5EEVw.gif)
+## Intellisens Support (Typescript)
+![Gif](https://i.imgur.com/J1dUQf2.gif)
 
 # Instalation
 [![NPM](https://nodei.co/npm/node-myanimelist.png)](https://nodei.co/npm/node-myanimelist/)
@@ -14,179 +14,96 @@ Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially
 ```
 npm i node-myanimelist
 ```
-
-# Examples
-
-```ts
+### Import
+```js
 const { Mal } = require("node-myanimelist");
 // Or
-import { Mal } from 'node-myanimelist';
-
-// Jikan Methods
-Mal.anime(1).then(j => {});
-Mal.manga(1).then(j => {});
-Mal.person(1).then(j => {});
-Mal.character(1).then(j => {});
-
-Mal.search("anime", {
-    q: "gears",
-    page: 2,
-    limit: 2
-}).then(j => {});
-Mal.season(2018, "winter").then(j => {});
-Mal.seasonArchive().then(j => {});
-Mal.schedule("monday").then(j => {});
-Mal.top("anime").then(j => {});
-Mal.genre("anime",1,1).then(j => {});
-Mal.producer(1,1).then(j => {});
-
-Mal.user("PolyMagic").then(j=>{});
-Mal.user("PolyMagic","history").then(j=>{});
-Mal.user("PolyMagic","friends",1).then(j=>{});
-Mal.user("PolyMagic","animelist","all").then(j=>{});
-//All posible /user endpoints https://jikan.docs.apiary.io/#reference/0/user
-
-// Poly's Methods
-Mal.avatar("PolyMagic").then(j => {});
-//Mal.list("PolyMagic").then(j => {}); // Api is down
-Mal.animeUpdates("PolyMagic").then(j => {}); //Gets "Last Anime Updates" from Mal profile
-
-// Poly's Methods Created Because Of Dead Api
-Mal.days("PolyMagic").then(j => {}); // get days stats without mal api
-Mal.days("PolyMagic", "manga").then(j => {});
-
-Mal.login("PolyMagic", "**Pas**").then(log => {}); // login without mal api
-
-Mal.notifications(log); // get user mal notifications
-
-Mal.animeEdit(
-  {
-    num_watched_episodes: 20,
-    anime_id: 24833,
-    status: 1
-    // csrf_token will be added automaticly, no nedd to add it here
-  },
-  log // log data returned by Mal.login()
-);
+import Mal from 'node-myanimelist';
 ```
+## Responses
+Data is always returned with promise.
+Data is actually raw [axios](https://www.npmjs.com/package/axios) response object so to get jikanApi json object you have to use:
+```ts
+	.then(res => res.data) //Data is jikanApi response
+```
+Jikan methods return unmodified jikanApi responses, to see all of them visit [jikanDocs](https://jikan.docs.apiary.io/)
+# List of functions
+For more detalis visit [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki)
+* JikanApi Methods
+	* Mal.**[anime](https://github.com/PolyMeilex/node-myanimelist/wiki/Anime)**(id)
+		* anime.**info**()
+ 		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Anime)
+	* Mal.**[manga](https://github.com/PolyMeilex/node-myanimelist/wiki/Manga)**(id) 
+ 		* manga.**info**()
+ 		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Manga)
+	* Mal.**[person](https://github.com/PolyMeilex/node-myanimelist/wiki/Person)**(id) 
+		* person.**info**()
+		* person.**pictures**()
+	* Mal.**[character](https://github.com/PolyMeilex/node-myanimelist/wiki/Character)**(id) 
+		* character.**info**()
+	 	* character.**pictures**()
+ 	* Mal.**[search](https://github.com/PolyMeilex/node-myanimelist/wiki/Search)**()
+	 	* search.**anime**(params)
+	 	* search.**manga**(params)
+	 	* search.**person**(params)
+	 	* search.**character**(params)
+ 	* Mal.**[season](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**(year,season)
+ 	* Mal.**[seasonArchive](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**()
+ 	* Mal.**[seasonLater](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**() 
+	* Mal.**[schedule](https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule)**()
+		* schedule.**all**()
+		* schedule.**monday**()
+		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule)
+	* Mal.**[top](https://github.com/PolyMeilex/node-myanimelist/wiki/Top)**()
+		* top.**anime**()
+			* topAnime.**all**()
+			* topAnime.**upcoming**()
+ 		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Top)
+	* Mal.**[genre](https://github.com/PolyMeilex/node-myanimelist/wiki/Genre)**()
+		* genre.**anime**(genreId)
+		* genre.**manga**(genreId)
+	* Mal.**[producer](https://github.com/PolyMeilex/node-myanimelist/wiki/Producer)**(id, page?)
+	* Mal.**[magazine](https://github.com/PolyMeilex/node-myanimelist/wiki/Magazine)**(id, page?)
+	* Mal.**[user](https://github.com/PolyMeilex/node-myanimelist/wiki/User)**(username)
+		* user.**profile**()
+		* user.**history**()
+			* history.**all**()
+			* history.**anime**()
+ 			* history.**manga**()
+		* user.**animelist**(page?)
+			* animelist.**all**(params?)
+ 			* animelist.**watching**(params?)
+		* user.**mangalist**(page?)
+			* mangalist.**all**(params?)
+ 			* mangalist.**reading**(params?)
+ 		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/User)
+	* Mal.**[club](https://github.com/PolyMeilex/node-myanimelist/wiki/Club)**(id)
+		* club.**info**()
+		* club.**members**(page?)
 
-# Get Notifications Example
-
+# Buildin Scraper
 ```js
-async () => {
-  const log = await Mal.login("PolyMagic", "**Pas**");
+import { ScraperClient } from "node-myanimelist";
+const scraperClient = new ScraperClient();
 
-  let notifications = await Mal.notifications(log);
+// Login into Mal acount
+let loginData = await scraperClient.login("username","password");
 
-  console.log(notifications);
+// loginData == {
+//   MALSESSIONID: "***",
+//   csrf_token: "***"
+// };
+
+// Get Mal User Notifications
+let notifications = await scraperClient.notifications(loginData);
+
+// Update Episode On Mal
+const animeUpdate = {
+   num_watched_episodes: 20,
+   anime_id: 24833,
+   status: 1
 };
+let res = await scraperClient.animeEdit(loginData,animeUpdate);
+
 ```
-
-[Example Notyfications Response](https://github.com/PolyMagic/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json)
-
-# Reference
-
-```ts
-anime(id:Number,[request:String,parameter:Number])
-manga(id:Number,[request:String])
-person(id:Number,[request:String])
-character(id:Number,[request:String])
-
-
-interface SearchParameters {
-    q: string;
-    [page?: number;
-    type?: filterTypeT;
-    status?: statusT;
-    rated?: ratedT;
-    genre?: number;
-    score?: number;
-    start_date?: string;
-    end_date?: string;
-    genre_exclude?: 0 | 1;
-    limit?: number;]
-}
-search(type:String,sp : SearchParameters)
-season(year:Number,season:String)
-seasonArchive()
-schedule(day:String)
-top(type:String,[page:Number,subtype:String])
-genre(type:String,[genre_id:Number,page:Number])
-producer(producer_id:Number,[page:Number])
-
-user(username:String,[request:String,argument:any,argument2:any])
-
-
-avatar(name:String)
-//list(name:String)
-animeUpdates(name:String)
-
-days(name:String,[type:String]) //type="anime"/"manga" "anime" by default
-
-login(login: String, password: String)
-
-animeEdit(requestBody,log)
-```
-
-# Response Example
-
-[Notifications Response](https://github.com/PolyMagic/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json)
-
-```ts
-avatar(name) ----> Url:string
-days(name,type) ----> DaysSpendWatching:number
-
-login() --->
-interface LoginData {
-  MALSESSIONID: string;
-  csrf_token: string;
-}
-
-list(name) --->
-interface ListsOBJ {
-    myinfo:{
-        user_id:string;
-        user_name: string;
-        user_watching: string;
-        user_completed: string;
-        user_onhold: string;
-        user_dropped: string;
-        user_plantowatch: string;
-        user_days_spent_watching: string;
-    };
-    anime:[{
-        series_animedb_id: string;
-        series_title: string;
-        series_synonyms:string;
-        series_type:string;
-        series_episodes: string;
-        series_status: string;
-        series_start: string;
-        series_end: string;
-        series_image: string;
-        my_id: string;
-        my_watched_episodes:string;
-        my_start_date: string;
-        my_finish_date: string;
-        my_score: string;
-        my_status: string;
-        my_rewatching:string;
-        my_rewatching_ep:string;
-        my_last_updated:string;
-        my_tags: string;
-    }]
-}
-
-animeUpdates(name) --->
-interface animeUpdatesOBJ {
-    title: string;
-    link: string;
-    ep:number;
-    score:number;
-    img:string;
-    date:string;
-    color:number;
-}
-```
-
-Jikan methods return same values as described on [jikan.docs.apiary.io](https://jikan.docs.apiary.io/)
+Notifications response [example](https://github.com/PolyMeilex/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json)

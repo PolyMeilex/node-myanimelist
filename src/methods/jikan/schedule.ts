@@ -1,31 +1,48 @@
-import * as urljoin from "url-join";
-import * as rp from "request-promise-native";
+import { joinUrl } from "./url";
 import baseUrl from "./jikanApi";
 
-type day =
-  | ""
-  | "monday"
-  | "tuesday"
-  | "wednesday"
-  | "thursday"
-  | "friday"
-  | "saturday"
-  | "sunday"
-  | "other"
-  | "unknown";
+import axios from "axios";
 
-/**
- * ### Anime of the specified season
- * **Note:** If you don't pass the day parameter, it'll return the schedule for all days of the week
- * @param day Day of week: monday, tuesday, wednesday, thursday, friday, saturday, sunday, other, unknown.
- */
-export default function(day: day = "") {
-  const link = urljoin(baseUrl, "schedule", String(day));
+class Schedule {
+  private baseUrl: string;
+  constructor() {
+    this.baseUrl = `${baseUrl}/schedule`;
+  }
+  private jikanGet(url: string) {
+    return axios.get(url);
+  }
+  all() {
+    return this.jikanGet(this.baseUrl);
+  }
+  monday() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["monday"]));
+  }
+  tuesday() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["tuesday"]));
+  }
+  wednesday() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["wednesday"]));
+  }
+  thursday() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["thursday"]));
+  }
+  friday() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["friday"]));
+  }
+  saturday() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["saturday"]));
+  }
+  sunday() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["sunday"]));
+  }
+  other() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["other"]));
+  }
+  unknown() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["unknown"]));
+  }
+}
 
-  return new Promise((res, rej) => {
-    rp(link)
-      .then(res => JSON.parse(res))
-      .then(json => res(json))
-      .catch(err => rej(`Error: ${err}`));
-  });
+export default function(): Schedule {
+  return new Schedule();
 }

@@ -1,68 +1,71 @@
-import * as urljoin from "url-join";
-import * as rp from "request-promise-native";
+import { joinUrl } from "./url";
 import baseUrl from "./jikanApi";
 
-type searchTypeT = "anime" | "manga" | "person" | "character";
-type statusT = "airing" | "completed" | "complete" | "tba" | "upcoming";
-type ratedT = "g" | "pg" | "pg13" | "r17" | "r" | "rx";
-type filterTypeT =
-  | "tv"
-  | "ova"
-  | "movie"
-  | "special"
-  | "ona"
-  | "music"
-  | "manga"
-  | "novel"
-  | "oneshot"
-  | "doujin"
-  | "manhwa"
-  | "manhua";
+import AnimeGenre from "./types/animeGenre";
+import MangaGenre from "./types/mangaGenre";
 
-/**
- * ### Advanced Search Parameters
- * - q
- * - page
- * - type
- * - status
- * - rated
- * - genre
- * - score
- * - start_date
- * - end_date
- * - genre_exclude
- * - limit
- */
-export interface SearchParameters {
-  q: string;
+import AnimeType from "./types/animeType";
+import MangaType from "./types/mangaType";
+
+import AnimeStatus from "./types/animeStatus";
+import MangaStatus from "./types/mangaStatus";
+
+import AnimeOrderBy from "./types/animeOrderBy";
+import MangaOrderBy from "./types/mangaOrderBy";
+
+import Sort from "./types/sort";
+import Rating from "./types/rating";
+
+import axios from "axios";
+
+interface AdvancedSearchParameters {
+  q?: string;
   page?: number;
-  type?: filterTypeT;
-  status?: statusT;
-  rated?: ratedT;
-  genre?: number;
+  type?: AnimeType | MangaType;
+  status?: AnimeStatus | MangaStatus;
+  rated?: Rating;
+  genre?: AnimeGenre | MangaGenre;
   score?: number;
   start_date?: string;
   end_date?: string;
   genre_exclude?: 0 | 1;
   limit?: number;
+  order_by?: AnimeOrderBy | MangaOrderBy;
+  sort?: Sort;
+  producer?: number;
+  magazine?: number;
+  letter?: string;
 }
 
-/**
- * ### Search results for the query
- * @param type Specify what to search: anime, manga, person, character.
- * @param sp Advanced Search Parameters [Read More:Jikan Doc](https://jikan.docs.apiary.io/#reference/0/search).
- */
-export default function(type: searchTypeT, sp: SearchParameters) {
-  let params = Object.keys(sp)
-    .filter(k => sp[k] != null)
-    .map(k => `${k}=${encodeURIComponent(sp[k])}`)
-    .join("&");
+class Search {
+  private baseUrl: string;
+  constructor() {
+    this.baseUrl = `${baseUrl}/search`;
+  }
+  private jikanGet(url: string) {
+    return axios.get(url);
+  }
+  search(type: string, params: AdvancedSearchParameters) {
+    let qparams = Object.keys(params)
+      .filter(k => params[k] != null)
+      .map(k => `${k}=${encodeURIComponent(params[k])}`)
+      .join("&");
+    return this.jikanGet(joinUrl(this.baseUrl, [type, "?" + qparams]));
+  }
+  anime(params: AdvancedSearchParameters) {
+    return this.search("anime", params);
+  }
+  manga(params: AdvancedSearchParameters) {
+    return this.search("manga", params);
+  }
+  person(params: AdvancedSearchParameters) {
+    return this.search("person", params);
+  }
+  character(params: AdvancedSearchParameters) {
+    return this.search("character", params);
+  }
+}
 
-  let link = urljoin(baseUrl, "search", type, `?${params}`);
-  return new Promise((res, rej) => {
-    rp(link)
-      .then(res => JSON.parse(res))
-      .then(json => res(json))
-      .catch(err => rej(`Error: ${err}`));
-  });
+export default function(): Search {
+  return new Search();
 }

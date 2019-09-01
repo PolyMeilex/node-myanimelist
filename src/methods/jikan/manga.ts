@@ -1,36 +1,52 @@
-import * as urljoin from "url-join";
-import * as rp from "request-promise-native";
+import { joinUrl } from "./url";
 import baseUrl from "./jikanApi";
 
-type request =
-  | ""
-  | "characters"
-  | "news"
-  | "pictures"
-  | "stats"
-  | "forum"
-  | "moreinfo"
-  | "reviews"
-  | "recommendations"
-  | "userupdates";
+import axios from "axios";
 
-/**
- * ### A single manga object with all its details
- * @param id Id on MyAnimeList.
- * @param request Request types: 'characters','news','pictures','stats','forum','moreinfo','reviews','recommendations','userupdates'.
- * @param parameter Page number.
- */
-export default function(
-  id: number,
-  request: request = "",
-  parameter: number | string = ""
-) {
-  let link = urljoin(baseUrl, "manga", String(id), request, String(parameter));
+class Manga {
+  private baseUrl: string;
+  constructor(id: number) {
+    this.baseUrl = `${baseUrl}/manga/${id}`;
+  }
+  private jikanGet(url: string) {
+    return axios.get(url);
+  }
+  info() {
+    return this.jikanGet(this.baseUrl);
+  }
+  characters() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["characters"]));
+  }
+  news() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["news"]));
+  }
+  pictures() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["pictures"]));
+  }
+  stats() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["stats"]));
+  }
+  forum() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["forum"]));
+  }
+  moreInfo() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["moreinfo"]));
+  }
+  reviews(p?: number) {
+    let params: string[] = ["reviews"];
+    if (p != null) params.push(String(p));
+    return this.jikanGet(joinUrl(this.baseUrl, params));
+  }
+  recommendations() {
+    return this.jikanGet(joinUrl(this.baseUrl, ["recommendations"]));
+  }
+  userUpdates(p?: number) {
+    let params: string[] = ["userupdates"];
+    if (p != null) params.push(String(p));
+    return this.jikanGet(joinUrl(this.baseUrl, params));
+  }
+}
 
-  return new Promise((res, rej) => {
-    rp(link)
-      .then(res => JSON.parse(res))
-      .then(json => res(json))
-      .catch(err => rej(`Error: ${err}`));
-  });
+export default function(id: number): Manga {
+  return new Manga(id);
 }

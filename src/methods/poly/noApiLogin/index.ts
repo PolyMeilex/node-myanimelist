@@ -3,7 +3,7 @@ export interface LoginData {
   csrf_token: string;
 }
 
-export default function(login: string, password: string) {
+export default function(login: string, password: string): Promise<LoginData> {
   const getStartData = require("./getStartData");
   const loginWithData = require("./loginWithData");
 

@@ -1,38 +1,40 @@
-declare type searchTypeT = 'anime' | 'manga' | 'person' | 'character';
-declare type statusT = 'airing' | 'completed' | 'complete' | 'tba' | 'upcoming';
-declare type ratedT = 'g' | 'pg' | 'pg13' | 'r17' | 'r' | 'rx';
-declare type filterTypeT = 'tv' | 'ova' | 'movie' | 'special' | 'ona' | 'music' | 'manga' | 'novel' | 'oneshot' | 'doujin' | 'manhwa' | 'manhua';
-/**
- * ### Advanced Search Parameters
- * - q
- * - page
- * - type
- * - status
- * - rated
- * - genre
- * - score
- * - start_date
- * - end_date
- * - genre_exclude
- * - limit
- */
-export interface SearchParameters {
-    q: string;
+import AnimeGenre from "./types/animeGenre";
+import MangaGenre from "./types/mangaGenre";
+import AnimeType from "./types/animeType";
+import MangaType from "./types/mangaType";
+import AnimeStatus from "./types/animeStatus";
+import MangaStatus from "./types/mangaStatus";
+import AnimeOrderBy from "./types/animeOrderBy";
+import MangaOrderBy from "./types/mangaOrderBy";
+import Sort from "./types/sort";
+import Rating from "./types/rating";
+interface AdvancedSearchParameters {
+    q?: string;
     page?: number;
-    type?: filterTypeT;
-    status?: statusT;
-    rated?: ratedT;
-    genre?: number;
+    type?: AnimeType | MangaType;
+    status?: AnimeStatus | MangaStatus;
+    rated?: Rating;
+    genre?: AnimeGenre | MangaGenre;
     score?: number;
     start_date?: string;
     end_date?: string;
     genre_exclude?: 0 | 1;
     limit?: number;
+    order_by?: AnimeOrderBy | MangaOrderBy;
+    sort?: Sort;
+    producer?: number;
+    magazine?: number;
+    letter?: string;
 }
-/**
- * ### Search results for the query
- * @param type Specify what to search: anime, manga, person, character.
- * @param sp Advanced Search Parameters [Read More:Jikan Doc](https://jikan.docs.apiary.io/#reference/0/search).
- */
-export default function (type: searchTypeT, sp: SearchParameters): Promise<{}>;
+declare class Search {
+    private baseUrl;
+    constructor();
+    private jikanGet;
+    search(type: string, params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
+    anime(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
+    manga(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
+    person(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
+    character(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
+}
+export default function (): Search;
 export {};

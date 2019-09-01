@@ -1,2 +1,2 @@
 import { LoginData } from "../noApiLogin";
-export default function (log: LoginData): Promise<{}>;
+export default function (log: LoginData): Promise<unknown>;

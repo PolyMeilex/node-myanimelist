@@ -1,9 +1,11 @@
-declare type type = 'anime' | 'manga';
-/**
- * ### Anime/Manga items of the genre
- * @param type anime,manga.
- * @param genre_id Genre ID from MyAnimeList.
- * @param page Page.
- */
-export default function (type: type, genre_id: number, page?: number | string): Promise<{}>;
+import AnimeGenre from "./types/animeGenre";
+import MangaGenre from "./types/mangaGenre";
+declare class Genre {
+    private baseUrl;
+    constructor();
+    private jikanGet;
+    anime(genre: AnimeGenre, p?: number): Promise<import("axios").AxiosResponse<any>>;
+    manga(genre: MangaGenre, p?: number): Promise<import("axios").AxiosResponse<any>>;
+}
+export default function (): Genre;
 export {};

@@ -1,5 +1,5 @@
 import * as urljoin from "url-join";
-import * as rp from "request-promise-native";
+import axios, { AxiosRequestConfig } from "axios";
 import { baseURL } from "../mobileApis";
 
 type fields =
@@ -34,8 +34,8 @@ export default function(
   user: "@me" | string = "@me",
   fields: fields[] = []
 ) {
-  const request = {
-    method: "GET",
+  const request: AxiosRequestConfig = {
+    method: "get",
     url: urljoin(
       baseURL,
       "users",
@@ -47,9 +47,8 @@ export default function(
   };
 
   return new Promise((res, rej) => {
-    rp(request)
-      .then(body => JSON.parse(body))
-      .then(json => res(json))
+    axios(request)
+      .then(r => res(r.data))
       .catch(err => rej(err));
   });
 }
