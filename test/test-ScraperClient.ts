@@ -4,6 +4,8 @@ import { LoginData } from "../typings/methods/poly/noApiLogin";
 async function login(username: string, password: string) {
   let loginData = await new ScraperClient().login(username, password);
 
+  // console.log(loginData);
+
   console.log("MALSESSIONID:", loginData.MALSESSIONID != null);
   console.log("csrf_token:", loginData.csrf_token != null);
 }
@@ -23,7 +25,7 @@ async function animeEdit(log: LoginData, params: Object) {
 //   csrf_token: "***"
 // };
 
-// login("username","password");
+// login("PolyMagic", "**Pas**");
 // notyfications(logData);
 
 // const animeUpdate = {
