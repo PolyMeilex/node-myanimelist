@@ -6,7 +6,7 @@ Node-MyAnimeList is a small promise based package for downloading information fr
 Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package
 
 ## Intellisens Support (Typescript)
-![Gif](https://via.placeholder.com/650x350)
+![Gif](https://i.imgur.com/J1dUQf2.gif)
 
 # Instalation
 [![NPM](https://nodei.co/npm/node-myanimelist.png)](https://nodei.co/npm/node-myanimelist/)
