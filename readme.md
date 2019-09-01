@@ -28,6 +28,7 @@ Data is actually raw [axios](https://www.npmjs.com/package/axios) response objec
 ```
 Jikan methods return unmodified jikanApi responses, to see all of them visit [jikanDocs](https://jikan.docs.apiary.io/)
 # List of functions
+For more detalis visit [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki)
 * JikanApi Methods
 	* Mal.**[anime](https://github.com/PolyMeilex/node-myanimelist/wiki/Anime)**(id)
 		* anime.**info**()
