@@ -14,6 +14,12 @@ Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially
 ```
 npm i node-myanimelist
 ```
+### Import
+```js
+const { Mal } = require("node-myanimelist");
+// Or
+import Mal from 'node-myanimelist';
+```
 ## Responses
 Data is always returned with promise.
 Data is actually raw [axios](https://www.npmjs.com/package/axios) response object so to get jikanApi json object you have to use:
@@ -73,4 +79,30 @@ Jikan methods return unmodified jikanApi responses, to see all of them visit [ji
 	* Mal.**[club](https://github.com/PolyMeilex/node-myanimelist/wiki/Club)**(id)
 		* club.**info**()
 		* club.**members**(page?)
+
+# Buildin Scraper
+```js
+import { ScraperClient } from "node-myanimelist";
+const scraperClient = new ScraperClient();
+
+// Login into Mal acount
+let loginData = await scraperClient.login("username","password");
+
+// loginData == {
+//   MALSESSIONID: "***",
+//   csrf_token: "***"
+// };
+
+// Get Mal User Notifications
+let notifications = await scraperClient.notifications(loginData);
+
+// Update Episode On Mal
+const animeUpdate = {
+   num_watched_episodes: 20,
+   anime_id: 24833,
+   status: 1
+};
+let res = await scraperClient.animeEdit(loginData,animeUpdate);
+
 ```
+Notifications response [example](https://github.com/PolyMeilex/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json)
