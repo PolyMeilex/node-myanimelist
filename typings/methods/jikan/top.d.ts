@@ -7,15 +7,15 @@ declare class Top {
     characters(): TopSimple;
 }
 declare class TopSimple {
-    private parent;
+    private baseUrl;
     private type;
-    constructor(parent: Top, type: string);
+    constructor(baseUrl: string, type: string);
     private topGet;
     all(p?: number): Promise<any>;
 }
 declare class TopAnime {
-    private parent;
-    constructor(parent: Top);
+    private baseUrl;
+    constructor(baseUrl: string);
     private topGet;
     all(p?: number): Promise<any>;
     airing(p?: number): Promise<any>;
@@ -28,8 +28,8 @@ declare class TopAnime {
     favorite(p?: number): Promise<any>;
 }
 declare class TopManga {
-    private parent;
-    constructor(parent: Top);
+    private baseUrl;
+    constructor(baseUrl: string);
     private topGet;
     all(p?: number): Promise<any>;
     manga(p?: number): Promise<any>;

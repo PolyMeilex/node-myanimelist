@@ -7,25 +7,25 @@ class Top {
     this.baseUrl = `${jikanUrl}/top`;
   }
   anime(): TopAnime {
-    return new TopAnime(this);
+    return new TopAnime(this.baseUrl);
   }
   manga(): TopManga {
-    return new TopManga(this);
+    return new TopManga(this.baseUrl);
   }
   people(): TopSimple {
-    return new TopSimple(this, "people");
+    return new TopSimple(this.baseUrl, "people");
   }
   characters(): TopSimple {
-    return new TopSimple(this, "characters");
+    return new TopSimple(this.baseUrl, "characters");
   }
 }
 
 // Class For "people" And "characters"
 class TopSimple {
-  private parent: Top;
+  private baseUrl: string;
   private type: string;
-  constructor(parent: Top, type: string) {
-    this.parent = parent;
+  constructor(baseUrl: string, type: string) {
+    this.baseUrl = baseUrl;
     this.type = type;
   }
   private topGet(p: number, subType: string) {
@@ -34,8 +34,7 @@ class TopSimple {
     else params[1] = "1";
     params[2] = subType;
 
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, params);
+    const url = joinUrl(this.baseUrl, params);
 
     return jikanGet(url);
   }
@@ -45,9 +44,9 @@ class TopSimple {
 }
 
 class TopAnime {
-  private parent: Top;
-  constructor(parent: Top) {
-    this.parent = parent;
+  private baseUrl: string;
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
   }
   private topGet(p: number, subType: string) {
     let params: string[] = ["anime"];
@@ -55,8 +54,7 @@ class TopAnime {
     else params[1] = "1";
     params[2] = subType;
 
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, params);
+    const url = joinUrl(this.baseUrl, params);
 
     return jikanGet(url);
   }
@@ -90,9 +88,9 @@ class TopAnime {
 }
 
 class TopManga {
-  private parent: Top;
-  constructor(parent: Top) {
-    this.parent = parent;
+  private baseUrl: string;
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
   }
   private topGet(p: number, subType: string) {
     let params: string[] = ["manga"];
@@ -100,8 +98,7 @@ class TopManga {
     else params[1] = "1";
     params[2] = subType;
 
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, params);
+    const url = joinUrl(this.baseUrl, params);
 
     return jikanGet(url);
   }

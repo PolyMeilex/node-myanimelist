@@ -10,7 +10,7 @@ class User {
     return jikanGet(joinUrl(this.baseUrl, ["profile"]));
   }
   history() {
-    return new UserHistory(this);
+    return new UserHistory(this.baseUrl);
   }
   friends(p?: number) {
     let params: string[] = ["friends"];
@@ -18,43 +18,40 @@ class User {
     return jikanGet(joinUrl(this.baseUrl, params));
   }
   animelist(p?: number) {
-    return new UserAnimelist(this, p);
+    return new UserAnimelist(this.baseUrl, p);
   }
   mangalist(p?: number) {
-    return new UserMangalist(this, p);
+    return new UserMangalist(this.baseUrl, p);
   }
 }
 
 class UserHistory {
-  private parent: User;
-  constructor(parent: User) {
-    this.parent = parent;
+  private baseUrl: string;
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
   }
   all() {
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, ["history"]);
+    const url = joinUrl(this.baseUrl, ["history"]);
 
     return jikanGet(url);
   }
   anime() {
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, ["history", "anime"]);
+    const url = joinUrl(this.baseUrl, ["history", "anime"]);
 
     return jikanGet(url);
   }
   manga() {
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, ["history", "manga"]);
+    const url = joinUrl(this.baseUrl, ["history", "manga"]);
 
     return jikanGet(url);
   }
 }
 
 class UserAnimelist {
-  private parent: User;
+  private baseUrl: string;
   private page: string;
-  constructor(parent: User, p?: number) {
-    this.parent = parent;
+  constructor(baseUrl: string, p?: number) {
+    this.baseUrl = baseUrl;
 
     if (p != null) this.page = String(p);
     else this.page = "1";
@@ -67,8 +64,8 @@ class UserAnimelist {
         .join("&");
       params.push(qparams);
     }
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, params);
+
+    const url = joinUrl(this.baseUrl, params);
 
     return jikanGet(url);
   }
@@ -90,10 +87,10 @@ class UserAnimelist {
 }
 
 class UserMangalist {
-  private parent: User;
+  private baseUrl: string;
   private page: string;
-  constructor(parent: User, p?: number) {
-    this.parent = parent;
+  constructor(baseUrl: string, p?: number) {
+    this.baseUrl = baseUrl;
 
     if (p != null) this.page = String(p);
     else this.page = "1";
@@ -106,8 +103,8 @@ class UserMangalist {
         .join("&");
       params.push(qparams);
     }
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, params);
+
+    const url = joinUrl(this.baseUrl, params);
 
     return jikanGet(url);
   }

@@ -8,16 +8,16 @@ declare class User {
     mangalist(p?: number): UserMangalist;
 }
 declare class UserHistory {
-    private parent;
-    constructor(parent: User);
+    private baseUrl;
+    constructor(baseUrl: string);
     all(): Promise<any>;
     anime(): Promise<any>;
     manga(): Promise<any>;
 }
 declare class UserAnimelist {
-    private parent;
+    private baseUrl;
     private page;
-    constructor(parent: User, p?: number);
+    constructor(baseUrl: string, p?: number);
     private getList;
     all(qparams?: Object): Promise<any>;
     watching(qparams?: Object): Promise<any>;
@@ -26,9 +26,9 @@ declare class UserAnimelist {
     plantowatch(qparams?: Object): Promise<any>;
 }
 declare class UserMangalist {
-    private parent;
+    private baseUrl;
     private page;
-    constructor(parent: User, p?: number);
+    constructor(baseUrl: string, p?: number);
     private getList;
     all(qparams?: Object): Promise<any>;
     reading(qparams?: Object): Promise<any>;
