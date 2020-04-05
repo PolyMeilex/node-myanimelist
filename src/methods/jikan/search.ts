@@ -40,7 +40,7 @@ class Search {
   constructor() {
     this.baseUrl = `${jikanUrl}/search`;
   }
-  search(type: string, params: AdvancedSearchParameters) {
+  private search(type: string, params: AdvancedSearchParameters) {
     let qparams = Object.keys(params)
       .filter((k) => params[k] != null)
       .map((k) => `${k}=${encodeURIComponent(params[k])}`)

@@ -29,7 +29,7 @@ interface AdvancedSearchParameters {
 declare class Search {
     private baseUrl;
     constructor();
-    search(type: string, params: AdvancedSearchParameters): Promise<any>;
+    private search;
     anime(params: AdvancedSearchParameters): Promise<any>;
     manga(params: AdvancedSearchParameters): Promise<any>;
     person(params: AdvancedSearchParameters): Promise<any>;
