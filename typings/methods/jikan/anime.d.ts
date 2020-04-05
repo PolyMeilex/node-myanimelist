@@ -1,7 +1,6 @@
 declare class Anime {
     private baseUrl;
     constructor(id: number);
-    private jikanGet;
     info(): Promise<any>;
     charactersStaff(): Promise<any>;
     episodes(p?: number): Promise<any>;

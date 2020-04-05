@@ -1,5 +1,9 @@
 import Mal from "../";
 
+// Return url instead of calling jikan api
+// @ts-ignore
+global.jikanGet = (s) => s;
+
 const assert = require("assert");
 
 const jikanUrl = "https://api.jikan.moe/v3";
@@ -10,9 +14,6 @@ function jikanIt(a, b) {
 
 describe("/anime", () => {
   let anime = Mal.anime(1);
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  anime.jikanGet = s => s;
 
   describe("/", () => {
     jikanIt(anime.info(), `${jikanUrl}/anime/1`);
@@ -57,9 +58,6 @@ describe("/anime", () => {
 
 describe("/manga", () => {
   let manga = Mal.manga(1);
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  manga.jikanGet = s => s;
 
   describe("/", () => {
     jikanIt(manga.info(), `${jikanUrl}/manga/1`);
@@ -97,9 +95,6 @@ describe("/manga", () => {
 
 describe("/person", () => {
   let person = Mal.person(1);
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  person.jikanGet = s => s;
 
   describe("/", () => {
     jikanIt(person.info(), `${jikanUrl}/person/1`);
@@ -111,9 +106,6 @@ describe("/person", () => {
 
 describe("/character", () => {
   let character = Mal.character(1);
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  character.jikanGet = s => s;
 
   describe("/", () => {
     jikanIt(character.info(), `${jikanUrl}/character/1`);
@@ -125,9 +117,6 @@ describe("/character", () => {
 
 describe("/search", () => {
   let search = Mal.search();
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  search.jikanGet = s => s;
 
   describe("/anime", () => {
     jikanIt(search.anime({ q: "fate" }), `${jikanUrl}/search/anime?q=fate`);
@@ -152,32 +141,29 @@ describe("/search", () => {
 
 describe("/season", () => {
   describe("/2018/winter", () => {
-    jikanIt(Mal.season.debug(2018, "winter"), `${jikanUrl}/season/2018/winter`);
+    jikanIt(Mal.season(2018, "winter"), `${jikanUrl}/season/2018/winter`);
   });
   describe("/2019/winter", () => {
-    jikanIt(Mal.season.debug(2019, "winter"), `${jikanUrl}/season/2019/winter`);
+    jikanIt(Mal.season(2019, "winter"), `${jikanUrl}/season/2019/winter`);
   });
   describe("/2018/summer", () => {
-    jikanIt(Mal.season.debug(2018, "summer"), `${jikanUrl}/season/2018/summer`);
+    jikanIt(Mal.season(2018, "summer"), `${jikanUrl}/season/2018/summer`);
   });
   describe("/2019/summer", () => {
-    jikanIt(Mal.season.debug(2019, "summer"), `${jikanUrl}/season/2019/summer`);
+    jikanIt(Mal.season(2019, "summer"), `${jikanUrl}/season/2019/summer`);
   });
 });
 
 describe("/season/archive", () => {
-  jikanIt(Mal.seasonArchive.debug(), `${jikanUrl}/season/archive`);
+  jikanIt(Mal.seasonArchive(), `${jikanUrl}/season/archive`);
 });
 
 describe("/season/later", () => {
-  jikanIt(Mal.seasonLater.debug(), `${jikanUrl}/season/later`);
+  jikanIt(Mal.seasonLater(), `${jikanUrl}/season/later`);
 });
 
 describe("/schedule", () => {
   let schedule = Mal.schedule();
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  schedule.jikanGet = s => s;
 
   describe("/", () => {
     jikanIt(schedule.all(), `${jikanUrl}/schedule`);
@@ -213,9 +199,6 @@ describe("/schedule", () => {
 
 describe("/top", () => {
   let top = Mal.top();
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  top.jikanGet = s => s;
 
   describe("/anime", () => {
     let topAnime = top.anime();
@@ -316,9 +299,6 @@ describe("/top", () => {
 
 describe("/genre", () => {
   let genre = Mal.genre();
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  genre.jikanGet = s => s;
 
   describe("/anime", () => {
     jikanIt(
@@ -359,24 +339,21 @@ describe("/genre", () => {
 });
 
 describe("/producer", () => {
-  jikanIt(Mal.producer.debug(1), `${jikanUrl}/producer/1`);
-  jikanIt(Mal.producer.debug(2), `${jikanUrl}/producer/2`);
-  jikanIt(Mal.producer.debug(1, 2), `${jikanUrl}/producer/1/2`);
-  jikanIt(Mal.producer.debug(2, 1), `${jikanUrl}/producer/2/1`);
+  jikanIt(Mal.producer(1), `${jikanUrl}/producer/1`);
+  jikanIt(Mal.producer(2), `${jikanUrl}/producer/2`);
+  jikanIt(Mal.producer(1, 2), `${jikanUrl}/producer/1/2`);
+  jikanIt(Mal.producer(2, 1), `${jikanUrl}/producer/2/1`);
 });
 
 describe("/magazine", () => {
-  jikanIt(Mal.magazine.debug(1), `${jikanUrl}/magazine/1`);
-  jikanIt(Mal.magazine.debug(2), `${jikanUrl}/magazine/2`);
-  jikanIt(Mal.magazine.debug(1, 2), `${jikanUrl}/magazine/1/2`);
-  jikanIt(Mal.magazine.debug(2, 1), `${jikanUrl}/magazine/2/1`);
+  jikanIt(Mal.magazine(1), `${jikanUrl}/magazine/1`);
+  jikanIt(Mal.magazine(2), `${jikanUrl}/magazine/2`);
+  jikanIt(Mal.magazine(1, 2), `${jikanUrl}/magazine/1/2`);
+  jikanIt(Mal.magazine(2, 1), `${jikanUrl}/magazine/2/1`);
 });
 
 describe("/user", () => {
   let user = Mal.user("PolyMagic");
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  user.jikanGet = s => s;
 
   describe("/profile", () => {
     jikanIt(user.profile(), `${jikanUrl}/user/PolyMagic/profile`);
@@ -498,9 +475,6 @@ describe("/user", () => {
 
 describe("/club", () => {
   let club = Mal.club(1);
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  club.jikanGet = s => s;
 
   describe("/", () => {
     jikanIt(club.info(), `${jikanUrl}/club/1`);

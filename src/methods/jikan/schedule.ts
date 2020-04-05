@@ -1,48 +1,43 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
-
-import axios from "axios";
+import { jikanGet, jikanUrl } from "./jikanApi";
 
 class Schedule {
   private baseUrl: string;
   constructor() {
-    this.baseUrl = `${baseUrl}/schedule`;
-  }
-  private jikanGet(url: string) {
-    return axios.get(url);
+    this.baseUrl = `${jikanUrl}/schedule`;
   }
   all() {
-    return this.jikanGet(this.baseUrl);
+    return jikanGet(this.baseUrl);
   }
   monday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["monday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["monday"]));
   }
   tuesday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["tuesday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["tuesday"]));
   }
   wednesday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["wednesday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["wednesday"]));
   }
   thursday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["thursday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["thursday"]));
   }
   friday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["friday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["friday"]));
   }
   saturday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["saturday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["saturday"]));
   }
   sunday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["sunday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["sunday"]));
   }
   other() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["other"]));
+    return jikanGet(joinUrl(this.baseUrl, ["other"]));
   }
   unknown() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["unknown"]));
+    return jikanGet(joinUrl(this.baseUrl, ["unknown"]));
   }
 }
 
-export default function(): Schedule {
+export default function (): Schedule {
   return new Schedule();
 }

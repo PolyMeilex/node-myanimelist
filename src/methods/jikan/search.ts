@@ -1,5 +1,5 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
+import { jikanGet, jikanUrl } from "./jikanApi";
 
 import AnimeGenre from "./types/animeGenre";
 import MangaGenre from "./types/mangaGenre";
@@ -15,8 +15,6 @@ import MangaOrderBy from "./types/mangaOrderBy";
 
 import Sort from "./types/sort";
 import Rating from "./types/rating";
-
-import axios from "axios";
 
 interface AdvancedSearchParameters {
   q?: string;
@@ -40,17 +38,14 @@ interface AdvancedSearchParameters {
 class Search {
   private baseUrl: string;
   constructor() {
-    this.baseUrl = `${baseUrl}/search`;
-  }
-  private jikanGet(url: string) {
-    return axios.get(url);
+    this.baseUrl = `${jikanUrl}/search`;
   }
   search(type: string, params: AdvancedSearchParameters) {
     let qparams = Object.keys(params)
-      .filter(k => params[k] != null)
-      .map(k => `${k}=${encodeURIComponent(params[k])}`)
+      .filter((k) => params[k] != null)
+      .map((k) => `${k}=${encodeURIComponent(params[k])}`)
       .join("&");
-    return this.jikanGet(joinUrl(this.baseUrl, [type, "?" + qparams]));
+    return jikanGet(joinUrl(this.baseUrl, [type, "?" + qparams]));
   }
   anime(params: AdvancedSearchParameters) {
     return this.search("anime", params);
@@ -66,6 +61,6 @@ class Search {
   }
 }
 
-export default function(): Search {
+export default function (): Search {
   return new Search();
 }

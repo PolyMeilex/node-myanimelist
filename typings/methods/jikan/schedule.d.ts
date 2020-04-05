@@ -1,17 +1,16 @@
 declare class Schedule {
     private baseUrl;
     constructor();
-    private jikanGet;
-    all(): Promise<import("axios").AxiosResponse<any>>;
-    monday(): Promise<import("axios").AxiosResponse<any>>;
-    tuesday(): Promise<import("axios").AxiosResponse<any>>;
-    wednesday(): Promise<import("axios").AxiosResponse<any>>;
-    thursday(): Promise<import("axios").AxiosResponse<any>>;
-    friday(): Promise<import("axios").AxiosResponse<any>>;
-    saturday(): Promise<import("axios").AxiosResponse<any>>;
-    sunday(): Promise<import("axios").AxiosResponse<any>>;
-    other(): Promise<import("axios").AxiosResponse<any>>;
-    unknown(): Promise<import("axios").AxiosResponse<any>>;
+    all(): Promise<any>;
+    monday(): Promise<any>;
+    tuesday(): Promise<any>;
+    wednesday(): Promise<any>;
+    thursday(): Promise<any>;
+    friday(): Promise<any>;
+    saturday(): Promise<any>;
+    sunday(): Promise<any>;
+    other(): Promise<any>;
+    unknown(): Promise<any>;
 }
 export default function (): Schedule;
 export {};

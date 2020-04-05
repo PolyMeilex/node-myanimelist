@@ -1,24 +1,19 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
-
-import axios from "axios";
+import { jikanGet, jikanUrl } from "./jikanApi";
 
 class Person {
   private baseUrl: string;
   constructor(id: number) {
-    this.baseUrl = `${baseUrl}/person/${id}`;
-  }
-  private jikanGet(url: string) {
-    return axios.get(url);
+    this.baseUrl = `${jikanUrl}/person/${id}`;
   }
   info() {
-    return this.jikanGet(this.baseUrl);
+    return jikanGet(this.baseUrl);
   }
   pictures() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["pictures"]));
+    return jikanGet(joinUrl(this.baseUrl, ["pictures"]));
   }
 }
 
-export default function(id: number): Person {
+export default function (id: number): Person {
   return new Person(id);
 }

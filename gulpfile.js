@@ -10,29 +10,28 @@ const project = ts.createProject("tsconfig.json");
 async function build() {
   await Promise.all([fsn.emptydir("dist"), fsn.emptydir("typings")]);
 
-  const result = project
-    .src()
-    .pipe(sourcemaps.init())
-    .pipe(project());
+  const result = project.src().pipe(sourcemaps.init()).pipe(project());
 
   return merge([
     result.dts.pipe(gulp.dest("typings")),
     result.js
       .pipe(sourcemaps.write(".", { sourceRoot: "../src" }))
-      .pipe(gulp.dest("dist"))
+      .pipe(gulp.dest("dist")),
   ]);
 }
 
-gulp.task("dev", function() {
+gulp.task("dev", function () {
   watch(
     "src/**/*.ts",
     { ignoreInitial: false },
     batch((events, done) => {
       console.log("\x1b[33m %s \x1b[0m", "Building...");
-      build().then(o => {
-        console.log("\x1b[32m %s \x1b[0m", "Build done!");
-        done();
-      });
+      build()
+        .then((o) => {
+          console.log("\x1b[32m %s \x1b[0m", "Build done!");
+          done();
+        })
+        .catch((e) => console.error(e));
     })
   );
 });

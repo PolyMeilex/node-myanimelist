@@ -1,2 +1,2 @@
-declare const _default: "https://api.jikan.moe/v3";
-export default _default;
+export declare const jikanUrl = "https://api.jikan.moe/v3";
+export declare function jikanGet(url: string): Promise<any>;

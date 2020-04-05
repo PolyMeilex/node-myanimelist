@@ -1,35 +1,16 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
-
-import axios from "axios";
+import { jikanGet, jikanUrl } from "./jikanApi";
 
 class SeasonLater {
   private baseUrl: string;
   constructor() {
-    this.baseUrl = `${baseUrl}/season/later`;
-  }
-  private jikanGet(url: string) {
-    return axios.get(url);
+    this.baseUrl = `${jikanUrl}/season/later`;
   }
   info() {
-    return this.jikanGet(this.baseUrl);
+    return jikanGet(this.baseUrl);
   }
 }
 
-function seasonLater(): Promise<any> {
-  return new Promise(resolve => {
-    resolve(new SeasonLater().info());
-  });
+export default function (): Promise<any> {
+  return new SeasonLater().info();
 }
-
-seasonLater.debug = (): string => {
-  let s = new SeasonLater();
-  // Return url instead of calling jikan api
-
-  // @ts-ignore
-  s.jikanGet = s => s;
-  // @ts-ignore
-  return s.info();
-};
-
-export default seasonLater;

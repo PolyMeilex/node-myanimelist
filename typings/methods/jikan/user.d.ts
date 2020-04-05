@@ -1,7 +1,6 @@
 declare class User {
     private baseUrl;
     constructor(username: string);
-    private jikanGet;
     profile(): Promise<any>;
     history(): UserHistory;
     friends(p?: number): Promise<any>;

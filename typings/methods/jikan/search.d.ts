@@ -29,12 +29,11 @@ interface AdvancedSearchParameters {
 declare class Search {
     private baseUrl;
     constructor();
-    private jikanGet;
-    search(type: string, params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
-    anime(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
-    manga(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
-    person(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
-    character(params: AdvancedSearchParameters): Promise<import("axios").AxiosResponse<any>>;
+    search(type: string, params: AdvancedSearchParameters): Promise<any>;
+    anime(params: AdvancedSearchParameters): Promise<any>;
+    manga(params: AdvancedSearchParameters): Promise<any>;
+    person(params: AdvancedSearchParameters): Promise<any>;
+    character(params: AdvancedSearchParameters): Promise<any>;
 }
 export default function (): Search;
 export {};

@@ -1,15 +1,10 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
-
-import axios from "axios";
+import { jikanGet, jikanUrl } from "./jikanApi";
 
 class Top {
   private baseUrl: string;
   constructor() {
-    this.baseUrl = `${baseUrl}/top`;
-  }
-  private jikanGet(url: string) {
-    return axios.get(url);
+    this.baseUrl = `${jikanUrl}/top`;
   }
   anime(): TopAnime {
     return new TopAnime(this);
@@ -41,8 +36,8 @@ class TopSimple {
 
     // @ts-ignore
     const url = joinUrl(this.parent.baseUrl, params);
-    // @ts-ignore
-    return this.parent.jikanGet(url);
+
+    return jikanGet(url);
   }
   all(p?: number) {
     return this.topGet(p, "");
@@ -62,8 +57,8 @@ class TopAnime {
 
     // @ts-ignore
     const url = joinUrl(this.parent.baseUrl, params);
-    // @ts-ignore
-    return this.parent.jikanGet(url);
+
+    return jikanGet(url);
   }
   all(p?: number) {
     return this.topGet(p, "");
@@ -107,8 +102,8 @@ class TopManga {
 
     // @ts-ignore
     const url = joinUrl(this.parent.baseUrl, params);
-    // @ts-ignore
-    return this.parent.jikanGet(url);
+
+    return jikanGet(url);
   }
   all(p?: number) {
     return this.topGet(p, "");
@@ -139,6 +134,6 @@ class TopManga {
   }
 }
 
-export default function(): Top {
+export default function (): Top {
   return new Top();
 }
