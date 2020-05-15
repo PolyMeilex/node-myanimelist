@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "ES2020",
+    "module": "ES2020",
+    "esModuleInterop": true,
     "moduleResolution": "node",
-    "lib": ["es2016"],
+    "resolveJsonModule": true,
+    "lib": ["es2020"],
     "declaration": true,
     "sourceMap": true,
     "removeComments": false,
+    "forceConsistentCasingInFileNames": true,
     "outDir": "./dist/",
     "declarationDir": "./typings/"
   },

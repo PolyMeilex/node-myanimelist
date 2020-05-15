@@ -1,5 +1,5 @@
-import { joinUrl } from "./url";
-import { jikanGet, jikanUrl } from "./jikanApi";
+import { joinUrl } from "./url.js";
+import { jikanGet, jikanUrl } from "./jikanApi.js";
 
 class Club {
   private baseUrl: string;

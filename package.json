@@ -2,8 +2,15 @@
   "name": "node-myanimelist",
   "version": "2.0.0",
   "description": "Node.js wrappers for MAL.",
-  "main": "dist/index.js",
-  "types": "typings/index.d.ts",
+  "main": "dist/indexNode.js",
+  "module": "dist/indexDeno.js",
+  "exports": {
+    ".": "./dist/indexNode.js",
+    "./es": "./dist/indexDeno.js",
+    "./deno": "./src/indexDeno.ts"
+  },
+  "types": "typings/indexNode.d.ts",
+  "type": "module",
   "scripts": {
     "build": "gulp build",
     "dev": "gulp dev",
@@ -25,7 +32,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "cheerio": "^1.0.0-rc.3",
-    "url-join": "^4.0.1"
+    "proper-url-join": "^2.1.1"
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.13",
@@ -38,7 +45,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "merge2": "^1.2.4",
     "mocha": "^6.2.0",
-    "ts-mocha": "^6.0.0",
-    "typescript": "^3.6.2"
+    "ts-mocha": "^7.0.0",
+    "typescript": "^3.9.2"
   }
 }

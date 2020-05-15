@@ -1,8 +1,8 @@
-import { joinUrl } from "./url";
-import { jikanGet, jikanUrl } from "./jikanApi";
+import { joinUrl } from "./url.js";
+import { jikanGet, jikanUrl } from "./jikanApi.js";
 
-import AnimeGenre from "./types/animeGenre";
-import MangaGenre from "./types/mangaGenre";
+import AnimeGenre from "./types/animeGenre.js";
+import MangaGenre from "./types/mangaGenre.js";
 
 class Genre {
   private baseUrl: string;
