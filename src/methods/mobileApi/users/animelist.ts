@@ -1,4 +1,4 @@
-import * as urljoin from "url-join";
+import urljoin from "url-join";
 import axios, { AxiosRequestConfig } from "axios";
 import { baseURL } from "../mobileApis";
 
@@ -29,7 +29,7 @@ type fields =
  * @param user Mal username or 'me' param. @me to get logged in user
  * @param fields array [alternative_titles,media_type,num_episodes,status,start_date,end_date,average_episode_duration,synopsis,mean,rank,popularity,num_list_users,num_favorites,num_scoring_users,start_season,broadcast,my_list_status{start_date,finish_date},nsfw,created_at,updated_at]
  */
-export default function(
+export default function (
   auth: any,
   user: "@me" | string = "@me",
   fields: fields[] = []
