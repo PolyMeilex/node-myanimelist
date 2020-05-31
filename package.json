@@ -1,19 +1,18 @@
 {
-  "name": "node-myanimelist",
-  "version": "2.0.0",
-  "description": "Node.js wrappers for MAL.",
-  "main": "dist/indexNode.js",
-  "module": "dist/indexDeno.js",
-  "exports": {
-    ".": "./dist/indexNode.js",
-    "./es": "./dist/indexDeno.js",
-    "./deno": "./src/indexDeno.ts"
-  },
-  "types": "typings/indexNode.d.ts",
+  "name": "esm-myanimelist-tests",
+  "version": "0.0.3",
+  "description": "ESM wrappers for MyAnimeList.",
   "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "sideEffects": false,
+  "types": "typings/index.d.ts",
   "scripts": {
-    "build": "gulp build",
-    "dev": "gulp dev",
+    "build": "tsc",
+    "dev": "tsc --watch",
     "test": "./node_modules/ts-mocha/bin/ts-mocha test/*.ts"
   },
   "keywords": [
@@ -25,27 +24,49 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/PolyMagic/node-myanimelist.git"
+    "url": "https://github.com/PolyMeilex/node-myanimelist.git"
   },
-  "author": "Poly",
+  "author": "PolyMeilex",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.0",
-    "cheerio": "^1.0.0-rc.3",
+    "esm-fetch": "1.0.4",
     "proper-url-join": "^2.1.1"
   },
   "devDependencies": {
-    "@types/cheerio": "^0.22.13",
-    "@types/expect": "^1.20.4",
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-deno": "^0.9.2",
+    "@pika/plugin-build-node": "^0.9.2",
+    "@pika/plugin-build-types": "^0.9.2",
+    "@pika/plugin-build-web": "^0.9.2",
+    "@pika/plugin-ts-standard-pkg": "^0.6.0",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^10.14.17",
-    "fs-nextra": "^0.4.5",
+    "@types/proper-url-join": "^2.0.0",
+    "fs-nextra": "^0.4.7",
     "gulp": "^4.0.2",
-    "gulp-typescript": "^5.0.1",
     "gulp-sourcemaps": "^2.6.5",
-    "merge2": "^1.2.4",
-    "mocha": "^6.2.0",
+    "gulp-typescript": "^5.0.1",
+    "merge2": "^1.3.0",
+    "mocha": "^6.2.3",
     "ts-mocha": "^7.0.0",
     "typescript": "^3.9.2"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-deno"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-types"
+      ]
+    ]
   }
 }

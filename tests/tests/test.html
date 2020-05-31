@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body>
+    <script type="module">
+      import esmFetch from "https://cdn.pika.dev/esm-fetch";
+      esmFetch("https://jsonplaceholder.typicode.com/todos/1")
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+    </script>
+  </body>
+</html>

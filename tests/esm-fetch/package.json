@@ -1,0 +1,15 @@
+{
+  "name": "esm-fetch",
+  "version": "1.0.4",
+  "description": "Single fetch module that works in node.js,deno and in browsers.",
+  "author": "PolyMeilex",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node-fetch": "^2.5.7",
+    "node-fetch": "^2.6.0"
+  },
+  "main": "src/node.js",
+  "deno": "src/deno.ts",
+  "module": "src/web.js",
+  "types": "typings/index.d.ts"
+}
