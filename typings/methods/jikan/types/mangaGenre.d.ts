@@ -1,4 +1,4 @@
-export declare enum MangaGenre {
+export declare enum MangaGenreId {
     action = 1,
     adventure = 2,
     cars = 3,
@@ -45,4 +45,4 @@ export declare enum MangaGenre {
     genderBender = 44,
     thriller = 45
 }
-export default MangaGenre;
+export default MangaGenreId;

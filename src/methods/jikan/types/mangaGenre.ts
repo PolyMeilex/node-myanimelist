@@ -1,4 +1,4 @@
-export enum MangaGenre {
+export enum MangaGenreId {
   action = 1,
   adventure = 2,
   cars = 3,
@@ -46,4 +46,4 @@ export enum MangaGenre {
   thriller = 45,
 }
 
-export default MangaGenre;
+export default MangaGenreId;

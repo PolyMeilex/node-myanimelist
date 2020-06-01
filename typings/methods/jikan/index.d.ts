@@ -13,8 +13,8 @@ import producer from "./producer";
 import magazine from "./magazine";
 import user from "./user";
 import club from "./club";
-import AnimeGenre from "./types/animeGenre";
-import MangaGenre from "./types/mangaGenre";
+import AnimeGenreId from "./types/animeGenre";
+import MangaGenreId from "./types/mangaGenre";
 import AnimeType from "./types/animeType";
 import MangaType from "./types/mangaType";
 import AnimeStatus from "./types/animeStatus";
@@ -24,8 +24,16 @@ import MangaOrderBy from "./types/mangaOrderBy";
 import Sort from "./types/sort";
 import Rating from "./types/rating";
 declare const types: {
-    AnimeGenre: typeof AnimeGenre;
-    MangaGenre: typeof MangaGenre;
+    /**
+     * @deprecated Should be renamed to AnimeGenreId
+     */
+    AnimeGenre: typeof AnimeGenreId;
+    AnimeGenreId: typeof AnimeGenreId;
+    /**
+     * @deprecated Should be renamed to MangaGenreId
+     */
+    MangaGenre: typeof MangaGenreId;
+    MangaGenreId: typeof MangaGenreId;
     AnimeType: typeof AnimeType;
     MangaType: typeof MangaType;
     AnimeStatus: typeof AnimeStatus;

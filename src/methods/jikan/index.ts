@@ -21,8 +21,8 @@ import user from "./user";
 import club from "./club";
 
 // Types
-import AnimeGenre from "./types/animeGenre";
-import MangaGenre from "./types/mangaGenre";
+import AnimeGenreId from "./types/animeGenre";
+import MangaGenreId from "./types/mangaGenre";
 
 import AnimeType from "./types/animeType";
 import MangaType from "./types/mangaType";
@@ -38,8 +38,18 @@ import Rating from "./types/rating";
 //
 
 const types = {
-  AnimeGenre,
-  MangaGenre,
+  /**
+   * @deprecated Should be renamed to AnimeGenreId
+   */
+  AnimeGenre: AnimeGenreId,
+  AnimeGenreId,
+
+  /**
+   * @deprecated Should be renamed to MangaGenreId
+   */
+  MangaGenre: MangaGenreId,
+  MangaGenreId,
+
   AnimeType,
   MangaType,
   AnimeStatus,

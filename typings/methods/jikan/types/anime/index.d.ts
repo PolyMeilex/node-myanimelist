@@ -2,7 +2,7 @@ import AnimeInfo from "./info";
 import Episodes from "./episodes";
 import AnimeCharactersStaff from "./charactersStaff";
 import News from "../news/news";
-import Pictures from "./pictures";
+import Pictures from "../common/pictures";
 import AnimeVideos from "./videos";
 import AnimeStats from "./stats";
 import Forum from "./forum";

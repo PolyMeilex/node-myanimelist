@@ -1,4 +1,4 @@
-export enum AnimeGenre {
+enum AnimeGenreId {
   action = 1,
   adventure = 2,
   cars = 3,
@@ -44,4 +44,4 @@ export enum AnimeGenre {
   josei = 43,
 }
 
-export default AnimeGenre;
+export default AnimeGenreId;
