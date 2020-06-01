@@ -1,5 +1,3 @@
-import Picture from "../common/picture";
-
 /** src: ? */
 export default interface Pictures {
   pictures: Picture[];
@@ -7,4 +5,10 @@ export default interface Pictures {
   request_cache_expiry: number;
   request_cached: boolean;
   request_hash: string;
+}
+
+/** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Common/Picture.php */
+export interface Picture {
+  large: string;
+  small: string;
 }

@@ -1,15 +1,16 @@
 import { joinUrl } from "./url";
-import { jikanGet, jikanUrl } from "./jikanApi";
+import { jikanGet, jikanUrl, Req } from "./jikanApi";
+import { CharacterInfo, Pictures } from "./types/character";
 
 export class Character {
   private baseUrl: string;
   constructor(id: number) {
     this.baseUrl = `${jikanUrl}/character/${id}`;
   }
-  info() {
+  info(): Req<CharacterInfo> {
     return jikanGet(this.baseUrl);
   }
-  pictures() {
+  pictures(): Req<Pictures> {
     return jikanGet(joinUrl(this.baseUrl, ["pictures"]));
   }
 }
