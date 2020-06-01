@@ -1,46 +1,59 @@
 import { joinUrl } from "./url";
-import { jikanGet, jikanUrl } from "./jikanApi";
+import { jikanGet, jikanUrl, Req } from "./jikanApi";
+import {
+  AnimeInfo,
+  AnimeCharactersStaff,
+  Episodes,
+  News,
+  Pictures,
+  AnimeVideos,
+  AnimeStats,
+  Forum,
+  MoreInfo,
+  AnimeReviews,
+  Recommendations,
+} from "./types/anime/";
 
 class Anime {
   private baseUrl: string;
   constructor(id: number) {
     this.baseUrl = `${jikanUrl}/anime/${id}`;
   }
-  info() {
+  info(): Req<AnimeInfo> {
     return jikanGet(this.baseUrl);
   }
-  charactersStaff() {
+  charactersStaff(): Req<AnimeCharactersStaff> {
     return jikanGet(joinUrl(this.baseUrl, ["characters_staff"]));
   }
-  episodes(p?: number) {
+  episodes(p?: number): Req<Episodes> {
     let params: string[] = ["episodes"];
     if (p != null) params.push(String(p));
     return jikanGet(joinUrl(this.baseUrl, params));
   }
-  news() {
+  news(): Req<News> {
     return jikanGet(joinUrl(this.baseUrl, ["news"]));
   }
-  pictures() {
+  pictures(): Req<Pictures> {
     return jikanGet(joinUrl(this.baseUrl, ["pictures"]));
   }
-  videos() {
+  videos(): Req<AnimeVideos> {
     return jikanGet(joinUrl(this.baseUrl, ["videos"]));
   }
-  stats() {
+  stats(): Req<AnimeStats> {
     return jikanGet(joinUrl(this.baseUrl, ["stats"]));
   }
-  forum() {
+  forum(): Req<Forum> {
     return jikanGet(joinUrl(this.baseUrl, ["forum"]));
   }
-  moreInfo() {
+  moreInfo(): Req<MoreInfo> {
     return jikanGet(joinUrl(this.baseUrl, ["moreinfo"]));
   }
-  reviews(p?: number) {
+  reviews(p?: number): Req<AnimeReviews> {
     let params: string[] = ["reviews"];
     if (p != null) params.push(String(p));
     return jikanGet(joinUrl(this.baseUrl, params));
   }
-  recommendations() {
+  recommendations(): Req<Recommendations> {
     return jikanGet(joinUrl(this.baseUrl, ["recommendations"]));
   }
   userUpdates(p?: number) {

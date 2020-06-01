@@ -1,7 +1,7 @@
 import ForumTopic from "../forum/forumTopic";
 
 /** src: ? */
-export interface Forum {
+export default interface Forum {
   topics: ForumTopic[];
 
   request_cache_expiry: number;

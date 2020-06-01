@@ -1,6 +1,7 @@
 import Recommendation from "../common/recommendation";
 
-export interface Recommendations {
+/* src: ? */
+export default interface Recommendations {
   recommendations: Recommendation[];
 
   request_cache_expiry: number;

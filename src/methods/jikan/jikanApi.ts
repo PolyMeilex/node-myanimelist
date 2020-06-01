@@ -7,6 +7,13 @@ global.jikanGet = function jikanGet(url: string): Promise<any> {
   return axios.get(url);
 };
 
+export interface ReqResponse<T> {
+  data: T;
+}
+
+export type Req<T> = Promise<ReqResponse<T>>;
+
+
 export function jikanGet(url: string): Promise<any> {
   // @ts-ignore
   return global.jikanGet(url);
