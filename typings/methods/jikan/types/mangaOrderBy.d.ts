@@ -1,4 +1,4 @@
-declare enum MangaOrderBy {
+export declare enum MangaOrderBy {
     title = "title",
     start_date = "start_date",
     end_date = "end_date",

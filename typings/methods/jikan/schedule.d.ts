@@ -1,4 +1,4 @@
-declare class Schedule {
+export declare class Schedule {
     private baseUrl;
     constructor();
     all(): Promise<any>;
@@ -13,4 +13,3 @@ declare class Schedule {
     unknown(): Promise<any>;
 }
 export default function (): Schedule;
-export {};

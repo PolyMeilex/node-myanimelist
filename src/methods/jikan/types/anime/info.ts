@@ -52,7 +52,7 @@ export default interface AnimeInfo {
   request_hash: string;
 }
 
-interface Related {
+export interface Related {
   Adaptation: MalUrl[];
   "Side story": MalUrl[];
   Summary: MalUrl[];

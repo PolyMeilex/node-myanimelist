@@ -1,4 +1,4 @@
-declare class Manga {
+export declare class Manga {
     private baseUrl;
     constructor(id: number);
     info(): Promise<any>;
@@ -13,4 +13,3 @@ declare class Manga {
     userUpdates(p?: number): Promise<any>;
 }
 export default function (id: number): Manga;
-export {};

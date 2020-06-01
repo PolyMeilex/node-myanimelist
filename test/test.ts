@@ -1,5 +1,7 @@
 import Mal from "../";
 
+import ty from "../typings";
+
 // Return url instead of calling jikan api
 // @ts-ignore
 global.jikanGet = (s) => s;

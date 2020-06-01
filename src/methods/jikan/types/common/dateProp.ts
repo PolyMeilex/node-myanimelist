@@ -4,7 +4,7 @@ export default interface DateProp {
   to: DayMonthYear;
 }
 
-interface DayMonthYear {
+export interface DayMonthYear {
   day: number | null;
   month: number | null;
   year: number | null;

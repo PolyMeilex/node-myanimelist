@@ -1,4 +1,4 @@
-declare enum AnimeType {
+export declare enum AnimeType {
     tv = "tv",
     ova = "ova",
     movie = "movie",

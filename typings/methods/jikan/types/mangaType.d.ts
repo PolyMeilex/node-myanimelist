@@ -1,4 +1,4 @@
-declare enum MangaType {
+export declare enum MangaType {
     manga = "manga",
     novel = "novel",
     oneshot = "oneshot",

@@ -1,4 +1,4 @@
-enum MangaGenre {
+export enum MangaGenre {
   action = 1,
   adventure = 2,
   cars = 3,
@@ -43,7 +43,7 @@ enum MangaGenre {
   josei = 42,
   doujinshi = 43,
   genderBender = 44,
-  thriller = 45
+  thriller = 45,
 }
 
 export default MangaGenre;

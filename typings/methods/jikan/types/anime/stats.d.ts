@@ -14,8 +14,7 @@ export default interface AnimeStats {
     request_hash: string;
 }
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeStatsScore.php */
-interface AnimeStatsScore {
+export interface AnimeStatsScore {
     votes: number;
     percentage: number;
 }
-export {};

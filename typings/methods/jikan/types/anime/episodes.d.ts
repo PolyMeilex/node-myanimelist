@@ -7,7 +7,7 @@ export default interface Episodes {
     request_hash: string;
 }
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/EpisodeListItem.php */
-interface EpisodeListItem {
+export interface EpisodeListItem {
     episode_id: number;
     title: string;
     title_japanese: string | null;
@@ -18,4 +18,3 @@ interface EpisodeListItem {
     video_url: string;
     forum_url: string;
 }
-export {};

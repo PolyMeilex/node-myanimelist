@@ -1,4 +1,4 @@
-enum AnimeGenre {
+export enum AnimeGenre {
   action = 1,
   adventure = 2,
   cars = 3,
@@ -41,7 +41,7 @@ enum AnimeGenre {
   psychological = 40,
   thriller = 41,
   seinen = 42,
-  josei = 43
+  josei = 43,
 }
 
 export default AnimeGenre;

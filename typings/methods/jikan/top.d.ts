@@ -1,4 +1,4 @@
-declare class Top {
+export declare class Top {
     private baseUrl;
     constructor();
     anime(): TopAnime;
@@ -6,14 +6,14 @@ declare class Top {
     people(): TopSimple;
     characters(): TopSimple;
 }
-declare class TopSimple {
+export declare class TopSimple {
     private baseUrl;
     private type;
     constructor(baseUrl: string, type: string);
     private topGet;
     all(p?: number): Promise<any>;
 }
-declare class TopAnime {
+export declare class TopAnime {
     private baseUrl;
     constructor(baseUrl: string);
     private topGet;
@@ -27,7 +27,7 @@ declare class TopAnime {
     byPopularity(p?: number): Promise<any>;
     favorite(p?: number): Promise<any>;
 }
-declare class TopManga {
+export declare class TopManga {
     private baseUrl;
     constructor(baseUrl: string);
     private topGet;
@@ -42,4 +42,3 @@ declare class TopManga {
     favorite(p?: number): Promise<any>;
 }
 export default function (): Top;
-export {};

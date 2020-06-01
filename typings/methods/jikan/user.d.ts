@@ -1,4 +1,4 @@
-declare class User {
+export declare class User {
     private baseUrl;
     constructor(username: string);
     profile(): Promise<any>;
@@ -7,14 +7,14 @@ declare class User {
     animelist(p?: number): UserAnimelist;
     mangalist(p?: number): UserMangalist;
 }
-declare class UserHistory {
+export declare class UserHistory {
     private baseUrl;
     constructor(baseUrl: string);
     all(): Promise<any>;
     anime(): Promise<any>;
     manga(): Promise<any>;
 }
-declare class UserAnimelist {
+export declare class UserAnimelist {
     private baseUrl;
     private page;
     constructor(baseUrl: string, p?: number);
@@ -25,7 +25,7 @@ declare class UserAnimelist {
     dropped(qparams?: Object): Promise<any>;
     plantowatch(qparams?: Object): Promise<any>;
 }
-declare class UserMangalist {
+export declare class UserMangalist {
     private baseUrl;
     private page;
     constructor(baseUrl: string, p?: number);
@@ -37,4 +37,3 @@ declare class UserMangalist {
     plantoread(qparams?: Object): Promise<any>;
 }
 export default function (username: string): User;
-export {};

@@ -8,7 +8,7 @@ export default interface News {
 }
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/News/NewsListItem.php */
-interface NewsListItem {
+export interface NewsListItem {
   url: string;
   title: string;
   date: Date;

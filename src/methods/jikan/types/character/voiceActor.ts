@@ -1,4 +1,3 @@
-
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Character/VoiceActor.php */
 export default interface VoiceActor {
   mal_id: number;
@@ -8,7 +7,7 @@ export default interface VoiceActor {
   language: Language;
 }
 
-enum Language {
+export enum Language {
   English = "English",
   French = "French",
   German = "German",
@@ -16,5 +15,5 @@ enum Language {
   Italian = "Italian",
   Japanese = "Japanese",
   Korean = "Korean",
-  Spanish = "Spanish"
+  Spanish = "Spanish",
 }

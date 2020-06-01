@@ -8,7 +8,7 @@ import AnimeOrderBy from "./types/animeOrderBy";
 import MangaOrderBy from "./types/mangaOrderBy";
 import Sort from "./types/sort";
 import Rating from "./types/rating";
-interface AdvancedSearchParameters {
+export interface AdvancedSearchParameters {
     q?: string;
     page?: number;
     type?: AnimeType | MangaType;
@@ -26,7 +26,7 @@ interface AdvancedSearchParameters {
     magazine?: number;
     letter?: string;
 }
-declare class Search {
+export declare class Search {
     private baseUrl;
     constructor();
     private search;
@@ -36,4 +36,3 @@ declare class Search {
     character(params: AdvancedSearchParameters): Promise<any>;
 }
 export default function (): Search;
-export {};

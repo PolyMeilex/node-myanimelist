@@ -6,7 +6,7 @@ export default interface AnimeReviews {
     request_hash: string;
 }
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeReview.php */
-interface AnimeReview {
+export interface AnimeReview {
     mal_id: number;
     url: string;
     /** Hymm what is this? Is this always a null???
@@ -24,7 +24,7 @@ interface AnimeReview {
 /**
  * src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeReviewer.php
  * src: https://github.com/jikan-me/jikan/blob/master/src/Model/Common/Reviewer.php */
-interface AnimeReviewer {
+export interface AnimeReviewer {
     url: string;
     image_url: string;
     username: string;
@@ -32,7 +32,7 @@ interface AnimeReviewer {
     scores: AnimeReviewScores;
 }
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeReviewScores.php */
-interface AnimeReviewScores {
+export interface AnimeReviewScores {
     overall: number;
     story: number;
     animation: number;
@@ -40,4 +40,3 @@ interface AnimeReviewScores {
     character: number;
     enjoyment: number;
 }
-export {};

@@ -1,4 +1,4 @@
-declare enum MangaGenre {
+export declare enum MangaGenre {
     action = 1,
     adventure = 2,
     cars = 3,

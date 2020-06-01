@@ -8,11 +8,10 @@ export default interface AnimeCharactersAndStaff {
     request_hash: string;
 }
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/StaffListItem.php */
-interface StaffListItem {
+export interface StaffListItem {
     mal_id: number;
     url: string;
     name: string;
     image_url: string;
     positions: string[];
 }
-export {};

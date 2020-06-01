@@ -11,7 +11,7 @@ export default interface AnimeCharactersAndStaff {
 }
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/StaffListItem.php */
-interface StaffListItem {
+export interface StaffListItem {
   mal_id: number;
   url: string;
   name: string;

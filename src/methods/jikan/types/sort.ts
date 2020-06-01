@@ -1,6 +1,6 @@
-enum Sort {
+export enum Sort {
   ascending = "ascending",
-  descending = "descending"
+  descending = "descending",
 }
 
 export default Sort;

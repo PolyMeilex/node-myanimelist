@@ -4,7 +4,7 @@ import { jikanGet, jikanUrl } from "./jikanApi";
 import AnimeGenre from "./types/animeGenre";
 import MangaGenre from "./types/mangaGenre";
 
-class Genre {
+export class Genre {
   private baseUrl: string;
   constructor() {
     this.baseUrl = `${jikanUrl}/genre`;

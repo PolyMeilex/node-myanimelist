@@ -8,7 +8,7 @@ export default interface AnimeUserUpdates {
 }
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeRecentlyUpdatedByUser.php */
-interface AnimeRecentlyUpdatedByUser {
+export interface AnimeRecentlyUpdatedByUser {
   username: string;
   url: string;
   image_url: string;
@@ -19,7 +19,7 @@ interface AnimeRecentlyUpdatedByUser {
   date: Date;
 }
 
-enum Status {
+export enum Status {
   Completed = "Completed",
   Dropped = "Dropped",
   OnHold = "On-Hold",

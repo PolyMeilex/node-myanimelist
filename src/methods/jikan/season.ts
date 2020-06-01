@@ -1,7 +1,7 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl } from "./jikanApi";
 
-class Season {
+export class Season {
   private baseUrl: string;
   constructor() {
     this.baseUrl = `${jikanUrl}/season`;
@@ -11,7 +11,7 @@ class Season {
   }
 }
 
-type season = "summer" | "spring" | "fall" | "winter";
+export type season = "summer" | "spring" | "fall" | "winter";
 
 export default function (year: number, season: season): Promise<any> {
   return new Season().info(year, season);

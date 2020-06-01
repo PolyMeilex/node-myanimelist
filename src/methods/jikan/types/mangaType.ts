@@ -1,10 +1,10 @@
-enum MangaType {
+export enum MangaType {
   manga = "manga",
   novel = "novel",
   oneshot = "oneshot",
   doujin = "doujin",
   manhwa = "manhwa",
-  manhua = "manhua"
+  manhua = "manhua",
 }
 
 export default MangaType;

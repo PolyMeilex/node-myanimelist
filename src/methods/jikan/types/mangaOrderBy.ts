@@ -1,4 +1,4 @@
-enum MangaOrderBy {
+export enum MangaOrderBy {
   title = "title",
   start_date = "start_date",
   end_date = "end_date",
@@ -7,7 +7,7 @@ enum MangaOrderBy {
   members = "members",
   id = "id",
   chapters = "chapters",
-  volumes = "volumes"
+  volumes = "volumes",
 }
 
 export default MangaOrderBy;

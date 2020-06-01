@@ -8,7 +8,7 @@ export default interface AnimeReviews {
 }
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeReview.php */
-interface AnimeReview {
+export interface AnimeReview {
   mal_id: number;
   url: string;
 
@@ -30,7 +30,7 @@ interface AnimeReview {
 /**
  * src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeReviewer.php
  * src: https://github.com/jikan-me/jikan/blob/master/src/Model/Common/Reviewer.php */
-interface AnimeReviewer {
+export interface AnimeReviewer {
   url: string;
   image_url: string;
   username: string;
@@ -40,7 +40,7 @@ interface AnimeReviewer {
 }
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeReviewScores.php */
-interface AnimeReviewScores {
+export interface AnimeReviewScores {
   overall: number;
   story: number;
   animation: number;

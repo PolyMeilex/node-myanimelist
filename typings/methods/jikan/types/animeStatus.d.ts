@@ -1,4 +1,4 @@
-declare enum AnimeStatus {
+export declare enum AnimeStatus {
     airing = "airing",
     completed = "completed",
     to_be_aired = "to_be_aired"

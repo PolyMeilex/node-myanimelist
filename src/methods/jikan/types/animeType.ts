@@ -1,10 +1,10 @@
-enum AnimeType {
+export enum AnimeType {
   tv = "tv",
   ova = "ova",
   movie = "movie",
   special = "special",
   ona = "ona",
-  music = "music"
+  music = "music",
 }
 
 export default AnimeType;

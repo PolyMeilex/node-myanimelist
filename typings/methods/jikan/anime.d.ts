@@ -1,6 +1,6 @@
 import { Req } from "./jikanApi";
 import { AnimeInfo, AnimeCharactersStaff, Episodes, News, Pictures, AnimeVideos, AnimeStats, Forum, MoreInfo, AnimeReviews, Recommendations, AnimeUserUpdates } from "./types/anime/";
-declare class Anime {
+export declare class Anime {
     private baseUrl;
     constructor(id: number);
     info(): Req<AnimeInfo>;
@@ -17,4 +17,3 @@ declare class Anime {
     userUpdates(p?: number): Req<AnimeUserUpdates>;
 }
 export default function (id: number): Anime;
-export {};

@@ -11,7 +11,7 @@ export default interface CharacterListItem {
   voice_actors: VoiceActor[];
 }
 
-enum Role {
+export enum Role {
   Main = "Main",
-  Supporting = "Supporting"
+  Supporting = "Supporting",
 }

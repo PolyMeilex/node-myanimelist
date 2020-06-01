@@ -1,7 +1,7 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl } from "./jikanApi";
 
-class User {
+export class User {
   private baseUrl: string;
   constructor(username: string) {
     this.baseUrl = `${jikanUrl}/user/${username}`;
@@ -25,7 +25,7 @@ class User {
   }
 }
 
-class UserHistory {
+export class UserHistory {
   private baseUrl: string;
   constructor(baseUrl: string) {
     this.baseUrl = baseUrl;
@@ -47,7 +47,7 @@ class UserHistory {
   }
 }
 
-class UserAnimelist {
+export class UserAnimelist {
   private baseUrl: string;
   private page: string;
   constructor(baseUrl: string, p?: number) {
@@ -95,7 +95,7 @@ class UserAnimelist {
   }
 }
 
-class UserMangalist {
+export class UserMangalist {
   private baseUrl: string;
   private page: string;
   constructor(baseUrl: string, p?: number) {

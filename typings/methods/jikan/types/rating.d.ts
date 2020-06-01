@@ -1,4 +1,4 @@
-declare enum Rating {
+export declare enum Rating {
     g = "g",
     ph = "pg",
     pg13 = "pg13",

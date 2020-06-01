@@ -1,7 +1,6 @@
-import { joinUrl } from "./url";
 import { jikanGet, jikanUrl } from "./jikanApi";
 
-class SeasonLater {
+export class SeasonLater {
   private baseUrl: string;
   constructor() {
     this.baseUrl = `${jikanUrl}/season/later`;

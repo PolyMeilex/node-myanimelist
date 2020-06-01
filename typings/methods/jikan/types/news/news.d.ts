@@ -6,7 +6,7 @@ export default interface News {
     request_hash: string;
 }
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/News/NewsListItem.php */
-interface NewsListItem {
+export interface NewsListItem {
     url: string;
     title: string;
     date: Date;
@@ -17,4 +17,3 @@ interface NewsListItem {
     comments: number;
     intro: string;
 }
-export {};

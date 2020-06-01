@@ -1,4 +1,4 @@
-declare enum MangaStatus {
+export declare enum MangaStatus {
     publishing = "publishing",
     completed = "completed",
     to_be_published = "to_be_published"

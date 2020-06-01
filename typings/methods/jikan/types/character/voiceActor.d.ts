@@ -6,7 +6,7 @@ export default interface VoiceActor {
     image_url: string;
     language: Language;
 }
-declare enum Language {
+export declare enum Language {
     English = "English",
     French = "French",
     German = "German",
@@ -16,4 +16,3 @@ declare enum Language {
     Korean = "Korean",
     Spanish = "Spanish"
 }
-export {};

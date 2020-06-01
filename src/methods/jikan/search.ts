@@ -16,7 +16,7 @@ import MangaOrderBy from "./types/mangaOrderBy";
 import Sort from "./types/sort";
 import Rating from "./types/rating";
 
-interface AdvancedSearchParameters {
+export interface AdvancedSearchParameters {
   q?: string;
   page?: number;
   type?: AnimeType | MangaType;
@@ -37,7 +37,7 @@ interface AdvancedSearchParameters {
 
 type ParamsKeys = keyof AdvancedSearchParameters;
 
-class Search {
+export class Search {
   private baseUrl: string;
   constructor() {
     this.baseUrl = `${jikanUrl}/search`;

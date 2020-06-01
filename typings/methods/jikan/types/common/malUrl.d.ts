@@ -5,8 +5,7 @@ export default interface MalUrl {
     mal_id: number;
     type: Type;
 }
-declare enum Type {
+export declare enum Type {
     Anime = "anime",
     Manga = "manga"
 }
-export {};

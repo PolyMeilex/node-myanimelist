@@ -1,7 +1,7 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl } from "./jikanApi";
 
-class Manga {
+export class Manga {
   private baseUrl: string;
   constructor(id: number) {
     this.baseUrl = `${jikanUrl}/manga/${id}`;

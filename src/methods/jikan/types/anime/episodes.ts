@@ -9,7 +9,7 @@ export default interface Episodes {
 }
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/EpisodeListItem.php */
-interface EpisodeListItem {
+export interface EpisodeListItem {
   episode_id: number;
 
   title: string;

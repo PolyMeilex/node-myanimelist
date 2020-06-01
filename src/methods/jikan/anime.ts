@@ -15,7 +15,7 @@ import {
   AnimeUserUpdates,
 } from "./types/anime/";
 
-class Anime {
+export class Anime {
   private baseUrl: string;
   constructor(id: number) {
     this.baseUrl = `${jikanUrl}/anime/${id}`;

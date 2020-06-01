@@ -1,4 +1,4 @@
-declare enum AnimeGenre {
+export declare enum AnimeGenre {
     action = 1,
     adventure = 2,
     cars = 3,
