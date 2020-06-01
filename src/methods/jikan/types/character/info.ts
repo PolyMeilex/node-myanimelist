@@ -2,7 +2,7 @@ import VoiceActor from "./voiceActor";
 import Ography from "../common/ography";
 
 /** https://github.com/jikan-me/jikan/blob/master/src/Model/Character/Character.php */
-export default interface Character {
+export default interface CharacterInfo {
   mal_id: number;
   url: string;
 
