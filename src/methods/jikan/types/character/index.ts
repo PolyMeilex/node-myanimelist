@@ -27,6 +27,7 @@ export interface CharacterInfo {
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Character/Animeography.php */
 export interface Animeography extends Ography {}
+/** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Character/Mangaography.php */
 export interface Mangaography extends Ography {}
 
 export { Pictures };

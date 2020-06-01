@@ -1,7 +1,60 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl } from "./jikanApi";
 
+/**
+ * # Top
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/top" target="_blank">https://jikan.docs.apiary.io</a>
+ *
+ * To get top info you need to create top object and select type of entry, like so:
+ * ```ts
+ * let top = Mal.top().anime();
+ * //                 .manga()
+ * //                 .people()
+ * //                 .characters()
+ * ```
+ * And then you can use top object multiple times to get desired information.
+ *
+ * ### Functions That You Can Use With All Types
+ * ```ts
+ * top.all(page?);
+ * ```
+ * ### Anime Specific Functions
+ * ```ts
+ * top.airing(page?);
+ * top.upcoming(page?);
+ * top.tv(page?);
+ * top.movie(page?);
+ * top.ova(page?);
+ * top.special(page?);
+ * ```
+ * ### Manga Specific Functions
+ * ```ts
+ * top.manga(page?);
+ * top.novels(page?);
+ * top.oneshots(page?);
+ * top.doujin(page?);
+ * top.manhwa(page?);
+ * top.manhua(page?);
+ * ```
+ * ### Manga & Anime Specific Functions
+ * ```ts
+ * top.byPopularity(page?);
+ * top.favorite(page?);
+ * ```
+ * Each of those functions returns promise
+ * ## Examples
+ * ```ts
+ * Mal.top().anime().all()
+ * .then(res => res.data)
+ * .then(topJson => {});
+ * Mal.top().anime().movie()
+ * .then(res => res.data)
+ * .then(topJson => {});
+ * ```
+ */
 export class Top {
+  /** @ignore */
   private baseUrl: string;
   constructor() {
     this.baseUrl = `${jikanUrl}/top`;
@@ -131,6 +184,6 @@ export class TopManga {
   }
 }
 
-export default function (): Top {
+export function top(): Top {
   return new Top();
 }

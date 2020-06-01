@@ -1,14 +1,14 @@
 import AnimeInfo from "./info";
 import Episodes from "./episodes";
-import AnimeCharactersStaff from "./charactersStaff";
+import AnimeCharactersAndStaff from "./charactersAndStaff";
 
-import News from "../news/news";
+import News from "../news";
 import Pictures from "../common/pictures";
 import AnimeVideos from "./videos";
 
 import AnimeStats from "./stats";
 import Forum from "./forum";
-import MoreInfo from "./moreInfo";
+import AnimeMoreInfo from "./moreInfo";
 
 import AnimeReviews from "./reviews";
 import Recommendations from "./recommendations";
@@ -16,14 +16,14 @@ import AnimeUserUpdates from "./userUpdates";
 
 export {
   AnimeInfo,
-  AnimeCharactersStaff,
+  AnimeCharactersAndStaff,
   Episodes,
   News,
   Pictures,
   AnimeVideos,
   AnimeStats,
   Forum,
-  MoreInfo,
+  AnimeMoreInfo,
   AnimeReviews,
   Recommendations,
   AnimeUserUpdates,

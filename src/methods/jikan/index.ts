@@ -1,24 +1,25 @@
-import anime from "./anime";
-import manga from "./manga";
-import person from "./person";
-import character from "./character";
+export { anime } from "./anime";
+export { manga } from "./manga";
 
-import search from "./search";
+export { person } from "./person";
+export { character } from "./character";
 
-import season from "./season";
-import seasonArchive from "./seasonArchive";
-import seasonLater from "./seasonLater";
+export { search } from "./search";
 
-import schedule from "./schedule";
-import top from "./top";
-import genre from "./genre";
+export { season } from "./season";
+export { seasonArchive } from "./seasonArchive";
+export { seasonLater } from "./seasonLater";
 
-import producer from "./producer";
-import magazine from "./magazine";
+export { schedule } from "./schedule";
+export { top } from "./top";
+export { genre } from "./genre";
 
-import user from "./user";
+export { producer } from "./producer";
+export { magazine } from "./magazine";
 
-import club from "./club";
+export { user } from "./user";
+
+export { club } from "./club";
 
 // Types
 import AnimeGenreId from "./types/animeGenre";
@@ -36,6 +37,8 @@ import MangaOrderBy from "./types/mangaOrderBy";
 import Sort from "./types/sort";
 import Rating from "./types/rating";
 //
+
+import * as internal from "./internalTypes";
 
 const types = {
   /**
@@ -60,23 +63,25 @@ const types = {
   MangaOrderBy,
   Sort,
   Rating,
+
+  internal,
 };
 
 export {
-  anime,
-  manga,
-  person,
-  character,
-  search,
-  season,
-  seasonArchive,
-  seasonLater,
-  schedule,
-  top,
-  genre,
-  producer,
-  magazine,
-  user,
-  club,
+  // anime,
+  // manga,
+  // person,
+  // character,
+  // search,
+  // season,
+  // seasonArchive,
+  // seasonLater,
+  // schedule,
+  // top,
+  // genre,
+  // producer,
+  // magazine,
+  // user,
+  // club,
   types,
 };

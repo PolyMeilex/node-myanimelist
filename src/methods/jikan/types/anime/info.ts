@@ -37,7 +37,7 @@ export default interface AnimeInfo {
 
   premiered: string | null;
   broadcast: string | null;
-  related: Related;
+  related: AnimeRelated;
 
   producers: MalUrl[];
   licensors: MalUrl[];
@@ -52,7 +52,7 @@ export default interface AnimeInfo {
   request_hash: string;
 }
 
-export interface Related {
+export interface AnimeRelated {
   Adaptation: MalUrl[];
   "Side story": MalUrl[];
   Summary: MalUrl[];

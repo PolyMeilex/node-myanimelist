@@ -1,7 +1,58 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl } from "./jikanApi";
 
+/**
+ * # User
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/user" target="_blank">https://jikan.docs.apiary.io</a>
+ *
+ * ### Create User Object
+ * ```ts
+ * let user = Mal.user("username");
+ * ```
+ *
+ * ### Get User Profile
+ * ```ts
+ * user.profile();
+ * ```
+ *
+ * ### Get User History
+ * ```ts
+ * user.history().all();
+ * //            .anime()
+ * //            .manga()
+ * ```
+ *
+ * ### Get User Friends
+ * ```ts
+ * user.friends(page?);
+ * ```
+ *
+ * ### Get User List
+ * All posible params [here](https://jikan.docs.apiary.io/#reference/0/user)
+ * ```ts
+ * let params = {
+ *    search: "q",
+ *    sort: "order_by"
+ * };
+ *
+ * let animelist = user.animelist(page?);
+ * animelist.all(params);
+ * animelist.watching(params);
+ * animelist.onhold(params);
+ * animelist.dropped(params);
+ * animelist.plantowatch(params);
+ *
+ * let mangalist = user.mangalist(page?);
+ * mangalist.all(params);
+ * mangalist.reading(params);
+ * mangalist.onhold(params);
+ * mangalist.dropped(params);
+ * mangalist.plantoread(params);
+ * ```
+ */
 export class User {
+  /** @ignore */
   private baseUrl: string;
   constructor(username: string) {
     this.baseUrl = `${jikanUrl}/user/${username}`;
@@ -143,6 +194,6 @@ export class UserMangalist {
   }
 }
 
-export default function (username: string): User {
+export function user(username: string): User {
   return new User(username);
 }

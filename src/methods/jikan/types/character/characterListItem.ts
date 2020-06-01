@@ -7,11 +7,11 @@ export default interface CharacterListItem {
   image_url: string;
 
   name: string;
-  role: Role;
+  role: CharacterRole;
   voice_actors: VoiceActor[];
 }
 
-export enum Role {
+export enum CharacterRole {
   Main = "Main",
   Supporting = "Supporting",
 }

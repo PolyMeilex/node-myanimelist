@@ -3,10 +3,10 @@ export default interface MalUrl {
   name: string;
   url: string;
   mal_id: number;
-  type: Type;
+  type: MalUrlType;
 }
 
-enum Type {
+enum MalUrlType {
   Anime = "anime",
   Manga = "manga",
   Character = "character",

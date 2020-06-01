@@ -1,8 +1,8 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl } from "./jikanApi";
 
-import AnimeGenre from "./types/animeGenre";
-import MangaGenre from "./types/mangaGenre";
+import AnimeGenreId from "./types/animeGenre";
+import MangaGenreId from "./types/mangaGenre";
 
 import AnimeType from "./types/animeType";
 import MangaType from "./types/mangaType";
@@ -16,13 +16,20 @@ import MangaOrderBy from "./types/mangaOrderBy";
 import Sort from "./types/sort";
 import Rating from "./types/rating";
 
+/**
+ * # AdvancedSearchParameters
+ *
+ * {@link AnimeGenreId}
+ *
+ * {@link MangaGenreId}
+ */
 export interface AdvancedSearchParameters {
   q?: string;
   page?: number;
   type?: AnimeType | MangaType;
   status?: AnimeStatus | MangaStatus;
   rated?: Rating;
-  genre?: AnimeGenre | MangaGenre;
+  genre?: AnimeGenreId | MangaGenreId;
   score?: number;
   start_date?: string;
   end_date?: string;
@@ -37,7 +44,26 @@ export interface AdvancedSearchParameters {
 
 type ParamsKeys = keyof AdvancedSearchParameters;
 
+/**
+ * # Search
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/search" target="_blank">https://jikan.docs.apiary.io</a>
+ * To search you need to create search object, like that:
+ * ```ts
+ * Mal.search();
+ * ```
+ * And then you can choose type of search
+ * ```ts
+ * Mal.search().anime({ q: "Fate", page: 2 });
+ * Mal.search().manga({ q: "Fate" });
+ * Mal.search().person({ q: "Fate" });
+ * Mal.search().character({ q: "Fate" });
+ * ```
+ *
+ * {@link AdvancedSearchParameters}
+ */
 export class Search {
+  /** @ignore */
   private baseUrl: string;
   constructor() {
     this.baseUrl = `${jikanUrl}/search`;
@@ -72,6 +98,6 @@ export class Search {
   }
 }
 
-export default function (): Search {
+export function search(): Search {
   return new Search();
 }

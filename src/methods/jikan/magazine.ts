@@ -1,7 +1,17 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl } from "./jikanApi";
 
+/**
+ * # Magazine
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/magazine" target="_blank">https://jikan.docs.apiary.io</a>
+ *
+ * ```ts
+ * Mal.magazine(id, page?);
+ * ```
+ */
 export class Magazine {
+  /** @ignore */
   private baseUrl: string;
   constructor() {
     this.baseUrl = `${jikanUrl}/magazine`;
@@ -13,6 +23,6 @@ export class Magazine {
   }
 }
 
-export default function (id: number, p?: number): Promise<any> {
+export function magazine(id: number, p?: number): Promise<any> {
   return new Magazine().info(id, p);
 }

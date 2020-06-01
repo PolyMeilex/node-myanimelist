@@ -1,7 +1,37 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl } from "./jikanApi";
 
+/**
+ * # Manga
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/manga" target="_blank">https://jikan.docs.apiary.io</a>
+ * To get manga you need to create manga object, like so:
+ * ```ts
+ * let manga = Mal.manga(id);
+ * ```
+ * Now you can use manga object multiple times to get desired information.
+ * ```ts
+ * manga.info();
+ * manga.characters();
+ * manga.news();
+ * manga.pictures();
+ * manga.stats();
+ * manga.forum();
+ * manga.moreInfo();
+ * manga.reviews(page?);
+ * manga.recommendations();
+ * manga.userUpdates(page?);
+ * ```
+ * Each of those functions returns promise
+ * ## Example
+ * ```ts
+ * manga.info()
+ *      .then(res => res.data)
+ *      .then(mangaJson => mangaJson.title);
+ * ```
+ */
 export class Manga {
+  /** @ignore */
   private baseUrl: string;
   constructor(id: number) {
     this.baseUrl = `${jikanUrl}/manga/${id}`;
@@ -42,6 +72,6 @@ export class Manga {
   }
 }
 
-export default function (id: number): Manga {
+export function manga(id: number): Manga {
   return new Manga(id);
 }
