@@ -12,5 +12,6 @@
     "outDir": "./dist/",
     "declarationDir": "./typings/"
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "exclude": ["./src/methods/mobileApi"]
 }
