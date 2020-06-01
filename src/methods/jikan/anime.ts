@@ -12,6 +12,7 @@ import {
   MoreInfo,
   AnimeReviews,
   Recommendations,
+  AnimeUserUpdates,
 } from "./types/anime/";
 
 class Anime {
@@ -56,7 +57,7 @@ class Anime {
   recommendations(): Req<Recommendations> {
     return jikanGet(joinUrl(this.baseUrl, ["recommendations"]));
   }
-  userUpdates(p?: number) {
+  userUpdates(p?: number): Req<AnimeUserUpdates> {
     let params: string[] = ["userupdates"];
     if (p != null) params.push(String(p));
     return jikanGet(joinUrl(this.baseUrl, params));

@@ -9,4 +9,5 @@ import Forum from "./forum";
 import MoreInfo from "./moreInfo";
 import AnimeReviews from "./reviews";
 import Recommendations from "./recommendations";
-export { AnimeInfo, AnimeCharactersStaff, Episodes, News, Pictures, AnimeVideos, AnimeStats, Forum, MoreInfo, AnimeReviews, Recommendations, };
+import AnimeUserUpdates from "./userUpdates";
+export { AnimeInfo, AnimeCharactersStaff, Episodes, News, Pictures, AnimeVideos, AnimeStats, Forum, MoreInfo, AnimeReviews, Recommendations, AnimeUserUpdates, };

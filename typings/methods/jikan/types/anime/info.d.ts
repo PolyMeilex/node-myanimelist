@@ -12,7 +12,7 @@ export default interface AnimeInfo {
     title_synonyms: any[];
     type?: string;
     source?: string;
-    episodes?: number;
+    episodes: number | null;
     status?: string;
     airing: boolean;
     aired: DateRange;

@@ -12,6 +12,7 @@ import MoreInfo from "./moreInfo";
 
 import AnimeReviews from "./reviews";
 import Recommendations from "./recommendations";
+import AnimeUserUpdates from "./userUpdates";
 
 export {
   AnimeInfo,
@@ -25,4 +26,5 @@ export {
   MoreInfo,
   AnimeReviews,
   Recommendations,
+  AnimeUserUpdates,
 };
