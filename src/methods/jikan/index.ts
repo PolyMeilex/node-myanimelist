@@ -40,12 +40,14 @@ import Rating from "./types/rating";
 const types = {
   /**
    * @deprecated Should be renamed to AnimeGenreId
+   * @ignore
    */
   AnimeGenre: AnimeGenreId,
   AnimeGenreId,
 
   /**
    * @deprecated Should be renamed to MangaGenreId
+   * @ignore
    */
   MangaGenre: MangaGenreId,
   MangaGenreId,
