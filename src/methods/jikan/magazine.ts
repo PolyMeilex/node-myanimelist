@@ -1,5 +1,6 @@
 import { joinUrl } from "./url";
-import { jikanGet, jikanUrl } from "./jikanApi";
+import { jikanGet, jikanUrl, Req } from "./jikanApi";
+import { MagazineInfo } from "./types/magazine";
 
 /**
  * # Magazine
@@ -16,13 +17,13 @@ export class Magazine {
   constructor() {
     this.baseUrl = `${jikanUrl}/magazine`;
   }
-  info(id: number, p?: number) {
+  info(id: number, p?: number): Req<MagazineInfo> {
     let params = [String(id)];
     if (p != null) params[1] = String(p);
     return jikanGet(joinUrl(this.baseUrl, params));
   }
 }
 
-export function magazine(id: number, p?: number): Promise<any> {
+export function magazine(id: number, p?: number) {
   return new Magazine().info(id, p);
 }

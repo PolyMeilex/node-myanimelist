@@ -11,4 +11,5 @@ enum MalUrlType {
   Manga = "manga",
   Character = "character",
   Profile = "profile",
+  People = "people",
 }
