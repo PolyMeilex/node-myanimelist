@@ -35,17 +35,28 @@ interface AdvancedSearchParameters {
   letter?: string;
 }
 
+type ParamsKeys = keyof AdvancedSearchParameters;
+
 class Search {
   private baseUrl: string;
   constructor() {
     this.baseUrl = `${jikanUrl}/search`;
   }
   private search(type: string, params: AdvancedSearchParameters) {
-    let qparams = Object.keys(params)
-      .filter((k) => params[k] != null)
-      .map((k) => `${k}=${encodeURIComponent(params[k])}`)
+    let qparams = Object.keys(params) as ParamsKeys[];
+
+    let out = qparams
+      .map((key) => {
+        return {
+          key,
+          param: params[key],
+        };
+      })
+      .filter((p) => p.param != null)
+      .map((p) => `${p.key}=${encodeURIComponent(p.param as any)}`)
       .join("&");
-    return jikanGet(joinUrl(this.baseUrl, [type, "?" + qparams]));
+
+    return jikanGet(joinUrl(this.baseUrl, [type, "?" + out]));
   }
   anime(params: AdvancedSearchParameters) {
     return this.search("anime", params);

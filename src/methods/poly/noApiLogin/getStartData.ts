@@ -1,31 +1,31 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import * as cheerio from "cheerio";
 
 module.exports = () => {
-  const parseResponse = res => {
+  const parseResponse = (res: AxiosResponse<any>) => {
     const $ = cheerio.load(res.data);
 
     let cookies = res.headers["set-cookie"];
 
-    cookies = cookies.map(cookie => cookie.split(";")[0]);
+    cookies = cookies.map((cookie: string) => cookie.split(";")[0]);
 
-    cookies = cookies.map(cookie => {
-      cookie = cookie.split("=");
-      return { name: cookie[0], value: cookie[1] };
+    cookies = cookies.map((cookie: string) => {
+      let cookieSplit = cookie.split("=");
+      return { name: cookieSplit[0], value: cookieSplit[1] };
     });
 
     let outObj = {
       csrf_token: $('[name="csrf_token"]').attr("content"),
       MALSESSIONID: null,
-      MALHLOGSESSID: null
+      MALHLOGSESSID: null,
     };
 
     outObj.MALSESSIONID = cookies.find(
-      cookie => cookie.name == "MALSESSIONID"
+      (cookie: any) => cookie.name == "MALSESSIONID"
     ).value;
 
     outObj.MALHLOGSESSID = cookies.find(
-      cookie => cookie.name == "MALHLOGSESSID"
+      (cookie: any) => cookie.name == "MALHLOGSESSID"
     ).value;
 
     return outObj;
@@ -34,8 +34,8 @@ module.exports = () => {
   return new Promise((res, rej) => {
     axios
       .get("https://myanimelist.net/about.php?go=contact")
-      .then(res => parseResponse(res))
-      .then(outObj => res(outObj))
-      .catch(err => rej("Tokens Not Found"));
+      .then((res) => parseResponse(res))
+      .then((outObj) => res(outObj))
+      .catch((err) => rej("Tokens Not Found"));
   });
 };

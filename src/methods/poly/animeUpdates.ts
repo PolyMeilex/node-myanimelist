@@ -2,43 +2,28 @@ import axios from "axios";
 
 import * as cheerio from "cheerio";
 
-export default function(name: string) {
+export default function (name: string) {
   return new Promise((res, rej) => {
-    let $ = null;
+    let $: any = null;
     axios
       .get(`https://myanimelist.net/profile/${name}`)
-      .then(res => cheerio.load(res.data))
-      .then(ch => {
+      .then((res) => cheerio.load(res.data))
+      .then((ch) => {
         $ = ch;
-        const updatesA = $("div.statistics-updates", "div.updates.anime");
+        const updatesA: any = $("div.statistics-updates", "div.updates.anime");
         if (!updatesA) {
           if (updatesA.length == 0) res([]);
         }
         return updatesA;
       })
-      .then(updatesA => {
-        let array = [];
-        updatesA.each((i, elem) => {
-          let title = $(elem)
-            .find("a", "div.data")
-            .text()
-            .trim();
-          let link = $(elem)
-            .find("a")
-            .attr("href");
-          let ep = $(elem)
-            .find("div.fn-grey2 span")
-            .eq(0)
-            .text()
-            .trim();
-          let score = $(elem)
-            .find("div.fn-grey2 span")
-            .eq(1)
-            .text()
-            .trim();
-          let img = $(elem)
-            .find("img")
-            .attr("src");
+      .then((updatesA) => {
+        let array: any[] = [];
+        updatesA.each((i: any, elem: any) => {
+          let title = $(elem).find("a", "div.data").text().trim();
+          let link = $(elem).find("a").attr("href");
+          let ep = $(elem).find("div.fn-grey2 span").eq(0).text().trim();
+          let score = $(elem).find("div.fn-grey2 span").eq(1).text().trim();
+          let img = $(elem).find("img").attr("src");
           let graph = $(elem).find("span.graph-inner");
           let date = $(elem)
             .find("span.fn-grey2", "div.clearfix")
@@ -73,7 +58,7 @@ export default function(name: string) {
 
         res(array);
       })
-      .catch(e => rej(e));
+      .catch((e) => rej(e));
   });
 }
 

@@ -28,9 +28,9 @@ class TopSimple {
     this.baseUrl = baseUrl;
     this.type = type;
   }
-  private topGet(p: number, subType: string) {
+  private topGet(p: number | undefined, subType: string) {
     let params: string[] = [this.type];
-    if (p != null) params[1] = String(p);
+    if (p != undefined) params[1] = String(p);
     else params[1] = "1";
     params[2] = subType;
 
@@ -48,9 +48,9 @@ class TopAnime {
   constructor(baseUrl: string) {
     this.baseUrl = baseUrl;
   }
-  private topGet(p: number, subType: string) {
+  private topGet(p: number | undefined, subType: string) {
     let params: string[] = ["anime"];
-    if (p != null) params[1] = String(p);
+    if (p != undefined) params[1] = String(p);
     else params[1] = "1";
     params[2] = subType;
 
@@ -92,9 +92,9 @@ class TopManga {
   constructor(baseUrl: string) {
     this.baseUrl = baseUrl;
   }
-  private topGet(p: number, subType: string) {
+  private topGet(p: number | undefined, subType: string) {
     let params: string[] = ["manga"];
-    if (p != null) params[1] = String(p);
+    if (p != undefined) params[1] = String(p);
     else params[1] = "1";
     params[2] = subType;
 

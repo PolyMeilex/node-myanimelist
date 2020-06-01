@@ -56,13 +56,22 @@ class UserAnimelist {
     if (p != null) this.page = String(p);
     else this.page = "1";
   }
-  private getList(params: string[], qparams?: Object) {
+  private getList(params: string[], qparams?: any) {
     if (qparams != null) {
-      let qparams = Object.keys(params)
-        .filter((k) => params[k] != null)
-        .map((k) => `${k}=${encodeURIComponent(params[k])}`)
+      let qparams = Object.keys(params) as string[];
+
+      let out = qparams
+        .map((key) => {
+          return {
+            key,
+            param: params[key as any] as string,
+          };
+        })
+        .filter((p) => p.param != null)
+        .map((k) => `${k}=${encodeURIComponent(params[k as any])}`)
         .join("&");
-      params.push(qparams);
+
+      params.push(out);
     }
 
     const url = joinUrl(this.baseUrl, params);
@@ -95,13 +104,22 @@ class UserMangalist {
     if (p != null) this.page = String(p);
     else this.page = "1";
   }
-  private getList(params: string[], qparams?: Object) {
+  private getList(params: string[], qparams?: any) {
     if (qparams != null) {
-      let qparams = Object.keys(params)
-        .filter((k) => params[k] != null)
-        .map((k) => `${k}=${encodeURIComponent(params[k])}`)
+      let qparams = Object.keys(params) as string[];
+
+      let out = qparams
+        .map((key) => {
+          return {
+            key,
+            param: params[key as any] as string,
+          };
+        })
+        .filter((p) => p.param != null)
+        .map((k) => `${k}=${encodeURIComponent(params[k as any])}`)
         .join("&");
-      params.push(qparams);
+
+      params.push(out);
     }
 
     const url = joinUrl(this.baseUrl, params);

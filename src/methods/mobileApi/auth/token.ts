@@ -1,12 +1,12 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { baseURL } from "../mobileApis";
 
-const qs = obj =>
+const qs = (obj: any) =>
   Object.keys(obj)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]))
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]))
     .join("&");
 
-export default function(
+export default function (
   username: string,
   password: string,
   grant_type: string = "password",
@@ -20,13 +20,13 @@ export default function(
       client_id,
       username,
       password,
-      grant_type
-    })
+      grant_type,
+    }),
   };
 
   return new Promise((res, rej) => {
     axios(request)
-      .then(r => res(r.data))
-      .catch(err => rej(err));
+      .then((r) => res(r.data))
+      .catch((err) => rej(err));
   });
 }

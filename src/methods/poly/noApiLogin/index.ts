@@ -3,14 +3,14 @@ export interface LoginData {
   csrf_token: string;
 }
 
-export default function(login: string, password: string): Promise<LoginData> {
+export default function (login: string, password: string): Promise<LoginData> {
   const getStartData = require("./getStartData");
   const loginWithData = require("./loginWithData");
 
   return new Promise((res, rej) => {
     getStartData()
-      .then(startData => loginWithData(login, password, startData))
-      .then(logData => res(logData))
-      .catch(err => rej(err));
+      .then((startData: any) => loginWithData(login, password, startData))
+      .then((logData: any) => res(logData))
+      .catch((err: any) => rej(err));
   });
 }
