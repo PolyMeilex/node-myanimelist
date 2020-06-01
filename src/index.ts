@@ -71,7 +71,7 @@ class JikanClient {
     AnimeOrderBy,
     MangaOrderBy,
     Sort,
-    Rating
+    Rating,
   };
 }
 

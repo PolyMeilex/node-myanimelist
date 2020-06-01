@@ -17,7 +17,7 @@ interface NewsListItem {
   author_url: string;
   forum_url: string;
 
-  image_url?: string;
+  image_url: string | null;
 
   comments: number;
   intro: string;

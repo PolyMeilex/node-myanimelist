@@ -10,10 +10,10 @@ interface AnimeRecentlyUpdatedByUser {
     username: string;
     url: string;
     image_url: string;
-    score?: number;
+    score: number | null;
     status: Status;
-    episodes_seen?: number;
-    episodes_total?: number;
+    episodes_seen: number | null;
+    episodes_total: number | null;
     date: Date;
 }
 declare enum Status {

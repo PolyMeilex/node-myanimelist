@@ -7,36 +7,36 @@ export default interface AnimeInfo {
   url: string;
   image_url: string;
 
-  trailer_url?: string;
+  trailer_url: string | null;
 
   title: string;
-  title_english?: string;
-  title_japanese?: string;
+  title_english: string | null;
+  title_japanese: string | null;
   title_synonyms: any[];
 
-  type?: string;
+  type: string | null;
 
-  source?: string;
+  source: string | null;
   episodes: number | null;
-  status?: string;
+  status: string | null;
   airing: boolean;
   aired: DateRange;
 
-  duration?: string;
-  rating?: string;
-  score?: number;
-  scored_by?: number;
+  duration: string | null;
+  rating: string | null;
+  score: number | null;
+  scored_by: number | null;
 
-  rank?: number;
-  popularity?: number;
-  members?: number;
+  rank: number | null;
+  popularity: number | null;
+  members: number | null;
 
-  favorites?: number;
-  synopsis?: string;
-  background?: string;
+  favorites: number | null;
+  synopsis: string | null;
+  background: string | null;
 
-  premiered?: string;
-  broadcast?: string;
+  premiered: string | null;
+  broadcast: string | null;
   related: Related;
 
   producers: MalUrl[];

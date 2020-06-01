@@ -10,9 +10,9 @@ export default interface Episodes {
 interface EpisodeListItem {
     episode_id: number;
     title: string;
-    title_japanese?: string;
-    title_romanji?: string;
-    aired?: Date;
+    title_japanese: string | null;
+    title_romanji: string | null;
+    aired: Date | null;
     filler: boolean;
     recap: boolean;
     video_url: string;

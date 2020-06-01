@@ -13,10 +13,10 @@ interface EpisodeListItem {
   episode_id: number;
 
   title: string;
-  title_japanese?: string;
-  title_romanji?: string;
+  title_japanese: string | null;
+  title_romanji: string | null;
 
-  aired?: Date;
+  aired: Date | null;
   filler: boolean;
   recap: boolean;
 
