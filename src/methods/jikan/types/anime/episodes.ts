@@ -1,5 +1,5 @@
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/Episodes.php */
-export default interface Episodes {
+export interface Episodes {
   episodes_last_page: number;
   episodes: EpisodeListItem[];
 
@@ -7,6 +7,7 @@ export default interface Episodes {
   request_cached: boolean;
   request_hash: string;
 }
+export default Episodes;
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/EpisodeListItem.php */
 export interface EpisodeListItem {

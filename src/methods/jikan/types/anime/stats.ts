@@ -1,5 +1,5 @@
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeStats.php */
-export default interface AnimeStats {
+export interface AnimeStats {
   watching: number;
   completed: number;
   on_hold: number;
@@ -15,6 +15,7 @@ export default interface AnimeStats {
   request_cached: boolean;
   request_hash: string;
 }
+export default AnimeStats;
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeStatsScore.php */
 export interface AnimeStatsScore {

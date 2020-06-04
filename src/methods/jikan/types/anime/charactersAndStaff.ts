@@ -1,7 +1,7 @@
 import CharacterListItem from "../character/characterListItem";
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeCharactersAndStaff.php */
-export default interface AnimeCharactersAndStaff {
+export interface AnimeCharactersAndStaff {
   characters: CharacterListItem[];
   staff: StaffListItem[];
 
@@ -9,6 +9,7 @@ export default interface AnimeCharactersAndStaff {
   request_cached: boolean;
   request_hash: string;
 }
+export default AnimeCharactersAndStaff;
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/StaffListItem.php */
 export interface StaffListItem {

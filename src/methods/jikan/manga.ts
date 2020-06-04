@@ -1,5 +1,6 @@
 import { joinUrl } from "./url";
-import { jikanGet, jikanUrl } from "./jikanApi";
+import { jikanGet, jikanUrl, Req } from "./jikanApi";
+import { MangaInfo, News, MangaCharacters, Pictures } from "./types/manga";
 
 /**
  * # Manga
@@ -36,16 +37,16 @@ export class Manga {
   constructor(id: number) {
     this.baseUrl = `${jikanUrl}/manga/${id}`;
   }
-  info() {
+  info(): Req<MangaInfo> {
     return jikanGet(this.baseUrl);
   }
-  characters() {
+  characters(): Req<MangaCharacters> {
     return jikanGet(joinUrl(this.baseUrl, ["characters"]));
   }
-  news() {
+  news(): Req<News> {
     return jikanGet(joinUrl(this.baseUrl, ["news"]));
   }
-  pictures() {
+  pictures(): Req<Pictures> {
     return jikanGet(joinUrl(this.baseUrl, ["pictures"]));
   }
   stats() {

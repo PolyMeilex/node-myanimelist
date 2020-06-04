@@ -1,30 +1,15 @@
-import AnimeInfo from "./info";
-import Episodes from "./episodes";
-import AnimeCharactersAndStaff from "./charactersAndStaff";
+export { AnimeInfo } from "./info";
+export { Episodes } from "./episodes";
+export { AnimeCharactersAndStaff } from "./charactersAndStaff";
 
-import News from "../news";
-import Pictures from "../common/pictures";
-import AnimeVideos from "./videos";
+export { News } from "../news";
+export { Pictures } from "../common/pictures";
+export { AnimeVideos } from "./videos";
 
-import AnimeStats from "./stats";
-import Forum from "./forum";
-import AnimeMoreInfo from "./moreInfo";
+export { AnimeStats } from "./stats";
+export { Forum } from "./forum";
+export { AnimeMoreInfo } from "./moreInfo";
 
-import AnimeReviews from "./reviews";
-import Recommendations from "./recommendations";
-import AnimeUserUpdates from "./userUpdates";
-
-export {
-  AnimeInfo,
-  AnimeCharactersAndStaff,
-  Episodes,
-  News,
-  Pictures,
-  AnimeVideos,
-  AnimeStats,
-  Forum,
-  AnimeMoreInfo,
-  AnimeReviews,
-  Recommendations,
-  AnimeUserUpdates,
-};
+export { AnimeReviews } from "./reviews";
+export { Recommendations } from "./recommendations";
+export { AnimeUserUpdates } from "./userUpdates";

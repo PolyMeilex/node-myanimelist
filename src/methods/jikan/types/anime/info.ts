@@ -2,7 +2,7 @@ import MalUrl from "../common/malUrl";
 import DateRange from "../common/dateRange";
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/Anime.php */
-export default interface AnimeInfo {
+export interface AnimeInfo {
   mal_id: number;
   url: string;
   image_url: string;
@@ -51,6 +51,7 @@ export default interface AnimeInfo {
   request_cached: boolean;
   request_hash: string;
 }
+export default AnimeInfo;
 
 export interface AnimeRelated {
   Adaptation: MalUrl[];

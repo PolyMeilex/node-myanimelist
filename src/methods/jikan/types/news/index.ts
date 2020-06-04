@@ -1,11 +1,12 @@
 /** src: ? */
-export default interface News {
+export interface News {
   articles: NewsListItem[];
 
   request_cache_expiry: number;
   request_cached: boolean;
   request_hash: string;
 }
+export default News;
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/News/NewsListItem.php */
 export interface NewsListItem {

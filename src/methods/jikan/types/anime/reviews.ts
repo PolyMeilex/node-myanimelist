@@ -1,11 +1,12 @@
 /** src: ? */
-export default interface AnimeReviews {
+export interface AnimeReviews {
   reviews: AnimeReview[];
 
   request_cache_expiry: number;
   request_cached: boolean;
   request_hash: string;
 }
+export default AnimeReviews;
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeReview.php */
 export interface AnimeReview {

@@ -1,11 +1,12 @@
 /** src: ? */
-export default interface AnimeUserUpdates {
+export interface AnimeUserUpdates {
   users: AnimeRecentlyUpdatedByUser[];
 
   request_cache_expiry: number;
   request_cached: boolean;
   request_hash: string;
 }
+export default AnimeUserUpdates;
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeRecentlyUpdatedByUser.php */
 export interface AnimeRecentlyUpdatedByUser {
