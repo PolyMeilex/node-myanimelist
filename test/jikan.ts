@@ -1,4 +1,4 @@
-import Mal from "../";
+import { Jikan } from "../";
 
 // Return url instead of calling jikan api
 // @ts-ignore
@@ -13,7 +13,7 @@ function jikanIt(a, b) {
 }
 
 describe("/anime", () => {
-  let anime = Mal.anime(1);
+  let anime = Jikan.anime(1);
 
   describe("/", () => {
     jikanIt(anime.info(), `${jikanUrl}/anime/1`);
@@ -57,7 +57,7 @@ describe("/anime", () => {
 });
 
 describe("/manga", () => {
-  let manga = Mal.manga(1);
+  let manga = Jikan.manga(1);
 
   describe("/", () => {
     jikanIt(manga.info(), `${jikanUrl}/manga/1`);
@@ -94,7 +94,7 @@ describe("/manga", () => {
 });
 
 describe("/person", () => {
-  let person = Mal.person(1);
+  let person = Jikan.person(1);
 
   describe("/", () => {
     jikanIt(person.info(), `${jikanUrl}/person/1`);
@@ -105,7 +105,7 @@ describe("/person", () => {
 });
 
 describe("/character", () => {
-  let character = Mal.character(1);
+  let character = Jikan.character(1);
 
   describe("/", () => {
     jikanIt(character.info(), `${jikanUrl}/character/1`);
@@ -116,7 +116,7 @@ describe("/character", () => {
 });
 
 describe("/search", () => {
-  let search = Mal.search();
+  let search = Jikan.search();
 
   describe("/anime", () => {
     jikanIt(search.anime({ q: "fate" }), `${jikanUrl}/search/anime?q=fate`);
@@ -141,29 +141,29 @@ describe("/search", () => {
 
 describe("/season", () => {
   describe("/2018/winter", () => {
-    jikanIt(Mal.season(2018, "winter"), `${jikanUrl}/season/2018/winter`);
+    jikanIt(Jikan.season(2018, "winter"), `${jikanUrl}/season/2018/winter`);
   });
   describe("/2019/winter", () => {
-    jikanIt(Mal.season(2019, "winter"), `${jikanUrl}/season/2019/winter`);
+    jikanIt(Jikan.season(2019, "winter"), `${jikanUrl}/season/2019/winter`);
   });
   describe("/2018/summer", () => {
-    jikanIt(Mal.season(2018, "summer"), `${jikanUrl}/season/2018/summer`);
+    jikanIt(Jikan.season(2018, "summer"), `${jikanUrl}/season/2018/summer`);
   });
   describe("/2019/summer", () => {
-    jikanIt(Mal.season(2019, "summer"), `${jikanUrl}/season/2019/summer`);
+    jikanIt(Jikan.season(2019, "summer"), `${jikanUrl}/season/2019/summer`);
   });
 });
 
 describe("/season/archive", () => {
-  jikanIt(Mal.seasonArchive(), `${jikanUrl}/season/archive`);
+  jikanIt(Jikan.seasonArchive(), `${jikanUrl}/season/archive`);
 });
 
 describe("/season/later", () => {
-  jikanIt(Mal.seasonLater(), `${jikanUrl}/season/later`);
+  jikanIt(Jikan.seasonLater(), `${jikanUrl}/season/later`);
 });
 
 describe("/schedule", () => {
-  let schedule = Mal.schedule();
+  let schedule = Jikan.schedule();
 
   describe("/", () => {
     jikanIt(schedule.all(), `${jikanUrl}/schedule`);
@@ -198,7 +198,7 @@ describe("/schedule", () => {
 });
 
 describe("/top", () => {
-  let top = Mal.top();
+  let top = Jikan.top();
 
   describe("/anime", () => {
     let topAnime = top.anime();
@@ -298,73 +298,73 @@ describe("/top", () => {
 });
 
 describe("/genre", () => {
-  let genre = Mal.genre();
+  let genre = Jikan.genre();
 
   describe("@deprecated (check backward compatibility)", () => {
     jikanIt(
-      genre.anime(Mal.types.AnimeGenre.action),
+      genre.anime(Jikan.types.AnimeGenre.action),
       `${jikanUrl}/genre/anime/1`
     );
     jikanIt(
-      genre.manga(Mal.types.MangaGenre.action),
+      genre.manga(Jikan.types.MangaGenre.action),
       `${jikanUrl}/genre/manga/1`
     );
   });
 
   describe("/anime", () => {
     jikanIt(
-      genre.anime(Mal.types.AnimeGenreId.action),
+      genre.anime(Jikan.types.AnimeGenreId.action),
       `${jikanUrl}/genre/anime/1`
     );
     jikanIt(
-      genre.anime(Mal.types.AnimeGenreId.action, 1),
+      genre.anime(Jikan.types.AnimeGenreId.action, 1),
       `${jikanUrl}/genre/anime/1/1`
     );
     jikanIt(
-      genre.anime(Mal.types.AnimeGenreId.action, 2),
+      genre.anime(Jikan.types.AnimeGenreId.action, 2),
       `${jikanUrl}/genre/anime/1/2`
     );
     jikanIt(
-      genre.anime(Mal.types.AnimeGenreId.adventure, 1),
+      genre.anime(Jikan.types.AnimeGenreId.adventure, 1),
       `${jikanUrl}/genre/anime/2/1`
     );
   });
   describe("/manga", () => {
     jikanIt(
-      genre.manga(Mal.types.MangaGenreId.action),
+      genre.manga(Jikan.types.MangaGenreId.action),
       `${jikanUrl}/genre/manga/1`
     );
     jikanIt(
-      genre.manga(Mal.types.MangaGenreId.action, 1),
+      genre.manga(Jikan.types.MangaGenreId.action, 1),
       `${jikanUrl}/genre/manga/1/1`
     );
     jikanIt(
-      genre.manga(Mal.types.MangaGenreId.action, 2),
+      genre.manga(Jikan.types.MangaGenreId.action, 2),
       `${jikanUrl}/genre/manga/1/2`
     );
     jikanIt(
-      genre.manga(Mal.types.MangaGenreId.adventure, 1),
+      genre.manga(Jikan.types.MangaGenreId.adventure, 1),
       `${jikanUrl}/genre/manga/2/1`
     );
   });
 });
 
 describe("/producer", () => {
-  jikanIt(Mal.producer(1), `${jikanUrl}/producer/1`);
-  jikanIt(Mal.producer(2), `${jikanUrl}/producer/2`);
-  jikanIt(Mal.producer(1, 2), `${jikanUrl}/producer/1/2`);
-  jikanIt(Mal.producer(2, 1), `${jikanUrl}/producer/2/1`);
+  jikanIt(Jikan.producer(1), `${jikanUrl}/producer/1`);
+  jikanIt(Jikan.producer(2), `${jikanUrl}/producer/2`);
+  jikanIt(Jikan.producer(1, 2), `${jikanUrl}/producer/1/2`);
+  jikanIt(Jikan.producer(2, 1), `${jikanUrl}/producer/2/1`);
 });
 
 describe("/magazine", () => {
-  jikanIt(Mal.magazine(1), `${jikanUrl}/magazine/1`);
-  jikanIt(Mal.magazine(2), `${jikanUrl}/magazine/2`);
-  jikanIt(Mal.magazine(1, 2), `${jikanUrl}/magazine/1/2`);
-  jikanIt(Mal.magazine(2, 1), `${jikanUrl}/magazine/2/1`);
+  jikanIt(Jikan.magazine(1), `${jikanUrl}/magazine/1`);
+  jikanIt(Jikan.magazine(2), `${jikanUrl}/magazine/2`);
+  jikanIt(Jikan.magazine(1, 2), `${jikanUrl}/magazine/1/2`);
+  jikanIt(Jikan.magazine(2, 1), `${jikanUrl}/magazine/2/1`);
 });
 
 describe("/user", () => {
-  let user = Mal.user("PolyMeilex");
+  let user = Jikan.user("PolyMeilex");
 
   describe("/profile", () => {
     jikanIt(user.profile(), `${jikanUrl}/user/PolyMeilex/profile`);
@@ -491,7 +491,7 @@ describe("/user", () => {
 });
 
 describe("/club", () => {
-  let club = Mal.club(1);
+  let club = Jikan.club(1);
 
   describe("/", () => {
     jikanIt(club.info(), `${jikanUrl}/club/1`);

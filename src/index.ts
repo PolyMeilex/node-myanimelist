@@ -1,4 +1,5 @@
-import * as Mal from "./methods/jikan";
+export * as Jikan from "./methods/jikan";
+import * as Mal from "./methods/malApi";
 
 import login from "./methods/poly/noApiLogin";
 import notifications from "./methods/poly/loginRequired/notifications";
@@ -12,5 +13,5 @@ class ScraperClient {
 
 const { version } = require("../package.json");
 
-export { Mal, version, ScraperClient };
+export { version, Mal, ScraperClient };
 export default Mal;
