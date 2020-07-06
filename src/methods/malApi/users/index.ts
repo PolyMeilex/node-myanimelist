@@ -47,9 +47,20 @@ export class MalUser {
     this.name = name;
   }
 
-  info(fields: string[]): MalRequest {
+  info(
+    fields: Array<"anime_statistics" | "is_supporter"> = [
+      "anime_statistics",
+      "is_supporter",
+    ]
+  ): MalRequest {
+    let quary = fields.join(",");
+
+    if (quary.length > 0) {
+      quary = "?fields=" + quary;
+    }
+
     const req = new MalRequest(
-      [apiUrl, "users", this.name],
+      [apiUrl, "users", this.name, quary],
       this.acount.malToken
     );
     return req;
@@ -69,7 +80,8 @@ export class MalUser {
       [apiUrl, "users", this.name, "animelist", quary],
       this.acount.malToken
     );
-    console.log(req);
     return req;
   }
+
+  // device_tokens(device_token,device_type){}
 }
