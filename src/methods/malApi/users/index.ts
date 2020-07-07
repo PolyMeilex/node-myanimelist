@@ -3,40 +3,44 @@ import MalRequest from "../request";
 
 import { apiUrl } from "../mobileApis";
 import { queryEncode } from "../util";
-import { AnimeFields } from "../types";
+import { AnimeField } from "../types";
 
 export type AnimelistParams = {
   status?: string;
   sort?: string;
   limit?: number;
   offset?: number;
-  fields?: AnimeFields[];
+  fields?: AnimeField[];
 };
 
-const defaultAnimelistParams: AnimelistParams = {
-  fields: [
-    "alternative_titles",
-    "media_type",
-    "num_episodes",
-    "status",
-    "start_date",
-    "end_date",
-    "average_episode_duration",
-    "synopsis",
-    "mean",
-    "rank",
-    "popularity",
-    "num_list_users",
-    "num_favorites",
-    "num_scoring_users",
-    "start_season",
-    "broadcast",
-    "my_list_status{start_date,finish_date}",
-    "nsfw",
-    "created_at",
-    "updated_at",
-  ],
-};
+const defaultAnimelistFields: AnimeField[] = [
+  "alternative_titles",
+  "media_type",
+  "num_episodes",
+
+  "status",
+  "start_date",
+  "end_date",
+
+  "average_episode_duration",
+  "synopsis",
+  "mean",
+
+  "rank",
+  "popularity",
+  "num_list_users",
+
+  "num_favorites",
+  "num_scoring_users",
+  "start_season",
+
+  "broadcast",
+  "my_list_status{start_date,finish_date}",
+  "nsfw",
+
+  "created_at",
+  "updated_at",
+];
 
 export class MalUser {
   acount: MalAcount;
@@ -66,9 +70,11 @@ export class MalUser {
     return req;
   }
 
-  animelist(params: AnimelistParams = defaultAnimelistParams): MalRequest {
+  animelist(params: AnimelistParams = {}): MalRequest {
     if (params.fields) {
-      params.fields = [params.fields.join(",")];
+      params.fields = [params.fields.join(",") as any];
+    } else {
+      params.fields = [defaultAnimelistFields.join(",") as any];
     }
 
     let quary = queryEncode(params);
