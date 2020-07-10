@@ -5,7 +5,7 @@ import { apiUrl } from "../api";
 import { queryEncode } from "../util";
 import { AnimeField } from "../types";
 import { AnimeFields } from "../anime";
-import { Pagination } from "../common";
+import { Paging } from "../schemas/common";
 
 export type AnimelistParams = {
   status?: string;
@@ -81,7 +81,7 @@ export class MalUser {
     return req;
   }
 
-  animelist<T>(fields: AnimeFields<T>): MalRequest<Pagination<T>> {
+  animelist<T>(fields: AnimeFields<T>): MalRequest<Paging<T>> {
     let quary = Object.keys(fields.fields).join(",");
 
     if (quary.length > 0) {
