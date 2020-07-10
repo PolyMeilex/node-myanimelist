@@ -1,4 +1,4 @@
-import * as Common from "./common";
+import * as Common from "../schemas/common";
 
 export module AnimeForList {
   export interface MediaType {
@@ -128,36 +128,35 @@ export module AnimeForDetails {
   }
 }
 
+export interface AnimeListStatusBase {
+  status:
+    | "watching"
+    | "completed"
+    | "on_hold"
+    | "dropped"
+    | "plan_to_watch"
+    | null;
+  /**
+   * 0-10
+   */
+  score: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  /**
+   * 0 or the number of watched episodes.
+   */
+  num_episodes_watched: number;
+  // num_watched_episodes: number;
+
+  /**
+   * If authorized user watches an anime again after completion, this field value is true.
+   *
+   * In this case, MyAnimeList treats the anime as 'watching' in the user's anime list.
+   */
+  is_rewatching: boolean;
+
+  updated_at: string;
+}
+
 export module AnimeListStatus {
-  export interface Status {
-    status:
-      | "watching"
-      | "completed"
-      | "on_hold"
-      | "dropped"
-      | "plan_to_watch"
-      | null;
-  }
-  export interface Score {
-    /**
-     * 0-10
-     */
-    score: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-  }
-  export interface NumWatchedEpisodes {
-    /**
-     * 0 or the number of watched episodes.
-     */
-    num_watched_episodes: number;
-  }
-  export interface IsRewatching {
-    /**
-     * If authorized user watches an anime again after completion, this field value is true.
-     *
-     * In this case, MyAnimeList treats the anime as 'watching' in the user's anime list.
-     */
-    is_rewatching: boolean;
-  }
   export interface StartDate {
     start_date: string | null;
   }
@@ -182,7 +181,8 @@ export module AnimeListStatus {
      */
     comments: string;
   }
-  export interface UpdatedAt {
-    updated_at: string;
-  }
+}
+
+export interface AnimeItem<T> {
+  node: T;
 }

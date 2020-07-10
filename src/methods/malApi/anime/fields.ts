@@ -1,28 +1,20 @@
 import { WorkForList, WorkBase } from "../schemas/work";
-import { AnimeForList, AnimeForDetails } from "../schemas/anime";
+import {
+  AnimeForList,
+  AnimeForDetails,
+  AnimeListStatus,
+  AnimeListStatusBase,
+} from "./types";
 
-function f(_target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-  const after = descriptor.value;
-
-  const real_name = propertyKey
-    .split(/(?=[A-Z])/)
-    .map((s) => s.toLocaleLowerCase())
-    .join("_");
-
-  descriptor.value = function (...args: any[]) {
-    (this as any).fields[real_name] = true;
-
-    return after.apply(this, args);
-  };
-}
+import { field as f } from "../util";
 
 export interface AnimeSearchItem<T> {
   node: T;
 }
 
-///
-/// Anime For List
-///
+/**
+ * Anime For List
+ */
 export class AnimeFields<T> {
   fields: any = {};
 
@@ -93,8 +85,11 @@ export class AnimeFields<T> {
   }
 
   // TODO: Builder
-  myListStatus() {
-    return this;
+  myListStatus<U>(fields: AnimeListStatusFields<U>) {
+    // if (Object.keys(fields.fields).length > 0) {
+    this.fields["my_list_status"] = Object.keys(fields.fields).join(",");
+    // }
+    return (this as any) as AnimeFields<T & { my_list_status: U }>;
   }
 
   @f numEpisodes() {
@@ -128,13 +123,16 @@ export class AnimeFields<T> {
   }
 }
 
+/**
+ * Anime For List
+ */
 export function animeFields() {
   return new AnimeFields<WorkBase>();
 }
 
-///
-/// Anime For Details
-///
+/**
+ * Anime For Details
+ */
 export class AnimeDetailsFields<T> {
   fields: any = {};
 
@@ -275,6 +273,50 @@ export class AnimeDetailsFields<T> {
   }
 }
 
+/**
+ * Anime For Details
+ */
 export function animeDetailsFields() {
   return new AnimeDetailsFields<WorkBase>();
+}
+
+/**
+ * Anime List Status
+ */
+export class AnimeListStatusFields<T> {
+  fields: any = {};
+
+  type: T = null as any;
+
+  @f startDate() {
+    return (this as any) as AnimeListStatusFields<
+      T & AnimeListStatus.StartDate
+    >;
+  }
+  @f finishDate() {
+    return (this as any) as AnimeListStatusFields<
+      T & AnimeListStatus.FinishDate
+    >;
+  }
+  @f priority() {
+    return (this as any) as AnimeListStatusFields<T & AnimeListStatus.Priority>;
+  }
+  @f rewatchValue() {
+    return (this as any) as AnimeListStatusFields<
+      T & AnimeListStatus.RewatchValue
+    >;
+  }
+  @f tags() {
+    return (this as any) as AnimeListStatusFields<T & AnimeListStatus.Tags>;
+  }
+  @f comments() {
+    return (this as any) as AnimeListStatusFields<T & AnimeListStatus.Comments>;
+  }
+}
+
+/**
+ * Anime List Status
+ */
+export function animeListStatusFields() {
+  return new AnimeListStatusFields<AnimeListStatusBase>();
 }

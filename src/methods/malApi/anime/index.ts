@@ -2,7 +2,8 @@ import { MalAcount } from "..";
 import { MalRequest } from "../request";
 import { apiUrl } from "../api";
 
-import { AnimeFields, AnimeSearchItem } from "./fields";
+import { AnimeFields, AnimeDetailsFields, animeFields } from "./fields";
+import { AnimeItem } from "./types";
 import { Paging } from "../schemas/common";
 
 export * from "./fields";
@@ -16,26 +17,38 @@ export class MalAnime {
 
   search<T>(
     q: string,
-    fields: AnimeFields<T>
-  ): MalRequest<Paging<AnimeSearchItem<T>>> {
-    let quary = Object.keys(fields.fields).join(",");
+    fields?: AnimeFields<T>,
+    limit: number = 100,
+    offset: number = 0
+  ): MalRequest<Paging<AnimeItem<T>>> {
+    let fieldsStr;
 
-    if (quary.length > 0) {
-      quary = "?fields=" + quary + "&q=" + q;
+    if (fields) {
+      fieldsStr = Object.keys(fields.fields).join(",");
     } else {
-      quary = "?q=" + q;
+      fieldsStr = "";
     }
+
+    let quary = `?q=${q}`;
+
+    if (fieldsStr.length > 0) quary += `&fields=${fieldsStr}`;
+    if (limit != 100) quary += `&limit=${limit}`;
+    if (offset != 0) quary += `&offset=${offset}`;
 
     return new MalRequest<any>([apiUrl, "anime", quary], this.acount.malToken);
   }
 
-  // TODO:
-  details<T>(id: number, fields: AnimeFields<T>) {
-    let quary = Object.keys(fields.fields).join(",");
+  details<T>(id: number, fields?: AnimeDetailsFields<T>) {
+    let fieldsStr;
 
-    if (quary.length > 0) {
-      quary = "?fields=" + quary;
+    if (fields) {
+      fieldsStr = Object.keys(fields.fields).join(",");
+    } else {
+      fieldsStr = "";
     }
+
+    let quary = "";
+    if (fieldsStr.length > 0) quary = "?fields=" + fieldsStr;
 
     return new MalRequest<T>(
       [apiUrl, "anime", id.toString(), quary],

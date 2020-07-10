@@ -1,10 +1,10 @@
 import MalRequest from "./request";
 import { apiUrl, secondaryApiUrl } from "./api";
 import { queryEncode } from "./util";
-import { MalUser } from "./users";
+import { MalUser } from "./user";
 import { MalAnime } from "./anime";
 
-export * as Users from "./users";
+export * as User from "./user";
 export * as Anime from "./anime";
 
 export class MalToken {
