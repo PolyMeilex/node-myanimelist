@@ -10,7 +10,8 @@
     "sourceMap": true,
     "removeComments": false,
     "outDir": "./dist/",
-    "declarationDir": "./typings/"
+    "declarationDir": "./typings/",
+    "experimentalDecorators": true
   },
   "include": ["./src"]
 }

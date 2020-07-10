@@ -3,7 +3,7 @@ import { AxiosRequestConfig, Method } from "axios";
 import axios from "axios";
 import urljoin from "url-join";
 
-export class MalRequest {
+export class MalRequest<T> {
   method: Method = "get";
   url: string;
   headers: { [key: string]: string } = {};
@@ -17,7 +17,7 @@ export class MalRequest {
     }
   }
 
-  async call(): Promise<any> {
+  async call(): Promise<T> {
     const request: AxiosRequestConfig = {
       method: this.method,
       url: this.url,

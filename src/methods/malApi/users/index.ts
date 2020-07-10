@@ -1,9 +1,11 @@
 import { MalAcount } from "..";
 import MalRequest from "../request";
 
-import { apiUrl } from "../mobileApis";
+import { apiUrl } from "../api";
 import { queryEncode } from "../util";
 import { AnimeField } from "../types";
+import { AnimeFields } from "../anime";
+import { Pagination } from "../common";
 
 export type AnimelistParams = {
   status?: string;
@@ -15,31 +17,40 @@ export type AnimelistParams = {
 
 const defaultAnimelistFields: AnimeField[] = [
   "alternative_titles",
-  "media_type",
-  "num_episodes",
-
-  "status",
   "start_date",
   "end_date",
 
-  "average_episode_duration",
   "synopsis",
   "mean",
-
   "rank",
+
   "popularity",
   "num_list_users",
-
-  "num_favorites",
   "num_scoring_users",
-  "start_season",
 
-  "broadcast",
-  "my_list_status{start_date,finish_date}",
+  "media_type",
+  "num_episodes",
   "nsfw",
 
+  // genres
   "created_at",
   "updated_at",
+
+  // media_type
+  "status",
+  "my_list_status{start_date,finish_date}",
+
+  // num_episodes
+  "start_season",
+  "broadcast",
+
+  // source
+  "average_episode_duration",
+  // rating
+
+  // studios
+
+  "num_favorites",
 ];
 
 export class MalUser {
@@ -56,7 +67,7 @@ export class MalUser {
       "anime_statistics",
       "is_supporter",
     ]
-  ): MalRequest {
+  ): MalRequest<any> {
     let quary = fields.join(",");
 
     if (quary.length > 0) {
@@ -70,19 +81,25 @@ export class MalUser {
     return req;
   }
 
-  animelist(params: AnimelistParams = {}): MalRequest {
-    if (params.fields) {
-      params.fields = [params.fields.join(",") as any];
-    } else {
-      params.fields = [defaultAnimelistFields.join(",") as any];
-    }
+  animelist<T>(fields: AnimeFields<T>): MalRequest<Pagination<T>> {
+    let quary = Object.keys(fields.fields).join(",");
 
-    let quary = queryEncode(params);
     if (quary.length > 0) {
-      quary = "?" + quary;
+      quary = "?fields=" + quary;
     }
 
-    const req = new MalRequest(
+    // if (fields) {
+    //   params.fields = [params.fields.join(",") as any];
+    // } else {
+    //   params.fields = [defaultAnimelistFields.join(",") as any];
+    // }
+
+    // let quary = queryEncode(params);
+    // if (quary.length > 0) {
+    //   quary = "?" + quary;
+    // }
+
+    const req = new MalRequest<any>(
       [apiUrl, "users", this.name, "animelist", quary],
       this.acount.malToken
     );

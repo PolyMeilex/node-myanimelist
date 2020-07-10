@@ -1,9 +1,11 @@
 import MalRequest from "./request";
-import { apiUrl, secondaryApiUrl } from "./mobileApis";
+import { apiUrl, secondaryApiUrl } from "./api";
 import { queryEncode } from "./util";
 import { MalUser } from "./users";
+import { MalAnime } from "./anime";
 
 export * as Users from "./users";
+export * as Anime from "./anime";
 
 export class MalToken {
   token_type: string;
@@ -23,10 +25,13 @@ export class MalToken {
     this.refresh_token = refreshToken;
   }
 
+  /**
+   * **Unstable!**
+   */
   static async fromCredential(
+    clientId: string,
     username: string,
-    password: string,
-    clientId: string
+    password: string
   ): Promise<MalToken> {
     const req = new MalRequest([apiUrl, "/auth/token"]);
     req.method = "post";
@@ -38,7 +43,7 @@ export class MalToken {
       grant_type: "password",
     });
 
-    const token = await req.call();
+    const token: any = await req.call();
 
     return new MalToken(
       token.token_type,
@@ -49,8 +54,8 @@ export class MalToken {
   }
 
   static async fromRefreshToken(
-    refreshToken: string,
-    clientId: string
+    clientId: string,
+    refreshToken: string
   ): Promise<MalToken> {
     const req = new MalRequest([secondaryApiUrl, "/oauth2/token"]);
     req.method = "post";
@@ -60,7 +65,32 @@ export class MalToken {
       refresh_token: refreshToken,
       grant_type: "password",
     });
-    const token = await req.call();
+    const token: any = await req.call();
+
+    return new MalToken(
+      token.token_type,
+      token.access_token,
+      token.refresh_token,
+      token.expires_in
+    );
+  }
+
+  static async fromAuthorizationCode(
+    clientId: string,
+    code: string,
+    codeVerifier: string
+  ): Promise<MalToken> {
+    const req = new MalRequest([apiUrl, "/auth/token"]);
+    req.method = "post";
+    req.headers = { "content-type": "application/x-www-form-urlencoded" };
+    req.data = queryEncode({
+      client_id: clientId,
+      grant_type: "authorization_code",
+      code,
+      code_verifier: codeVerifier,
+    });
+
+    const token: any = await req.call();
 
     return new MalToken(
       token.token_type,
@@ -84,6 +114,10 @@ export class MalAcount {
     return new MalUser(this, name);
   }
 
+  anime(): MalAnime {
+    return new MalAnime(this);
+  }
+
   async refreshToken(): Promise<MalAcount> {
     this.malToken = await MalToken.fromRefreshToken(
       this.malToken.refresh_token,
@@ -100,22 +134,56 @@ export class Api {
     this.clientId = clientId;
   }
 
-  async login(username: string, password: string): Promise<MalAcount> {
-    const malToken = await MalToken.fromCredential(
-      username,
-      password,
-      this.clientId
-    );
-    return new MalAcount(this.clientId, malToken);
+  loadToken(token: MalToken) {
+    return new MalAcount(this.clientId, token);
   }
 
   async refresh(refreshToken: string): Promise<MalAcount> {
     const malToken = await MalToken.fromRefreshToken(
-      refreshToken,
-      this.clientId
+      this.clientId,
+      refreshToken
     );
     return new MalAcount(this.clientId, malToken);
   }
+
+  // crypto.randomBytes(93,(err,buf) => console.log(buf.toString('base64').length))
+  async authorizationCode(
+    code: string,
+    codeVerifier: string
+  ): Promise<MalAcount> {
+    const malToken = await MalToken.fromAuthorizationCode(
+      this.clientId,
+      code,
+      codeVerifier
+    );
+    return new MalAcount(this.clientId, malToken);
+  }
+
+  // async authorizationCode(refreshToken: string): Promise<MalAcount> {}
+
+  /**
+   * Undocumented Endpoints, those can disperse at any moment
+   */
+  unstable = {
+    /**
+     * ### Login to API using login and password `(Unstable!)`
+     *
+     * This endpoint makes the whole idea of OAuth API pointless, so it will probably be removed soonish
+     *
+     * Example of paradox related to this endpoint is that you can use someone's app id to get access to API.
+     * So basically it allows you to go around API request limits
+     *
+     * `(works reliably since 2018)`
+     */
+    login: async (username: string, password: string): Promise<MalAcount> => {
+      const malToken = await MalToken.fromCredential(
+        this.clientId,
+        username,
+        password
+      );
+      return new MalAcount(this.clientId, malToken);
+    },
+  };
 }
 
 export function api(
