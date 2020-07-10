@@ -104,4 +104,58 @@ export class MalAnime {
       this.acount.malToken
     );
   }
+
+  seasonal<T>(
+    year: number,
+    season: string,
+    fields?: AnimeFields<T>,
+    sort?: "anime_score" | "anime_num_list_users",
+    limit: number = 100,
+    offset: number = 0
+  ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
+    let fieldsStr;
+
+    if (fields) {
+      fieldsStr = Object.keys(fields.fields).join(",");
+    } else {
+      fieldsStr = "";
+    }
+
+    let quary = `?`;
+
+    if (fieldsStr.length > 0) quary += `&fields=${fieldsStr}`;
+    if (sort) quary += `&sort=${sort}`;
+    if (limit != 100) quary += `&limit=${limit}`;
+    if (offset != 0) quary += `&offset=${offset}`;
+
+    return new MalRequest<any>(
+      [apiUrl, "anime", "season", year.toString(), season, quary],
+      this.acount.malToken
+    );
+  }
+
+  suggested<T>(
+    fields?: AnimeFields<T>,
+    limit: number = 100,
+    offset: number = 0
+  ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
+    let fieldsStr;
+
+    if (fields) {
+      fieldsStr = Object.keys(fields.fields).join(",");
+    } else {
+      fieldsStr = "";
+    }
+
+    let quary = `?`;
+
+    if (fieldsStr.length > 0) quary += `&fields=${fieldsStr}`;
+    if (limit != 100) quary += `&limit=${limit}`;
+    if (offset != 0) quary += `&offset=${offset}`;
+
+    return new MalRequest<any>(
+      [apiUrl, "anime", "suggestions", quary],
+      this.acount.malToken
+    );
+  }
 }
