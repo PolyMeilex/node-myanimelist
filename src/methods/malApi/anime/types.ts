@@ -1,5 +1,9 @@
 import * as Common from "../schemas/common";
 
+export interface AnimeItem<T> {
+  node: T;
+}
+
 export module AnimeForList {
   export interface MediaType {
     media_type:
@@ -181,8 +185,4 @@ export module AnimeListStatus {
      */
     comments: string;
   }
-}
-
-export interface AnimeItem<T> {
-  node: T;
 }

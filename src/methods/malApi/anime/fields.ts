@@ -127,7 +127,7 @@ export class AnimeFields<T> {
  * Anime For List
  */
 export function animeFields() {
-  return new AnimeFields<WorkBase>();
+  return new AnimeFields();
 }
 
 /**
@@ -277,7 +277,7 @@ export class AnimeDetailsFields<T> {
  * Anime For Details
  */
 export function animeDetailsFields() {
-  return new AnimeDetailsFields<WorkBase>();
+  return new AnimeDetailsFields();
 }
 
 /**

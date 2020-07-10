@@ -10,3 +10,10 @@ export interface Paging<T> {
     next?: string;
   };
 }
+
+export interface RankingItem {
+  ranking: {
+    rank: number;
+    previous_rank: number | null;
+  };
+}

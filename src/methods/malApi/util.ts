@@ -1,3 +1,5 @@
+import { MalRequest } from "./request";
+
 export function queryEncode(obj: any) {
   return Object.keys(obj)
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]))
