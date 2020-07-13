@@ -31,10 +31,15 @@
 Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
 Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package
 
+
 ## Intellisens Support (Typescript)
 ![Gif](https://i.imgur.com/J1dUQf2.gif)
 
 # Instalation
+## Keep in mind that current npm release is on [master branch](https://github.com/PolyMeilex/node-myanimelist/tree/master)
+### So examples from here are ahead of what you can use on npm version
+Visit [master branch](https://github.com/PolyMeilex/node-myanimelist/tree/master) or [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki) for proper info
+
 [![NPM](https://nodei.co/npm/node-myanimelist.png)](https://nodei.co/npm/node-myanimelist/)
 
 ```
@@ -42,9 +47,9 @@ npm i node-myanimelist
 ```
 ### Import
 ```js
-const { Mal } = require("node-myanimelist");
+const { Mal, Jikan } = require("node-myanimelist");
 // Or
-import Mal from 'node-myanimelist';
+import { Mal, Jikan } from 'node-myanimelist';
 ```
 ## Responses
 Data is always returned with promise.
@@ -55,42 +60,44 @@ Data is actually raw [axios](https://www.npmjs.com/package/axios) response objec
 Jikan methods return unmodified jikanApi responses, to see all of them visit [jikanDocs](https://jikan.docs.apiary.io/)
 # List of functions
 For more detalis visit [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki)
+* MalApi Methods
+  * WIP!
 * JikanApi Methods
-	* Mal.**[anime](https://github.com/PolyMeilex/node-myanimelist/wiki/Anime)**(id)
+	* Jikan.**[anime](https://github.com/PolyMeilex/node-myanimelist/wiki/Anime)**(id)
 		* anime.**info**()
  		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Anime)
-	* Mal.**[manga](https://github.com/PolyMeilex/node-myanimelist/wiki/Manga)**(id) 
+	* Jikan.**[manga](https://github.com/PolyMeilex/node-myanimelist/wiki/Manga)**(id) 
  		* manga.**info**()
  		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Manga)
-	* Mal.**[person](https://github.com/PolyMeilex/node-myanimelist/wiki/Person)**(id) 
+	* Jikan.**[person](https://github.com/PolyMeilex/node-myanimelist/wiki/Person)**(id) 
 		* person.**info**()
 		* person.**pictures**()
-	* Mal.**[character](https://github.com/PolyMeilex/node-myanimelist/wiki/Character)**(id) 
+	* Jikan.**[character](https://github.com/PolyMeilex/node-myanimelist/wiki/Character)**(id) 
 		* character.**info**()
 	 	* character.**pictures**()
- 	* Mal.**[search](https://github.com/PolyMeilex/node-myanimelist/wiki/Search)**()
+ 	* Jikan.**[search](https://github.com/PolyMeilex/node-myanimelist/wiki/Search)**()
 	 	* search.**anime**(params)
 	 	* search.**manga**(params)
 	 	* search.**person**(params)
 	 	* search.**character**(params)
- 	* Mal.**[season](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**(year,season)
- 	* Mal.**[seasonArchive](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**()
- 	* Mal.**[seasonLater](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**() 
-	* Mal.**[schedule](https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule)**()
+ 	* Jikan.**[season](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**(year,season)
+ 	* Jikan.**[seasonArchive](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**()
+ 	* Jikan.**[seasonLater](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**() 
+	* Jikan.**[schedule](https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule)**()
 		* schedule.**all**()
 		* schedule.**monday**()
 		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule)
-	* Mal.**[top](https://github.com/PolyMeilex/node-myanimelist/wiki/Top)**()
+	* Jikan.**[top](https://github.com/PolyMeilex/node-myanimelist/wiki/Top)**()
 		* top.**anime**()
 			* topAnime.**all**()
 			* topAnime.**upcoming**()
  		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Top)
-	* Mal.**[genre](https://github.com/PolyMeilex/node-myanimelist/wiki/Genre)**()
+	* Jikan.**[genre](https://github.com/PolyMeilex/node-myanimelist/wiki/Genre)**()
 		* genre.**anime**(genreId)
 		* genre.**manga**(genreId)
-	* Mal.**[producer](https://github.com/PolyMeilex/node-myanimelist/wiki/Producer)**(id, page?)
-	* Mal.**[magazine](https://github.com/PolyMeilex/node-myanimelist/wiki/Magazine)**(id, page?)
-	* Mal.**[user](https://github.com/PolyMeilex/node-myanimelist/wiki/User)**(username)
+	* Jikan.**[producer](https://github.com/PolyMeilex/node-myanimelist/wiki/Producer)**(id, page?)
+	* Jikan.**[magazine](https://github.com/PolyMeilex/node-myanimelist/wiki/Magazine)**(id, page?)
+	* Jikan.**[user](https://github.com/PolyMeilex/node-myanimelist/wiki/User)**(username)
 		* user.**profile**()
 		* user.**history**()
 			* history.**all**()
@@ -103,7 +110,7 @@ For more detalis visit [wiki](https://github.com/PolyMeilex/node-myanimelist/wik
 			* mangalist.**all**(params?)
  			* mangalist.**reading**(params?)
  		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/User)
-	* Mal.**[club](https://github.com/PolyMeilex/node-myanimelist/wiki/Club)**(id)
+	* Jikan.**[club](https://github.com/PolyMeilex/node-myanimelist/wiki/Club)**(id)
 		* club.**info**()
 		* club.**members**(page?)
 
