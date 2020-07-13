@@ -1,6 +1,32 @@
 ![NodeMal API Banner](https://i.imgur.com/IcBShyO.png)
 
 # Node-MyAnimeList
+### Oficiall MAL API support is WIP! :smiley:
+#### Todo:
+- [x] Auth
+- [x] /user
+  - [x] info
+  - [x] animelist
+  - [ ] mangalist
+- [x] /anime
+	- [x] search 
+	- [x] details
+	- [x] ranking
+	- [x] seasonal
+	- [x] suggested  
+	- [x] update anime
+	- [x] delete anime
+- [ ] /forum
+	- [ ] boards
+	- [ ] topic detail
+	- [ ] topics
+- [ ] /manga
+	- [ ] search 
+	- [ ] details
+	- [ ] ranking  
+	- [ ] update manga
+	- [ ] delete manga
+
 
 Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
 Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package
