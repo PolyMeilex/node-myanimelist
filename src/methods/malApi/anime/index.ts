@@ -160,7 +160,10 @@ export class MalAnime {
     );
   }
 
-  updateMyAnime(id: number, params?: UpdateAnimeParams) {
+  updateMyAnime(
+    id: number,
+    params?: UpdateAnimeParams
+  ): MalRequest<AnimeListStatusBase> {
     if (!params) params = {};
 
     const req = new MalRequest<AnimeListStatusBase>(
@@ -174,7 +177,7 @@ export class MalAnime {
     return req;
   }
 
-  deleteMyAnime(id: number) {
+  deleteMyAnime(id: number): MalRequest<any[]> {
     const req = new MalRequest<any[]>(
       [apiUrl, "anime", id.toString(), "my_list_status"],
       this.acount.malToken
