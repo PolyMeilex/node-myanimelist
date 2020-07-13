@@ -1,7 +1,7 @@
 ![NodeMal API Banner](https://i.imgur.com/IcBShyO.png)
 
 # Node-MyAnimeList
-### Oficiall MAL API support is WIP! :smiley:
+### Oficial MAL API support is WIP! :smiley:
 #### Todo:
 - [x] Auth
 - [x] /user
