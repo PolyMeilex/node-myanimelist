@@ -1,4 +1,4 @@
-import * as Common from "../schemas/common";
+import * as Common from "../common";
 
 export interface AnimeItem<T> {
   node: T;
@@ -146,6 +146,8 @@ export interface AnimeListStatusBase {
   score: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   /**
    * 0 or the number of watched episodes.
+   *
+   * There is mistake in MAL v2 API it should be num_watched_episodes
    */
   num_episodes_watched: number;
   // num_watched_episodes: number;
@@ -185,4 +187,23 @@ export module AnimeListStatus {
      */
     comments: string;
   }
+}
+
+export interface UpdateAnimeParams {
+  status?: "watching" | "completed" | "on_hold" | "dropped" | "plan_to_watch";
+  is_rewatching?: boolean;
+  /**
+   * 0-10
+   */
+  score?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | number;
+  /**
+   * 0 or the number of watched episodes.
+   */
+  num_watched_episodes?: number;
+
+  priority?: 0 | 1 | 2 | number;
+  num_times_rewatched?: number;
+  rewatch_value?: 0 | 1 | 2 | 3 | 4 | 5 | number;
+  tags?: string;
+  comments?: string;
 }

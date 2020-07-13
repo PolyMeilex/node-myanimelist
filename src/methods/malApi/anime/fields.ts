@@ -1,4 +1,4 @@
-import { WorkForList, WorkBase } from "../schemas/work";
+import { WorkForList } from "../common";
 import {
   AnimeForList,
   AnimeForDetails,

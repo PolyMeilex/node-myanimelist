@@ -1,4 +1,4 @@
-import { Picture } from "./common";
+import { Picture } from ".";
 
 export interface WorkBase {
   id: number;

@@ -2,12 +2,13 @@ import { MalAcount } from "..";
 import { MalRequest } from "../request";
 import { apiUrl } from "../api";
 
-import { AnimeFields, AnimeDetailsFields, animeFields } from "./fields";
-import { AnimeItem } from "./types";
-import { Paging, RankingItem } from "../schemas/common";
-import { WorkBase } from "../schemas/work";
+import { AnimeFields, AnimeDetailsFields } from "./fields";
+import { AnimeItem, UpdateAnimeParams, AnimeListStatusBase } from "./types";
+import { WorkBase, Paging, RankingItem } from "../common";
+import { queryEncode } from "../util";
 
 export * from "./fields";
+export * from "./types";
 
 export class MalAnime {
   acount: MalAcount;
@@ -157,5 +158,29 @@ export class MalAnime {
       [apiUrl, "anime", "suggestions", quary],
       this.acount.malToken
     );
+  }
+
+  updateMyAnime(id: number, params?: UpdateAnimeParams) {
+    if (!params) params = {};
+
+    const req = new MalRequest<AnimeListStatusBase>(
+      [apiUrl, "anime", id.toString(), "my_list_status"],
+      this.acount.malToken
+    );
+    req.method = "patch";
+    req.headers = { "content-type": "application/x-www-form-urlencoded" };
+    req.data = queryEncode(params);
+
+    return req;
+  }
+
+  deleteMyAnime(id: number) {
+    const req = new MalRequest<any[]>(
+      [apiUrl, "anime", id.toString(), "my_list_status"],
+      this.acount.malToken
+    );
+    req.method = "delete";
+
+    return req;
   }
 }

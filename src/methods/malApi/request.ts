@@ -1,5 +1,5 @@
 import { MalToken } from ".";
-import { AxiosRequestConfig, Method } from "axios";
+import { AxiosRequestConfig, Method, AxiosError } from "axios";
 import axios from "axios";
 import urljoin from "url-join";
 
@@ -33,3 +33,10 @@ export class MalRequest<T> {
   }
 }
 export default MalRequest;
+
+export interface MalError {
+  message?: string;
+  error: string;
+}
+
+export type ResponseError = AxiosError<MalError>;

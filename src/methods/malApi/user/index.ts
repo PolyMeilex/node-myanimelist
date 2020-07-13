@@ -3,12 +3,13 @@ import MalRequest from "../request";
 
 import { apiUrl } from "../api";
 import { AnimeField } from "../types";
-import { AnimeFields, AnimeDetailsFields } from "../anime";
-import { Paging } from "../schemas/common";
+import { AnimeFields } from "../anime";
+import { Paging } from "../common";
 import { UserFields } from "./fields";
 import { AnimeItem } from "../anime/types";
 
 export * from "./fields";
+export * from "./types";
 
 export type AnimelistParams = {
   status?: string;

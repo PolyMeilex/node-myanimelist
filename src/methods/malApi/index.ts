@@ -6,6 +6,9 @@ import { MalAnime } from "./anime";
 
 export * as User from "./user";
 export * as Anime from "./anime";
+export * as Common from "./common";
+
+export { ResponseError, MalError } from "./request";
 
 export class MalToken {
   token_type: string;
