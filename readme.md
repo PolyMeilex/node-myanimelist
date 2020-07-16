@@ -7,25 +7,26 @@
 - [x] /user
   - [x] info
   - [x] animelist
-  - [ ] mangalist
+  - [x] mangalist
 - [x] /anime
-	- [x] search 
-	- [x] details
-	- [x] ranking
-	- [x] seasonal
-	- [x] suggested  
-	- [x] update anime
-	- [x] delete anime
+  - [x] search 
+  - [x] details
+  - [x] ranking
+  - [x] seasonal
+  - [x] suggested  
+  - [x] update anime
+  - [x] delete anime
 - [ ] /forum
-	- [ ] boards
-	- [ ] topic detail
-	- [ ] topics
-- [ ] /manga
-	- [ ] search 
-	- [ ] details
-	- [ ] ranking  
-	- [ ] update manga
-	- [ ] delete manga
+  - [ ] boards
+  - [ ] topic detail
+  - [ ] topics
+- [x] /manga
+  - [x] search 
+    - [x] Unit Tests
+  - [x] details
+  - [x] ranking  
+  - [x] update manga
+  - [x] delete manga
 
 
 Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
