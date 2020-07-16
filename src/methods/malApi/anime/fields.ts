@@ -84,9 +84,11 @@ export class AnimeFields<T> {
     return (this as any) as AnimeFields<T & AnimeForList.Status>;
   }
 
-  myListStatus<U>(fields: AnimeListStatusFields<U>) {
-    this.fields["my_list_status"] = fields.toString();
-    return (this as any) as AnimeFields<T & { my_list_status: U }>;
+  myListStatus<U>(fields?: AnimeListStatusFields<U>) {
+    this.fields["my_list_status"] = fields ? fields.toString() : "";
+    return (this as any) as AnimeFields<
+      T & { my_list_status: AnimeListStatusBase & U }
+    >;
   }
 
   @f numEpisodes() {
@@ -140,7 +142,7 @@ export function animeFields() {
  * Anime For Details
  */
 export class AnimeDetailsFields<T> {
-  fields: any = {};
+  fields: { [key: string]: boolean | string } = {};
 
   type: T = null as any;
 
@@ -214,9 +216,11 @@ export class AnimeDetailsFields<T> {
     return (this as any) as AnimeDetailsFields<T & AnimeForList.Status>;
   }
 
-  myListStatus<U>(fields: AnimeListStatusFields<U>) {
-    this.fields["my_list_status"] = fields.toString();
-    return (this as any) as AnimeFields<T & { my_list_status: U }>;
+  myListStatus<U>(fields?: AnimeListStatusFields<U>) {
+    this.fields["my_list_status"] = fields ? fields.toString() : "";
+    return (this as any) as AnimeFields<
+      T & { my_list_status: AnimeListStatusBase & U }
+    >;
   }
 
   @f numEpisodes() {
@@ -299,7 +303,7 @@ export function animeDetailsFields() {
  * Anime List Status
  */
 export class AnimeListStatusFields<T> {
-  fields: any = {};
+  fields: { [key: string]: boolean } = {};
 
   type: T = null as any;
 
@@ -337,5 +341,5 @@ AnimeListStatusFields.prototype.toString = function () {
  * Anime List Status
  */
 export function animeListStatusFields() {
-  return new AnimeListStatusFields<AnimeListStatusBase>();
+  return new AnimeListStatusFields();
 }

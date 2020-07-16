@@ -84,9 +84,11 @@ export class MangaFields<T> {
     return (this as any) as MangaFields<T & MangaForList.Status>;
   }
 
-  myListStatus<U>(fields: MangaListStatusFields<U>) {
-    this.fields["my_list_status"] = fields.toString();
-    return (this as any) as MangaFields<T & { my_list_status: U }>;
+  myListStatus<U>(fields?: MangaListStatusFields<U>) {
+    this.fields["my_list_status"] = fields ? fields.toString() : "";
+    return (this as any) as MangaFields<
+      T & { my_list_status: MangaListStatusBase & U }
+    >;
   }
 
   @f numVolumes() {
@@ -204,9 +206,11 @@ export class MangaDetailsFields<T> {
     return (this as any) as MangaDetailsFields<T & MangaForList.Status>;
   }
 
-  myListStatus<U>(fields: MangaDetailsFields<U>) {
-    this.fields["my_list_status"] = fields.toString();
-    return (this as any) as MangaFields<T & { my_list_status: U }>;
+  myListStatus<U>(fields?: MangaDetailsFields<U>) {
+    this.fields["my_list_status"] = fields ? fields.toString() : "";
+    return (this as any) as MangaFields<
+      T & { my_list_status: MangaListStatusBase & U }
+    >;
   }
 
   @f numVolumes() {
@@ -323,5 +327,5 @@ MangaListStatusFields.prototype.toString = function () {
  * Manga List Status
  */
 export function mangaListStatusFields() {
-  return new MangaListStatusFields<MangaListStatusBase>();
+  return new MangaListStatusFields();
 }
