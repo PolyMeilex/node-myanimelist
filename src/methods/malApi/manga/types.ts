@@ -67,8 +67,16 @@ export module MangaForDetails {
     recommendations: Array<Common.RecommendationEdge<T>>;
   }
   export interface Serialization {
-    serialization: Array<unknown>;
+    serialization: Array<MangaMagazineRelationEdge>;
   }
+}
+
+export interface MangaMagazineRelationEdge {
+  node: {
+    id: number;
+    name: string;
+  };
+  role: string;
 }
 
 export interface MangaListStatusBase {
