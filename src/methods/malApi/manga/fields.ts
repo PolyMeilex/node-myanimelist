@@ -256,10 +256,10 @@ export class MangaDetailsFields<T> {
       T & MangaForDetails.RelatedManga<U>
     >;
   }
-
-  @f recommendations() {
+  recommendations<U>(fields?: MangaFields<U>) {
+    this.fields["recommendations"] = fields ? fields.toString() : "";
     return (this as any) as MangaDetailsFields<
-      T & MangaForDetails.Recommendations
+      T & MangaForDetails.Recommendations<U>
     >;
   }
   @f serialization() {

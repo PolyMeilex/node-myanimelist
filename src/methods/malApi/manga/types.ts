@@ -58,13 +58,13 @@ export module MangaForDetails {
     background: string | null;
   }
   export interface RelatedAnime<T> {
-    related_anime: Array<Common.RelatedAnimeEdge<T>>;
+    related_anime: Array<Common.RelatedEdge<T>>;
   }
   export interface RelatedManga<T> {
-    related_manga: Array<Common.RelatedAnimeEdge<T>>;
+    related_manga: Array<Common.RelatedEdge<T>>;
   }
-  export interface Recommendations {
-    recommendations: Array<unknown>;
+  export interface Recommendations<T> {
+    recommendations: Array<Common.RecommendationEdge<T>>;
   }
   export interface Serialization {
     serialization: Array<unknown>;

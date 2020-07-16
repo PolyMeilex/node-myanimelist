@@ -276,9 +276,10 @@ export class AnimeDetailsFields<T> {
       T & AnimeForDetails.RelatedManga<U>
     >;
   }
-  @f recommendations() {
+  recommendations<U>(fields?: AnimeFields<U>) {
+    this.fields["recommendations"] = fields ? fields.toString() : "";
     return (this as any) as AnimeDetailsFields<
-      T & AnimeForDetails.Recommendations
+      T & AnimeForDetails.Recommendations<U>
     >;
   }
   @f statistics() {

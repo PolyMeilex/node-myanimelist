@@ -33,7 +33,7 @@ export interface PersonRoleEdge {
   role: string;
 }
 
-export interface RelatedAnimeEdge<T> {
+export interface RelatedEdge<T> {
   node: WorkBase & T;
   /** The type of the relationship between this work and related work. */
   relation_type:
@@ -49,18 +49,7 @@ export interface RelatedAnimeEdge<T> {
   relation_type_formatted: string;
 }
 
-export interface RelatedMangaEdge<T> {
+export interface RecommendationEdge<T> {
   node: WorkBase & T;
-  /** The type of the relationship between this work and related work. */
-  relation_type:
-    | "sequel"
-    | "prequel"
-    | "alternative_setting"
-    | "alternative_version"
-    | "side_story"
-    | "parent_story"
-    | "summary"
-    | "full_story";
-  /** The format of relation_type for human like "Alternative version". */
-  relation_type_formatted: string;
+  num_recommendations: number;
 }

@@ -1,4 +1,5 @@
 import * as Common from "../common";
+import { WorkBase } from "../common";
 
 export interface AnimeItem<T> {
   node: T;
@@ -119,13 +120,13 @@ export module AnimeForDetails {
     background: string | null;
   }
   export interface RelatedAnime<T> {
-    related_anime: Array<Common.RelatedAnimeEdge<T>>;
+    related_anime: Array<Common.RelatedEdge<T>>;
   }
   export interface RelatedManga<T> {
-    related_manga: Array<Common.RelatedAnimeEdge<T>>;
+    related_manga: Array<Common.RelatedEdge<T>>;
   }
-  export interface Recommendations {
-    recommendations: Array<unknown>;
+  export interface Recommendations<T> {
+    recommendations: Array<Common.RecommendationEdge<T>>;
   }
   export interface Statistics {
     statistics: unknown | null;
