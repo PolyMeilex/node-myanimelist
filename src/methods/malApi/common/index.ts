@@ -19,3 +19,14 @@ export interface RankingItem {
     previous_rank: number | null;
   };
 }
+
+export interface PersonBase {
+  id: number;
+  first_name: string;
+  last_name: string;
+}
+
+export interface PersonRoleEdge {
+  node: PersonBase;
+  role: string;
+}

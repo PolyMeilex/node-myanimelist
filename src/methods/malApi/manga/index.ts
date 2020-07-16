@@ -2,15 +2,15 @@ import { MalAcount } from "..";
 import { MalRequest } from "../request";
 import { apiUrl } from "../api";
 
-import { AnimeFields, AnimeDetailsFields } from "./fields";
-import { AnimeItem, UpdateAnimeParams, AnimeListStatusBase } from "./types";
+import { MangaFields, MangaDetailsFields } from "./fields";
+import { MangaItem, UpdateMangaParams, MangaListStatusBase } from "./types";
 import { WorkBase, Paging, RankingItem } from "../common";
 import { queryEncode } from "../util";
 
 export * from "./fields";
 export * from "./types";
 
-export class MalAnime {
+export class MalManga {
   acount: MalAcount;
 
   constructor(acount: MalAcount) {
@@ -19,10 +19,14 @@ export class MalAnime {
 
   search<T>(
     q: string,
-    fields?: AnimeFields<T>,
+    fields?: MangaFields<T>,
+
+    /**
+     * The maximum value is 100.
+     */
     limit: number = 100,
     offset: number = 0
-  ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
+  ): MalRequest<Paging<MangaItem<WorkBase & T>>> {
     let fieldsStr;
 
     if (fields) {
@@ -37,10 +41,10 @@ export class MalAnime {
     if (limit != 100) quary += `&limit=${limit}`;
     if (offset != 0) quary += `&offset=${offset}`;
 
-    return new MalRequest<any>([apiUrl, "anime", quary], this.acount.malToken);
+    return new MalRequest<any>([apiUrl, "manga", quary], this.acount.malToken);
   }
 
-  details<T>(id: number, fields?: AnimeDetailsFields<WorkBase & T>) {
+  details<T>(id: number, fields?: MangaDetailsFields<WorkBase & T>) {
     let fieldsStr;
 
     if (fields) {
@@ -53,7 +57,7 @@ export class MalAnime {
     if (fieldsStr.length > 0) quary = "?fields=" + fieldsStr;
 
     return new MalRequest<T>(
-      [apiUrl, "anime", id.toString(), quary],
+      [apiUrl, "manga", id.toString(), quary],
       this.acount.malToken
     );
   }
@@ -82,10 +86,10 @@ export class MalAnime {
       | "special"
       | "bypopularity"
       | "favorite",
-    fields?: AnimeFields<T>,
+    fields?: MangaFields<T>,
     limit: number = 100,
     offset: number = 0
-  ): MalRequest<Paging<RankingItem & AnimeItem<WorkBase & T>>> {
+  ): MalRequest<Paging<RankingItem & MangaItem<WorkBase & T>>> {
     let fieldsStr;
 
     if (fields) {
@@ -101,73 +105,19 @@ export class MalAnime {
     if (offset != 0) quary += `&offset=${offset}`;
 
     return new MalRequest<any>(
-      [apiUrl, "anime", "ranking", quary],
+      [apiUrl, "manga", "ranking", quary],
       this.acount.malToken
     );
   }
 
-  seasonal<T>(
-    year: number,
-    season: string,
-    fields?: AnimeFields<T>,
-    sort?: "anime_score" | "anime_num_list_users",
-    limit: number = 100,
-    offset: number = 0
-  ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
-    let fieldsStr;
-
-    if (fields) {
-      fieldsStr = fields.toString();
-    } else {
-      fieldsStr = "";
-    }
-
-    let quary = `?`;
-
-    if (fieldsStr.length > 0) quary += `&fields=${fieldsStr}`;
-    if (sort) quary += `&sort=${sort}`;
-    if (limit != 100) quary += `&limit=${limit}`;
-    if (offset != 0) quary += `&offset=${offset}`;
-
-    return new MalRequest<any>(
-      [apiUrl, "anime", "season", year.toString(), season, quary],
-      this.acount.malToken
-    );
-  }
-
-  suggested<T>(
-    fields?: AnimeFields<T>,
-    limit: number = 100,
-    offset: number = 0
-  ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
-    let fieldsStr;
-
-    if (fields) {
-      fieldsStr = fields.toString();
-    } else {
-      fieldsStr = "";
-    }
-
-    let quary = `?`;
-
-    if (fieldsStr.length > 0) quary += `&fields=${fieldsStr}`;
-    if (limit != 100) quary += `&limit=${limit}`;
-    if (offset != 0) quary += `&offset=${offset}`;
-
-    return new MalRequest<any>(
-      [apiUrl, "anime", "suggestions", quary],
-      this.acount.malToken
-    );
-  }
-
-  updateMyAnime(
+  updateMyManga(
     id: number,
-    params?: UpdateAnimeParams
-  ): MalRequest<AnimeListStatusBase> {
+    params?: UpdateMangaParams
+  ): MalRequest<MangaListStatusBase> {
     if (!params) params = {};
 
-    const req = new MalRequest<AnimeListStatusBase>(
-      [apiUrl, "anime", id.toString(), "my_list_status"],
+    const req = new MalRequest<MangaListStatusBase>(
+      [apiUrl, "manga", id.toString(), "my_list_status"],
       this.acount.malToken
     );
     req.method = "patch";
@@ -177,9 +127,9 @@ export class MalAnime {
     return req;
   }
 
-  deleteMyAnime(id: number): MalRequest<any[]> {
+  deleteMyManga(id: number): MalRequest<any[]> {
     const req = new MalRequest<any[]>(
-      [apiUrl, "anime", id.toString(), "my_list_status"],
+      [apiUrl, "manga", id.toString(), "my_list_status"],
       this.acount.malToken
     );
     req.method = "delete";

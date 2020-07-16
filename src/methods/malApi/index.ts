@@ -3,9 +3,11 @@ import { apiUrl, secondaryApiUrl } from "./api";
 import { queryEncode } from "./util";
 import { MalUser } from "./user";
 import { MalAnime } from "./anime";
+import { MalManga } from "./manga";
 
 export * as User from "./user";
 export * as Anime from "./anime";
+export * as Manga from "./manga";
 export * as Common from "./common";
 
 export { ResponseError, MalError } from "./request";
@@ -113,12 +115,16 @@ export class MalAcount {
     this.malToken = malToken;
   }
 
-  user(name: string = "@me"): MalUser {
-    return new MalUser(this, name);
+  user(): MalUser {
+    return new MalUser(this);
   }
 
   anime(): MalAnime {
     return new MalAnime(this);
+  }
+
+  manga(): MalManga {
+    return new MalManga(this);
   }
 
   async refreshToken(): Promise<MalAcount> {

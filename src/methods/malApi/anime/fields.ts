@@ -16,7 +16,7 @@ export interface AnimeSearchItem<T> {
  * Anime For List
  */
 export class AnimeFields<T> {
-  fields: any = {};
+  fields: { [key: string]: boolean | string } = {};
 
   type: T = null as any;
 
@@ -84,11 +84,8 @@ export class AnimeFields<T> {
     return (this as any) as AnimeFields<T & AnimeForList.Status>;
   }
 
-  // TODO: Builder
   myListStatus<U>(fields: AnimeListStatusFields<U>) {
-    // if (Object.keys(fields.fields).length > 0) {
-    this.fields["my_list_status"] = Object.keys(fields.fields).join(",");
-    // }
+    this.fields["my_list_status"] = fields.toString();
     return (this as any) as AnimeFields<T & { my_list_status: U }>;
   }
 
@@ -122,6 +119,15 @@ export class AnimeFields<T> {
     return (this as any) as AnimeFields<T & AnimeForList.Studios>;
   }
 }
+
+AnimeFields.prototype.toString = function () {
+  return Object.entries(this.fields)
+    .map(([k, v]) => {
+      if (typeof v === "boolean") return k;
+      else if (typeof v === "string") return `${k}{${v}}`;
+    })
+    .join(",");
+};
 
 /**
  * Anime For List
@@ -208,9 +214,9 @@ export class AnimeDetailsFields<T> {
     return (this as any) as AnimeDetailsFields<T & AnimeForList.Status>;
   }
 
-  // TODO: Builder
-  myListStatus() {
-    return this;
+  myListStatus<U>(fields: AnimeListStatusFields<U>) {
+    this.fields["my_list_status"] = fields.toString();
+    return (this as any) as AnimeFields<T & { my_list_status: U }>;
   }
 
   @f numEpisodes() {
@@ -273,6 +279,15 @@ export class AnimeDetailsFields<T> {
   }
 }
 
+AnimeDetailsFields.prototype.toString = function () {
+  return Object.entries(this.fields)
+    .map(([k, v]) => {
+      if (typeof v === "boolean") return k;
+      else if (typeof v === "string") return `${k}{${v}}`;
+    })
+    .join(",");
+};
+
 /**
  * Anime For Details
  */
@@ -313,6 +328,10 @@ export class AnimeListStatusFields<T> {
     return (this as any) as AnimeListStatusFields<T & AnimeListStatus.Comments>;
   }
 }
+
+AnimeListStatusFields.prototype.toString = function () {
+  return Object.entries(this.fields).join(",");
+};
 
 /**
  * Anime List Status

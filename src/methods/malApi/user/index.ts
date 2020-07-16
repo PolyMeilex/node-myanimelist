@@ -7,6 +7,7 @@ import { AnimeFields } from "../anime";
 import { Paging } from "../common";
 import { UserFields } from "./fields";
 import { AnimeItem } from "../anime/types";
+import { MangaFields, MangaItem } from "../manga";
 
 export * from "./fields";
 export * from "./types";
@@ -21,11 +22,9 @@ export type AnimelistParams = {
 
 export class MalUser {
   acount: MalAcount;
-  name: string;
 
-  constructor(acount: MalAcount, name: string) {
+  constructor(acount: MalAcount) {
     this.acount = acount;
-    this.name = name;
   }
 
   info<T>(fields?: UserFields<T>): MalRequest<T> {
@@ -40,13 +39,16 @@ export class MalUser {
     let quary = "";
     if (fieldsStr.length > 0) quary = "?fields=" + fieldsStr;
 
-    return new MalRequest<T>(
-      [apiUrl, "users", this.name, quary],
+    return new MalRequest<any>(
+      [apiUrl, "users", "@me", quary],
       this.acount.malToken
     );
   }
 
-  animelist<T>(fields: AnimeFields<T>): MalRequest<Paging<AnimeItem<T>>> {
+  animelist<T>(
+    name: string = "@me",
+    fields?: AnimeFields<T>
+  ): MalRequest<Paging<AnimeItem<T>>> {
     let fieldsStr;
 
     if (fields) {
@@ -67,7 +69,37 @@ export class MalUser {
     if (fieldsStr.length > 0) quary = "?fields=" + fieldsStr;
 
     const req = new MalRequest<any>(
-      [apiUrl, "users", this.name, "animelist", quary],
+      [apiUrl, "users", name, "animelist", quary],
+      this.acount.malToken
+    );
+    return req as MalRequest<Paging<AnimeItem<T>>>;
+  }
+
+  mangalist<T>(
+    name: string = "@me",
+    fields?: MangaFields<T>
+  ): MalRequest<Paging<MangaItem<T>>> {
+    let fieldsStr;
+
+    if (fields) {
+      fieldsStr = Object.entries(fields.fields)
+        .map(([k, v]: [string, any]) => {
+          if (typeof v === "boolean") {
+            return k;
+          } else if (typeof v === "string") {
+            return `${k}{${v}}`;
+          }
+        })
+        .join(",");
+    } else {
+      fieldsStr = "";
+    }
+
+    let quary = "";
+    if (fieldsStr.length > 0) quary = "?fields=" + fieldsStr;
+
+    const req = new MalRequest<any>(
+      [apiUrl, "users", name, "mangalist", quary],
       this.acount.malToken
     );
     return req;
