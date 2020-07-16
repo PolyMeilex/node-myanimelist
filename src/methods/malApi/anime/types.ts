@@ -129,8 +129,19 @@ export module AnimeForDetails {
     recommendations: Array<Common.RecommendationEdge<T>>;
   }
   export interface Statistics {
-    statistics: unknown | null;
+    statistics: AnimeStatistics | null;
   }
+}
+
+export interface AnimeStatistics {
+  num_list_users: number;
+  status: {
+    watching: number;
+    completed: number;
+    on_hold: number;
+    dropped: number;
+    plan_to_watch: number;
+  };
 }
 
 export interface AnimeListStatusBase {
