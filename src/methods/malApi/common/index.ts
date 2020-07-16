@@ -1,3 +1,5 @@
+import { WorkBase } from "./work";
+
 export * from "./work";
 
 export interface Picture {
@@ -29,4 +31,36 @@ export interface PersonBase {
 export interface PersonRoleEdge {
   node: PersonBase;
   role: string;
+}
+
+export interface RelatedAnimeEdge<T> {
+  node: WorkBase & T;
+  /** The type of the relationship between this work and related work. */
+  relation_type:
+    | "sequel"
+    | "prequel"
+    | "alternative_setting"
+    | "alternative_version"
+    | "side_story"
+    | "parent_story"
+    | "summary"
+    | "full_story";
+  /** The format of relation_type for human like "Alternative version". */
+  relation_type_formatted: string;
+}
+
+export interface RelatedMangaEdge<T> {
+  node: WorkBase & T;
+  /** The type of the relationship between this work and related work. */
+  relation_type:
+    | "sequel"
+    | "prequel"
+    | "alternative_setting"
+    | "alternative_version"
+    | "side_story"
+    | "parent_story"
+    | "summary"
+    | "full_story";
+  /** The format of relation_type for human like "Alternative version". */
+  relation_type_formatted: string;
 }

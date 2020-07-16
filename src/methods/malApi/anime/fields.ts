@@ -7,6 +7,7 @@ import {
 } from "./types";
 
 import { field as f } from "../util";
+import { MangaFields } from "../manga";
 
 export interface AnimeSearchItem<T> {
   node: T;
@@ -263,14 +264,16 @@ export class AnimeDetailsFields<T> {
   @f background() {
     return (this as any) as AnimeDetailsFields<T & AnimeForDetails.Background>;
   }
-  @f relatedAnime() {
+  relatedAnime<U>(fields?: AnimeFields<U>) {
+    this.fields["related_anime"] = fields ? fields.toString() : "";
     return (this as any) as AnimeDetailsFields<
-      T & AnimeForDetails.RelatedAnime
+      T & AnimeForDetails.RelatedAnime<U>
     >;
   }
-  @f relatedManga() {
+  relatedManga<U>(fields?: MangaFields<U>) {
+    this.fields["related_manga"] = fields ? fields.toString() : "";
     return (this as any) as AnimeDetailsFields<
-      T & AnimeForDetails.RelatedManga
+      T & AnimeForDetails.RelatedManga<U>
     >;
   }
   @f recommendations() {

@@ -57,11 +57,11 @@ export module MangaForDetails {
   export interface Background {
     background: string | null;
   }
-  export interface RelatedAnime {
-    related_anime: Array<unknown>;
+  export interface RelatedAnime<T> {
+    related_anime: Array<Common.RelatedAnimeEdge<T>>;
   }
-  export interface RelatedManga {
-    related_manga: Array<unknown>;
+  export interface RelatedManga<T> {
+    related_manga: Array<Common.RelatedAnimeEdge<T>>;
   }
   export interface Recommendations {
     recommendations: Array<unknown>;
