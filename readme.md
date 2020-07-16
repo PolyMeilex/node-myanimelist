@@ -9,6 +9,7 @@
   - [x] animelist
   - [x] mangalist
 - [x] /anime
+  - [ ] full type annotation
   - [x] search 
   - [x] details
   - [x] ranking
@@ -17,10 +18,12 @@
   - [x] update anime
   - [x] delete anime
 - [ ] /forum
+  - [ ] full type annotation
   - [ ] boards
   - [ ] topic detail
   - [ ] topics
 - [x] /manga
+  - [ ] full type annotation
   - [x] search 
     - [x] Unit Tests
   - [x] details
