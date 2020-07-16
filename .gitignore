@@ -58,3 +58,5 @@ jspm_packages/
 dist/
 
 typings/
+
+gen/
