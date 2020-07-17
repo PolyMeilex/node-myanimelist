@@ -8,7 +8,7 @@ import { jikanGet, jikanUrl } from "./jikanApi";
  *
  * To get top info you need to create top object and select type of entry, like so:
  * ```ts
- * let top = Mal.top().anime();
+ * let top = Jikan.top().anime();
  * //                 .manga()
  * //                 .people()
  * //                 .characters()
@@ -45,10 +45,10 @@ import { jikanGet, jikanUrl } from "./jikanApi";
  * Each of those functions returns promise
  * ## Examples
  * ```ts
- * Mal.top().anime().all()
+ * Jikan.top().anime().all()
  * .then(res => res.data)
  * .then(topJson => {});
- * Mal.top().anime().movie()
+ * Jikan.top().anime().movie()
  * .then(res => res.data)
  * .then(topJson => {});
  * ```

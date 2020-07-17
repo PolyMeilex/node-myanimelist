@@ -8,7 +8,7 @@ import { jikanGet, jikanUrl } from "./jikanApi";
  *
  * ### Create User Object
  * ```ts
- * let user = Mal.user("username");
+ * let user = Jikan.user("username");
  * ```
  *
  * ### Get User Profile

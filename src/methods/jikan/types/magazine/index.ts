@@ -1,10 +1,9 @@
-import MalUrl from "../common/malUrl";
-import { MangaCard } from "../common/mangaCard";
+import { Common } from "../";
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Magazine/Magazine.php */
 export interface MagazineInfo {
   manga: MagazineManga[];
-  meta: MalUrl;
+  meta: Common.MalUrl;
 
   request_cache_expiry: number;
   request_cached: boolean;
@@ -12,5 +11,4 @@ export interface MagazineInfo {
 }
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Magazine/MagazineManga.php */
-interface MagazineManga extends MangaCard {}
-
+interface MagazineManga extends Common.MangaCard {}

@@ -1,4 +1,4 @@
-import MalUrl from "../common/malUrl";
+import { Common } from "../";
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Club/Club.php */
 export interface ClubInfo {
@@ -14,10 +14,10 @@ export interface ClubInfo {
   created: Date;
   type: string;
 
-  staff: MalUrl[];
-  anime_relations: MalUrl[];
-  manga_relations: MalUrl[];
-  character_relations: MalUrl[];
+  staff: Common.MalUrl[];
+  anime_relations: Common.MalUrl[];
+  manga_relations: Common.MalUrl[];
+  character_relations: Common.MalUrl[];
 
   request_cache_expiry: number;
   request_cached: boolean;
@@ -25,7 +25,7 @@ export interface ClubInfo {
 }
 
 /** src: ? */
-export interface ClubMembers {
+export interface Members {
   members: UserProfile[];
 
   request_cache_expiry: number;
@@ -34,7 +34,7 @@ export interface ClubMembers {
 }
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Club/UserProfile.php */
-interface UserProfile {
+export interface UserProfile {
   username: string;
   url: string;
   image_url: string;

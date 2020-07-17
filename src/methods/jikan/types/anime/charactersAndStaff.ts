@@ -1,15 +1,14 @@
-import CharacterListItem from "../character/characterListItem";
+import { Character } from "../";
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeCharactersAndStaff.php */
-export interface AnimeCharactersAndStaff {
-  characters: CharacterListItem[];
+export interface CharactersAndStaff {
+  characters: Character.CharacterListItem[];
   staff: StaffListItem[];
 
   request_cache_expiry: number;
   request_cached: boolean;
   request_hash: string;
 }
-export default AnimeCharactersAndStaff;
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/StaffListItem.php */
 export interface StaffListItem {

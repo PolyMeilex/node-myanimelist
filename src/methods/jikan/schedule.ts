@@ -8,7 +8,7 @@ import { jikanGet, jikanUrl } from "./jikanApi";
  *
  * To get schedule you need to create schedule object, like so:
  * ```ts
- * let schedule = Mal.schedule();
+ * let schedule = Jikan.schedule();
  * ```
  * And then you can use schedule object multiple times to get desired information.
  * ```ts
@@ -26,7 +26,7 @@ import { jikanGet, jikanUrl } from "./jikanApi";
  * Each of those functions returns promise
  * ## Example
  * ```ts
- * Mal.schedule().all()
+ * Jikan.schedule().all()
  *               .then(res => res.data)
  *               .then(scheduleJson => {});
  * ```

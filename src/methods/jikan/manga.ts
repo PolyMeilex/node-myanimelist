@@ -1,6 +1,10 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl, Req } from "./jikanApi";
-import { MangaInfo, News, MangaCharacters, Pictures } from "./types/manga";
+
+// import * as T from "./types";
+
+import { MangaInfo, Characters, NewsInfo, Pictures } from "./types/manga";
+export * from "./types/manga";
 
 /**
  * # Manga
@@ -8,7 +12,7 @@ import { MangaInfo, News, MangaCharacters, Pictures } from "./types/manga";
  * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/manga" target="_blank">https://jikan.docs.apiary.io</a>
  * To get manga you need to create manga object, like so:
  * ```ts
- * let manga = Mal.manga(id);
+ * let manga = Jikan.manga(id);
  * ```
  * Now you can use manga object multiple times to get desired information.
  * ```ts
@@ -40,10 +44,10 @@ export class Manga {
   info(): Req<MangaInfo> {
     return jikanGet(this.baseUrl);
   }
-  characters(): Req<MangaCharacters> {
+  characters(): Req<Characters> {
     return jikanGet(joinUrl(this.baseUrl, ["characters"]));
   }
-  news(): Req<News> {
+  news(): Req<NewsInfo> {
     return jikanGet(joinUrl(this.baseUrl, ["news"]));
   }
   pictures(): Req<Pictures> {

@@ -1,5 +1,5 @@
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Character/VoiceActor.php */
-export default interface VoiceActor {
+export interface VoiceActor {
   mal_id: number;
   name: string;
   url: string;

@@ -1,6 +1,9 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl, Req } from "./jikanApi";
-import { ClubInfo, ClubMembers } from "./types/club";
+
+import { ClubInfo, Members } from "./types/club";
+
+export * from "./types/club";
 
 /**
  * # Club
@@ -8,7 +11,7 @@ import { ClubInfo, ClubMembers } from "./types/club";
  * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/club" target="_blank">https://jikan.docs.apiary.io</a>
  * To get club you need to create club object, like so:
  * ```ts
- * let club = Mal.club(id);
+ * let club = Jikan.club(id);
  * ```
  * And then you can use club object multiple times to get desired information.
  * ```ts
@@ -25,7 +28,7 @@ export class Club {
   info(): Req<ClubInfo> {
     return jikanGet(this.baseUrl);
   }
-  members(p?: number): Req<ClubMembers> {
+  members(p?: number): Req<Members> {
     let params: string[] = ["members"];
     if (p != null) params.push(String(p));
     return jikanGet(joinUrl(this.baseUrl, params));

@@ -1,11 +1,10 @@
-import ForumTopic from "../forum/forumTopic";
+import { Forum } from "../";
 
 /** src: ? */
 export interface Forum {
-  topics: ForumTopic[];
+  topics: Forum.ForumTopic[];
 
   request_cache_expiry: number;
   request_cached: boolean;
   request_hash: string;
 }
-export default Forum;

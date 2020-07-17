@@ -8,7 +8,7 @@ import { jikanGet, jikanUrl } from "./jikanApi";
  *
  * To get person you need to create person object, like that:
  * ```ts
- * let person = Mal.person(id);
+ * let person = Jikan.person(id);
  * ```
  * Now you can use person object multiple times to get desired information.
  * ```ts

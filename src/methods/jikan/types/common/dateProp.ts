@@ -1,5 +1,5 @@
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Common/DateProp.php */
-export default interface DateProp {
+export interface DateProp {
   from: DayMonthYear;
   to: DayMonthYear;
 }

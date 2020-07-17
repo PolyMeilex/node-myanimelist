@@ -1,87 +1,74 @@
+/**
+ * # JikanAPI
+ *
+ * ```ts
+ * import { Jikan } from "node-myanimelist";
+ * ```
+ * ## Functions
+ * * Jikan.**{@link anime}**(id)
+ * * Jikan.**{@link manga}**(id)
+ * * Jikan.**{@link person}**(id)
+ * * Jikan.**{@link character}**(id)
+ * * Jikan.**{@link search}**()
+ * * Jikan.**{@link season}**(year,season)
+ * * Jikan.**{@link seasonArchive}**()
+ * * Jikan.**{@link seasonLater}**()
+ * * Jikan.**{@link schedule}**()
+ * * Jikan.**{@link top}**()
+ * * Jikan.**{@link genre}**()
+ * * Jikan.**{@link producer}**(id, page?)
+ * * Jikan.**{@link magazine}**(id, page?)
+ * * Jikan.**{@link user}**(username)
+ * * Jikan.**{@link club}**(id)
+ *
+ *
+ * @packageDocumentation
+ */
+
+/** */
 export { anime } from "./anime";
+export * as Anime from "./anime";
+
 export { manga } from "./manga";
+export * as Manga from "./manga";
 
 export { person } from "./person";
+export * as Person from "./person";
+
 export { character } from "./character";
+export * as Character from "./character";
 
 export { search } from "./search";
+export * as Search from "./search";
 
 export { season } from "./season";
+export * as Season from "./season";
+
 export { seasonArchive } from "./seasonArchive";
+export * as SeasonArchive from "./seasonArchive";
+
 export { seasonLater } from "./seasonLater";
+export * as SeasonLater from "./seasonLater";
 
 export { schedule } from "./schedule";
+export * as Schedule from "./schedule";
+
 export { top } from "./top";
+export * as Top from "./top";
+
 export { genre } from "./genre";
+export * as Genre from "./genre";
 
 export { producer } from "./producer";
+export * as Producer from "./producer";
+
 export { magazine } from "./magazine";
+export * as Magazine from "./magazine";
 
 export { user } from "./user";
+export * as User from "./user";
 
 export { club } from "./club";
+export * as Club from "./club";
 
-// Types
-import AnimeGenreId from "./types/animeGenre";
-import MangaGenreId from "./types/mangaGenre";
-
-import AnimeType from "./types/animeType";
-import MangaType from "./types/mangaType";
-
-import AnimeStatus from "./types/animeStatus";
-import MangaStatus from "./types/mangaStatus";
-
-import AnimeOrderBy from "./types/animeOrderBy";
-import MangaOrderBy from "./types/mangaOrderBy";
-
-import Sort from "./types/sort";
-import Rating from "./types/rating";
-//
-
-import * as internal from "./internalTypes";
-
-const types = {
-  /**
-   * @deprecated Should be renamed to AnimeGenreId
-   * @ignore
-   */
-  AnimeGenre: AnimeGenreId,
-  AnimeGenreId,
-
-  /**
-   * @deprecated Should be renamed to MangaGenreId
-   * @ignore
-   */
-  MangaGenre: MangaGenreId,
-  MangaGenreId,
-
-  AnimeType,
-  MangaType,
-  AnimeStatus,
-  MangaStatus,
-  AnimeOrderBy,
-  MangaOrderBy,
-  Sort,
-  Rating,
-
-  internal,
-};
-
-export {
-  // anime,
-  // manga,
-  // person,
-  // character,
-  // search,
-  // season,
-  // seasonArchive,
-  // seasonLater,
-  // schedule,
-  // top,
-  // genre,
-  // producer,
-  // magazine,
-  // user,
-  // club,
-  types,
-};
+export * as Types from "./types";

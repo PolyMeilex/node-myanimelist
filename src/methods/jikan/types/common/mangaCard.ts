@@ -1,4 +1,4 @@
-import MalUrl from "./malUrl";
+import { MalUrl } from "./malUrl";
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Common/MangaCard.php */
 export interface MangaCard {

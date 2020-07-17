@@ -1,8 +1,8 @@
-import { CharacterRole } from "../character/characterListItem";
+import { Character } from "../";
 
 /** src: ? */
-export interface MangaCharacters {
-  characters: MangaCharacter[];
+export interface Characters {
+  characters: Character[];
 
   request_cache_expiry: number;
   request_cached: boolean;
@@ -10,10 +10,10 @@ export interface MangaCharacters {
 }
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Manga/CharacterListItem.php */
-export interface MangaCharacter {
+export interface Character {
   mal_id: number;
   url: string;
   image_url: string;
   name: string;
-  role: CharacterRole;
+  role: Character.Role;
 }

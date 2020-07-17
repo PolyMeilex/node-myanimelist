@@ -1,42 +1,26 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl } from "./jikanApi";
 
-import AnimeGenreId from "./types/animeGenre";
-import MangaGenreId from "./types/mangaGenre";
-
-import AnimeType from "./types/animeType";
-import MangaType from "./types/mangaType";
-
-import AnimeStatus from "./types/animeStatus";
-import MangaStatus from "./types/mangaStatus";
-
-import AnimeOrderBy from "./types/animeOrderBy";
-import MangaOrderBy from "./types/mangaOrderBy";
-
-import Sort from "./types/sort";
-import Rating from "./types/rating";
+import { Anime, Manga } from "./types";
 
 /**
  * # AdvancedSearchParameters
  *
- * {@link AnimeGenreId}
- *
- * {@link MangaGenreId}
  */
 export interface AdvancedSearchParameters {
   q?: string;
   page?: number;
-  type?: AnimeType | MangaType;
-  status?: AnimeStatus | MangaStatus;
-  rated?: Rating;
-  genre?: AnimeGenreId | MangaGenreId;
+  type?: Anime.Type | Manga.Type;
+  status?: Anime.Status | Manga.Status;
+  rated?: Anime.Rating | Manga.Rating;
+  genre?: Anime.GenreId | Manga.GenreId;
   score?: number;
   start_date?: string;
   end_date?: string;
   genre_exclude?: 0 | 1;
   limit?: number;
-  order_by?: AnimeOrderBy | MangaOrderBy;
-  sort?: Sort;
+  order_by?: Anime.OrderBy | Manga.OrderBy;
+  sort?: Anime.Sort | Manga.Sort;
   producer?: number;
   magazine?: number;
   letter?: string;
@@ -50,14 +34,20 @@ type ParamsKeys = keyof AdvancedSearchParameters;
  * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/search" target="_blank">https://jikan.docs.apiary.io</a>
  * To search you need to create search object, like that:
  * ```ts
- * Mal.search();
+ * Jikan.search();
  * ```
  * And then you can choose type of search
  * ```ts
- * Mal.search().anime({ q: "Fate", page: 2 });
- * Mal.search().manga({ q: "Fate" });
- * Mal.search().person({ q: "Fate" });
- * Mal.search().character({ q: "Fate" });
+ * Jikan.search().anime({ q: "Fate", page: 2 });
+ * Jikan.search().manga({ q: "Fate" });
+ * Jikan.search().person({ q: "Fate" });
+ * Jikan.search().character({ q: "Fate" });
+ *
+ * Jikan.search().anime({
+ *    q: "fate",
+ *    page: 2,
+ *    genre: Jikan.Search.AnimeGenreId.action,
+ * });
  * ```
  *
  * {@link AdvancedSearchParameters}

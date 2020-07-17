@@ -1,10 +1,8 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl, Req } from "./jikanApi";
 
-import AnimeGenreId from "./types/animeGenre";
-import MangaGenreId from "./types/mangaGenre";
-
-import { AnimeGenre, MangaGenre } from "./types/genre";
+import { Anime, Manga } from "./types";
+// export { Anime, Manga } from "./types";
 
 /**
  * # Genre
@@ -12,10 +10,14 @@ import { AnimeGenre, MangaGenre } from "./types/genre";
  * Anime/Manga items of the genre.
  * To get genre info you need to create genre object and select type of items, like so:
  * ```ts
- * Mal.genre().anime(Mal.types.AnimeGenreId.Action, page?);
- * //         .manga(Mal.types.MangaGenreId.Action, page?);
+ * Jikan.genre().anime(Jikan.Genre.AnimeGenreId.action,paga?),
+ *            .manga(Jikan.Genre.MangaGenreId.action,paga?),
  * ```
  * Each of those functions returns promise
+ *
+ * {@link AnimeGenreId}
+ *
+ * {@link MangaGenreId}
  */
 export class Genre {
   /** @ignore */
@@ -23,12 +25,12 @@ export class Genre {
   constructor() {
     this.baseUrl = `${jikanUrl}/genre`;
   }
-  anime(genre: AnimeGenreId, p?: number): Req<AnimeGenre> {
+  anime(genre: Anime.GenreId, p?: number): Req<Anime.Genre> {
     let params: string[] = ["anime", String(genre)];
     if (p != null) params[2] = String(p);
     return jikanGet(joinUrl(this.baseUrl, params));
   }
-  manga(genre: MangaGenreId, p?: number): Req<MangaGenre> {
+  manga(genre: Manga.GenreId, p?: number): Req<Manga.Genre> {
     let params: string[] = ["manga", String(genre)];
     if (p != null) params[2] = String(p);
     return jikanGet(joinUrl(this.baseUrl, params));

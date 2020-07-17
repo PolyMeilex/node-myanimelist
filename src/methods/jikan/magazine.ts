@@ -1,6 +1,8 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl, Req } from "./jikanApi";
+
 import { MagazineInfo } from "./types/magazine";
+export * from "./types/magazine";
 
 /**
  * # Magazine
@@ -8,7 +10,7 @@ import { MagazineInfo } from "./types/magazine";
  * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/magazine" target="_blank">https://jikan.docs.apiary.io</a>
  *
  * ```ts
- * Mal.magazine(id, page?);
+ * Jikan.magazine(id, page?);
  * ```
  */
 export class Magazine {

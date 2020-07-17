@@ -1,5 +1,5 @@
-import VoiceActor from "./voiceActor";
-import Ography from "../common/ography";
+import { VoiceActor } from "./";
+import { Common } from "../";
 
 /** https://github.com/jikan-me/jikan/blob/master/src/Model/Character/Character.php */
 export interface CharacterInfo {
@@ -24,6 +24,6 @@ export interface CharacterInfo {
 }
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Character/Animeography.php */
-export interface Animeography extends Ography {}
+export interface Animeography extends Common.Ography {}
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Character/Mangaography.php */
-export interface Mangaography extends Ography {}
+export interface Mangaography extends Common.Ography {}

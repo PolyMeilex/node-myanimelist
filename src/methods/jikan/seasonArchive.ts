@@ -8,7 +8,7 @@ import { jikanGet, jikanUrl } from "./jikanApi";
  * ### Get Season Archive
  * All the years & their respective seasons that can be parsed from MyAnimeList
  * ```js
- * Mal.seasonArchive();
+ * Jikan.seasonArchive();
  * ```
  */
 export class SeasonArchive {

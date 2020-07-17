@@ -9,7 +9,7 @@ import { jikanGet, jikanUrl } from "./jikanApi";
  * ### Get Season
  * Anime of the specified season
  * ```js
- * Mal.season(2018, "winter");
+ * Jikan.season(2018, "winter");
  * ```
  * **Posible seasons**: ``summer`` ``spring`` ``fall`` ``winter ``
  */

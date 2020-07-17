@@ -1,4 +1,4 @@
-import { Jikan } from "../";
+import Mal, { Jikan } from "../";
 
 // Return url instead of calling jikan api
 // @ts-ignore
@@ -123,6 +123,14 @@ describe("/search", () => {
     jikanIt(
       search.anime({ q: "fate", page: 2 }),
       `${jikanUrl}/search/anime?q=fate&page=2`
+    );
+    jikanIt(
+      search.anime({
+        q: "fate",
+        page: 2,
+        genre: Jikan.Anime.GenreId.action,
+      }),
+      `${jikanUrl}/search/anime?q=fate&page=2&genre=1`
     );
   });
   describe("/manga", () => {
@@ -300,50 +308,39 @@ describe("/top", () => {
 describe("/genre", () => {
   let genre = Jikan.genre();
 
-  describe("@deprecated (check backward compatibility)", () => {
-    jikanIt(
-      genre.anime(Jikan.types.AnimeGenre.action),
-      `${jikanUrl}/genre/anime/1`
-    );
-    jikanIt(
-      genre.manga(Jikan.types.MangaGenre.action),
-      `${jikanUrl}/genre/manga/1`
-    );
-  });
-
   describe("/anime", () => {
     jikanIt(
-      genre.anime(Jikan.types.AnimeGenreId.action),
+      genre.anime(Jikan.Anime.GenreId.action),
       `${jikanUrl}/genre/anime/1`
     );
     jikanIt(
-      genre.anime(Jikan.types.AnimeGenreId.action, 1),
+      genre.anime(Jikan.Anime.GenreId.action, 1),
       `${jikanUrl}/genre/anime/1/1`
     );
     jikanIt(
-      genre.anime(Jikan.types.AnimeGenreId.action, 2),
+      genre.anime(Jikan.Anime.GenreId.action, 2),
       `${jikanUrl}/genre/anime/1/2`
     );
     jikanIt(
-      genre.anime(Jikan.types.AnimeGenreId.adventure, 1),
+      genre.anime(Jikan.Anime.GenreId.adventure, 1),
       `${jikanUrl}/genre/anime/2/1`
     );
   });
   describe("/manga", () => {
     jikanIt(
-      genre.manga(Jikan.types.MangaGenreId.action),
+      genre.manga(Jikan.Manga.GenreId.action),
       `${jikanUrl}/genre/manga/1`
     );
     jikanIt(
-      genre.manga(Jikan.types.MangaGenreId.action, 1),
+      genre.manga(Jikan.Manga.GenreId.action, 1),
       `${jikanUrl}/genre/manga/1/1`
     );
     jikanIt(
-      genre.manga(Jikan.types.MangaGenreId.action, 2),
+      genre.manga(Jikan.Manga.GenreId.action, 2),
       `${jikanUrl}/genre/manga/1/2`
     );
     jikanIt(
-      genre.manga(Jikan.types.MangaGenreId.adventure, 1),
+      genre.manga(Jikan.Manga.GenreId.adventure, 1),
       `${jikanUrl}/genre/manga/2/1`
     );
   });

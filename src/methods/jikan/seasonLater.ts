@@ -8,7 +8,7 @@ import { jikanGet, jikanUrl } from "./jikanApi";
  * ### Get Season Later
  * Anime that have been announced for the upcoming seasons
  * ```js
- * Mal.seasonLater();
+ * Jikan.seasonLater();
  * ```
  */
 export class SeasonLater {

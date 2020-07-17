@@ -1,26 +1,29 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl, Req } from "./jikanApi";
+
 import {
   AnimeInfo,
-  AnimeCharactersAndStaff,
+  CharactersAndStaff,
   Episodes,
-  News,
-  Pictures,
-  AnimeVideos,
-  AnimeStats,
+  Videos,
+  Stats,
   Forum,
-  AnimeMoreInfo,
-  AnimeReviews,
+  Reviews,
+  MoreInfo,
+  UserUpdates,
   Recommendations,
-  AnimeUserUpdates,
-} from "./types/anime/";
+  Pictures,
+  NewsInfo,
+} from "./types/anime";
+
+export * from "./types/anime";
 
 /**
  * # Anime
  * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/anime" target="_blank">https://jikan.docs.apiary.io</a>
  * To get anime you need to create anime object, like so:
  * ```ts
- * let anime = Mal.anime(id);
+ * let anime = Jikan.anime(id);
  * ```
  * And then you can use anime object multiple times to get desired information.
  * ```typescript
@@ -54,7 +57,7 @@ export class Anime {
   info(): Req<AnimeInfo> {
     return jikanGet(this.baseUrl);
   }
-  charactersStaff(): Req<AnimeCharactersAndStaff> {
+  charactersStaff(): Req<CharactersAndStaff> {
     return jikanGet(joinUrl(this.baseUrl, ["characters_staff"]));
   }
   episodes(p?: number): Req<Episodes> {
@@ -62,25 +65,25 @@ export class Anime {
     if (p != null) params.push(String(p));
     return jikanGet(joinUrl(this.baseUrl, params));
   }
-  news(): Req<News> {
+  news(): Req<NewsInfo> {
     return jikanGet(joinUrl(this.baseUrl, ["news"]));
   }
   pictures(): Req<Pictures> {
     return jikanGet(joinUrl(this.baseUrl, ["pictures"]));
   }
-  videos(): Req<AnimeVideos> {
+  videos(): Req<Videos> {
     return jikanGet(joinUrl(this.baseUrl, ["videos"]));
   }
-  stats(): Req<AnimeStats> {
+  stats(): Req<Stats> {
     return jikanGet(joinUrl(this.baseUrl, ["stats"]));
   }
   forum(): Req<Forum> {
     return jikanGet(joinUrl(this.baseUrl, ["forum"]));
   }
-  moreInfo(): Req<AnimeMoreInfo> {
+  moreInfo(): Req<MoreInfo> {
     return jikanGet(joinUrl(this.baseUrl, ["moreinfo"]));
   }
-  reviews(p?: number): Req<AnimeReviews> {
+  reviews(p?: number): Req<Reviews> {
     let params: string[] = ["reviews"];
     if (p != null) params.push(String(p));
     return jikanGet(joinUrl(this.baseUrl, params));
@@ -88,7 +91,7 @@ export class Anime {
   recommendations(): Req<Recommendations> {
     return jikanGet(joinUrl(this.baseUrl, ["recommendations"]));
   }
-  userUpdates(p?: number): Req<AnimeUserUpdates> {
+  userUpdates(p?: number): Req<UserUpdates> {
     let params: string[] = ["userupdates"];
     if (p != null) params.push(String(p));
     return jikanGet(joinUrl(this.baseUrl, params));

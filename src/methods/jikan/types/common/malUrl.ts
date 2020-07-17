@@ -1,12 +1,12 @@
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Common/MalUrl.php */
-export default interface MalUrl {
+export interface MalUrl {
   name: string;
   url: string;
   mal_id: number;
   type: MalUrlType;
 }
 
-enum MalUrlType {
+export enum MalUrlType {
   Anime = "anime",
   Manga = "manga",
   Character = "character",

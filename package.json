@@ -8,7 +8,7 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "./node_modules/ts-mocha/bin/ts-mocha test/*.ts",
-    "doc": "typedoc --theme minimal --out docs ./src --mode file"
+    "doc": "typedoc --mode library --out docs ./src/index.ts"
   },
   "keywords": [
     "MAL",
@@ -38,7 +38,7 @@
     "mocha": "^6.2.3",
     "npm": "^6.14.5",
     "ts-mocha": "^6.0.0",
-    "typedoc": "^0.17.7",
-    "typescript": "^3.9.3"
+    "typedoc": "^0.17.0-3",
+    "typescript": "^3.9.6"
   }
 }

@@ -1,11 +1,10 @@
-import Recommendation from "../common/recommendation";
+import { Common } from "../";
 
 /* src: ? */
 export interface Recommendations {
-  recommendations: Recommendation[];
+  recommendations: Common.Recommendation[];
 
   request_cache_expiry: number;
   request_cached: boolean;
   request_hash: string;
 }
-export default Recommendations;

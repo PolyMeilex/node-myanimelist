@@ -1,17 +1,17 @@
-import VoiceActor from "./voiceActor";
+import { VoiceActor } from "./";
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Character/CharacterListItem.php */
-export default interface CharacterListItem {
+export interface CharacterListItem {
   mal_id: number;
   url: string;
   image_url: string;
 
   name: string;
-  role: CharacterRole;
+  role: Role;
   voice_actors: VoiceActor[];
 }
 
-export enum CharacterRole {
+export enum Role {
   Main = "Main",
   Supporting = "Supporting",
 }

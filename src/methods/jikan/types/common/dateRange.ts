@@ -1,7 +1,7 @@
-import DateProp from "./dateProp";
+import { DateProp } from "./";
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Common/DateRange.php */
-export default interface DateRange {
+export interface DateRange {
   from: Date | null;
   to: Date | null;
   prop: DateProp;

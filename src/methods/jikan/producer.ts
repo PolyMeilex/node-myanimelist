@@ -7,7 +7,7 @@ import { jikanGet, jikanUrl } from "./jikanApi";
  * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/producer" target="_blank">https://jikan.docs.apiary.io</a>
  *
  * ```ts
- * Mal.producer(id, page?);
+ * Jikan.producer(id, page?);
  * ```
  */
 export class Producer {

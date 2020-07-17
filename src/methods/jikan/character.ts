@@ -1,6 +1,8 @@
 import { joinUrl } from "./url";
 import { jikanGet, jikanUrl, Req } from "./jikanApi";
+
 import { CharacterInfo, Pictures } from "./types/character";
+export * from "./types/character";
 
 /**
  * # Character
@@ -8,7 +10,7 @@ import { CharacterInfo, Pictures } from "./types/character";
  * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/character" target="_blank">https://jikan.docs.apiary.io</a>
  * To get character you need to create character object, like that:
  * ```ts
- * let character = Mal.character(id);
+ * let character = Jikan.character(id);
  * ```
  * Now you can use character object multiple times to get desired information.
  * ```ts

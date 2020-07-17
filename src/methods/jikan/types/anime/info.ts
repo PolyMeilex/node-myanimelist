@@ -1,5 +1,4 @@
-import MalUrl from "../common/malUrl";
-import DateRange from "../common/dateRange";
+import { Common } from "../";
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/Anime.php */
 export interface AnimeInfo {
@@ -20,7 +19,7 @@ export interface AnimeInfo {
   episodes: number | null;
   status: string | null;
   airing: boolean;
-  aired: DateRange;
+  aired: Common.DateRange;
 
   duration: string | null;
   rating: string | null;
@@ -37,13 +36,13 @@ export interface AnimeInfo {
 
   premiered: string | null;
   broadcast: string | null;
-  related: AnimeRelated;
+  related: Related;
 
-  producers: MalUrl[];
-  licensors: MalUrl[];
-  studios: MalUrl[];
+  producers: Common.MalUrl[];
+  licensors: Common.MalUrl[];
+  studios: Common.MalUrl[];
 
-  genres: MalUrl[];
+  genres: Common.MalUrl[];
   opening_themes: string[];
   ending_themes: string[];
 
@@ -51,10 +50,9 @@ export interface AnimeInfo {
   request_cached: boolean;
   request_hash: string;
 }
-export default AnimeInfo;
 
-export interface AnimeRelated {
-  Adaptation: MalUrl[];
-  "Side story": MalUrl[];
-  Summary: MalUrl[];
+export interface Related {
+  Adaptation: Common.MalUrl[];
+  "Side story": Common.MalUrl[];
+  Summary: Common.MalUrl[];
 }

@@ -1,5 +1,5 @@
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeVideos.php */
-export interface AnimeVideos {
+export interface Videos {
   promo: PromoListItem[];
   episodes: StreamEpisodeListItem[];
 
@@ -7,7 +7,6 @@ export interface AnimeVideos {
   request_cached: boolean;
   request_hash: string;
 }
-export default AnimeVideos;
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/StreamEpisodeListItem.php */
 export interface StreamEpisodeListItem {

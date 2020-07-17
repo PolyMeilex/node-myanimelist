@@ -1,5 +1,4 @@
-import DateRange from "../common/dateRange";
-import MalUrl from "../common/malUrl";
+import { Common } from "../";
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Manga/Manga.php */
 export interface MangaInfo {
@@ -19,7 +18,7 @@ export interface MangaInfo {
   chapters: number | null;
 
   publishing: boolean;
-  published: DateRange;
+  published: Common.DateRange;
 
   rank: number | null;
   score: number | null;
@@ -32,10 +31,10 @@ export interface MangaInfo {
 
   background: string | null;
 
-  related: MalUrl[];
-  genres: MalUrl[];
-  authors: MalUrl[];
-  serializations: MalUrl[];
+  related: Common.MalUrl[];
+  genres: Common.MalUrl[];
+  authors: Common.MalUrl[];
+  serializations: Common.MalUrl[];
 
   request_cache_expiry: number;
   request_cached: boolean;

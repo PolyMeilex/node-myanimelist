@@ -1,15 +1,14 @@
 /** src: ? */
-export interface AnimeReviews {
-  reviews: AnimeReview[];
+export interface Reviews {
+  reviews: Review[];
 
   request_cache_expiry: number;
   request_cached: boolean;
   request_hash: string;
 }
-export default AnimeReviews;
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeReview.php */
-export interface AnimeReview {
+export interface Review {
   mal_id: number;
   url: string;
 
@@ -23,7 +22,7 @@ export interface AnimeReview {
 
   helpful_count: number;
   date: Date;
-  reviewer: AnimeReviewer;
+  reviewer: Reviewer;
 
   content: string;
 }
@@ -31,17 +30,17 @@ export interface AnimeReview {
 /**
  * src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeReviewer.php
  * src: https://github.com/jikan-me/jikan/blob/master/src/Model/Common/Reviewer.php */
-export interface AnimeReviewer {
+export interface Reviewer {
   url: string;
   image_url: string;
   username: string;
 
   episodes_seen: number;
-  scores: AnimeReviewScores;
+  scores: ReviewScores;
 }
 
 /** src: https://github.com/jikan-me/jikan/blob/master/src/Model/Anime/AnimeReviewScores.php */
-export interface AnimeReviewScores {
+export interface ReviewScores {
   overall: number;
   story: number;
   animation: number;
