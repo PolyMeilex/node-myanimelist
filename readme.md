@@ -9,7 +9,7 @@
   - [x] animelist
   - [x] mangalist
 - [x] /anime
-  - [ ] full type annotation
+  - [x] full type annotation
   - [x] search 
   - [x] details
   - [x] ranking
@@ -23,7 +23,7 @@
   - [ ] topic detail
   - [ ] topics
 - [x] /manga
-  - [ ] full type annotation
+  - [x] full type annotation
   - [x] search 
     - [x] Unit Tests
   - [x] details
