@@ -11,7 +11,7 @@ export * from "./fields";
 export * from "./types";
 
 export class MalAnime {
-  acount: MalAcount;
+  private acount: MalAcount;
 
   constructor(acount: MalAcount) {
     this.acount = acount;

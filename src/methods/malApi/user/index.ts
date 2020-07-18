@@ -21,7 +21,7 @@ export type AnimelistParams = {
 };
 
 export class MalUser {
-  acount: MalAcount;
+  private acount: MalAcount;
 
   constructor(acount: MalAcount) {
     this.acount = acount;

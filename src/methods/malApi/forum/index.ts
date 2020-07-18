@@ -9,7 +9,7 @@ import { Paging } from "../common";
 export * from "./types";
 
 export class MalForum {
-  acount: MalAcount;
+  private acount: MalAcount;
 
   constructor(acount: MalAcount) {
     this.acount = acount;

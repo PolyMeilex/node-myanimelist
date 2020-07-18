@@ -5,11 +5,13 @@ import { MalUser } from "./user";
 import { MalAnime } from "./anime";
 import { MalManga } from "./manga";
 import { MalForum } from "./forum";
+import { Forum } from "../jikan/types";
 
 export * as User from "./user";
 export * as Anime from "./anime";
 export * as Manga from "./manga";
 export * as Common from "./common";
+export * as Forum from "./forum";
 
 export { ResponseError, MalError } from "./request";
 
@@ -108,7 +110,9 @@ export class MalToken {
 }
 
 export class MalAcount {
-  clientId: string;
+  /** @hidden */
+  private clientId: string;
+  /** @hidden */
   malToken: MalToken;
 
   constructor(clientId: string, malToken: MalToken) {
@@ -116,9 +120,13 @@ export class MalAcount {
     this.malToken = malToken;
   }
 
+  /** @group Methods */
   user: MalUser = new MalUser(this);
+  /** @group Methods */
   anime: MalAnime = new MalAnime(this);
+  /** @group Methods */
   manga: MalManga = new MalManga(this);
+  /** @group Methods */
   forum: MalForum = new MalForum(this);
 
   async refreshToken(): Promise<MalAcount> {
