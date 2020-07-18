@@ -135,7 +135,7 @@ AnimeFields.prototype.toString = function () {
 /**
  * Anime For List
  */
-export function animeFields() {
+export function fields() {
   return new AnimeFields();
 }
 
@@ -299,7 +299,7 @@ AnimeDetailsFields.prototype.toString = function () {
 /**
  * Anime For Details
  */
-export function animeDetailsFields() {
+export function detailsFields() {
   return new AnimeDetailsFields();
 }
 
@@ -344,6 +344,6 @@ AnimeListStatusFields.prototype.toString = function () {
 /**
  * Anime List Status
  */
-export function animeListStatusFields() {
+export function listStatusFields() {
   return new AnimeListStatusFields();
 }

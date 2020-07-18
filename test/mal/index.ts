@@ -300,7 +300,7 @@ module Manga {
 async function manga(acount: Mal.MalAcount) {
   let manga = acount.manga;
 
-  let fields = Mal.Manga.mangaFields()
+  let fields = Mal.Manga.fields()
     // WorkBase
     .alternativeTitles()
     .startDate()
@@ -319,7 +319,7 @@ async function manga(acount: Mal.MalAcount) {
     .mediaType()
     .status()
     .myListStatus(
-      Mal.Manga.mangaListStatusFields()
+      Mal.Manga.listStatusFields()
         .startDate()
         .finishDate()
         .priority()

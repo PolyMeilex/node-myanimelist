@@ -125,7 +125,7 @@ MangaFields.prototype.toString = function () {
 /**
  * Manga For List
  */
-export function mangaFields() {
+export function fields() {
   return new MangaFields();
 }
 
@@ -281,7 +281,7 @@ MangaDetailsFields.prototype.toString = function () {
 /**
  * Manga For Details
  */
-export function mangaDetailsFields() {
+export function detailsFields() {
   return new MangaDetailsFields();
 }
 
@@ -331,6 +331,6 @@ MangaListStatusFields.prototype.toString = function () {
 /**
  * Manga List Status
  */
-export function mangaListStatusFields() {
+export function listStatusFields() {
   return new MangaListStatusFields();
 }

@@ -41,7 +41,7 @@ const acount = await mal.authorizationCode(code,pkce.code_challenge);
 
 let search = await mal.manga.search(
    "Sakurasou",
-   Mal.Manga.mangaFields()
+   Mal.Manga.fields()
       .alternativeTitles()
       .startDate()
       .endDate()
@@ -58,7 +58,7 @@ let search = await mal.manga.search(
       .mediaType()
       .status()
       .myListStatus(
-         Mal.Manga.mangaListStatusFields()
+         Mal.Manga.listStatusFields()
             .startDate()
             .finishDate()
             .priority()

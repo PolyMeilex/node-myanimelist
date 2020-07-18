@@ -31,7 +31,7 @@
  *
  * let search = await manga.search(
  *    "Sakurasou",
- *    Mal.Manga.mangaFields()
+ *    Mal.Manga.fields()
  *       .alternativeTitles()
  *       .startDate()
  *       .endDate()
@@ -48,7 +48,7 @@
  *       .mediaType()
  *       .status()
  *       .myListStatus(
- *          Mal.Manga.mangaListStatusFields()
+ *          Mal.Manga.listStatusFields()
  *             .startDate()
  *             .finishDate()
  *             .priority()

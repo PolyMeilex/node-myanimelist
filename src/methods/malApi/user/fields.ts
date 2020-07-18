@@ -23,6 +23,6 @@ export class UserFields<T> {
   }
 }
 
-export function userFields() {
+export function fields() {
   return new UserFields<UserBase>();
 }
