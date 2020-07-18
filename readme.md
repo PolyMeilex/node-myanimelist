@@ -1,37 +1,6 @@
 ![NodeMal API Banner](https://i.imgur.com/IcBShyO.png)
 
 # Node-MyAnimeList
-### Oficial MAL API support is WIP! :smiley:
-#### Todo:
-- [x] Auth
-- [x] /user
-  - [x] info
-  - [x] animelist
-  - [x] mangalist
-- [x] /anime
-  - [x] full type annotation
-  - [x] search 
-  - [x] details
-  - [x] ranking
-  - [x] seasonal
-  - [x] suggested  
-  - [x] update anime
-  - [x] delete anime
-- [x] /forum
-  - [x] full type annotation
-  - [x] boards
-  - [x] topic detail
-  - [x] topics
-- [x] /manga
-  - [x] full type annotation
-  - [x] search 
-    - [x] Unit Tests
-  - [x] details
-  - [x] ranking  
-  - [x] update manga
-  - [x] delete manga
-
-
 Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
 Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package
 
@@ -65,58 +34,42 @@ Jikan methods return unmodified jikanApi responses, to see all of them visit [ji
 # List of functions
 For more detalis visit [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki)
 * MalApi Methods
-  * WIP!
+	* OAuth PKCE Auth
+	* OAuth Login And Passwor Auth (unofficial)
+  * Anime
+    * Search
+    * Details
+    * Ranking
+    * Seasonal anime
+    * Suggested anime
+  * Manga
+    * Search
+    * Details
+    * Ranking
+  * Forum
+    * Boards
+    * Topics
+    * Topic details 
+  * User
+    * Info
+    * Animelist
+    * Mangalist
 * JikanApi Methods
 	* Jikan.**[anime](https://github.com/PolyMeilex/node-myanimelist/wiki/Anime)**(id)
-		* anime.**info**()
- 		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Anime)
 	* Jikan.**[manga](https://github.com/PolyMeilex/node-myanimelist/wiki/Manga)**(id) 
- 		* manga.**info**()
- 		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Manga)
 	* Jikan.**[person](https://github.com/PolyMeilex/node-myanimelist/wiki/Person)**(id) 
-		* person.**info**()
-		* person.**pictures**()
 	* Jikan.**[character](https://github.com/PolyMeilex/node-myanimelist/wiki/Character)**(id) 
-		* character.**info**()
-	 	* character.**pictures**()
  	* Jikan.**[search](https://github.com/PolyMeilex/node-myanimelist/wiki/Search)**()
-	 	* search.**anime**(params)
-	 	* search.**manga**(params)
-	 	* search.**person**(params)
-	 	* search.**character**(params)
  	* Jikan.**[season](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**(year,season)
  	* Jikan.**[seasonArchive](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**()
  	* Jikan.**[seasonLater](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**() 
 	* Jikan.**[schedule](https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule)**()
-		* schedule.**all**()
-		* schedule.**monday**()
-		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule)
 	* Jikan.**[top](https://github.com/PolyMeilex/node-myanimelist/wiki/Top)**()
-		* top.**anime**()
-			* topAnime.**all**()
-			* topAnime.**upcoming**()
- 		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/Top)
 	* Jikan.**[genre](https://github.com/PolyMeilex/node-myanimelist/wiki/Genre)**()
-		* genre.**anime**(genreId)
-		* genre.**manga**(genreId)
 	* Jikan.**[producer](https://github.com/PolyMeilex/node-myanimelist/wiki/Producer)**(id, page?)
 	* Jikan.**[magazine](https://github.com/PolyMeilex/node-myanimelist/wiki/Magazine)**(id, page?)
 	* Jikan.**[user](https://github.com/PolyMeilex/node-myanimelist/wiki/User)**(username)
-		* user.**profile**()
-		* user.**history**()
-			* history.**all**()
-			* history.**anime**()
- 			* history.**manga**()
-		* user.**animelist**(page?)
-			* animelist.**all**(params?)
- 			* animelist.**watching**(params?)
-		* user.**mangalist**(page?)
-			* mangalist.**all**(params?)
- 			* mangalist.**reading**(params?)
- 		* [List of all endpoints](https://github.com/PolyMeilex/node-myanimelist/wiki/User)
 	* Jikan.**[club](https://github.com/PolyMeilex/node-myanimelist/wiki/Club)**(id)
-		* club.**info**()
-		* club.**members**(page?)
 
 # Buildin Scraper
 ```js
