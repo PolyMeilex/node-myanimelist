@@ -17,11 +17,11 @@
   - [x] suggested  
   - [x] update anime
   - [x] delete anime
-- [ ] /forum
-  - [ ] full type annotation
-  - [ ] boards
-  - [ ] topic detail
-  - [ ] topics
+- [x] /forum
+  - [x] full type annotation
+  - [x] boards
+  - [x] topic detail
+  - [x] topics
 - [x] /manga
   - [x] full type annotation
   - [x] search 

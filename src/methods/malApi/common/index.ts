@@ -10,8 +10,8 @@ export interface Picture {
 export interface Paging<T> {
   data: T[];
   paging: {
-    previous?: string;
-    next?: string;
+    previous?: string | null;
+    next?: string | null;
   };
 }
 

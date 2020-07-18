@@ -4,6 +4,7 @@ import { queryEncode } from "./util";
 import { MalUser } from "./user";
 import { MalAnime } from "./anime";
 import { MalManga } from "./manga";
+import { MalForum } from "./forum";
 
 export * as User from "./user";
 export * as Anime from "./anime";
@@ -125,6 +126,10 @@ export class MalAcount {
 
   manga(): MalManga {
     return new MalManga(this);
+  }
+
+  forum(): MalForum {
+    return new MalForum(this);
   }
 
   async refreshToken(): Promise<MalAcount> {
