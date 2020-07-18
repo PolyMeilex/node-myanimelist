@@ -68,51 +68,6 @@
 				<a href="#node-myanimelist" id="node-myanimelist" style="color: inherit; text-decoration: none;">
 					<h1>Node-MyAnimeList</h1>
 				</a>
-				<a href="#oficial-mal-api-support-is-wip-smiley" id="oficial-mal-api-support-is-wip-smiley" style="color: inherit; text-decoration: none;">
-					<h3>Oficial MAL API support is WIP! :smiley:</h3>
-				</a>
-				<a href="#todo" id="todo" style="color: inherit; text-decoration: none;">
-					<h4>Todo:</h4>
-				</a>
-				<ul>
-					<li><input checked="" disabled="" type="checkbox"> Auth</li>
-					<li><input checked="" disabled="" type="checkbox"> /user<ul>
-							<li><input checked="" disabled="" type="checkbox"> info</li>
-							<li><input checked="" disabled="" type="checkbox"> animelist</li>
-							<li><input checked="" disabled="" type="checkbox"> mangalist</li>
-						</ul>
-					</li>
-					<li><input checked="" disabled="" type="checkbox"> /anime<ul>
-							<li><input checked="" disabled="" type="checkbox"> full type annotation</li>
-							<li><input checked="" disabled="" type="checkbox"> search </li>
-							<li><input checked="" disabled="" type="checkbox"> details</li>
-							<li><input checked="" disabled="" type="checkbox"> ranking</li>
-							<li><input checked="" disabled="" type="checkbox"> seasonal</li>
-							<li><input checked="" disabled="" type="checkbox"> suggested  </li>
-							<li><input checked="" disabled="" type="checkbox"> update anime</li>
-							<li><input checked="" disabled="" type="checkbox"> delete anime</li>
-						</ul>
-					</li>
-					<li><input checked="" disabled="" type="checkbox"> /forum<ul>
-							<li><input checked="" disabled="" type="checkbox"> full type annotation</li>
-							<li><input checked="" disabled="" type="checkbox"> boards</li>
-							<li><input checked="" disabled="" type="checkbox"> topic detail</li>
-							<li><input checked="" disabled="" type="checkbox"> topics</li>
-						</ul>
-					</li>
-					<li><input checked="" disabled="" type="checkbox"> /manga<ul>
-							<li><input checked="" disabled="" type="checkbox"> full type annotation</li>
-							<li><input checked="" disabled="" type="checkbox"> search <ul>
-									<li><input checked="" disabled="" type="checkbox"> Unit Tests</li>
-								</ul>
-							</li>
-							<li><input checked="" disabled="" type="checkbox"> details</li>
-							<li><input checked="" disabled="" type="checkbox"> ranking  </li>
-							<li><input checked="" disabled="" type="checkbox"> update manga</li>
-							<li><input checked="" disabled="" type="checkbox"> delete manga</li>
-						</ul>
-					</li>
-				</ul>
 				<p>Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
 				Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package</p>
 				<a href="#intellisens-support-typescript" id="intellisens-support-typescript" style="color: inherit; text-decoration: none;">
@@ -150,98 +105,54 @@
 				<p>For more detalis visit <a href="https://github.com/PolyMeilex/node-myanimelist/wiki">wiki</a></p>
 				<ul>
 					<li>MalApi Methods<ul>
-							<li>WIP!</li>
+							<li>OAuth PKCE Auth</li>
+							<li>OAuth Login And Passwor Auth (unofficial)<ul>
+									<li>Anime</li>
+								</ul>
+							</li>
+							<li>Search</li>
+							<li>Details</li>
+							<li>Ranking</li>
+							<li>Seasonal anime</li>
+							<li>Suggested anime<ul>
+									<li>Manga</li>
+								</ul>
+							</li>
+							<li>Search</li>
+							<li>Details</li>
+							<li>Ranking<ul>
+									<li>Forum</li>
+								</ul>
+							</li>
+							<li>Boards</li>
+							<li>Topics</li>
+							<li>Topic details <ul>
+									<li>User</li>
+								</ul>
+							</li>
+							<li>Info</li>
+							<li>Animelist</li>
+							<li>Mangalist</li>
 						</ul>
 					</li>
 					<li>JikanApi Methods<ul>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Anime">anime</a></strong>(id)<ul>
-									<li>anime.<strong>info</strong>()<ul>
-											<li><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Anime">List of all endpoints</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Manga">manga</a></strong>(id) <ul>
-									<li>manga.<strong>info</strong>()</li>
-									<li><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Manga">List of all endpoints</a></li>
-								</ul>
-							</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Person">person</a></strong>(id) <ul>
-									<li>person.<strong>info</strong>()</li>
-									<li>person.<strong>pictures</strong>()</li>
-								</ul>
-							</li>
+							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Anime">anime</a></strong>(id)</li>
+							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Manga">manga</a></strong>(id) </li>
+							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Person">person</a></strong>(id) </li>
 							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Character">character</a></strong>(id) <ul>
-									<li>character.<strong>info</strong>()<ul>
-											<li>character.<strong>pictures</strong>()</li>
-											<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Search">search</a></strong>()</li>
-											<li>search.<strong>anime</strong>(params)</li>
-											<li>search.<strong>manga</strong>(params)</li>
-											<li>search.<strong>person</strong>(params)</li>
-											<li>search.<strong>character</strong>(params)</li>
-											<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season">season</a></strong>(year,season)</li>
-											<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season">seasonArchive</a></strong>()</li>
-											<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season">seasonLater</a></strong>() </li>
-										</ul>
-									</li>
+									<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Search">search</a></strong>()</li>
+									<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season">season</a></strong>(year,season)</li>
+									<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season">seasonArchive</a></strong>()</li>
+									<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season">seasonLater</a></strong>() </li>
 								</ul>
 							</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule">schedule</a></strong>()<ul>
-									<li>schedule.<strong>all</strong>()</li>
-									<li>schedule.<strong>monday</strong>()</li>
-									<li><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule">List of all endpoints</a></li>
-								</ul>
-							</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Top">top</a></strong>()<ul>
-									<li>top.<strong>anime</strong>()<ul>
-											<li>topAnime.<strong>all</strong>()</li>
-											<li>topAnime.<strong>upcoming</strong>()<ul>
-													<li><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Top">List of all endpoints</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Genre">genre</a></strong>()<ul>
-									<li>genre.<strong>anime</strong>(genreId)</li>
-									<li>genre.<strong>manga</strong>(genreId)</li>
-								</ul>
-							</li>
+							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule">schedule</a></strong>()</li>
+							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Top">top</a></strong>()</li>
+							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Genre">genre</a></strong>()</li>
 							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Producer">producer</a></strong>(id, page?)</li>
 							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Magazine">magazine</a></strong>(id, page?)</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/User">user</a></strong>(username)<ul>
-									<li>user.<strong>profile</strong>()</li>
-									<li>user.<strong>history</strong>()<ul>
-											<li>history.<strong>all</strong>()</li>
-											<li>history.<strong>anime</strong>()<ul>
-													<li>history.<strong>manga</strong>()</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li>user.<strong>animelist</strong>(page?)<ul>
-											<li>animelist.<strong>all</strong>(params?)<ul>
-													<li>animelist.<strong>watching</strong>(params?)</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li>user.<strong>mangalist</strong>(page?)<ul>
-											<li>mangalist.<strong>all</strong>(params?)<ul>
-													<li>mangalist.<strong>reading</strong>(params?)</li>
-													<li><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/User">List of all endpoints</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Club">club</a></strong>(id)<ul>
-									<li>club.<strong>info</strong>()</li>
-									<li>club.<strong>members</strong>(page?)</li>
-								</ul>
-							</li>
+							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/User">user</a></strong>(username)</li>
+							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Club">club</a></strong>(id)</li>
 						</ul>
 					</li>
 				</ul>

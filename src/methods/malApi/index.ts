@@ -1,11 +1,85 @@
+/**
+ * # MalAPI
+ *
+ * ```ts
+ * import { Mal } from "node-myanimelist";
+ * import pkceChallenge from "pkce-challenge";
+ *
+ * const mal = Mal.api("app_id")
+ *
+ * async function asyncMain(){
+ *  const pkce = pkceChallenge();
+ *
+ *  const url = mal.getOAuthUrl(pkce.code_challenge)
+ *  // Open returned url, accept oauth and use returned code to authorize
+ *  const acount = await mal.authorizationCode(code, code_challenge)
+ *  // You probably want to save acount somewhere you can just call JSON.stringify(acount) to get json
+ *
+ *  // Later you can load it using:
+ *  const token = Mal.MalToken.fromJsonString(str);
+ *  // or
+ *  const token = await Mal.MalToken.fromRefreshToken(acount.refresh_token);
+ *
+ *  const acount = mal.loadToken(token);
+ *
+ *
+ *  // If access_token expired you can run
+ *  await acount.refreshToken();
+ *
+ *
+ *  // You can use acount to make your requests
+ *
+ * let search = await manga.search(
+ *    "Sakurasou",
+ *    Mal.Manga.mangaFields()
+ *       .alternativeTitles()
+ *       .startDate()
+ *       .endDate()
+ *       .synopsis()
+ *       .mean()
+ *       .rank()
+ *       .popularity()
+ *       .numListUsers()
+ *       .numScoringUsers()
+ *       .nsfw()
+ *       .genres()
+ *       .createdAt()
+ *       .updatedAt()
+ *       .mediaType()
+ *       .status()
+ *       .myListStatus(
+ *          Mal.Manga.mangaListStatusFields()
+ *             .startDate()
+ *             .finishDate()
+ *             .priority()
+ *             .numTimesReread()
+ *             .rereadValue()
+ *             .tags()
+ *             .comments()
+ *       )
+ *       .numVolumes()
+ *       .numChapters()
+ *       .authors()
+ * ).call();
+ *
+ * }
+ *
+ * ```
+ *
+ *
+ * @packageDocumentation
+ */
+
+/** */
+
 import MalRequest from "./request";
 import { apiUrl, secondaryApiUrl } from "./api";
 import { queryEncode } from "./util";
+
 import { MalUser } from "./user";
 import { MalAnime } from "./anime";
 import { MalManga } from "./manga";
 import { MalForum } from "./forum";
-import { Forum } from "../jikan/types";
 
 export * as User from "./user";
 export * as Anime from "./anime";
@@ -17,7 +91,7 @@ export { ResponseError, MalError } from "./request";
 
 export class MalToken {
   token_type: string;
-  expires_in: number | null;
+  expires_in: number | null | undefined;
   access_token: string;
   refresh_token: string;
 
@@ -25,12 +99,41 @@ export class MalToken {
     tokenType: string,
     accessToken: string,
     refreshToken: string,
-    expiresIn: number | null
+    expiresIn?: number | null
   ) {
     this.token_type = tokenType;
     this.expires_in = expiresIn;
     this.access_token = accessToken;
     this.refresh_token = refreshToken;
+  }
+
+  static fromJsonObj(obj: {
+    token_type: string;
+    access_token: string;
+    refresh_token: string;
+    expires_in?: number | null;
+  }) {
+    return new MalToken(
+      obj.token_type,
+      obj.access_token,
+      obj.refresh_token,
+      obj.expires_in
+    );
+  }
+
+  static fromJsonString(str: string) {
+    let obj: {
+      token_type: string;
+      access_token: string;
+      refresh_token: string;
+      expires_in?: number | null;
+    } = JSON.parse(str);
+    return new MalToken(
+      obj.token_type,
+      obj.access_token,
+      obj.refresh_token,
+      obj.expires_in
+    );
   }
 
   /**
@@ -149,7 +252,7 @@ export class Api {
     return new MalAcount(this.clientId, token);
   }
 
-  getOauthUrl(codeChallenge: string) {
+  getOAuthUrl(codeChallenge: string) {
     const base = "https://myanimelist.net/v1/oauth2";
     return `${base}/authorize?response_type=code&client_id=${this.clientId}&code_challenge_method=plain&code_challenge=${codeChallenge}`;
   }

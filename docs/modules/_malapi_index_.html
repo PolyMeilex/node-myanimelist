@@ -66,6 +66,77 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<a href="#malapi" id="malapi" style="color: inherit; text-decoration: none;">
+							<h1>MalAPI</h1>
+						</a>
+					</div>
+					<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Mal } <span class="hljs-keyword">from</span> <span class="hljs-string">"node-myanimelist"</span>;
+<span class="hljs-keyword">import</span> pkceChallenge <span class="hljs-keyword">from</span> <span class="hljs-string">"pkce-challenge"</span>;
+
+<span class="hljs-keyword">const</span> mal = Mal.api(<span class="hljs-string">"app_id"</span>)
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncMain</span>(<span class="hljs-params"></span>)</span>{
+ <span class="hljs-keyword">const</span> pkce = pkceChallenge();
+
+ <span class="hljs-keyword">const</span> url = mal.getOAuthUrl(pkce.code_challenge)
+ <span class="hljs-comment">// Open returned url, accept oauth and use returned code to authorize</span>
+ <span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> mal.authorizationCode(code, code_challenge)
+ <span class="hljs-comment">// You probably want to save acount somewhere you can just call JSON.stringify(acount) to get json</span>
+
+ <span class="hljs-comment">// Later you can load it using:</span>
+ <span class="hljs-keyword">const</span> token = Mal.MalToken.fromJsonString(str);
+ <span class="hljs-comment">// or</span>
+ <span class="hljs-keyword">const</span> token = <span class="hljs-keyword">await</span> Mal.MalToken.fromRefreshToken(acount.refresh_token);
+
+ <span class="hljs-keyword">const</span> acount = mal.loadToken(token);
+
+
+ <span class="hljs-comment">// If access_token expired you can run</span>
+ <span class="hljs-keyword">await</span> acount.refreshToken();
+
+
+ <span class="hljs-comment">// You can use acount to make your requests</span>
+
+<span class="hljs-keyword">let</span> search = <span class="hljs-keyword">await</span> manga.search(
+   <span class="hljs-string">"Sakurasou"</span>,
+   Mal.Manga.mangaFields()
+      .alternativeTitles()
+      .startDate()
+      .endDate()
+      .synopsis()
+      .mean()
+      .rank()
+      .popularity()
+      .numListUsers()
+      .numScoringUsers()
+      .nsfw()
+      .genres()
+      .createdAt()
+      .updatedAt()
+      .mediaType()
+      .status()
+      .myListStatus(
+         Mal.Manga.mangaListStatusFields()
+            .startDate()
+            .finishDate()
+            .priority()
+            .numTimesReread()
+            .rereadValue()
+            .tags()
+            .comments()
+      )
+      .numVolumes()
+      .numChapters()
+      .authors()
+).call();
+
+}
+</code></pre>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -117,8 +188,7 @@
 					<div class="tsd-signature tsd-kind-icon">Response<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">AxiosError</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_malapi_index_.malerror.html" class="tsd-signature-type">MalError</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/f3a8095/src/methods/malApi/request.ts#L42">methods/malApi/request.ts:42</a></li>
-							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/f3a8095/src/methods/malApi/request.ts#L42">methods/malApi/request.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/d7b5ed2/src/methods/malApi/request.ts#L42">methods/malApi/request.ts:42</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -135,7 +205,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/f3a8095/src/methods/malApi/index.ts#L205">methods/malApi/index.ts:205</a></li>
+									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/d7b5ed2/src/methods/malApi/index.ts#L308">methods/malApi/index.ts:308</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>

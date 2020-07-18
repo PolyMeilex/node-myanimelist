@@ -1,4 +1,4 @@
-import Mal from "../";
+import { Mal } from "../";
 import { main } from "./mal/index";
 
 // import pkceChallenge from "pkce-challenge";
@@ -16,7 +16,7 @@ describe("MalAPI", async () => {
   it("OAuth Url", () => {
     const mal = Mal.api(clientId);
 
-    let res = mal.getOauthUrl(pkce.code_challenge);
+    let res = mal.getOAuthUrl(pkce.code_challenge);
     console.log(res);
 
     const base = "https://myanimelist.net/v1/oauth2";
