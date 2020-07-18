@@ -21,6 +21,7 @@
  * * Jikan.**{@link user}**(username)
  * * Jikan.**{@link club}**(id)
  *
+ * Jikan methods return unmodified jikanApi responses, to see all of them visit [jikanDocs](https://jikan.docs.apiary.io/)
  *
  * @packageDocumentation
  */

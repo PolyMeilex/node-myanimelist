@@ -24,13 +24,54 @@ const { Mal, Jikan } = require("node-myanimelist");
 // Or
 import { Mal, Jikan } from 'node-myanimelist';
 ```
-## Responses
-Data is always returned with promise.
-Data is actually raw [axios](https://www.npmjs.com/package/axios) response object so to get jikanApi json object you have to use:
+### MalAPI Example
 ```ts
-	.then(res => res.data) //Data is jikanApi response
+const mal = Mal.api("6114d00ca681b7701d1e15fe11a4987e" /* app_id */ );
+
+// Unoffical way to login (not recomended)
+const acount = await mal.unstable.login("username","password");
+
+// Offical way to login (recomended)
+// import pkceChallenge from "pkce-challenge";
+// const pkce = pkceChallenge();
+
+const url = mal.getOAuthUrl(pkce.code_challenge)
+// Open returned url, accept oauth and use returned code to authorize
+const acount = await mal.authorizationCode(code,pkce.code_challenge);
+
+let search = await manga.search(
+   "Sakurasou",
+   Mal.Manga.mangaFields()
+      .alternativeTitles()
+      .startDate()
+      .endDate()
+      .synopsis()
+      .mean()
+      .rank()
+      .popularity()
+      .numListUsers()
+      .numScoringUsers()
+      .nsfw()
+      .genres()
+      .createdAt()
+      .updatedAt()
+      .mediaType()
+      .status()
+      .myListStatus(
+         Mal.Manga.mangaListStatusFields()
+            .startDate()
+            .finishDate()
+            .priority()
+            .numTimesReread()
+            .rereadValue()
+            .tags()
+            .comments()
+      )
+      .numVolumes()
+      .numChapters()
+      .authors()
+).call();
 ```
-Jikan methods return unmodified jikanApi responses, to see all of them visit [jikanDocs](https://jikan.docs.apiary.io/)
 # List of functions
 For more detalis visit [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki)
 * MalApi Methods

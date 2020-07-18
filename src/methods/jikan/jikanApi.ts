@@ -4,15 +4,19 @@ import axios from "axios";
 
 // @ts-ignore
 global.jikanGet = function jikanGet(url: string): Promise<any> {
-  return axios.get(url);
+  return new Promise((res, rej) => {
+    axios
+      .get(url)
+      .then((r) => res(r.data))
+      .catch((err) => rej(err));
+  });
 };
 
-export interface ReqResponse<T> {
-  data: T;
-}
+// export interface ReqResponse<T> {
+//   data: T;
+// }
 
-export type Req<T> = Promise<ReqResponse<T>>;
-
+export type Req<T> = Promise<T>;
 
 export function jikanGet(url: string): Promise<any> {
   // @ts-ignore
