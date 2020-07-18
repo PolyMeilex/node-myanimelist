@@ -298,7 +298,7 @@ module Manga {
 }
 
 async function manga(acount: Mal.MalAcount) {
-  let manga = acount.manga();
+  let manga = acount.manga;
 
   let fields = Mal.Manga.mangaFields()
     // WorkBase
@@ -354,7 +354,7 @@ async function manga(acount: Mal.MalAcount) {
 }
 
 function forum(acount: Mal.MalAcount) {
-  let forum = acount.forum();
+  let forum = acount.forum;
 
   describe("Forum", async () => {
     {

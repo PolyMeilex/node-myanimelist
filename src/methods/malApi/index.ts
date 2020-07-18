@@ -116,21 +116,10 @@ export class MalAcount {
     this.malToken = malToken;
   }
 
-  user(): MalUser {
-    return new MalUser(this);
-  }
-
-  anime(): MalAnime {
-    return new MalAnime(this);
-  }
-
-  manga(): MalManga {
-    return new MalManga(this);
-  }
-
-  forum(): MalForum {
-    return new MalForum(this);
-  }
+  user: MalUser = new MalUser(this);
+  anime: MalAnime = new MalAnime(this);
+  manga: MalManga = new MalManga(this);
+  forum: MalForum = new MalForum(this);
 
   async refreshToken(): Promise<MalAcount> {
     this.malToken = await MalToken.fromRefreshToken(
