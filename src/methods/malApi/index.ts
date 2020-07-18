@@ -137,7 +137,7 @@ export class MalAcount {
 }
 
 export class Api {
-  clientId: string;
+  private clientId: string;
 
   constructor(clientId: string) {
     this.clientId = clientId;
@@ -145,6 +145,11 @@ export class Api {
 
   loadToken(token: MalToken) {
     return new MalAcount(this.clientId, token);
+  }
+
+  getOauthUrl(codeChallenge: string) {
+    const base = "https://myanimelist.net/v1/oauth2";
+    return `${base}/authorize?response_type=code&client_id=${this.clientId}&code_challenge_method=plain&code_challenge=${codeChallenge}`;
   }
 
   async refresh(refreshToken: string): Promise<MalAcount> {
@@ -155,15 +160,15 @@ export class Api {
     return new MalAcount(this.clientId, malToken);
   }
 
-  // crypto.randomBytes(93,(err,buf) => console.log(buf.toString('base64').length))
   async authorizationCode(
     code: string,
-    codeVerifier: string
+    /** it is actually a `code_verifier` but mal accepts code_challenge here instead */
+    codeChallenge: string
   ): Promise<MalAcount> {
     const malToken = await MalToken.fromAuthorizationCode(
       this.clientId,
       code,
-      codeVerifier
+      codeChallenge
     );
     return new MalAcount(this.clientId, malToken);
   }

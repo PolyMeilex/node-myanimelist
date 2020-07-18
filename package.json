@@ -37,6 +37,7 @@
     "i": "^0.3.6",
     "mocha": "^6.2.3",
     "npm": "^6.14.5",
+    "pkce-challenge": "^2.1.0",
     "ts-mocha": "^6.0.0",
     "typedoc": "^0.17.0-3",
     "typescript": "^3.9.6"
