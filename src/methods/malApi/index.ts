@@ -283,7 +283,7 @@ export class Api {
   /**
    * Undocumented Endpoints, those can disperse at any moment
    */
-  unstable = {
+  Unstable = {
     /**
      * ### Login to API using login and password `(Unstable!)`
      *

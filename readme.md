@@ -29,7 +29,7 @@ import { Mal, Jikan } from 'node-myanimelist';
 const mal = Mal.api("6114d00ca681b7701d1e15fe11a4987e" /* app_id */ );
 
 // Unoffical way to login (not recomended)
-const acount = await mal.unstable.login("username","password");
+const acount = await mal.Unstable.login("username","password");
 
 // Offical way to login (recomended)
 // import pkceChallenge from "pkce-challenge";
