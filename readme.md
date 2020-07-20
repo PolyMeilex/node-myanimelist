@@ -71,6 +71,12 @@ let search = await mal.manga.search(
       .numChapters()
       .authors()
 ).call();
+
+// Alternative if you don't care about choosing fields
+let searchIDC = await mal.manga.search(
+   "Sakurasou",
+   Mal.Manga.fields().all()
+).call();
 ```
 # List of functions
 For more detalis visit [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki)

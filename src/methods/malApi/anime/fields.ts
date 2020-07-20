@@ -7,7 +7,7 @@ import {
 } from "./types";
 
 import { field as f } from "../util";
-import { MangaFields } from "../manga";
+import * as Manga from "../manga";
 
 export interface AnimeSearchItem<T> {
   node: T;
@@ -20,6 +20,36 @@ export class AnimeFields<T> {
   fields: { [key: string]: boolean | string } = {};
 
   type: T = null as any;
+
+  /** Aka `I don't care mode` */
+  all() {
+    return (
+      this.alternativeTitles()
+        .startDate()
+        .endDate()
+        .synopsis()
+        .mean()
+        .rank()
+        .popularity()
+        .numListUsers()
+        .numScoringUsers()
+        .nsfw()
+        .genres()
+        .createdAt()
+        .updatedAt()
+        // AnimeForListFields
+        .mediaType()
+        .status()
+        .myListStatus(listStatusFields().all())
+        .numEpisodes()
+        .startSeason()
+        .broadcast()
+        .source()
+        .averageEpisodeDuration()
+        .rating()
+        .studios()
+    );
+  }
 
   @f alternativeTitles() {
     return (this as any) as AnimeFields<T & WorkForList.AlternativeTitles>;
@@ -147,6 +177,43 @@ export class AnimeDetailsFields<T> {
 
   type: T = null as any;
 
+  /** Aka `I don't care mode` */
+  all() {
+    return (
+      this.alternativeTitles()
+        .startDate()
+        .endDate()
+        .synopsis()
+        .mean()
+        .rank()
+        .popularity()
+        .numListUsers()
+        .numScoringUsers()
+        .nsfw()
+        .genres()
+        .createdAt()
+        .updatedAt()
+        // AnimeForListFields
+        .mediaType()
+        .status()
+        .myListStatus(listStatusFields().all())
+        .numEpisodes()
+        .startSeason()
+        .broadcast()
+        .source()
+        .averageEpisodeDuration()
+        .rating()
+        .studios()
+        // AnimeForDetailsFields
+        .pictures()
+        .background()
+        .relatedAnime(fields().all())
+        .relatedManga(Manga.fields())
+        .recommendations(fields().all())
+        .statistics()
+    );
+  }
+
   //
   // Work For List Fields
   //
@@ -219,7 +286,7 @@ export class AnimeDetailsFields<T> {
 
   myListStatus<U>(fields?: AnimeListStatusFields<U>) {
     this.fields["my_list_status"] = fields ? fields.toString() : "";
-    return (this as any) as AnimeFields<
+    return (this as any) as AnimeDetailsFields<
       T & { my_list_status: AnimeListStatusBase & U }
     >;
   }
@@ -270,7 +337,7 @@ export class AnimeDetailsFields<T> {
       T & AnimeForDetails.RelatedAnime<U>
     >;
   }
-  relatedManga<U>(fields?: MangaFields<U>) {
+  relatedManga<U>(fields?: Manga.MangaFields<U>) {
     this.fields["related_manga"] = fields ? fields.toString() : "";
     return (this as any) as AnimeDetailsFields<
       T & AnimeForDetails.RelatedManga<U>
@@ -311,6 +378,17 @@ export class AnimeListStatusFields<T> {
 
   type: T = null as any;
 
+  /** Aka `I don't care mode` */
+  all() {
+    return this.startDate()
+      .finishDate()
+      .priority()
+      .numTimesRewatched()
+      .rewatchValue()
+      .tags()
+      .comments();
+  }
+
   @f startDate() {
     return (this as any) as AnimeListStatusFields<
       T & AnimeListStatus.StartDate
@@ -323,6 +401,11 @@ export class AnimeListStatusFields<T> {
   }
   @f priority() {
     return (this as any) as AnimeListStatusFields<T & AnimeListStatus.Priority>;
+  }
+  @f numTimesRewatched() {
+    return (this as any) as AnimeListStatusFields<
+      T & AnimeListStatus.NumTimesRewatched
+    >;
   }
   @f rewatchValue() {
     return (this as any) as AnimeListStatusFields<

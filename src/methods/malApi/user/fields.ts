@@ -6,6 +6,11 @@ export class UserFields<T> {
 
   type: T = null as any;
 
+  /** Aka `I don't care mode` */
+  all() {
+    return this.gender().birthday().animeStatistics().timeZone().isSupporter();
+  }
+
   @f gender() {
     return (this as any) as UserFields<T & User.Gender>;
   }

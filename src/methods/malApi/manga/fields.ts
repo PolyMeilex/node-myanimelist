@@ -7,7 +7,7 @@ import {
 } from "./types";
 
 import { field as f } from "../util";
-import { AnimeFields } from "../anime";
+import * as Anime from "../anime";
 
 export interface MangaSearchItem<T> {
   node: T;
@@ -20,6 +20,32 @@ export class MangaFields<T> {
   fields: { [key: string]: boolean | string } = {};
 
   type: T = null as any;
+
+  /** Aka `I don't care mode` */
+  all() {
+    return (
+      this.alternativeTitles()
+        .startDate()
+        .endDate()
+        .synopsis()
+        .mean()
+        .rank()
+        .popularity()
+        .numListUsers()
+        .numScoringUsers()
+        .nsfw()
+        .genres()
+        .createdAt()
+        .updatedAt()
+        // MangaForListFields
+        .mediaType()
+        .status()
+        .myListStatus(listStatusFields().all())
+        .numVolumes()
+        .numChapters()
+        .authors()
+    );
+  }
 
   @f alternativeTitles() {
     return (this as any) as MangaFields<T & WorkForList.AlternativeTitles>;
@@ -137,6 +163,39 @@ export class MangaDetailsFields<T> {
 
   type: T = null as any;
 
+  /** Aka `I don't care mode` */
+  all() {
+    return (
+      this.alternativeTitles()
+        .startDate()
+        .endDate()
+        .synopsis()
+        .mean()
+        .rank()
+        .popularity()
+        .numListUsers()
+        .numScoringUsers()
+        .nsfw()
+        .genres()
+        .createdAt()
+        .updatedAt()
+        // MangaForListFields
+        .mediaType()
+        .status()
+        .myListStatus(listStatusFields().all())
+        .numVolumes()
+        .numChapters()
+        .authors()
+        // MangaForDetailsFields
+        .pictures()
+        .background()
+        .relatedAnime(Anime.fields().all())
+        .relatedManga(fields().all())
+        .recommendations(fields().all())
+        .serialization()
+    );
+  }
+
   //
   // Work For List Fields
   //
@@ -207,9 +266,9 @@ export class MangaDetailsFields<T> {
     return (this as any) as MangaDetailsFields<T & MangaForList.Status>;
   }
 
-  myListStatus<U>(fields?: MangaDetailsFields<U>) {
+  myListStatus<U>(fields?: MangaListStatusFields<U>) {
     this.fields["my_list_status"] = fields ? fields.toString() : "";
-    return (this as any) as MangaFields<
+    return (this as any) as MangaDetailsFields<
       T & { my_list_status: MangaListStatusBase & U }
     >;
   }
@@ -244,7 +303,7 @@ export class MangaDetailsFields<T> {
     return (this as any) as MangaDetailsFields<T & MangaForDetails.Background>;
   }
 
-  relatedAnime<U>(fields?: AnimeFields<U>) {
+  relatedAnime<U>(fields?: Anime.AnimeFields<U>) {
     this.fields["related_anime"] = fields ? fields.toString() : "";
     return (this as any) as MangaDetailsFields<
       T & MangaForDetails.RelatedAnime<U>
@@ -292,6 +351,17 @@ export class MangaListStatusFields<T> {
   fields: { [key: string]: boolean } = {};
 
   type: T = null as any;
+
+  /** Aka `I don't care mode` */
+  all() {
+    return this.startDate()
+      .finishDate()
+      .priority()
+      .numTimesReread()
+      .rereadValue()
+      .tags()
+      .comments();
+  }
 
   @f startDate() {
     return (this as any) as MangaListStatusFields<
