@@ -13,11 +13,17 @@ Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially
 ### So examples from here are ahead of what you can use on npm version
 Visit [master branch](https://github.com/PolyMeilex/node-myanimelist/tree/master) or [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki) for proper info
 
-[![NPM](https://nodei.co/npm/node-myanimelist.png)](https://nodei.co/npm/node-myanimelist/)
-
-```
+[![NPM](https://nodei.co/npm/node-myanimelist.png)](https://nodei.co/npm/node-myanimelist/)   
+<br>
+Master branch:
+```sh
 npm i node-myanimelist
 ```
+Dev branch:
+```sh
+npm i node-myanimelist@next
+```
+
 ### Import
 ```js
 const { Mal, Jikan } = require("node-myanimelist");
