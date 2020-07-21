@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html class="default no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>node-myanimelist</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <header>
+      <!--  -->
+      <div class="tsd-page-toolbar">
+        <div class="container">
+          <div class="table-wrap">
+            <div
+              class="table-cell"
+              id="tsd-search"
+              data-index="assets/js/search.js"
+              data-base="."
+            >
+              <div class="field">
+                <label
+                  for="tsd-search-field"
+                  class="tsd-widget search no-caption"
+                  >Search</label
+                >
+                <input id="tsd-search-field" type="text" />
+              </div>
+              <ul class="results">
+                <li class="state loading">Preparing search index...</li>
+                <li class="state failure">The search index is not available</li>
+              </ul>
+              <a href="index.html" class="title">node-myanimelist</a>
+            </div>
+            <div class="table-cell" id="tsd-widgets">
+              <div id="tsd-filter">
+                <a
+                  href="#"
+                  class="tsd-widget options no-caption"
+                  data-toggle="options"
+                  >Options</a
+                >
+                <div class="tsd-filter-group">
+                  <div class="tsd-select" id="tsd-filter-visibility">
+                    <span class="tsd-select-label">All</span>
+                    <ul class="tsd-select-list">
+                      <li data-value="public">Public</li>
+                      <li data-value="protected">Public/Protected</li>
+                      <li data-value="private" class="selected">All</li>
+                    </ul>
+                  </div>
+                  <input type="checkbox" id="tsd-filter-inherited" checked />
+                  <label class="tsd-widget" for="tsd-filter-inherited"
+                    >Inherited</label
+                  >
+                  <input type="checkbox" id="tsd-filter-externals" checked />
+                  <label class="tsd-widget" for="tsd-filter-externals"
+                    >Externals</label
+                  >
+                  <input type="checkbox" id="tsd-filter-only-exported" />
+                  <label class="tsd-widget" for="tsd-filter-only-exported"
+                    >Only exported</label
+                  >
+                </div>
+              </div>
+              <a href="#" class="tsd-widget menu no-caption" data-toggle="menu"
+                >Menu</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tsd-page-title">
+        <div class="container">
+          <ul class="tsd-breadcrumb">
+            <li>
+              <a href="globals.html">Globals</a>
+            </li>
+          </ul>
+          <h1>node-myanimelist</h1>
+        </div>
+      </div>
+    </header>
+    <div class="container container-main">
+      <div class="row">
+        <div class="col-8 col-content">
+          <div class="tsd-panel tsd-typography">
+            <p>
+              <img
+                src="https://i.imgur.com/IcBShyO.png"
+                alt="NodeMal API Banner"
+              />
+            </p>
+            <a
+              href="#node-myanimelist"
+              id="node-myanimelist"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h1>Node-MyAnimeList</h1>
+            </a>
+            <p>
+              Node-MyAnimeList is a small promise based package for downloading
+              information from MyAnimeList. Node-MyAnimeList is using Jikan.moe
+              API and flew methods created by me specially for this package
+            </p>
+            <a
+              href="#intellisens-support-typescript"
+              id="intellisens-support-typescript"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h2>Intellisens Support (Typescript)</h2>
+            </a>
+            <p><img src="https://i.imgur.com/J1dUQf2.gif" alt="Gif" /></p>
+            <a
+              href="#instalation"
+              id="instalation"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h1>Instalation</h1>
+            </a>
+            <a
+              href="#keep-in-mind-that-current-npm-release-is-on-master-branch"
+              id="keep-in-mind-that-current-npm-release-is-on-master-branch"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h2>
+                Keep in mind that current npm release is on
+                <a
+                  href="https://github.com/PolyMeilex/node-myanimelist/tree/master"
+                  >master branch</a
+                >
+              </h2>
+            </a>
+            <a
+              href="#so-examples-from-here-are-ahead-of-what-you-can-use-on-npm-version"
+              id="so-examples-from-here-are-ahead-of-what-you-can-use-on-npm-version"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h3>
+                So examples from here are ahead of what you can use on npm
+                version
+              </h3>
+            </a>
+            <p>
+              Visit
+              <a
+                href="https://github.com/PolyMeilex/node-myanimelist/tree/master"
+                >master branch</a
+              >
+              or
+              <a href="https://github.com/PolyMeilex/node-myanimelist/wiki"
+                >wiki</a
+              >
+              for proper info
+            </p>
+            <p>
+              <a href="https://nodei.co/npm/node-myanimelist/"
+                ><img
+                  src="https://nodei.co/npm/node-myanimelist.png"
+                  alt="NPM" /></a
+              ><br /><br />
+              Master branch:
+            </p>
+            <pre><code class="language-sh">npm i node-myanimelist</code></pre>
+            <p>Dev branch:</p>
+            <pre><code class="language-sh">npm i node-myanimelist@next</code></pre>
+            <a
+              href="#import"
+              id="import"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h3>Import</h3>
+            </a>
+            <pre><code class="language-js"><span class="hljs-keyword">const</span> { Mal, Jikan } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"node-myanimelist"</span>);
+<span class="hljs-comment">// Or</span>
+<span class="hljs-keyword">import</span> { Mal, Jikan } <span class="hljs-keyword">from</span> <span class="hljs-string">'node-myanimelist'</span>;</code></pre>
+            <a
+              href="#malapi-example"
+              id="malapi-example"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h3>MalAPI Example</h3>
+            </a>
+            <pre><code class="language-ts"><span class="hljs-keyword">const</span> mal = Mal.api(<span class="hljs-string">"6114d00ca681b7701d1e15fe11a4987e"</span> <span class="hljs-comment">/* app_id */</span> );
+
+<span class="hljs-comment">// Unoffical way to login (not recomended)</span>
+<span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> mal.Unstable.login(<span class="hljs-string">"username"</span>,<span class="hljs-string">"password"</span>);
+
+<span class="hljs-comment">// Offical way to login (recomended)</span>
+<span class="hljs-comment">// import pkceChallenge from "pkce-challenge";</span>
+<span class="hljs-comment">// const pkce = pkceChallenge();</span>
+
+<span class="hljs-keyword">const</span> url = mal.getOAuthUrl(pkce.code_challenge)
+<span class="hljs-comment">// Open returned url, accept oauth and use returned code to authorize</span>
+<span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> mal.authorizationCode(code,pkce.code_challenge);
+
+<span class="hljs-keyword">let</span> search = <span class="hljs-keyword">await</span> mal.manga.search(
+   <span class="hljs-string">"Sakurasou"</span>,
+   Mal.Manga.fields()
+      .alternativeTitles()
+      .startDate()
+      .endDate()
+      .synopsis()
+      .mean()
+      .rank()
+      .popularity()
+      .numListUsers()
+      .numScoringUsers()
+      .nsfw()
+      .genres()
+      .createdAt()
+      .updatedAt()
+      .mediaType()
+      .status()
+      .myListStatus(
+         Mal.Manga.listStatusFields()
+            .startDate()
+            .finishDate()
+            .priority()
+            .numTimesReread()
+            .rereadValue()
+            .tags()
+            .comments()
+      )
+      .numVolumes()
+      .numChapters()
+      .authors()
+).call();
+
+<span class="hljs-comment">// Alternative if you don't care about choosing fields</span>
+<span class="hljs-keyword">let</span> searchIDC = <span class="hljs-keyword">await</span> mal.manga.search(
+   <span class="hljs-string">"Sakurasou"</span>,
+   Mal.Manga.fields().all()
+).call();</code></pre>
+            <a
+              href="#list-of-functions"
+              id="list-of-functions"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h1>List of functions</h1>
+            </a>
+            <p>
+              For more detalis visit
+              <a href="https://github.com/PolyMeilex/node-myanimelist/wiki"
+                >wiki</a
+              >
+            </p>
+            <ul>
+              <li>
+                MalApi Methods
+                <ul>
+                  <li>OAuth PKCE Auth</li>
+                  <li>
+                    OAuth Login And Passwor Auth (unofficial)
+                    <ul>
+                      <li>Anime</li>
+                    </ul>
+                  </li>
+                  <li>Search</li>
+                  <li>Details</li>
+                  <li>Ranking</li>
+                  <li>Seasonal anime</li>
+                  <li>
+                    Suggested anime
+                    <ul>
+                      <li>Manga</li>
+                    </ul>
+                  </li>
+                  <li>Search</li>
+                  <li>Details</li>
+                  <li>
+                    Ranking
+                    <ul>
+                      <li>Forum</li>
+                    </ul>
+                  </li>
+                  <li>Boards</li>
+                  <li>Topics</li>
+                  <li>
+                    Topic details
+                    <ul>
+                      <li>User</li>
+                    </ul>
+                  </li>
+                  <li>Info</li>
+                  <li>Animelist</li>
+                  <li>Mangalist</li>
+                </ul>
+              </li>
+              <li>
+                JikanApi Methods
+                <ul>
+                  <li>
+                    Jikan.<strong
+                      ><a
+                        href="https://github.com/PolyMeilex/node-myanimelist/wiki/Anime"
+                        >anime</a
+                      ></strong
+                    >(id)
+                  </li>
+                  <li>
+                    Jikan.<strong
+                      ><a
+                        href="https://github.com/PolyMeilex/node-myanimelist/wiki/Manga"
+                        >manga</a
+                      ></strong
+                    >(id)
+                  </li>
+                  <li>
+                    Jikan.<strong
+                      ><a
+                        href="https://github.com/PolyMeilex/node-myanimelist/wiki/Person"
+                        >person</a
+                      ></strong
+                    >(id)
+                  </li>
+                  <li>
+                    Jikan.<strong
+                      ><a
+                        href="https://github.com/PolyMeilex/node-myanimelist/wiki/Character"
+                        >character</a
+                      ></strong
+                    >(id)
+                    <ul>
+                      <li>
+                        Jikan.<strong
+                          ><a
+                            href="https://github.com/PolyMeilex/node-myanimelist/wiki/Search"
+                            >search</a
+                          ></strong
+                        >()
+                      </li>
+                      <li>
+                        Jikan.<strong
+                          ><a
+                            href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season"
+                            >season</a
+                          ></strong
+                        >(year,season)
+                      </li>
+                      <li>
+                        Jikan.<strong
+                          ><a
+                            href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season"
+                            >seasonArchive</a
+                          ></strong
+                        >()
+                      </li>
+                      <li>
+                        Jikan.<strong
+                          ><a
+                            href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season"
+                            >seasonLater</a
+                          ></strong
+                        >()
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Jikan.<strong
+                      ><a
+                        href="https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule"
+                        >schedule</a
+                      ></strong
+                    >()
+                  </li>
+                  <li>
+                    Jikan.<strong
+                      ><a
+                        href="https://github.com/PolyMeilex/node-myanimelist/wiki/Top"
+                        >top</a
+                      ></strong
+                    >()
+                  </li>
+                  <li>
+                    Jikan.<strong
+                      ><a
+                        href="https://github.com/PolyMeilex/node-myanimelist/wiki/Genre"
+                        >genre</a
+                      ></strong
+                    >()
+                  </li>
+                  <li>
+                    Jikan.<strong
+                      ><a
+                        href="https://github.com/PolyMeilex/node-myanimelist/wiki/Producer"
+                        >producer</a
+                      ></strong
+                    >(id, page?)
+                  </li>
+                  <li>
+                    Jikan.<strong
+                      ><a
+                        href="https://github.com/PolyMeilex/node-myanimelist/wiki/Magazine"
+                        >magazine</a
+                      ></strong
+                    >(id, page?)
+                  </li>
+                  <li>
+                    Jikan.<strong
+                      ><a
+                        href="https://github.com/PolyMeilex/node-myanimelist/wiki/User"
+                        >user</a
+                      ></strong
+                    >(username)
+                  </li>
+                  <li>
+                    Jikan.<strong
+                      ><a
+                        href="https://github.com/PolyMeilex/node-myanimelist/wiki/Club"
+                        >club</a
+                      ></strong
+                    >(id)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <a
+              href="#buildin-scraper"
+              id="buildin-scraper"
+              style="color: inherit; text-decoration: none;"
+            >
+              <h1>Buildin Scraper</h1>
+            </a>
+            <pre><code class="language-js"><span class="hljs-keyword">import</span> { ScraperClient } <span class="hljs-keyword">from</span> <span class="hljs-string">"node-myanimelist"</span>;
+<span class="hljs-keyword">const</span> scraperClient = <span class="hljs-keyword">new</span> ScraperClient();
+
+<span class="hljs-comment">// Login into Mal acount</span>
+<span class="hljs-keyword">let</span> loginData = <span class="hljs-keyword">await</span> scraperClient.login(<span class="hljs-string">"username"</span>,<span class="hljs-string">"password"</span>);
+
+<span class="hljs-comment">// loginData == {</span>
+<span class="hljs-comment">//   MALSESSIONID: "***",</span>
+<span class="hljs-comment">//   csrf_token: "***"</span>
+<span class="hljs-comment">// };</span>
+
+<span class="hljs-comment">// Get Mal User Notifications</span>
+<span class="hljs-keyword">let</span> notifications = <span class="hljs-keyword">await</span> scraperClient.notifications(loginData);
+
+<span class="hljs-comment">// Update Episode On Mal</span>
+<span class="hljs-keyword">const</span> animeUpdate = {
+   <span class="hljs-attr">num_watched_episodes</span>: <span class="hljs-number">20</span>,
+   <span class="hljs-attr">anime_id</span>: <span class="hljs-number">24833</span>,
+   <span class="hljs-attr">status</span>: <span class="hljs-number">1</span>
+};
+<span class="hljs-keyword">let</span> res = <span class="hljs-keyword">await</span> scraperClient.animeEdit(loginData,animeUpdate);
+</code></pre>
+            <p>
+              Notifications response
+              <a
+                href="https://github.com/PolyMeilex/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json"
+                >example</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+          <nav class="tsd-navigation primary">
+            <ul>
+              <li class="globals">
+                <a href="globals.html"><em>Globals</em></a>
+              </li>
+              <li class="label tsd-is-external">
+                <span>Externals</span>
+              </li>
+              <li class="tsd-kind-module tsd-is-external">
+                <a href="modules/_jikan_index_.html">&quot;jikan/index&quot;</a>
+              </li>
+              <li class="tsd-kind-module tsd-is-external">
+                <a href="modules/_malapi_index_.html"
+                  >&quot;mal<wbr />Api/index&quot;</a
+                >
+              </li>
+              <li class="tsd-kind-module tsd-is-external">
+                <a href="modules/_scraper_index_.html"
+                  >&quot;scraper/index&quot;</a
+                >
+              </li>
+            </ul>
+          </nav>
+          <nav class="tsd-navigation secondary menu-sticky">
+            <ul class="before-current">
+              <li class="tsd-kind-variable">
+                <a href="globals.html#version" class="tsd-kind-icon">version</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <footer class="with-border-bottom">
+      <div class="container">
+        <h2>Legend</h2>
+        <div class="tsd-legend-group">
+          <ul class="tsd-legend">
+            <li class="tsd-kind-module">
+              <span class="tsd-kind-icon">Module</span>
+            </li>
+            <li class="tsd-kind-object-literal">
+              <span class="tsd-kind-icon">Object literal</span>
+            </li>
+            <li class="tsd-kind-variable">
+              <span class="tsd-kind-icon">Variable</span>
+            </li>
+            <li class="tsd-kind-function">
+              <span class="tsd-kind-icon">Function</span>
+            </li>
+            <li class="tsd-kind-function tsd-has-type-parameter">
+              <span class="tsd-kind-icon">Function with type parameter</span>
+            </li>
+            <li class="tsd-kind-index-signature">
+              <span class="tsd-kind-icon">Index signature</span>
+            </li>
+            <li class="tsd-kind-type-alias">
+              <span class="tsd-kind-icon">Type alias</span>
+            </li>
+            <li class="tsd-kind-type-alias tsd-has-type-parameter">
+              <span class="tsd-kind-icon">Type alias with type parameter</span>
+            </li>
+          </ul>
+          <ul class="tsd-legend">
+            <li class="tsd-kind-enum">
+              <span class="tsd-kind-icon">Enumeration</span>
+            </li>
+            <li class="tsd-kind-enum-member">
+              <span class="tsd-kind-icon">Enumeration member</span>
+            </li>
+            <li class="tsd-kind-property tsd-parent-kind-enum">
+              <span class="tsd-kind-icon">Property</span>
+            </li>
+            <li class="tsd-kind-method tsd-parent-kind-enum">
+              <span class="tsd-kind-icon">Method</span>
+            </li>
+          </ul>
+          <ul class="tsd-legend">
+            <li class="tsd-kind-interface">
+              <span class="tsd-kind-icon">Interface</span>
+            </li>
+            <li class="tsd-kind-interface tsd-has-type-parameter">
+              <span class="tsd-kind-icon">Interface with type parameter</span>
+            </li>
+            <li class="tsd-kind-constructor tsd-parent-kind-interface">
+              <span class="tsd-kind-icon">Constructor</span>
+            </li>
+            <li class="tsd-kind-property tsd-parent-kind-interface">
+              <span class="tsd-kind-icon">Property</span>
+            </li>
+            <li class="tsd-kind-method tsd-parent-kind-interface">
+              <span class="tsd-kind-icon">Method</span>
+            </li>
+            <li class="tsd-kind-index-signature tsd-parent-kind-interface">
+              <span class="tsd-kind-icon">Index signature</span>
+            </li>
+          </ul>
+          <ul class="tsd-legend">
+            <li class="tsd-kind-class">
+              <span class="tsd-kind-icon">Class</span>
+            </li>
+            <li class="tsd-kind-class tsd-has-type-parameter">
+              <span class="tsd-kind-icon">Class with type parameter</span>
+            </li>
+            <li class="tsd-kind-constructor tsd-parent-kind-class">
+              <span class="tsd-kind-icon">Constructor</span>
+            </li>
+            <li class="tsd-kind-property tsd-parent-kind-class">
+              <span class="tsd-kind-icon">Property</span>
+            </li>
+            <li class="tsd-kind-method tsd-parent-kind-class">
+              <span class="tsd-kind-icon">Method</span>
+            </li>
+            <li class="tsd-kind-accessor tsd-parent-kind-class">
+              <span class="tsd-kind-icon">Accessor</span>
+            </li>
+            <li class="tsd-kind-index-signature tsd-parent-kind-class">
+              <span class="tsd-kind-icon">Index signature</span>
+            </li>
+          </ul>
+          <ul class="tsd-legend">
+            <li
+              class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"
+            >
+              <span class="tsd-kind-icon">Inherited constructor</span>
+            </li>
+            <li
+              class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"
+            >
+              <span class="tsd-kind-icon">Inherited property</span>
+            </li>
+            <li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+              <span class="tsd-kind-icon">Inherited method</span>
+            </li>
+            <li
+              class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"
+            >
+              <span class="tsd-kind-icon">Inherited accessor</span>
+            </li>
+          </ul>
+          <ul class="tsd-legend">
+            <li
+              class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"
+            >
+              <span class="tsd-kind-icon">Protected property</span>
+            </li>
+            <li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+              <span class="tsd-kind-icon">Protected method</span>
+            </li>
+            <li
+              class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"
+            >
+              <span class="tsd-kind-icon">Protected accessor</span>
+            </li>
+          </ul>
+          <ul class="tsd-legend">
+            <li class="tsd-kind-property tsd-parent-kind-class tsd-is-private">
+              <span class="tsd-kind-icon">Private property</span>
+            </li>
+            <li class="tsd-kind-method tsd-parent-kind-class tsd-is-private">
+              <span class="tsd-kind-icon">Private method</span>
+            </li>
+            <li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private">
+              <span class="tsd-kind-icon">Private accessor</span>
+            </li>
+          </ul>
+          <ul class="tsd-legend">
+            <li class="tsd-kind-property tsd-parent-kind-class tsd-is-static">
+              <span class="tsd-kind-icon">Static property</span>
+            </li>
+            <li
+              class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"
+            >
+              <span class="tsd-kind-icon">Static method</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <div class="container tsd-generator">
+      <p>
+        Generated using
+        <a href="https://typedoc.org/" target="_blank">TypeDoc</a>
+      </p>
+    </div>
+    <div class="overlay"></div>
+    <script src="assets/js/main.js"></script>
+    <script>
+      if (location.protocol == "file:")
+        document.write('<script src="assets/js/search.js"><' + "/script>");
+    </script>
+  </body>
+</html>
