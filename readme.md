@@ -85,7 +85,7 @@ let searchIDC = await mal.manga.search(
 ).call();
 ```
 # List of functions
-For more detalis visit [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki)
+For more detalis visit [doc](https://polymeilex.github.io/node-myanimelist/)
 * MalApi Methods
 	* OAuth PKCE Auth
 	* OAuth Login And Passwor Auth (unofficial)
@@ -108,21 +108,21 @@ For more detalis visit [wiki](https://github.com/PolyMeilex/node-myanimelist/wik
     * Animelist
     * Mangalist
 * JikanApi Methods
-	* Jikan.**[anime](https://github.com/PolyMeilex/node-myanimelist/wiki/Anime)**(id)
-	* Jikan.**[manga](https://github.com/PolyMeilex/node-myanimelist/wiki/Manga)**(id) 
-	* Jikan.**[person](https://github.com/PolyMeilex/node-myanimelist/wiki/Person)**(id) 
-	* Jikan.**[character](https://github.com/PolyMeilex/node-myanimelist/wiki/Character)**(id) 
- 	* Jikan.**[search](https://github.com/PolyMeilex/node-myanimelist/wiki/Search)**()
- 	* Jikan.**[season](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**(year,season)
- 	* Jikan.**[seasonArchive](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**()
- 	* Jikan.**[seasonLater](https://github.com/PolyMeilex/node-myanimelist/wiki/Season)**() 
-	* Jikan.**[schedule](https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule)**()
-	* Jikan.**[top](https://github.com/PolyMeilex/node-myanimelist/wiki/Top)**()
-	* Jikan.**[genre](https://github.com/PolyMeilex/node-myanimelist/wiki/Genre)**()
-	* Jikan.**[producer](https://github.com/PolyMeilex/node-myanimelist/wiki/Producer)**(id, page?)
-	* Jikan.**[magazine](https://github.com/PolyMeilex/node-myanimelist/wiki/Magazine)**(id, page?)
-	* Jikan.**[user](https://github.com/PolyMeilex/node-myanimelist/wiki/User)**(username)
-	* Jikan.**[club](https://github.com/PolyMeilex/node-myanimelist/wiki/Club)**(id)
+	* Jikan.**[anime](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id)
+	* Jikan.**[manga](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id) 
+	* Jikan.**[person](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id) 
+	* Jikan.**[character](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id) 
+ 	* Jikan.**[search](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**()
+ 	* Jikan.**[season](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(year,season)
+ 	* Jikan.**[seasonArchive](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**()
+ 	* Jikan.**[seasonLater](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**() 
+	* Jikan.**[schedule](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**()
+	* Jikan.**[top](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**()
+	* Jikan.**[genre](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**()
+	* Jikan.**[producer](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id, page?)
+	* Jikan.**[magazine](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id, page?)
+	* Jikan.**[user](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(username)
+	* Jikan.**[club](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id)
 
 # Buildin Scraper
 ```js
