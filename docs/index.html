@@ -84,21 +84,71 @@
 					<h3>So examples from here are ahead of what you can use on npm version</h3>
 				</a>
 				<p>Visit <a href="https://github.com/PolyMeilex/node-myanimelist/tree/master">master branch</a> or <a href="https://github.com/PolyMeilex/node-myanimelist/wiki">wiki</a> for proper info</p>
-				<p><a href="https://nodei.co/npm/node-myanimelist/"><img src="https://nodei.co/npm/node-myanimelist.png" alt="NPM"></a></p>
-				<pre><code>npm i <span class="hljs-keyword">node</span><span class="hljs-title">-myanimelist</span></code></pre>
+				<p><a href="https://nodei.co/npm/node-myanimelist/"><img src="https://nodei.co/npm/node-myanimelist.png" alt="NPM"></a><br><br>
+				Master branch:</p>
+				<pre><code class="language-sh">npm i node-myanimelist</code></pre>
+				<p>Dev branch:</p>
+				<pre><code class="language-sh">npm i node-myanimelist@next</code></pre>
 				<a href="#import" id="import" style="color: inherit; text-decoration: none;">
 					<h3>Import</h3>
 				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> { Mal, Jikan } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"node-myanimelist"</span>);
 <span class="hljs-comment">// Or</span>
 <span class="hljs-keyword">import</span> { Mal, Jikan } <span class="hljs-keyword">from</span> <span class="hljs-string">'node-myanimelist'</span>;</code></pre>
-				<a href="#responses" id="responses" style="color: inherit; text-decoration: none;">
-					<h2>Responses</h2>
+				<a href="#malapi-example" id="malapi-example" style="color: inherit; text-decoration: none;">
+					<h3>MalAPI Example</h3>
 				</a>
-				<p>Data is always returned with promise.
-				Data is actually raw <a href="https://www.npmjs.com/package/axios">axios</a> response object so to get jikanApi json object you have to use:</p>
-				<pre><code class="language-ts">    .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.data) <span class="hljs-comment">//Data is jikanApi response</span></code></pre>
-				<p>Jikan methods return unmodified jikanApi responses, to see all of them visit <a href="https://jikan.docs.apiary.io/">jikanDocs</a></p>
+				<pre><code class="language-ts"><span class="hljs-keyword">const</span> mal = Mal.api(<span class="hljs-string">"6114d00ca681b7701d1e15fe11a4987e"</span> <span class="hljs-comment">/* app_id */</span> );
+
+<span class="hljs-comment">// Unoffical way to login (not recomended)</span>
+<span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> mal.Unstable.login(<span class="hljs-string">"username"</span>,<span class="hljs-string">"password"</span>);
+
+<span class="hljs-comment">// Offical way to login (recomended)</span>
+<span class="hljs-comment">// import pkceChallenge from "pkce-challenge";</span>
+<span class="hljs-comment">// const pkce = pkceChallenge();</span>
+
+<span class="hljs-keyword">const</span> url = mal.getOAuthUrl(pkce.code_challenge)
+<span class="hljs-comment">// Open returned url, accept oauth and use returned code to authorize</span>
+<span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> mal.authorizationCode(code,pkce.code_challenge);
+
+<span class="hljs-keyword">let</span> search = <span class="hljs-keyword">await</span> mal.manga.search(
+   <span class="hljs-string">"Sakurasou"</span>,
+   Mal.Manga.fields()
+      .alternativeTitles()
+      .startDate()
+      .endDate()
+      .synopsis()
+      .mean()
+      .rank()
+      .popularity()
+      .numListUsers()
+      .numScoringUsers()
+      .nsfw()
+      .genres()
+      .createdAt()
+      .updatedAt()
+      .mediaType()
+      .status()
+      .myListStatus(
+         Mal.Manga.listStatusFields()
+            .startDate()
+            .finishDate()
+            .priority()
+            .numTimesReread()
+            .rereadValue()
+            .tags()
+            .comments()
+      )
+      .numVolumes()
+      .numChapters()
+      .authors()
+).call();
+
+<span class="hljs-comment">// Alternative if you don't care about choosing fields</span>
+<span class="hljs-keyword">let</span> searchIDC = <span class="hljs-keyword">await</span> mal.manga.search(
+   <span class="hljs-string">"Sakurasou"</span>,
+   Mal.Manga.fields().all()
+).call();</code></pre>
 				<a href="#list-of-functions" id="list-of-functions" style="color: inherit; text-decoration: none;">
 					<h1>List of functions</h1>
 				</a>
