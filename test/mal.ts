@@ -14,7 +14,7 @@ describe("MalAPI", async () => {
   const clientId = "6114d00ca681b7701d1e15fe11a4987e";
 
   it("OAuth Url", () => {
-    const mal = Mal.api(clientId);
+    const mal = Mal.auth(clientId);
 
     let res = mal.getOAuthUrl(pkce.code_challenge);
     console.log(res);
@@ -26,12 +26,12 @@ describe("MalAPI", async () => {
   });
 
   it("Login With Code", async () => {
-    const mal = Mal.api(clientId);
+    const mal = Mal.auth(clientId);
 
     const code = process.env["MAL_CODE"];
 
     if (code) {
-      const res = await mal.authorizationCode(code, pkce.code_challenge);
+      const res = await mal.authorizeWithCode(code, pkce.code_challenge);
       console.log(res);
     }
   });

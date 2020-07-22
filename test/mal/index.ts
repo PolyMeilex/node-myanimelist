@@ -4,7 +4,7 @@ import { manga } from "./manga";
 
 import assert from "assert";
 
-const mal = Mal.api("6114d00ca681b7701d1e15fe11a4987e");
+const mal = Mal.auth("6114d00ca681b7701d1e15fe11a4987e");
 
 function forum(acount: Mal.MalAcount) {
   let forum = acount.forum;
