@@ -72,71 +72,6 @@
 						<a href="#malapi" id="malapi" style="color: inherit; text-decoration: none;">
 							<h1>MalAPI</h1>
 						</a>
-<<<<<<< HEAD
-					</div>
-					<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Mal } <span class="hljs-keyword">from</span> <span class="hljs-string">"node-myanimelist"</span>;
-<span class="hljs-keyword">import</span> pkceChallenge <span class="hljs-keyword">from</span> <span class="hljs-string">"pkce-challenge"</span>;
-
-<span class="hljs-keyword">const</span> mal = Mal.api(<span class="hljs-string">"app_id"</span>)
-
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncMain</span>(<span class="hljs-params"></span>)</span>{
- <span class="hljs-keyword">const</span> pkce = pkceChallenge();
-
- <span class="hljs-keyword">const</span> url = mal.getOAuthUrl(pkce.code_challenge)
- <span class="hljs-comment">// Open returned url, accept oauth and use returned code to authorize</span>
- <span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> mal.authorizationCode(code, code_challenge)
- <span class="hljs-comment">// You probably want to save acount somewhere you can just call JSON.stringify(acount) to get json</span>
-
- <span class="hljs-comment">// Later you can load it using:</span>
- <span class="hljs-keyword">const</span> token = Mal.MalToken.fromJsonString(str);
- <span class="hljs-comment">// or</span>
- <span class="hljs-keyword">const</span> token = <span class="hljs-keyword">await</span> Mal.MalToken.fromRefreshToken(acount.refresh_token);
-
- <span class="hljs-keyword">const</span> acount = mal.loadToken(token);
-
-
- <span class="hljs-comment">// If access_token expired you can run</span>
- <span class="hljs-keyword">await</span> acount.refreshToken();
-
-
- <span class="hljs-comment">// You can use acount to make your requests</span>
-
-<span class="hljs-keyword">let</span> search = <span class="hljs-keyword">await</span> manga.search(
-   <span class="hljs-string">"Sakurasou"</span>,
-   Mal.Manga.fields()
-      .alternativeTitles()
-      .startDate()
-      .endDate()
-      .synopsis()
-      .mean()
-      .rank()
-      .popularity()
-      .numListUsers()
-      .numScoringUsers()
-      .nsfw()
-      .genres()
-      .createdAt()
-      .updatedAt()
-      .mediaType()
-      .status()
-      .myListStatus(
-         Mal.Manga.listStatusFields()
-            .startDate()
-            .finishDate()
-            .priority()
-            .numTimesReread()
-            .rereadValue()
-            .tags()
-            .comments()
-      )
-      .numVolumes()
-      .numChapters()
-      .authors()
-).call();
-
-}
-</code></pre>
-=======
 						<p>Official MyAnimeList API</p>
 					</div>
 					<p>Import:</p>
@@ -169,7 +104,6 @@
    <span class="hljs-string">"Sakurasou"</span>,
    Mal.Manga.fields().all()
 ).call();</code></pre>
->>>>>>> dev
 				</div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -189,11 +123,7 @@
 						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
-<<<<<<< HEAD
-								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_malapi_index_.api.html" class="tsd-kind-icon">Api</a></li>
-=======
 								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_malapi_index_.auth.html" class="tsd-kind-icon">Auth</a></li>
->>>>>>> dev
 								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_malapi_index_.malacount.html" class="tsd-kind-icon">Mal<wbr>Acount</a></li>
 								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_malapi_index_.maltoken.html" class="tsd-kind-icon">Mal<wbr>Token</a></li>
 							</ul>
@@ -213,11 +143,7 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-<<<<<<< HEAD
-								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-external"><a href="_malapi_index_.html#api-1" class="tsd-kind-icon">api</a></li>
-=======
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-external"><a href="_malapi_index_.html#auth-1" class="tsd-kind-icon">auth</a></li>
->>>>>>> dev
 							</ul>
 						</section>
 					</div>
@@ -231,11 +157,7 @@
 					<div class="tsd-signature tsd-kind-icon">Response<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">AxiosError</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_malapi_index_.malerror.html" class="tsd-signature-type">MalError</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-<<<<<<< HEAD
-							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/32bb527/src/methods/malApi/request.ts#L42">methods/malApi/request.ts:42</a></li>
-=======
-							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/dacfe16/src/methods/malApi/request.ts#L42">methods/malApi/request.ts:42</a></li>
->>>>>>> dev
+							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/1b6fd20/src/methods/malApi/request.ts#L42">methods/malApi/request.ts:42</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -243,27 +165,16 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-external">
-<<<<<<< HEAD
-					<a name="api-1" class="tsd-anchor"></a>
-					<h3>api</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">api<span class="tsd-signature-symbol">(</span>clientId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_malapi_index_.api.html" class="tsd-signature-type">Api</a></li>
-=======
 					<a name="auth-1" class="tsd-anchor"></a>
 					<h3>auth</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-external">
 						<li class="tsd-signature tsd-kind-icon">auth<span class="tsd-signature-symbol">(</span>clientId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_malapi_index_.auth.html" class="tsd-signature-type">Auth</a></li>
->>>>>>> dev
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-<<<<<<< HEAD
-									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/32bb527/src/methods/malApi/index.ts#L308">methods/malApi/index.ts:308</a></li>
-=======
-									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/dacfe16/src/methods/malApi/index.ts#L379">methods/malApi/index.ts:379</a></li>
->>>>>>> dev
+									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/1b6fd20/src/methods/malApi/index.ts#L379">methods/malApi/index.ts:379</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -272,11 +183,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> clientId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;6114d00ca681b7701d1e15fe11a4987e&quot;</span></h5>
 								</li>
 							</ul>
-<<<<<<< HEAD
-							<h4 class="tsd-returns-title">Returns <a href="../classes/_malapi_index_.api.html" class="tsd-signature-type">Api</a></h4>
-=======
 							<h4 class="tsd-returns-title">Returns <a href="../classes/_malapi_index_.auth.html" class="tsd-signature-type">Auth</a></h4>
->>>>>>> dev
 						</li>
 					</ul>
 				</section>
@@ -305,11 +212,7 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-module">
-<<<<<<< HEAD
-						<a href="../classes/_malapi_index_.api.html" class="tsd-kind-icon">Api</a>
-=======
 						<a href="../classes/_malapi_index_.auth.html" class="tsd-kind-icon">Auth</a>
->>>>>>> dev
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-module">
 						<a href="../classes/_malapi_index_.malacount.html" class="tsd-kind-icon">Mal<wbr>Acount</a>
@@ -324,11 +227,7 @@
 						<a href="_malapi_index_.html#responseerror" class="tsd-kind-icon">Response<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-external">
-<<<<<<< HEAD
-						<a href="_malapi_index_.html#api-1" class="tsd-kind-icon">api</a>
-=======
 						<a href="_malapi_index_.html#auth-1" class="tsd-kind-icon">auth</a>
->>>>>>> dev
 					</li>
 				</ul>
 			</nav>
