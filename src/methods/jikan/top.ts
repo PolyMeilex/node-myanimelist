@@ -1,69 +1,115 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
+import { jikanGet, jikanUrl } from "./jikanApi";
 
-import axios from "axios";
-
-class Top {
+/**
+ * # Top
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/top" target="_blank">https://jikan.docs.apiary.io</a>
+ *
+ * To get top info you need to create top object and select type of entry, like so:
+ * ```ts
+ * let top = Jikan.top().anime();
+ * //                 .manga()
+ * //                 .people()
+ * //                 .characters()
+ * ```
+ * And then you can use top object multiple times to get desired information.
+ *
+ * ### Functions That You Can Use With All Types
+ * ```ts
+ * top.all(page?);
+ * ```
+ * ### Anime Specific Functions
+ * ```ts
+ * top.airing(page?);
+ * top.upcoming(page?);
+ * top.tv(page?);
+ * top.movie(page?);
+ * top.ova(page?);
+ * top.special(page?);
+ * ```
+ * ### Manga Specific Functions
+ * ```ts
+ * top.manga(page?);
+ * top.novels(page?);
+ * top.oneshots(page?);
+ * top.doujin(page?);
+ * top.manhwa(page?);
+ * top.manhua(page?);
+ * ```
+ * ### Manga & Anime Specific Functions
+ * ```ts
+ * top.byPopularity(page?);
+ * top.favorite(page?);
+ * ```
+ * Each of those functions returns promise
+ * ## Examples
+ * ```ts
+ * Jikan.top().anime().all()
+ * .then(res => res.data)
+ * .then(topJson => {});
+ * Jikan.top().anime().movie()
+ * .then(res => res.data)
+ * .then(topJson => {});
+ * ```
+ */
+export class Top {
+  /** @ignore */
   private baseUrl: string;
   constructor() {
-    this.baseUrl = `${baseUrl}/top`;
-  }
-  private jikanGet(url: string) {
-    return axios.get(url);
+    this.baseUrl = `${jikanUrl}/top`;
   }
   anime(): TopAnime {
-    return new TopAnime(this);
+    return new TopAnime(this.baseUrl);
   }
   manga(): TopManga {
-    return new TopManga(this);
+    return new TopManga(this.baseUrl);
   }
   people(): TopSimple {
-    return new TopSimple(this, "people");
+    return new TopSimple(this.baseUrl, "people");
   }
   characters(): TopSimple {
-    return new TopSimple(this, "characters");
+    return new TopSimple(this.baseUrl, "characters");
   }
 }
 
 // Class For "people" And "characters"
-class TopSimple {
-  private parent: Top;
+export class TopSimple {
+  private baseUrl: string;
   private type: string;
-  constructor(parent: Top, type: string) {
-    this.parent = parent;
+  constructor(baseUrl: string, type: string) {
+    this.baseUrl = baseUrl;
     this.type = type;
   }
-  private topGet(p: number, subType: string) {
+  private topGet(p: number | undefined, subType: string) {
     let params: string[] = [this.type];
-    if (p != null) params[1] = String(p);
+    if (p != undefined) params[1] = String(p);
     else params[1] = "1";
     params[2] = subType;
 
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, params);
-    // @ts-ignore
-    return this.parent.jikanGet(url);
+    const url = joinUrl(this.baseUrl, params);
+
+    return jikanGet(url);
   }
   all(p?: number) {
     return this.topGet(p, "");
   }
 }
 
-class TopAnime {
-  private parent: Top;
-  constructor(parent: Top) {
-    this.parent = parent;
+export class TopAnime {
+  private baseUrl: string;
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
   }
-  private topGet(p: number, subType: string) {
+  private topGet(p: number | undefined, subType: string) {
     let params: string[] = ["anime"];
-    if (p != null) params[1] = String(p);
+    if (p != undefined) params[1] = String(p);
     else params[1] = "1";
     params[2] = subType;
 
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, params);
-    // @ts-ignore
-    return this.parent.jikanGet(url);
+    const url = joinUrl(this.baseUrl, params);
+
+    return jikanGet(url);
   }
   all(p?: number) {
     return this.topGet(p, "");
@@ -94,21 +140,20 @@ class TopAnime {
   }
 }
 
-class TopManga {
-  private parent: Top;
-  constructor(parent: Top) {
-    this.parent = parent;
+export class TopManga {
+  private baseUrl: string;
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
   }
-  private topGet(p: number, subType: string) {
+  private topGet(p: number | undefined, subType: string) {
     let params: string[] = ["manga"];
-    if (p != null) params[1] = String(p);
+    if (p != undefined) params[1] = String(p);
     else params[1] = "1";
     params[2] = subType;
 
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, params);
-    // @ts-ignore
-    return this.parent.jikanGet(url);
+    const url = joinUrl(this.baseUrl, params);
+
+    return jikanGet(url);
   }
   all(p?: number) {
     return this.topGet(p, "");
@@ -139,6 +184,6 @@ class TopManga {
   }
 }
 
-export default function(): Top {
+export function top(): Top {
   return new Top();
 }

@@ -1,34 +1,27 @@
-import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
+import { jikanGet, jikanUrl } from "./jikanApi";
 
-import axios from "axios";
-
-class SeasonArchive {
+/**
+ * # SeasonArchive
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/season" target="_blank">https://jikan.docs.apiary.io</a>
+ *
+ * ### Get Season Archive
+ * All the years & their respective seasons that can be parsed from MyAnimeList
+ * ```js
+ * Jikan.seasonArchive();
+ * ```
+ */
+export class SeasonArchive {
+  /** @ignore */
   private baseUrl: string;
   constructor() {
-    this.baseUrl = `${baseUrl}/season/archive`;
-  }
-  private jikanGet(url: string) {
-    return axios.get(url);
+    this.baseUrl = `${jikanUrl}/season/archive`;
   }
   info() {
-    return this.jikanGet(this.baseUrl);
+    return jikanGet(this.baseUrl);
   }
 }
 
-function seasonArchive(): Promise<any> {
-  return new Promise(resolve => {
-    resolve(new SeasonArchive().info());
-  });
+export function seasonArchive(): Promise<any> {
+  return new SeasonArchive().info();
 }
-
-seasonArchive.debug = (): string => {
-  let s = new SeasonArchive();
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  s.jikanGet = s => s;
-  // @ts-ignore
-  return s.info();
-};
-
-export default seasonArchive;

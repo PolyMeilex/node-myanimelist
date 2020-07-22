@@ -56,3 +56,7 @@ jspm_packages/
 
 # Others
 dist/
+
+typings/
+
+gen/

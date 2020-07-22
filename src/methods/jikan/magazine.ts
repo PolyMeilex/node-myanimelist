@@ -1,36 +1,31 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
+import { jikanGet, jikanUrl, Req } from "./jikanApi";
 
-import axios from "axios";
+import { MagazineInfo } from "./types/magazine";
+export * from "./types/magazine";
 
-class Magazine {
+/**
+ * # Magazine
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/magazine" target="_blank">https://jikan.docs.apiary.io</a>
+ *
+ * ```ts
+ * Jikan.magazine(id, page?);
+ * ```
+ */
+export class Magazine {
+  /** @ignore */
   private baseUrl: string;
   constructor() {
-    this.baseUrl = `${baseUrl}/magazine`;
+    this.baseUrl = `${jikanUrl}/magazine`;
   }
-  private jikanGet(url: string) {
-    return axios.get(url);
-  }
-  info(id: number, p?: number) {
+  info(id: number, p?: number): Req<MagazineInfo> {
     let params = [String(id)];
     if (p != null) params[1] = String(p);
-    return this.jikanGet(joinUrl(this.baseUrl, params));
+    return jikanGet(joinUrl(this.baseUrl, params));
   }
 }
 
-function magazine(id: number, p?: number): Promise<any> {
-  return new Promise(resolve => {
-    resolve(new Magazine().info(id, p));
-  });
+export function magazine(id: number, p?: number) {
+  return new Magazine().info(id, p);
 }
-
-magazine.debug = (id: number, p?: number): string => {
-  let s = new Magazine();
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  s.jikanGet = s => s;
-  // @ts-ignore
-  return s.info(id, p);
-};
-
-export default magazine;

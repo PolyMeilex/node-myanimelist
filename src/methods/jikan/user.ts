@@ -1,81 +1,133 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
+import { jikanGet, jikanUrl } from "./jikanApi";
 
-import axios from "axios";
-
-class User {
+/**
+ * # User
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/user" target="_blank">https://jikan.docs.apiary.io</a>
+ *
+ * ### Create User Object
+ * ```ts
+ * let user = Jikan.user("username");
+ * ```
+ *
+ * ### Get User Profile
+ * ```ts
+ * user.profile();
+ * ```
+ *
+ * ### Get User History
+ * ```ts
+ * user.history().all();
+ * //            .anime()
+ * //            .manga()
+ * ```
+ *
+ * ### Get User Friends
+ * ```ts
+ * user.friends(page?);
+ * ```
+ *
+ * ### Get User List
+ * All posible params [here](https://jikan.docs.apiary.io/#reference/0/user)
+ * ```ts
+ * let params = {
+ *    search: "q",
+ *    sort: "order_by"
+ * };
+ *
+ * let animelist = user.animelist(page?);
+ * animelist.all(params);
+ * animelist.watching(params);
+ * animelist.onhold(params);
+ * animelist.dropped(params);
+ * animelist.plantowatch(params);
+ *
+ * let mangalist = user.mangalist(page?);
+ * mangalist.all(params);
+ * mangalist.reading(params);
+ * mangalist.onhold(params);
+ * mangalist.dropped(params);
+ * mangalist.plantoread(params);
+ * ```
+ */
+export class User {
+  /** @ignore */
   private baseUrl: string;
   constructor(username: string) {
-    this.baseUrl = `${baseUrl}/user/${username}`;
-  }
-  private jikanGet(url: string): Promise<any> {
-    return axios.get(url);
+    this.baseUrl = `${jikanUrl}/user/${username}`;
   }
   profile() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["profile"]));
+    return jikanGet(joinUrl(this.baseUrl, ["profile"]));
   }
   history() {
-    return new UserHistory(this);
+    return new UserHistory(this.baseUrl);
   }
   friends(p?: number) {
     let params: string[] = ["friends"];
     if (p != null) params.push(String(p));
-    return this.jikanGet(joinUrl(this.baseUrl, params));
+    return jikanGet(joinUrl(this.baseUrl, params));
   }
   animelist(p?: number) {
-    return new UserAnimelist(this, p);
+    return new UserAnimelist(this.baseUrl, p);
   }
   mangalist(p?: number) {
-    return new UserMangalist(this, p);
+    return new UserMangalist(this.baseUrl, p);
   }
 }
 
-class UserHistory {
-  private parent: User;
-  constructor(parent: User) {
-    this.parent = parent;
+export class UserHistory {
+  private baseUrl: string;
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
   }
   all() {
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, ["history"]);
-    // @ts-ignore
-    return this.parent.jikanGet(url);
+    const url = joinUrl(this.baseUrl, ["history"]);
+
+    return jikanGet(url);
   }
   anime() {
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, ["history", "anime"]);
-    // @ts-ignore
-    return this.parent.jikanGet(url);
+    const url = joinUrl(this.baseUrl, ["history", "anime"]);
+
+    return jikanGet(url);
   }
   manga() {
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, ["history", "manga"]);
-    // @ts-ignore
-    return this.parent.jikanGet(url);
+    const url = joinUrl(this.baseUrl, ["history", "manga"]);
+
+    return jikanGet(url);
   }
 }
 
-class UserAnimelist {
-  private parent: User;
+export class UserAnimelist {
+  private baseUrl: string;
   private page: string;
-  constructor(parent: User, p?: number) {
-    this.parent = parent;
+  constructor(baseUrl: string, p?: number) {
+    this.baseUrl = baseUrl;
 
     if (p != null) this.page = String(p);
     else this.page = "1";
   }
-  private getList(params: string[], qparams?: Object) {
+  private getList(params: string[], qparams?: any) {
     if (qparams != null) {
-      let qparams = Object.keys(params)
-        .filter(k => params[k] != null)
-        .map(k => `${k}=${encodeURIComponent(params[k])}`)
+      let qparams = Object.keys(params) as string[];
+
+      let out = qparams
+        .map((key) => {
+          return {
+            key,
+            param: params[key as any] as string,
+          };
+        })
+        .filter((p) => p.param != null)
+        .map((k) => `${k}=${encodeURIComponent(params[k as any])}`)
         .join("&");
-      params.push(qparams);
+
+      params.push(out);
     }
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, params);
-    // @ts-ignore
-    return this.parent.jikanGet(url);
+
+    const url = joinUrl(this.baseUrl, params);
+
+    return jikanGet(url);
   }
   all(qparams?: Object) {
     return this.getList(["animelist", "all", this.page], qparams);
@@ -94,27 +146,36 @@ class UserAnimelist {
   }
 }
 
-class UserMangalist {
-  private parent: User;
+export class UserMangalist {
+  private baseUrl: string;
   private page: string;
-  constructor(parent: User, p?: number) {
-    this.parent = parent;
+  constructor(baseUrl: string, p?: number) {
+    this.baseUrl = baseUrl;
 
     if (p != null) this.page = String(p);
     else this.page = "1";
   }
-  private getList(params: string[], qparams?: Object) {
+  private getList(params: string[], qparams?: any) {
     if (qparams != null) {
-      let qparams = Object.keys(params)
-        .filter(k => params[k] != null)
-        .map(k => `${k}=${encodeURIComponent(params[k])}`)
+      let qparams = Object.keys(params) as string[];
+
+      let out = qparams
+        .map((key) => {
+          return {
+            key,
+            param: params[key as any] as string,
+          };
+        })
+        .filter((p) => p.param != null)
+        .map((k) => `${k}=${encodeURIComponent(params[k as any])}`)
         .join("&");
-      params.push(qparams);
+
+      params.push(out);
     }
-    // @ts-ignore
-    const url = joinUrl(this.parent.baseUrl, params);
-    // @ts-ignore
-    return this.parent.jikanGet(url);
+
+    const url = joinUrl(this.baseUrl, params);
+
+    return jikanGet(url);
   }
   all(qparams?: Object) {
     return this.getList(["mangalist", "all", this.page], qparams);
@@ -133,6 +194,6 @@ class UserMangalist {
   }
 }
 
-export default function(username: string): User {
+export function user(username: string): User {
   return new User(username);
 }

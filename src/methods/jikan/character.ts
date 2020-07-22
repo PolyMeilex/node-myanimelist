@@ -1,24 +1,44 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
+import { jikanGet, jikanUrl, Req } from "./jikanApi";
 
-import axios from "axios";
+import { CharacterInfo, Pictures } from "./types/character";
+export * from "./types/character";
 
-class Character {
+/**
+ * # Character
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/character" target="_blank">https://jikan.docs.apiary.io</a>
+ * To get character you need to create character object, like that:
+ * ```ts
+ * let character = Jikan.character(id);
+ * ```
+ * Now you can use character object multiple times to get desired information.
+ * ```ts
+ * character.info();
+ * character.pictures();
+ * ```
+ * Each of those functions returns promise
+ * ## Example
+ * ```ts
+ * character.info()
+ *          .then(res => res.data)
+ *          .then(characterJson => characterJson.name);
+ * ```
+ */
+export class Character {
+  /** @ignore */
   private baseUrl: string;
   constructor(id: number) {
-    this.baseUrl = `${baseUrl}/character/${id}`;
+    this.baseUrl = `${jikanUrl}/character/${id}`;
   }
-  private jikanGet(url: string) {
-    return axios.get(url);
+  info(): Req<CharacterInfo> {
+    return jikanGet(this.baseUrl);
   }
-  info() {
-    return this.jikanGet(this.baseUrl);
-  }
-  pictures() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["pictures"]));
+  pictures(): Req<Pictures> {
+    return jikanGet(joinUrl(this.baseUrl, ["pictures"]));
   }
 }
 
-export default function(id: number): Character {
+export function character(id: number): Character {
   return new Character(id);
 }

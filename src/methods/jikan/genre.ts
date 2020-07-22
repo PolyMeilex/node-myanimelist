@@ -1,31 +1,42 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
+import { jikanGet, jikanUrl, Req } from "./jikanApi";
 
-import AnimeGenre from "./types/animeGenre";
-import MangaGenre from "./types/mangaGenre";
+import { Anime, Manga } from "./types";
+// export { Anime, Manga } from "./types";
 
-import axios from "axios";
-
-class Genre {
+/**
+ * # Genre
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/genre" target="_blank">https://jikan.docs.apiary.io</a>
+ * Anime/Manga items of the genre.
+ * To get genre info you need to create genre object and select type of items, like so:
+ * ```ts
+ * Jikan.genre().anime(Jikan.Genre.AnimeGenreId.action,paga?),
+ *            .manga(Jikan.Genre.MangaGenreId.action,paga?),
+ * ```
+ * Each of those functions returns promise
+ *
+ * {@link AnimeGenreId}
+ *
+ * {@link MangaGenreId}
+ */
+export class Genre {
+  /** @ignore */
   private baseUrl: string;
   constructor() {
-    this.baseUrl = `${baseUrl}/genre`;
+    this.baseUrl = `${jikanUrl}/genre`;
   }
-  private jikanGet(url: string) {
-    return axios.get(url);
-  }
-  anime(genre: AnimeGenre, p?: number) {
+  anime(genre: Anime.GenreId, p?: number): Req<Anime.Genre> {
     let params: string[] = ["anime", String(genre)];
     if (p != null) params[2] = String(p);
-    return this.jikanGet(joinUrl(this.baseUrl, params));
+    return jikanGet(joinUrl(this.baseUrl, params));
   }
-  manga(genre: MangaGenre, p?: number) {
+  manga(genre: Manga.GenreId, p?: number): Req<Manga.Genre> {
     let params: string[] = ["manga", String(genre)];
     if (p != null) params[2] = String(p);
-    return this.jikanGet(joinUrl(this.baseUrl, params));
+    return jikanGet(joinUrl(this.baseUrl, params));
   }
 }
 
-export default function(): Genre {
+export function genre(): Genre {
   return new Genre();
 }

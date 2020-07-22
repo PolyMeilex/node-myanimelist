@@ -1,35 +1,27 @@
-import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
+import { jikanGet, jikanUrl } from "./jikanApi";
 
-import axios from "axios";
-
-class SeasonLater {
+/**
+ * # SeasonLater
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/season" target="_blank">https://jikan.docs.apiary.io</a>
+ *
+ * ### Get Season Later
+ * Anime that have been announced for the upcoming seasons
+ * ```js
+ * Jikan.seasonLater();
+ * ```
+ */
+export class SeasonLater {
+  /** @ignore */
   private baseUrl: string;
   constructor() {
-    this.baseUrl = `${baseUrl}/season/later`;
-  }
-  private jikanGet(url: string) {
-    return axios.get(url);
+    this.baseUrl = `${jikanUrl}/season/later`;
   }
   info() {
-    return this.jikanGet(this.baseUrl);
+    return jikanGet(this.baseUrl);
   }
 }
 
-function seasonLater(): Promise<any> {
-  return new Promise(resolve => {
-    resolve(new SeasonLater().info());
-  });
+export function seasonLater(): Promise<any> {
+  return new SeasonLater().info();
 }
-
-seasonLater.debug = (): string => {
-  let s = new SeasonLater();
-  // Return url instead of calling jikan api
-
-  // @ts-ignore
-  s.jikanGet = s => s;
-  // @ts-ignore
-  return s.info();
-};
-
-export default seasonLater;

@@ -1,48 +1,74 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
+import { jikanGet, jikanUrl } from "./jikanApi";
 
-import axios from "axios";
-
-class Schedule {
+/**
+ * # Schedule
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/schedule " target="_blank">https://jikan.docs.apiary.io</a>
+ *
+ * To get schedule you need to create schedule object, like so:
+ * ```ts
+ * let schedule = Jikan.schedule();
+ * ```
+ * And then you can use schedule object multiple times to get desired information.
+ * ```ts
+ * schedule.all();
+ * schedule.monday();
+ * schedule.tuesday();
+ * schedule.wednesday();
+ * schedule.thursday();
+ * schedule.friday();
+ * schedule.saturday();
+ * schedule.sunday();
+ * schedule.other();
+ * schedule.unknown();
+ * ```
+ * Each of those functions returns promise
+ * ## Example
+ * ```ts
+ * Jikan.schedule().all()
+ *               .then(res => res.data)
+ *               .then(scheduleJson => {});
+ * ```
+ */
+export class Schedule {
+  /** @ignore */
   private baseUrl: string;
   constructor() {
-    this.baseUrl = `${baseUrl}/schedule`;
-  }
-  private jikanGet(url: string) {
-    return axios.get(url);
+    this.baseUrl = `${jikanUrl}/schedule`;
   }
   all() {
-    return this.jikanGet(this.baseUrl);
+    return jikanGet(this.baseUrl);
   }
   monday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["monday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["monday"]));
   }
   tuesday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["tuesday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["tuesday"]));
   }
   wednesday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["wednesday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["wednesday"]));
   }
   thursday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["thursday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["thursday"]));
   }
   friday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["friday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["friday"]));
   }
   saturday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["saturday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["saturday"]));
   }
   sunday() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["sunday"]));
+    return jikanGet(joinUrl(this.baseUrl, ["sunday"]));
   }
   other() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["other"]));
+    return jikanGet(joinUrl(this.baseUrl, ["other"]));
   }
   unknown() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["unknown"]));
+    return jikanGet(joinUrl(this.baseUrl, ["unknown"]));
   }
 }
 
-export default function(): Schedule {
+export function schedule(): Schedule {
   return new Schedule();
 }

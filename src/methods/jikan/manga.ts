@@ -1,52 +1,82 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
+import { jikanGet, jikanUrl, Req } from "./jikanApi";
 
-import axios from "axios";
+// import * as T from "./types";
 
-class Manga {
+import { MangaInfo, Characters, NewsInfo, Pictures } from "./types/manga";
+export * from "./types/manga";
+
+/**
+ * # Manga
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/manga" target="_blank">https://jikan.docs.apiary.io</a>
+ * To get manga you need to create manga object, like so:
+ * ```ts
+ * let manga = Jikan.manga(id);
+ * ```
+ * Now you can use manga object multiple times to get desired information.
+ * ```ts
+ * manga.info();
+ * manga.characters();
+ * manga.news();
+ * manga.pictures();
+ * manga.stats();
+ * manga.forum();
+ * manga.moreInfo();
+ * manga.reviews(page?);
+ * manga.recommendations();
+ * manga.userUpdates(page?);
+ * ```
+ * Each of those functions returns promise
+ * ## Example
+ * ```ts
+ * manga.info()
+ *      .then(res => res.data)
+ *      .then(mangaJson => mangaJson.title);
+ * ```
+ */
+export class Manga {
+  /** @ignore */
   private baseUrl: string;
   constructor(id: number) {
-    this.baseUrl = `${baseUrl}/manga/${id}`;
+    this.baseUrl = `${jikanUrl}/manga/${id}`;
   }
-  private jikanGet(url: string) {
-    return axios.get(url);
+  info(): Req<MangaInfo> {
+    return jikanGet(this.baseUrl);
   }
-  info() {
-    return this.jikanGet(this.baseUrl);
+  characters(): Req<Characters> {
+    return jikanGet(joinUrl(this.baseUrl, ["characters"]));
   }
-  characters() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["characters"]));
+  news(): Req<NewsInfo> {
+    return jikanGet(joinUrl(this.baseUrl, ["news"]));
   }
-  news() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["news"]));
-  }
-  pictures() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["pictures"]));
+  pictures(): Req<Pictures> {
+    return jikanGet(joinUrl(this.baseUrl, ["pictures"]));
   }
   stats() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["stats"]));
+    return jikanGet(joinUrl(this.baseUrl, ["stats"]));
   }
   forum() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["forum"]));
+    return jikanGet(joinUrl(this.baseUrl, ["forum"]));
   }
   moreInfo() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["moreinfo"]));
+    return jikanGet(joinUrl(this.baseUrl, ["moreinfo"]));
   }
   reviews(p?: number) {
     let params: string[] = ["reviews"];
     if (p != null) params.push(String(p));
-    return this.jikanGet(joinUrl(this.baseUrl, params));
+    return jikanGet(joinUrl(this.baseUrl, params));
   }
   recommendations() {
-    return this.jikanGet(joinUrl(this.baseUrl, ["recommendations"]));
+    return jikanGet(joinUrl(this.baseUrl, ["recommendations"]));
   }
   userUpdates(p?: number) {
     let params: string[] = ["userupdates"];
     if (p != null) params.push(String(p));
-    return this.jikanGet(joinUrl(this.baseUrl, params));
+    return jikanGet(joinUrl(this.baseUrl, params));
   }
 }
 
-export default function(id: number): Manga {
+export function manga(id: number): Manga {
   return new Manga(id);
 }

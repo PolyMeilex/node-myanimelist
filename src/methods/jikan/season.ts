@@ -1,36 +1,31 @@
 import { joinUrl } from "./url";
-import baseUrl from "./jikanApi";
+import { jikanGet, jikanUrl } from "./jikanApi";
 
-import axios from "axios";
-
-class Season {
+/**
+ * # Season
+ *
+ * #### For more info visit <a href="https://jikan.docs.apiary.io/#reference/0/season" target="_blank">https://jikan.docs.apiary.io</a>
+ *
+ * ### Get Season
+ * Anime of the specified season
+ * ```js
+ * Jikan.season(2018, "winter");
+ * ```
+ * **Posible seasons**: ``summer`` ``spring`` ``fall`` ``winter ``
+ */
+export class Season {
+  /** @ignore */
   private baseUrl: string;
   constructor() {
-    this.baseUrl = `${baseUrl}/season`;
+    this.baseUrl = `${jikanUrl}/season`;
   }
-  private jikanGet(url: string) {
-    return axios.get(url);
-  }
-  info(year: number, season: season) {
-    return this.jikanGet(joinUrl(this.baseUrl, [String(year), String(season)]));
+  info(year: number, season: SeasonType) {
+    return jikanGet(joinUrl(this.baseUrl, [String(year), String(season)]));
   }
 }
 
-type season = "summer" | "spring" | "fall" | "winter";
+export type SeasonType = "summer" | "spring" | "fall" | "winter";
 
-function season(year: number, season: season): Promise<any> {
-  return new Promise(resolve => {
-    resolve(new Season().info(year, season));
-  });
+export function season(year: number, season: SeasonType): Promise<any> {
+  return new Season().info(year, season);
 }
-
-season.debug = (year: number, season: season): string => {
-  let s = new Season();
-  // Return url instead of calling jikan api
-  // @ts-ignore
-  s.jikanGet = s => s;
-  // @ts-ignore
-  return s.info(year, season);
-};
-
-export default season;
