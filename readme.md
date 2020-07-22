@@ -15,11 +15,7 @@ Visit [master branch](https://github.com/PolyMeilex/node-myanimelist/tree/master
 
 [![NPM](https://nodei.co/npm/node-myanimelist.png)](https://nodei.co/npm/node-myanimelist/)   
 <br>
-Master branch:
-```sh
-npm i node-myanimelist
-```
-Dev branch:
+Install dev branch
 ```sh
 npm i node-myanimelist@next
 ```
@@ -32,18 +28,18 @@ import { Mal, Jikan } from 'node-myanimelist';
 ```
 ### MalAPI Example
 ```ts
-const mal = Mal.api("6114d00ca681b7701d1e15fe11a4987e" /* app_id */ );
+const auth = Mal.auth("6114d00ca681b7701d1e15fe11a4987e" /* app_id */ );
 
 // Unoffical way to login (not recomended)
-const acount = await mal.Unstable.login("username","password");
+const acount = await auth.Unstable.login("username","password");
 
 // Offical way to login (recomended)
 // import pkceChallenge from "pkce-challenge";
 // const pkce = pkceChallenge();
 
-const url = mal.getOAuthUrl(pkce.code_challenge)
+const url = auth.getOAuthUrl(pkce.code_challenge)
 // Open returned url, accept oauth and use returned code to authorize
-const acount = await mal.authorizationCode(code,pkce.code_challenge);
+const acount = await auth.authorizeWithCode(code,pkce.code_challenge);
 
 let search = await acount.manga.search(
    "Sakurasou",
