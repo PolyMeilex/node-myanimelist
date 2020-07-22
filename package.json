@@ -8,7 +8,8 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "./node_modules/ts-mocha/bin/ts-mocha test/*.ts",
-    "doc": "typedoc --mode library --out docs ./src/index.ts"
+    "doc": "typedoc --mode library --out docs ./src/index.ts",
+    "postdoc": "touch docs/.nojekyll"
   },
   "keywords": [
     "MAL",
