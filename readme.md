@@ -9,9 +9,9 @@ Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially
 ![Gif](https://i.imgur.com/J1dUQf2.gif)
 
 # Instalation
-## Keep in mind that current npm release is on [master branch](https://github.com/PolyMeilex/node-myanimelist/tree/master)
+## Keep in mind that current npm release is on [2.0.0 branch](https://github.com/PolyMeilex/node-myanimelist/tree/2.0.0)
 ### So examples from here are ahead of what you can use on npm version
-Visit [master branch](https://github.com/PolyMeilex/node-myanimelist/tree/master) or [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki) for proper info
+Visit [2.0.0 branch](https://github.com/PolyMeilex/node-myanimelist/tree/2.0.0) or [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki) for proper info
 
 [![NPM](https://nodei.co/npm/node-myanimelist.png)](https://nodei.co/npm/node-myanimelist/)   
 <br>
