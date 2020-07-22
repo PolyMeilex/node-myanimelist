@@ -46,7 +46,7 @@ type ParamsKeys = keyof AdvancedSearchParameters;
  * Jikan.search().anime({
  *    q: "fate",
  *    page: 2,
- *    genre: Jikan.Search.AnimeGenreId.action,
+ *    genre: Jikan.Anime.GenreId.action,
  * });
  * ```
  *

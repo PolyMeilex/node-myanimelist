@@ -70,6 +70,14 @@
 				</a>
 				<p>Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
 				Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package</p>
+				<a href="#quick-20-to-21-migration-guide" id="quick-20-to-21-migration-guide" style="color: inherit; text-decoration: none;">
+					<h2>Quick 2.0 to 2.1 Migration guide</h2>
+				</a>
+				<ul>
+					<li>Jikan module is now imported with <code>import { Jikan } from &#39;node-myanimelist&#39;</code></li>
+					<li>Jikan module now returns jikan json directly you no longer need to use <code>res.data</code>, data will be returned directly</li>
+					<li>Wiki is deprecated use <a href="https://polymeilex.github.io/node-myanimelist/">Doc</a> instead</li>
+				</ul>
 				<a href="#intellisens-support-typescript" id="intellisens-support-typescript" style="color: inherit; text-decoration: none;">
 					<h2>Intellisens Support (Typescript)</h2>
 				</a>
@@ -77,16 +85,8 @@
 				<a href="#instalation" id="instalation" style="color: inherit; text-decoration: none;">
 					<h1>Instalation</h1>
 				</a>
-				<a href="#keep-in-mind-that-current-npm-release-is-on-200-branch" id="keep-in-mind-that-current-npm-release-is-on-200-branch" style="color: inherit; text-decoration: none;">
-					<h2>Keep in mind that current npm release is on <a href="https://github.com/PolyMeilex/node-myanimelist/tree/2.0.0">2.0.0 branch</a></h2>
-				</a>
-				<a href="#so-examples-from-here-are-ahead-of-what-you-can-use-on-npm-version" id="so-examples-from-here-are-ahead-of-what-you-can-use-on-npm-version" style="color: inherit; text-decoration: none;">
-					<h3>So examples from here are ahead of what you can use on npm version</h3>
-				</a>
-				<p>Visit <a href="https://github.com/PolyMeilex/node-myanimelist/tree/2.0.0">2.0.0 branch</a> or <a href="https://github.com/PolyMeilex/node-myanimelist/wiki">wiki</a> for proper info</p>
-				<p><a href="https://nodei.co/npm/node-myanimelist/"><img src="https://nodei.co/npm/node-myanimelist.png" alt="NPM"></a><br><br>
-				Install dev branch</p>
-				<pre><code class="language-sh">npm i node-myanimelist@next</code></pre>
+				<p><a href="https://nodei.co/npm/node-myanimelist/"><img src="https://nodei.co/npm/node-myanimelist.png" alt="NPM"></a></p>
+				<pre><code class="language-sh">npm i node-myanimelist</code></pre>
 				<a href="#import" id="import" style="color: inherit; text-decoration: none;">
 					<h3>Import</h3>
 				</a>
@@ -207,11 +207,10 @@
 				<a href="#buildin-scraper" id="buildin-scraper" style="color: inherit; text-decoration: none;">
 					<h1>Buildin Scraper</h1>
 				</a>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> { ScraperClient } <span class="hljs-keyword">from</span> <span class="hljs-string">"node-myanimelist"</span>;
-<span class="hljs-keyword">const</span> scraperClient = <span class="hljs-keyword">new</span> ScraperClient();
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { Scraper } <span class="hljs-keyword">from</span> <span class="hljs-string">"node-myanimelist"</span>;
 
 <span class="hljs-comment">// Login into Mal acount</span>
-<span class="hljs-keyword">let</span> loginData = <span class="hljs-keyword">await</span> scraperClient.login(<span class="hljs-string">"username"</span>,<span class="hljs-string">"password"</span>);
+<span class="hljs-keyword">let</span> loginData = <span class="hljs-keyword">await</span> Scraper.login(<span class="hljs-string">"username"</span>,<span class="hljs-string">"password"</span>);
 
 <span class="hljs-comment">// loginData == {</span>
 <span class="hljs-comment">//   MALSESSIONID: "***",</span>
@@ -219,7 +218,7 @@
 <span class="hljs-comment">// };</span>
 
 <span class="hljs-comment">// Get Mal User Notifications</span>
-<span class="hljs-keyword">let</span> notifications = <span class="hljs-keyword">await</span> scraperClient.notifications(loginData);
+<span class="hljs-keyword">let</span> notifications = <span class="hljs-keyword">await</span> Scraper.notifications(loginData);
 
 <span class="hljs-comment">// Update Episode On Mal</span>
 <span class="hljs-keyword">const</span> animeUpdate = {
@@ -227,7 +226,7 @@
    <span class="hljs-attr">anime_id</span>: <span class="hljs-number">24833</span>,
    <span class="hljs-attr">status</span>: <span class="hljs-number">1</span>
 };
-<span class="hljs-keyword">let</span> res = <span class="hljs-keyword">await</span> scraperClient.animeEdit(loginData,animeUpdate);
+<span class="hljs-keyword">let</span> res = <span class="hljs-keyword">await</span> Scraper.animeEdit(loginData,animeUpdate);
 </code></pre>
 				<p>Notifications response <a href="https://github.com/PolyMeilex/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json">example</a></p>
 			</div>

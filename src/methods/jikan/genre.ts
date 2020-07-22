@@ -10,14 +10,10 @@ import { Anime, Manga } from "./types";
  * Anime/Manga items of the genre.
  * To get genre info you need to create genre object and select type of items, like so:
  * ```ts
- * Jikan.genre().anime(Jikan.Genre.AnimeGenreId.action,paga?),
- *            .manga(Jikan.Genre.MangaGenreId.action,paga?),
+ * Jikan.genre().anime(Jikan.Anime.GenreId.action,paga?),
+ *            .manga(Jikan.Manga.GenreId.action,paga?),
  * ```
  * Each of those functions returns promise
- *
- * {@link AnimeGenreId}
- *
- * {@link MangaGenreId}
  */
 export class Genre {
   /** @ignore */
