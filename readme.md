@@ -4,20 +4,18 @@
 Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
 Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package
 
+## Quick 2.0 to 2.1 Migration guide
+- Jikan module is now imported with `import { Jikan } from 'node-myanimelist'`
+- Jikan module now returns jikan json directly you no longer need to use `res.data`, data will be returned directly
+- Wiki is deprecated use [Doc](https://polymeilex.github.io/node-myanimelist/) instead
 
 ## Intellisens Support (Typescript)
 ![Gif](https://i.imgur.com/J1dUQf2.gif)
 
 # Instalation
-## Keep in mind that current npm release is on [2.0.0 branch](https://github.com/PolyMeilex/node-myanimelist/tree/2.0.0)
-### So examples from here are ahead of what you can use on npm version
-Visit [2.0.0 branch](https://github.com/PolyMeilex/node-myanimelist/tree/2.0.0) or [wiki](https://github.com/PolyMeilex/node-myanimelist/wiki) for proper info
-
-[![NPM](https://nodei.co/npm/node-myanimelist.png)](https://nodei.co/npm/node-myanimelist/)   
-<br>
-Install dev branch
+[![NPM](https://nodei.co/npm/node-myanimelist.png)](https://nodei.co/npm/node-myanimelist/)
 ```sh
-npm i node-myanimelist@next
+npm i node-myanimelist
 ```
 
 ### Import
@@ -122,11 +120,10 @@ For more detalis visit [doc](https://polymeilex.github.io/node-myanimelist/)
 
 # Buildin Scraper
 ```js
-import { ScraperClient } from "node-myanimelist";
-const scraperClient = new ScraperClient();
+import { Scraper } from "node-myanimelist";
 
 // Login into Mal acount
-let loginData = await scraperClient.login("username","password");
+let loginData = await Scraper.login("username","password");
 
 // loginData == {
 //   MALSESSIONID: "***",
@@ -134,7 +131,7 @@ let loginData = await scraperClient.login("username","password");
 // };
 
 // Get Mal User Notifications
-let notifications = await scraperClient.notifications(loginData);
+let notifications = await Scraper.notifications(loginData);
 
 // Update Episode On Mal
 const animeUpdate = {
@@ -142,7 +139,7 @@ const animeUpdate = {
    anime_id: 24833,
    status: 1
 };
-let res = await scraperClient.animeEdit(loginData,animeUpdate);
+let res = await Scraper.animeEdit(loginData,animeUpdate);
 
 ```
 Notifications response [example](https://github.com/PolyMeilex/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json)
