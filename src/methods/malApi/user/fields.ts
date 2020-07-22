@@ -29,5 +29,5 @@ export class UserFields<T> {
 }
 
 export function fields() {
-  return new UserFields<UserBase>();
+  return new UserFields();
 }

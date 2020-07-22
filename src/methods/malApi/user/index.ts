@@ -4,10 +4,11 @@ import MalRequest from "../request";
 import { apiUrl } from "../api";
 import { AnimeField } from "../types";
 import { AnimeFields } from "../anime";
-import { Paging } from "../common";
+import { Paging, WorkBase } from "../common";
 import { UserFields } from "./fields";
 import { AnimeItem } from "../anime/types";
 import { MangaFields, MangaItem } from "../manga";
+import { UserBase } from "./types";
 
 export * from "./fields";
 export * from "./types";
@@ -27,7 +28,7 @@ export class MalUser {
     this.acount = acount;
   }
 
-  info<T>(fields?: UserFields<T>): MalRequest<T> {
+  info<T>(fields?: UserFields<T>): MalRequest<UserBase & T> {
     let fieldsStr;
 
     if (fields) {
@@ -48,7 +49,7 @@ export class MalUser {
   animelist<T>(
     name: string = "@me",
     fields?: AnimeFields<T>
-  ): MalRequest<Paging<AnimeItem<T>>> {
+  ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
     let fieldsStr;
 
     if (fields) {
@@ -72,13 +73,13 @@ export class MalUser {
       [apiUrl, "users", name, "animelist", quary],
       this.acount.malToken
     );
-    return req as MalRequest<Paging<AnimeItem<T>>>;
+    return req as any;
   }
 
   mangalist<T>(
     name: string = "@me",
     fields?: MangaFields<T>
-  ): MalRequest<Paging<MangaItem<T>>> {
+  ): MalRequest<Paging<MangaItem<WorkBase & T>>> {
     let fieldsStr;
 
     if (fields) {

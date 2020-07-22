@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Api | node-myanimelist</title>
+	<title>Auth | node-myanimelist</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -59,21 +59,51 @@
 					<a href="../modules/_malapi_index_.html">&quot;malApi/index&quot;</a>
 				</li>
 				<li>
-					<a href="_malapi_index_.api.html">Api</a>
+					<a href="_malapi_index_.auth.html">Auth</a>
 				</li>
 			</ul>
-			<h1>Class Api</h1>
+			<h1>Class Auth</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Initialize <a href="_malapi_index_.auth.html">Auth</a>:</p>
+						<pre><code class="language-ts"><span class="hljs-keyword">const</span> auth = Mal.auth(<span class="hljs-string">"app_id"</span>)</code></pre>
+						<p>Use initialized <a href="_malapi_index_.auth.html">Auth</a> to login:</p>
+						<ul>
+							<li>Unoffical way to login (not recomended) <a href="_malapi_index_.auth.html#unstable.login">Auth.Unstable.login</a><pre><code class="language-ts"><span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> auth.Unstable.login(<span class="hljs-string">"username"</span>,<span class="hljs-string">"password"</span>);</code></pre>
+							</li>
+							<li>Offical way to login (recomended) <a href="_malapi_index_.auth.html#authorizewithcode">Auth.authorizeWithCode</a><ul>
+									<li>Generate pkce (in this example <code>pkce-challenge</code> npm package is used)<pre><code class="language-ts"><span class="hljs-keyword">import</span> pkceChallenge <span class="hljs-keyword">from</span> <span class="hljs-string">"pkce-challenge"</span>;
+<span class="hljs-keyword">const</span> pkce = pkceChallenge();</code></pre>
+									</li>
+									<li>Get OAuth url <a href="_malapi_index_.auth.html#getoauthurl">Auth.getOAuthUrl</a><pre><code class="language-ts"><span class="hljs-keyword">const</span> url = auth.getOAuthUrl(pkce.code_challenge);</code></pre>
+									</li>
+									<li>Open returned url, accept oauth and use returned code to authorize <a href="_malapi_index_.auth.html#authorizewithcode">Auth.authorizeWithCode</a><pre><code class="language-ts"><span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> auth.authorizeWithCode(code, code_challenge)</code></pre>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<p>You probably want to save acount somewhere, you can just call <code>acount.stringifyToken()</code> to get json</p>
+					<p>Later you can load it using:</p>
+					<pre><code class="language-ts"><span class="hljs-keyword">const</span> token = Mal.MalToken.fromJsonString(jsonStr);
+<span class="hljs-keyword">const</span> acount = auth.loadToken(token);</code></pre>
+					<p>If more time has passed you can also refresh token instead of loading last one</p>
+					<pre><code class="language-ts"><span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> auth.authorizeWithRefreshToken(json.refresh_token);</code></pre>
+					<p>Done, you can use <a href="_malapi_index_.malacount.html">MalAcount</a></p>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Api</span>
+						<span class="target">Auth</span>
 					</li>
 				</ul>
 			</section>
@@ -84,28 +114,28 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_malapi_index_.api.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_malapi_index_.auth.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_malapi_index_.api.html#clientid" class="tsd-kind-icon">client<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_malapi_index_.auth.html#clientid" class="tsd-kind-icon">client<wbr>Id</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_malapi_index_.api.html#authorizationcode" class="tsd-kind-icon">authorization<wbr>Code</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_malapi_index_.api.html#getoauthurl" class="tsd-kind-icon">getOAuth<wbr>Url</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_malapi_index_.api.html#loadtoken" class="tsd-kind-icon">load<wbr>Token</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_malapi_index_.api.html#refresh" class="tsd-kind-icon">refresh</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_malapi_index_.auth.html#authorizewithcode" class="tsd-kind-icon">authorize<wbr>With<wbr>Code</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_malapi_index_.auth.html#authorizewithrefreshtoken" class="tsd-kind-icon">authorize<wbr>With<wbr>Refresh<wbr>Token</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_malapi_index_.auth.html#getoauthurl" class="tsd-kind-icon">getOAuth<wbr>Url</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_malapi_index_.auth.html#loadtoken" class="tsd-kind-icon">load<wbr>Token</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Object literals</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-object-literal tsd-parent-kind-class"><a href="_malapi_index_.api.html#unstable" class="tsd-kind-icon">Unstable</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-class"><a href="_malapi_index_.auth.html#unstable" class="tsd-kind-icon">Unstable</a></li>
 							</ul>
 						</section>
 					</div>
@@ -117,13 +147,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Api<span class="tsd-signature-symbol">(</span>clientId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_malapi_index_.api.html" class="tsd-signature-type">Api</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Auth<span class="tsd-signature-symbol">(</span>clientId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_malapi_index_.auth.html" class="tsd-signature-type">Auth</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/534a20d/src/methods/malApi/index.ts#L245">methods/malApi/index.ts:245</a></li>
+									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/dacfe16/src/methods/malApi/index.ts#L316">methods/malApi/index.ts:316</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -132,7 +162,7 @@
 									<h5>clientId: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_malapi_index_.api.html" class="tsd-signature-type">Api</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_malapi_index_.auth.html" class="tsd-signature-type">Auth</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -145,7 +175,7 @@
 					<div class="tsd-signature tsd-kind-icon">client<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/534a20d/src/methods/malApi/index.ts#L245">methods/malApi/index.ts:245</a></li>
+							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/dacfe16/src/methods/malApi/index.ts#L316">methods/malApi/index.ts:316</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -153,16 +183,16 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="authorizationcode" class="tsd-anchor"></a>
-					<h3>authorization<wbr>Code</h3>
+					<a name="authorizewithcode" class="tsd-anchor"></a>
+					<h3>authorize<wbr>With<wbr>Code</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">authorization<wbr>Code<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, codeChallenge<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_malapi_index_.malacount.html" class="tsd-signature-type">MalAcount</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">authorize<wbr>With<wbr>Code<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, codeChallenge<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_malapi_index_.malacount.html" class="tsd-signature-type">MalAcount</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/534a20d/src/methods/malApi/index.ts#L268">methods/malApi/index.ts:268</a></li>
+									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/dacfe16/src/methods/malApi/index.ts#L339">methods/malApi/index.ts:339</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -179,6 +209,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="authorizewithrefreshtoken" class="tsd-anchor"></a>
+					<h3>authorize<wbr>With<wbr>Refresh<wbr>Token</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">authorize<wbr>With<wbr>Refresh<wbr>Token<span class="tsd-signature-symbol">(</span>refreshToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_malapi_index_.malacount.html" class="tsd-signature-type">MalAcount</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/dacfe16/src/methods/malApi/index.ts#L331">methods/malApi/index.ts:331</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>refreshToken: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_malapi_index_.malacount.html" class="tsd-signature-type">MalAcount</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getoauthurl" class="tsd-anchor"></a>
 					<h3>getOAuth<wbr>Url</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -188,7 +241,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/534a20d/src/methods/malApi/index.ts#L255">methods/malApi/index.ts:255</a></li>
+									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/dacfe16/src/methods/malApi/index.ts#L326">methods/malApi/index.ts:326</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -211,7 +264,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/534a20d/src/methods/malApi/index.ts#L251">methods/malApi/index.ts:251</a></li>
+									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/dacfe16/src/methods/malApi/index.ts#L322">methods/malApi/index.ts:322</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -224,29 +277,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="refresh" class="tsd-anchor"></a>
-					<h3>refresh</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">refresh<span class="tsd-signature-symbol">(</span>refreshToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_malapi_index_.malacount.html" class="tsd-signature-type">MalAcount</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/534a20d/src/methods/malApi/index.ts#L260">methods/malApi/index.ts:260</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>refreshToken: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_malapi_index_.malacount.html" class="tsd-signature-type">MalAcount</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Object literals</h2>
@@ -256,7 +286,7 @@
 					<div class="tsd-signature tsd-kind-icon">Unstable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/534a20d/src/methods/malApi/index.ts#L286">methods/malApi/index.ts:286</a></li>
+							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/dacfe16/src/methods/malApi/index.ts#L357">methods/malApi/index.ts:357</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -274,7 +304,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/534a20d/src/methods/malApi/index.ts#L297">methods/malApi/index.ts:297</a></li>
+										<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/dacfe16/src/methods/malApi/index.ts#L368">methods/malApi/index.ts:368</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -329,28 +359,28 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-module">
-						<a href="_malapi_index_.api.html" class="tsd-kind-icon">Api</a>
+						<a href="_malapi_index_.auth.html" class="tsd-kind-icon">Auth</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_malapi_index_.api.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_malapi_index_.auth.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_malapi_index_.api.html#clientid" class="tsd-kind-icon">client<wbr>Id</a>
+								<a href="_malapi_index_.auth.html#clientid" class="tsd-kind-icon">client<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_malapi_index_.api.html#authorizationcode" class="tsd-kind-icon">authorization<wbr>Code</a>
+								<a href="_malapi_index_.auth.html#authorizewithcode" class="tsd-kind-icon">authorize<wbr>With<wbr>Code</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_malapi_index_.api.html#getoauthurl" class="tsd-kind-icon">getOAuth<wbr>Url</a>
+								<a href="_malapi_index_.auth.html#authorizewithrefreshtoken" class="tsd-kind-icon">authorize<wbr>With<wbr>Refresh<wbr>Token</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_malapi_index_.api.html#loadtoken" class="tsd-kind-icon">load<wbr>Token</a>
+								<a href="_malapi_index_.auth.html#getoauthurl" class="tsd-kind-icon">getOAuth<wbr>Url</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_malapi_index_.api.html#refresh" class="tsd-kind-icon">refresh</a>
+								<a href="_malapi_index_.auth.html#loadtoken" class="tsd-kind-icon">load<wbr>Token</a>
 							</li>
 							<li class=" tsd-kind-object-literal tsd-parent-kind-class">
-								<a href="_malapi_index_.api.html#unstable" class="tsd-kind-icon">Unstable</a>
+								<a href="_malapi_index_.auth.html#unstable" class="tsd-kind-icon">Unstable</a>
 							</li>
 						</ul>
 					</li>
@@ -369,7 +399,7 @@
 						<a href="../modules/_malapi_index_.html#responseerror" class="tsd-kind-icon">Response<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-external">
-						<a href="../modules/_malapi_index_.html#api-1" class="tsd-kind-icon">api</a>
+						<a href="../modules/_malapi_index_.html#auth-1" class="tsd-kind-icon">auth</a>
 					</li>
 				</ul>
 			</nav>

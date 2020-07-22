@@ -15,6 +15,38 @@ export interface MangaSearchItem<T> {
 
 /**
  * Manga For List
+ *
+ * ```ts
+ * Mal.Manga.fields()
+ *    .alternativeTitles()
+ *    .startDate()
+ *    .endDate()
+ *    .synopsis()
+ *    .mean()
+ *    .rank()
+ *    .popularity()
+ *    .numListUsers()
+ *    .numScoringUsers()
+ *    .nsfw()
+ *    .genres()
+ *    .createdAt()
+ *    .updatedAt()
+ *    .mediaType()
+ *    .status()
+ *    .myListStatus(
+ *       Mal.Manga.listStatusFields()
+ *          .startDate()
+ *          .finishDate()
+ *          .priority()
+ *          .numTimesReread()
+ *          .rereadValue()
+ *          .tags()
+ *          .comments()
+ *    )
+ *    .numVolumes()
+ *    .numChapters()
+ *    .authors();
+ * ```
  */
 export class MangaFields<T> {
   fields: { [key: string]: boolean | string } = {};

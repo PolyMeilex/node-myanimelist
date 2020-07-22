@@ -111,7 +111,7 @@
 <span class="hljs-comment">// Open returned url, accept oauth and use returned code to authorize</span>
 <span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> mal.authorizationCode(code,pkce.code_challenge);
 
-<span class="hljs-keyword">let</span> search = <span class="hljs-keyword">await</span> mal.manga.search(
+<span class="hljs-keyword">let</span> search = <span class="hljs-keyword">await</span> acount.manga.search(
    <span class="hljs-string">"Sakurasou"</span>,
    Mal.Manga.fields()
       .alternativeTitles()
@@ -145,14 +145,14 @@
 ).call();
 
 <span class="hljs-comment">// Alternative if you don't care about choosing fields</span>
-<span class="hljs-keyword">let</span> searchIDC = <span class="hljs-keyword">await</span> mal.manga.search(
+<span class="hljs-keyword">let</span> searchIDC = <span class="hljs-keyword">await</span> acount.manga.search(
    <span class="hljs-string">"Sakurasou"</span>,
    Mal.Manga.fields().all()
 ).call();</code></pre>
 				<a href="#list-of-functions" id="list-of-functions" style="color: inherit; text-decoration: none;">
 					<h1>List of functions</h1>
 				</a>
-				<p>For more detalis visit <a href="https://github.com/PolyMeilex/node-myanimelist/wiki">wiki</a></p>
+				<p>For more detalis visit <a href="https://polymeilex.github.io/node-myanimelist/">doc</a></p>
 				<ul>
 					<li>MalApi Methods<ul>
 							<li>OAuth PKCE Auth</li>
@@ -186,23 +186,23 @@
 						</ul>
 					</li>
 					<li>JikanApi Methods<ul>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Anime">anime</a></strong>(id)</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Manga">manga</a></strong>(id) </li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Person">person</a></strong>(id) </li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Character">character</a></strong>(id) <ul>
-									<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Search">search</a></strong>()</li>
-									<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season">season</a></strong>(year,season)</li>
-									<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season">seasonArchive</a></strong>()</li>
-									<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Season">seasonLater</a></strong>() </li>
+							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">anime</a></strong>(id)</li>
+							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">manga</a></strong>(id) </li>
+							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">person</a></strong>(id) </li>
+							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">character</a></strong>(id) <ul>
+									<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">search</a></strong>()</li>
+									<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">season</a></strong>(year,season)</li>
+									<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">seasonArchive</a></strong>()</li>
+									<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">seasonLater</a></strong>() </li>
 								</ul>
 							</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Schedule">schedule</a></strong>()</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Top">top</a></strong>()</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Genre">genre</a></strong>()</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Producer">producer</a></strong>(id, page?)</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Magazine">magazine</a></strong>(id, page?)</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/User">user</a></strong>(username)</li>
-							<li>Jikan.<strong><a href="https://github.com/PolyMeilex/node-myanimelist/wiki/Club">club</a></strong>(id)</li>
+							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">schedule</a></strong>()</li>
+							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">top</a></strong>()</li>
+							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">genre</a></strong>()</li>
+							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">producer</a></strong>(id, page?)</li>
+							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">magazine</a></strong>(id, page?)</li>
+							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">user</a></strong>(username)</li>
+							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">club</a></strong>(id)</li>
 						</ul>
 					</li>
 				</ul>

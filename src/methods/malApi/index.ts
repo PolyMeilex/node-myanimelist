@@ -1,71 +1,53 @@
 /**
  * # MalAPI
+ * Official MyAnimeList API
  *
+ * Import:
  * ```ts
  * import { Mal } from "node-myanimelist";
- * import pkceChallenge from "pkce-challenge";
- *
- * const mal = Mal.api("app_id")
- *
- * async function asyncMain(){
- *  const pkce = pkceChallenge();
- *
- *  const url = mal.getOAuthUrl(pkce.code_challenge)
- *  // Open returned url, accept oauth and use returned code to authorize
- *  const acount = await mal.authorizationCode(code, code_challenge)
- *  // You probably want to save acount somewhere you can just call JSON.stringify(acount) to get json
- *
- *  // Later you can load it using:
- *  const token = Mal.MalToken.fromJsonString(str);
- *  // or
- *  const token = await Mal.MalToken.fromRefreshToken(acount.refresh_token);
- *
- *  const acount = mal.loadToken(token);
- *
- *
- *  // If access_token expired you can run
- *  await acount.refreshToken();
- *
- *
- *  // You can use acount to make your requests
- *
- * let search = await manga.search(
- *    "Sakurasou",
- *    Mal.Manga.fields()
- *       .alternativeTitles()
- *       .startDate()
- *       .endDate()
- *       .synopsis()
- *       .mean()
- *       .rank()
- *       .popularity()
- *       .numListUsers()
- *       .numScoringUsers()
- *       .nsfw()
- *       .genres()
- *       .createdAt()
- *       .updatedAt()
- *       .mediaType()
- *       .status()
- *       .myListStatus(
- *          Mal.Manga.listStatusFields()
- *             .startDate()
- *             .finishDate()
- *             .priority()
- *             .numTimesReread()
- *             .rereadValue()
- *             .tags()
- *             .comments()
- *       )
- *       .numVolumes()
- *       .numChapters()
- *       .authors()
- * ).call();
- *
- * }
- *
  * ```
+ * Initialize api ({@link Auth})
+ * ```ts
+ * const auth = Mal.auth("app_id")
+ * ```
+ * Use initialized api ({@link Auth}) to login:
+ * - Unoffical way to login (not recomended) {@link Auth.Unstable.login}
+ * ```ts
+ * const acount = await auth.Unstable.login("username","password");
+ * ```
+ * - Offical way to login (recomended) {@link Auth.authorizeWithCode}
+ *  - Generate pkce (in this example `pkce-challenge` npm package is used)
+ *  ```ts
+ *  import pkceChallenge from "pkce-challenge";
+ *  const pkce = pkceChallenge();
+ *  ```
+ *  - Get OAuth url {@link Auth.getOAuthUrl}
+ *  ```ts
+ *  const url = auth.getOAuthUrl(pkce.code_challenge);
+ *  ```
+ *  - Open returned url, accept oauth and use returned code to authorize {@link Auth.authorizeWithCode}
+ *  ```ts
+ *  const acount = await auth.authorizeWithCode(code, code_challenge)
+ *  ```
  *
+ * You probably want to save acount somewhere, you can just call ```acount.stringifyToken()``` to get json
+ *
+ * Later you can load it using:
+ * ```ts
+ * const token = Mal.MalToken.fromJsonString(jsonStr);
+ * const acount = auth.loadToken(token);
+ * ```
+ * If more time has passed you can also refresh token instead of loading last one
+ * ```ts
+ * const acount = await auth.authorizeWithRefreshToken(json.refresh_token);
+ * ```
+ * Finally you can use {@link MalAcount}
+ * ```ts
+ * let search = await acount.manga.search(
+ *    "Sakurasou",
+ *    Mal.Manga.fields().all()
+ * ).call();
+ * ```
  *
  * @packageDocumentation
  */
@@ -89,6 +71,14 @@ export * as Forum from "./forum";
 
 export { ResponseError, MalError } from "./request";
 
+/**
+ * - {@link fromJsonObj}
+ * - {@link fromJsonString}
+ * - {@link fromRefreshToken}
+ * - {@link fromAuthorizationCode}
+ * - Unofficial
+ *  - {@link fromCredential}
+ */
 export class MalToken {
   token_type: string;
   expires_in: number | null | undefined;
@@ -107,6 +97,9 @@ export class MalToken {
     this.refresh_token = refreshToken;
   }
 
+  /**
+   * Get MalToken From Token JSON Object
+   */
   static fromJsonObj(obj: {
     token_type: string;
     access_token: string;
@@ -121,6 +114,9 @@ export class MalToken {
     );
   }
 
+  /**
+   * Get MalToken From Token JSON String
+   */
   static fromJsonString(str: string) {
     let obj: {
       token_type: string;
@@ -138,6 +134,7 @@ export class MalToken {
 
   /**
    * **Unstable!**
+   * Get MalToken From Login And Password
    */
   static async fromCredential(
     clientId: string,
@@ -164,6 +161,9 @@ export class MalToken {
     );
   }
 
+  /**
+   * Get MalToken From Refresh Token
+   */
   static async fromRefreshToken(
     clientId: string,
     refreshToken: string
@@ -186,6 +186,9 @@ export class MalToken {
     );
   }
 
+  /**
+   * Get MalToken From PKCE Authorization Code
+   */
   static async fromAuthorizationCode(
     clientId: string,
     code: string,
@@ -211,6 +214,31 @@ export class MalToken {
     );
   }
 }
+
+/**
+ * - {@link user} ({@link MalUser})
+ *  - {@link MalUser.animelist}
+ *  - {@link MalUser.mangalist}
+ *  - {@link MalUser.info}
+ * - {@link anime} ({@link MalAnime})
+ *  - {@link MalAnime.search}
+ *  - {@link MalAnime.details}
+ *  - {@link MalAnime.ranking}
+ *  - {@link MalAnime.seasonal}
+ *  - {@link MalAnime.suggested}
+ *  - {@link MalAnime.updateMyAnime}
+ *  - {@link MalAnime.deleteMyAnime}
+ * - {@link manga} ({@link MalManga})
+ *  - {@link MalManga.search}
+ *  - {@link MalManga.details}
+ *  - {@link MalManga.ranking}
+ *  - {@link MalManga.updateMyManga}
+ *  - {@link MalManga.deleteMyManga}
+ * - {@link forum} ({@link MalForum})
+ *  - {@link MalForum.boards}
+ *  - {@link MalForum.details}
+ *  - {@link MalForum.topics}
+ */
 
 export class MalAcount {
   /** @hidden */
@@ -239,9 +267,52 @@ export class MalAcount {
     );
     return this;
   }
+
+  stringifyToken(): string {
+    return JSON.stringify(this.malToken);
+  }
 }
 
-export class Api {
+/**
+ * Initialize {@link Auth}:
+ * ```ts
+ * const auth = Mal.auth("app_id")
+ * ```
+ * Use initialized {@link Auth} to login:
+ * - Unoffical way to login (not recomended) {@link Auth.Unstable.login}
+ * ```ts
+ * const acount = await auth.Unstable.login("username","password");
+ * ```
+ * - Offical way to login (recomended) {@link Auth.authorizeWithCode}
+ *  - Generate pkce (in this example `pkce-challenge` npm package is used)
+ *  ```ts
+ *  import pkceChallenge from "pkce-challenge";
+ *  const pkce = pkceChallenge();
+ *  ```
+ *  - Get OAuth url {@link Auth.getOAuthUrl}
+ *  ```ts
+ *  const url = auth.getOAuthUrl(pkce.code_challenge);
+ *  ```
+ *  - Open returned url, accept oauth and use returned code to authorize {@link Auth.authorizeWithCode}
+ *  ```ts
+ *  const acount = await auth.authorizeWithCode(code, code_challenge)
+ *  ```
+ *
+ * You probably want to save acount somewhere, you can just call ```acount.stringifyToken()``` to get json
+ *
+ * Later you can load it using:
+ * ```ts
+ * const token = Mal.MalToken.fromJsonString(jsonStr);
+ * const acount = auth.loadToken(token);
+ * ```
+ * If more time has passed you can also refresh token instead of loading last one
+ * ```ts
+ * const acount = await auth.authorizeWithRefreshToken(json.refresh_token);
+ * ```
+ *
+ * Done, you can use {@link MalAcount}
+ */
+export class Auth {
   private clientId: string;
 
   constructor(clientId: string) {
@@ -257,7 +328,7 @@ export class Api {
     return `${base}/authorize?response_type=code&client_id=${this.clientId}&code_challenge_method=plain&code_challenge=${codeChallenge}`;
   }
 
-  async refresh(refreshToken: string): Promise<MalAcount> {
+  async authorizeWithRefreshToken(refreshToken: string): Promise<MalAcount> {
     const malToken = await MalToken.fromRefreshToken(
       this.clientId,
       refreshToken
@@ -265,7 +336,7 @@ export class Api {
     return new MalAcount(this.clientId, malToken);
   }
 
-  async authorizationCode(
+  async authorizeWithCode(
     code: string,
     /** it is actually a `code_verifier` but mal accepts code_challenge here instead */
     codeChallenge: string
@@ -305,8 +376,8 @@ export class Api {
   };
 }
 
-export function api(
+export function auth(
   clientId: string = "6114d00ca681b7701d1e15fe11a4987e"
-): Api {
-  return new Api(clientId);
+): Auth {
+  return new Auth(clientId);
 }

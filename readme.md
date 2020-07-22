@@ -45,7 +45,7 @@ const url = mal.getOAuthUrl(pkce.code_challenge)
 // Open returned url, accept oauth and use returned code to authorize
 const acount = await mal.authorizationCode(code,pkce.code_challenge);
 
-let search = await mal.manga.search(
+let search = await acount.manga.search(
    "Sakurasou",
    Mal.Manga.fields()
       .alternativeTitles()
@@ -79,7 +79,7 @@ let search = await mal.manga.search(
 ).call();
 
 // Alternative if you don't care about choosing fields
-let searchIDC = await mal.manga.search(
+let searchIDC = await acount.manga.search(
    "Sakurasou",
    Mal.Manga.fields().all()
 ).call();
