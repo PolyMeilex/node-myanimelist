@@ -4,7 +4,7 @@
 Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
 Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package
 
-## Quick 2.0 to 2.1 Migration guide
+## Quick 2.0 to 3.0 Migration guide
 - Jikan module is now imported with `import { Jikan } from 'node-myanimelist'`
 - Jikan module now returns jikan json directly you no longer need to use `res.data`, data will be returned directly
 - There is new way of choosing GenreId.Rating,etc you should check [genre](https://polymeilex.github.io/node-myanimelist/classes/_jikan_index_._jikan_genre_.genre.html) and [search](https://polymeilex.github.io/node-myanimelist/classes/_jikan_index_._jikan_search_.search.html) for examples of usage
