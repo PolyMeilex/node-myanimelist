@@ -7,12 +7,7 @@ global.jikanGet = function jikanGet(url: string): Promise<any> {
   return new Promise((res, rej) => {
     axios
       .get(url)
-      .then((r) => {
-        const res = r.data;
-        // Super stupid fix for backword compat
-        res.data = res;
-        res(res);
-      })
+      .then((r) => res(r.data))
       .catch((err) => rej(err));
   });
 };
