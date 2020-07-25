@@ -1,6 +1,7 @@
 import { Mal } from "../../";
 
 import { manga } from "./manga";
+import * as Data from "./dummyData";
 
 import assert from "assert";
 
@@ -66,10 +67,24 @@ function forum(acount: Mal.MalAcount) {
   });
 }
 
+async function animelist(acount: Mal.MalAcount) {
+  const req = acount.user.animelist(
+    "@me",
+    Mal.Anime.fields(),
+    Mal.Anime.listStatusFields()
+  );
+
+  req.call = () => Data.Animelist.def as any;
+
+  const data = await req.call();
+
+  // let item = data.data[0];
+}
 // async function main(l: string, p: string) {
 export async function main(t: Mal.MalToken) {
   let acount = mal.loadToken(t);
 
   forum(acount);
+  await animelist(acount);
   await manga(acount);
 }
