@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>FinishDate | node-myanimelist</title>
+	<title>MangaListItem | node-myanimelist</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -59,27 +59,35 @@
 					<a href="../modules/_malapi_index_.html">&quot;malApi/index&quot;</a>
 				</li>
 				<li>
-					<a href="../modules/_malapi_index_._malapi_anime_index_.html">&quot;malApi/anime/index&quot;</a>
+					<a href="../modules/_malapi_index_._malapi_user_index_.html">&quot;malApi/user/index&quot;</a>
 				</li>
 				<li>
-					<a href="../modules/_malapi_index_._malapi_anime_index_.animeliststatus.html">AnimeListStatus</a>
-				</li>
-				<li>
-					<a href="_malapi_index_._malapi_anime_index_.animeliststatus.finishdate.html">FinishDate</a>
+					<a href="_malapi_index_._malapi_user_index_.mangalistitem.html">MangaListItem</a>
 				</li>
 			</ul>
-			<h1>Interface FinishDate</h1>
+			<h1>Interface MangaListItem&lt;T, S&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>T</h4>
+					</li>
+					<li>
+						<h4>S</h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">FinishDate</span>
+						<span class="target">MangaListItem</span>
 					</li>
 				</ul>
 			</section>
@@ -90,7 +98,8 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="_malapi_index_._malapi_anime_index_.animeliststatus.finishdate.html#finish_date" class="tsd-kind-icon">finish_<wbr>date</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="_malapi_index_._malapi_user_index_.mangalistitem.html#list_status" class="tsd-kind-icon">list_<wbr>status</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="_malapi_index_._malapi_user_index_.mangalistitem.html#node" class="tsd-kind-icon">node</a></li>
 							</ul>
 						</section>
 					</div>
@@ -99,12 +108,22 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a name="finish_date" class="tsd-anchor"></a>
-					<h3>finish_<wbr>date</h3>
-					<div class="tsd-signature tsd-kind-icon">finish_<wbr>date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<a name="list_status" class="tsd-anchor"></a>
+					<h3>list_<wbr>status</h3>
+					<div class="tsd-signature tsd-kind-icon">list_<wbr>status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">S</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/cb29936/src/methods/malApi/anime/types.ts#L182">methods/malApi/anime/types.ts:182</a></li>
+							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/cb29936/src/methods/malApi/user/types.ts#L34">methods/malApi/user/types.ts:34</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a name="node" class="tsd-anchor"></a>
+					<h3>node</h3>
+					<div class="tsd-signature tsd-kind-icon">node<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/PolyMeilex/node-myanimelist/blob/cb29936/src/methods/malApi/user/types.ts#L33">methods/malApi/user/types.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -120,35 +139,38 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-is-external">
-						<a href="_malapi_index_._malapi_anime_index_.animeliststatus.comments.html" class="tsd-kind-icon">Comments</a>
+					<li class=" tsd-kind-class tsd-parent-kind-module tsd-is-external">
+						<a href="../classes/_malapi_index_._malapi_user_index_.maluser.html" class="tsd-kind-icon">Mal<wbr>User</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
+						<a href="../classes/_malapi_index_._malapi_user_index_.userfields.html" class="tsd-kind-icon">User<wbr>Fields</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
+						<a href="_malapi_index_._malapi_user_index_.animelistitem.html" class="tsd-kind-icon">Anime<wbr>List<wbr>Item</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-namespace tsd-is-external">
-						<a href="_malapi_index_._malapi_anime_index_.animeliststatus.finishdate.html" class="tsd-kind-icon">Finish<wbr>Date</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
+						<a href="_malapi_index_._malapi_user_index_.mangalistitem.html" class="tsd-kind-icon">Manga<wbr>List<wbr>Item</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-								<a href="_malapi_index_._malapi_anime_index_.animeliststatus.finishdate.html#finish_date" class="tsd-kind-icon">finish_<wbr>date</a>
+								<a href="_malapi_index_._malapi_user_index_.mangalistitem.html#list_status" class="tsd-kind-icon">list_<wbr>status</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="_malapi_index_._malapi_user_index_.mangalistitem.html#node" class="tsd-kind-icon">node</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-is-external">
-						<a href="_malapi_index_._malapi_anime_index_.animeliststatus.numtimesrewatched.html" class="tsd-kind-icon">Num<wbr>Times<wbr>Rewatched</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-external">
+						<a href="_malapi_index_._malapi_user_index_.userbase.html" class="tsd-kind-icon">User<wbr>Base</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-is-external">
-						<a href="_malapi_index_._malapi_anime_index_.animeliststatus.priority.html" class="tsd-kind-icon">Priority</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-is-external">
+						<a href="../modules/_malapi_index_._malapi_user_index_.html#animelistparams" class="tsd-kind-icon">Animelist<wbr>Params</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-is-external">
-						<a href="_malapi_index_._malapi_anime_index_.animeliststatus.rewatchvalue.html" class="tsd-kind-icon">Rewatch<wbr>Value</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-is-external">
-						<a href="_malapi_index_._malapi_anime_index_.animeliststatus.startdate.html" class="tsd-kind-icon">Start<wbr>Date</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-is-external">
-						<a href="_malapi_index_._malapi_anime_index_.animeliststatus.tags.html" class="tsd-kind-icon">Tags</a>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-external">
+						<a href="../modules/_malapi_index_._malapi_user_index_.html#fields-1" class="tsd-kind-icon">fields</a>
 					</li>
 				</ul>
 			</nav>
