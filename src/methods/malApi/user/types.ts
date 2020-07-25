@@ -23,3 +23,13 @@ export module User {
     is_supporter: boolean | null;
   }
 }
+
+export interface AnimeListItem<T, S> {
+  node: T;
+  list_status: S;
+}
+
+export interface MangaListItem<T, S> {
+  node: T;
+  list_status: S;
+}
