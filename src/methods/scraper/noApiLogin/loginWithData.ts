@@ -1,12 +1,16 @@
 import axios, { AxiosRequestConfig } from "axios";
-// const qs = require("querystring");
+
 const qs = (obj: any) =>
   Object.keys(obj)
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]))
     .join("&");
 
-module.exports = (login: string, password: string, startData: any) => {
-  var options: AxiosRequestConfig = {
+export default async function (
+  login: string,
+  password: string,
+  startData: any
+) {
+  const options: AxiosRequestConfig = {
     method: "post",
     url: "https://myanimelist.net/login.php",
     headers: {
@@ -22,38 +26,27 @@ module.exports = (login: string, password: string, startData: any) => {
       csrf_token: startData.csrf_token,
     }),
     maxRedirects: 0,
-    validateStatus: function (status) {
-      return (status >= 200 && status < 300) || status == 302;
-    },
+    validateStatus: (status) =>
+      (status >= 200 && status < 300) || status == 302,
   };
 
-  const parseResponse = (res: any) => {
-    let cookies = res.headers["set-cookie"];
+  let res = await axios(options);
 
-    cookies = cookies.map((cookie: any) => cookie.split(";")[0]);
+  let cookies = res.headers["set-cookie"];
 
-    cookies = cookies.map((cookie: any) => {
-      cookie = cookie.split("=");
-      return { name: cookie[0], value: cookie[1] };
-    });
+  cookies = cookies.map((cookie: any) => cookie.split(";")[0]);
 
-    const MALSESSIONID = cookies.find(
-      (cookie: any) => cookie.name == "MALSESSIONID"
-    ).value;
-
-    let out = {
-      MALSESSIONID: MALSESSIONID,
-      csrf_token: startData.csrf_token,
-    };
-
-    return out;
-  };
-
-  return new Promise((EndRes, rej) => {
-    axios(options)
-      .then((res) => {
-        EndRes(parseResponse(res));
-      })
-      .catch((err) => rej("Can Not Login!: " + err));
+  cookies = cookies.map((cookie: any) => {
+    cookie = cookie.split("=");
+    return { name: cookie[0], value: cookie[1] };
   });
-};
+
+  const MALSESSIONID = cookies.find(
+    (cookie: any) => cookie.name == "MALSESSIONID"
+  ).value;
+
+  return {
+    MALSESSIONID: MALSESSIONID,
+    csrf_token: startData.csrf_token,
+  };
+}

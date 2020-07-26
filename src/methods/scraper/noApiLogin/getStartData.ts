@@ -1,41 +1,61 @@
-import axios, { AxiosResponse } from "axios";
-import * as cheerio from "cheerio";
+import axios from "axios";
 
-module.exports = () => {
-  const parseResponse = (res: AxiosResponse<any>) => {
-    const $ = cheerio.load(res.data);
+export default async function () {
+  const res = await axios.get<string>("https://myanimelist.net/about.php");
 
-    let cookies = res.headers["set-cookie"];
+  const csrf_token = (() => {
+    const m = res.data.match(
+      /<meta name=('|")csrf_token('|") content=('|")[\S]*('|")>/
+    );
 
-    cookies = cookies.map((cookie: string) => cookie.split(";")[0]);
+    if (m != null) {
+      if (m.length > 0) {
+        const meta = m[0].trim().replace(/ /g, "").replace(/'/g, `"`);
 
-    cookies = cookies.map((cookie: string) => {
-      let cookieSplit = cookie.split("=");
-      return { name: cookieSplit[0], value: cookieSplit[1] };
-    });
+        if (meta.includes("csrf_token") && meta.includes(`content="`)) {
+          const split1 = meta.split(`content="`);
 
-    let outObj = {
-      csrf_token: $('[name="csrf_token"]').attr("content"),
-      MALSESSIONID: null,
-      MALHLOGSESSID: null,
-    };
+          if (split1.length == 2) {
+            const split2 = split1[1].split(`"`);
+            if (split2.length == 2) {
+              return split2[0];
+            }
+          }
+        }
+      }
+    }
 
-    outObj.MALSESSIONID = cookies.find(
-      (cookie: any) => cookie.name == "MALSESSIONID"
-    ).value;
+    return null;
+  })();
 
-    outObj.MALHLOGSESSID = cookies.find(
-      (cookie: any) => cookie.name == "MALHLOGSESSID"
-    ).value;
+  const { MALSESSIONID, MALHLOGSESSID } = (() => {
+    const cookiesHeader: string[] | null = res.headers["set-cookie"];
 
-    return outObj;
+    if (cookiesHeader) {
+      const cookies = cookiesHeader.map((cookie) =>
+        cookie.split(";")[0].split("=")
+      );
+
+      const MALSESSION = cookies.find((cookie) => cookie[0] == "MALSESSIONID");
+      const MALHLOGSESS = cookies.find(
+        (cookie) => cookie[0] == "MALHLOGSESSID"
+      );
+
+      return {
+        MALSESSIONID: MALSESSION ? MALSESSION[1] : null,
+        MALHLOGSESSID: MALHLOGSESS ? MALHLOGSESS[1] : null,
+      };
+    } else {
+      return {
+        MALSESSIONID: null,
+        MALHLOGSESSID: null,
+      };
+    }
+  })();
+
+  return {
+    csrf_token,
+    MALSESSIONID,
+    MALHLOGSESSID,
   };
-
-  return new Promise((res, rej) => {
-    axios
-      .get("https://myanimelist.net/about.php?go=contact")
-      .then((res) => parseResponse(res))
-      .then((outObj) => res(outObj))
-      .catch((err) => rej("Tokens Not Found"));
-  });
-};
+}

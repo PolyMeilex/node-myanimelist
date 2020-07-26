@@ -1,22 +1,21 @@
-import { ScraperClient } from "../";
-import { LoginData } from "../typings/methods/poly/noApiLogin";
+import { Scraper } from "../";
 
 async function login(username: string, password: string) {
-  let loginData = await new ScraperClient().login(username, password);
+  let loginData = await Scraper.login(username, password);
 
-  // console.log(loginData);
+  console.log(loginData);
 
   console.log("MALSESSIONID:", loginData.MALSESSIONID != null);
   console.log("csrf_token:", loginData.csrf_token != null);
 }
 
-async function notyfications(log: LoginData) {
-  let n = await new ScraperClient().notifications(log);
+async function notyfications(log: Scraper.LoginData) {
+  let n = Scraper.notifications(log);
   console.log(n);
 }
 
-async function animeEdit(log: LoginData, params: Object) {
-  let res = await new ScraperClient().animeEdit(log, params);
+async function animeEdit(log: Scraper.LoginData, params: Object) {
+  let res = await Scraper.animeEdit(log, params);
   console.log(res);
 }
 
@@ -25,7 +24,7 @@ async function animeEdit(log: LoginData, params: Object) {
 //   csrf_token: "***"
 // };
 
-// login("PolyMagic", "**Pas**");
+// login("PolyMeilex", "****");
 // notyfications(logData);
 
 // const animeUpdate = {
