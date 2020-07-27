@@ -13,17 +13,10 @@ import {
   MangaListStatusFields,
 } from "../manga";
 import { UserBase, AnimeListItem, MangaListItem } from "./types";
+import { AxiosRequestConfig } from "axios";
 
 export * from "./fields";
 export * from "./types";
-
-export type AnimelistParams = {
-  status?: string;
-  sort?: string;
-  limit?: number;
-  offset?: number;
-  fields?: AnimeField[];
-};
 
 export class MalUser {
   private acount: MalAcount;
@@ -33,78 +26,84 @@ export class MalUser {
   }
 
   info<T>(fields?: UserFields<T>): MalRequest<UserBase & T> {
-    let fieldsStr;
+    const config: AxiosRequestConfig = {
+      url: [apiUrl, "users", "@me"].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+      params: {},
+    };
 
-    if (fields) {
-      fieldsStr = Object.keys(fields.fields).join(",");
-    } else {
-      fieldsStr = "";
-    }
+    if (fields) config.params.fields = fields.toString();
 
-    let quary = "";
-    if (fieldsStr.length > 0) quary = "?fields=" + fieldsStr;
-
-    return new MalRequest<any>(
-      [apiUrl, "users", "@me", quary],
-      this.acount.malToken
-    );
+    return new MalRequest<any>(config);
   }
 
   animelist<T, S>(
     name: string = "@me",
-    fields?: AnimeFields<T>,
-    listStatusFields?: AnimeListStatusFields<S>
+    fields?: AnimeFields<T> | null,
+    listStatusFields?: AnimeListStatusFields<S> | null,
+    args?: { status?: string; sort?: string; limit?: number; offset?: number }
   ): MalRequest<Paging<AnimeListItem<WorkBase & T, AnimeListStatusBase & S>>> {
-    let fieldsStr;
+    const config: AxiosRequestConfig = {
+      url: [apiUrl, "users", name, "animelist"].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+      params: {
+        fields: "",
+      },
+    };
 
-    if (fields) {
-      fieldsStr = fields.toString();
+    if (fields != null) config.params.fields += fields.toString();
+
+    if (listStatusFields != null) {
+      config.params.fields += `list_status{${listStatusFields.toString()}}`;
     } else {
-      fieldsStr = "";
+      config.params.fields += "list_status";
     }
 
-    if (listStatusFields) {
-      fieldsStr += `list_status{${listStatusFields.toString()}}`;
-    } else {
-      fieldsStr += "list_status";
+    if (args) {
+      if (args.status != null) config.params.status = args.status;
+      if (args.sort != null) config.params.sort = args.sort;
+      if (args.limit != null) config.params.limit = args.limit;
+      if (args.offset != null) config.params.offset = args.offset;
     }
 
-    let quary = "";
-    if (fieldsStr.length > 0) quary = "?fields=" + fieldsStr;
-
-    const req = new MalRequest<any>(
-      [apiUrl, "users", name, "animelist", quary],
-      this.acount.malToken
-    );
-    return req as any;
+    return new MalRequest<any>(config);
   }
 
   mangalist<T, S>(
     name: string = "@me",
-    fields?: MangaFields<T>,
-    listStatusFields?: MangaListStatusFields<S>
+    fields?: MangaFields<T> | null,
+    listStatusFields?: MangaListStatusFields<S> | null,
+    args?: { status?: string; sort?: string; limit?: number; offset?: number }
   ): MalRequest<Paging<MangaListItem<WorkBase & T, MangaListStatusBase & S>>> {
-    let fieldsStr;
+    const config: AxiosRequestConfig = {
+      url: [apiUrl, "users", name, "mangalist"].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+      params: {
+        fields: "",
+      },
+    };
 
-    if (fields) {
-      fieldsStr = fields.toString();
+    if (fields != null) config.params.fields += fields.toString();
+
+    if (listStatusFields != null) {
+      config.params.fields += `list_status{${listStatusFields.toString()}}`;
     } else {
-      fieldsStr = "";
+      config.params.fields += "list_status";
     }
 
-    if (listStatusFields) {
-      fieldsStr += `list_status{${listStatusFields.toString()}}`;
-    } else {
-      fieldsStr += "list_status";
+    if (args) {
+      if (args.status != null) config.params.status = args.status;
+      if (args.sort != null) config.params.sort = args.sort;
+      if (args.limit != null) config.params.limit = args.limit;
+      if (args.offset != null) config.params.offset = args.offset;
     }
 
-    let quary = "";
-    if (fieldsStr.length > 0) quary = "?fields=" + fieldsStr;
-
-    const req = new MalRequest<any>(
-      [apiUrl, "users", name, "mangalist", quary],
-      this.acount.malToken
-    );
-    return req;
+    return new MalRequest<any>(config);
   }
 }

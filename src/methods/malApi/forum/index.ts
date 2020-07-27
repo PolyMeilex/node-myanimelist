@@ -5,6 +5,7 @@ import { apiUrl } from "../api";
 import { ForumCategory, ForumTopicData, ForumTopicsData } from "./types";
 import { queryEncode } from "../util";
 import { Paging } from "../common";
+import { AxiosRequestConfig } from "axios";
 
 export * from "./types";
 
@@ -16,32 +17,33 @@ export class MalForum {
   }
 
   boards(): MalRequest<{ categories: ForumCategory }> {
-    return new MalRequest<any>(
-      [apiUrl, "forum", "boards"],
-      this.acount.malToken
-    );
+    const config: AxiosRequestConfig = {
+      url: [apiUrl, "forum", "boards"].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+    };
+
+    return new MalRequest<any>(config);
   }
 
   details(
     topic_id: number,
-    limit: number = 100,
-    offset: number = 0
+    limit?: number | null,
+    offset?: number | null
   ): MalRequest<Paging<ForumTopicData>> {
-    let params = [];
-    if (limit != 100) params.push(`limit=${limit}`);
-    if (offset != 0) params.push(`offset=${offset}`);
+    const config: AxiosRequestConfig = {
+      url: [apiUrl, "forum", "topic", topic_id.toString()].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+      params: {},
+    };
 
-    let quary = "";
+    if (limit != null) config.params.limit = limit;
+    if (offset != null) config.params.offset = offset;
 
-    if (params.length > 0) {
-      quary += `?`;
-      quary += params.join("&");
-    }
-
-    return new MalRequest<any>(
-      [apiUrl, "forum", "topic", topic_id.toString(), quary],
-      this.acount.malToken
-    );
+    return new MalRequest<any>(config);
   }
 
   topics(params: {
@@ -54,12 +56,14 @@ export class MalForum {
     topic_user_name?: string;
     user_name?: string;
   }): MalRequest<Paging<ForumTopicsData>> {
-    let quary = "?";
-    quary += queryEncode(params);
+    const config: AxiosRequestConfig = {
+      url: [apiUrl, "forum", "topics"].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+      params: params,
+    };
 
-    return new MalRequest<any>(
-      [apiUrl, "forum", "topics", quary],
-      this.acount.malToken
-    );
+    return new MalRequest<any>(config);
   }
 }

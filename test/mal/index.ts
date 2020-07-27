@@ -16,7 +16,7 @@ function forum(acount: Mal.MalAcount) {
       it("/forum/boards", () =>
         assert.equal(
           "https://api.myanimelist.net/v2/forum/boards",
-          boards.url
+          boards.getUrl()
         ));
     }
 
@@ -25,7 +25,7 @@ function forum(acount: Mal.MalAcount) {
       it("/forum/topic/5", () =>
         assert.equal(
           "https://api.myanimelist.net/v2/forum/topic/5",
-          details.url
+          details.getUrl()
         ));
     }
 
@@ -34,7 +34,7 @@ function forum(acount: Mal.MalAcount) {
       it("/forum/topic/5?limit=50", () =>
         assert.equal(
           "https://api.myanimelist.net/v2/forum/topic/5?limit=50",
-          details.url
+          details.getUrl()
         ));
     }
 
@@ -43,7 +43,7 @@ function forum(acount: Mal.MalAcount) {
       it("/forum/topic/5?limit=50&offset=1", () =>
         assert.equal(
           "https://api.myanimelist.net/v2/forum/topic/5?limit=50&offset=1",
-          details.url
+          details.getUrl()
         ));
     }
 
@@ -52,7 +52,7 @@ function forum(acount: Mal.MalAcount) {
       it("/forum/topics?q=Official", () =>
         assert.equal(
           "https://api.myanimelist.net/v2/forum/topics?q=Official",
-          details.url
+          details.getUrl()
         ));
     }
 
@@ -61,7 +61,7 @@ function forum(acount: Mal.MalAcount) {
       it("/forum/topics?q=Official&limit=1", () =>
         assert.equal(
           "https://api.myanimelist.net/v2/forum/topics?q=Official&limit=1",
-          details.url
+          details.getUrl()
         ));
     }
   });
@@ -80,7 +80,7 @@ async function animelist(acount: Mal.MalAcount) {
 
   // let item = data.data[0];
 }
-// async function main(l: string, p: string) {
+
 export async function main(t: Mal.MalToken) {
   let acount = mal.loadToken(t);
 
