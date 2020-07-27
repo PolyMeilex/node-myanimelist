@@ -50,7 +50,8 @@ export class MalUser {
   animelist<T, S>(
     name: string = "@me",
     fields?: AnimeFields<T>,
-    listStatusFields?: AnimeListStatusFields<S>
+    listStatusFields?: AnimeListStatusFields<S>,
+    args?: { status?: string; sort?: string; limit?: number; offset?: number }
   ): MalRequest<Paging<AnimeListItem<WorkBase & T, AnimeListStatusBase & S>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "users", name, "animelist"].join("/"),
@@ -70,13 +71,21 @@ export class MalUser {
       config.params.fields += "list_status";
     }
 
+    if (args) {
+      if (args.status) config.params.status = args.status;
+      if (args.sort) config.params.sort = args.sort;
+      if (args.limit) config.params.limit = args.limit;
+      if (args.offset) config.params.offset = args.offset;
+    }
+
     return new MalRequest<any>(config);
   }
 
   mangalist<T, S>(
     name: string = "@me",
     fields?: MangaFields<T>,
-    listStatusFields?: MangaListStatusFields<S>
+    listStatusFields?: MangaListStatusFields<S>,
+    args?: { status?: string; sort?: string; limit?: number; offset?: number }
   ): MalRequest<Paging<MangaListItem<WorkBase & T, MangaListStatusBase & S>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "users", name, "mangalist"].join("/"),
@@ -94,6 +103,13 @@ export class MalUser {
       config.params.fields += `list_status{${listStatusFields.toString()}}`;
     } else {
       config.params.fields += "list_status";
+    }
+
+    if (args) {
+      if (args.status) config.params.status = args.status;
+      if (args.sort) config.params.sort = args.sort;
+      if (args.limit) config.params.limit = args.limit;
+      if (args.offset) config.params.offset = args.offset;
     }
 
     return new MalRequest<any>(config);
