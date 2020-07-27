@@ -6,6 +6,7 @@ node_modules
 .gitignore
 gulpfile.js
 tests/
+test/
 tsconfig.json
 readme.md
 src/
