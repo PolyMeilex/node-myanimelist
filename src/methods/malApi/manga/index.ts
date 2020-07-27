@@ -20,12 +20,9 @@ export class MalManga {
 
   search<T>(
     q: string,
-    fields?: MangaFields<T>,
-    /**
-     * The maximum value is 100.
-     */
-    limit: number = 100,
-    offset: number = 0
+    fields?: MangaFields<T> | null,
+    limit?: number | null,
+    offset?: number | null
   ): MalRequest<Paging<MangaItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "manga"].join("/"),
@@ -37,9 +34,9 @@ export class MalManga {
       },
     };
 
-    if (fields) config.params.fields = fields.toString();
-    if (limit != 100) config.params.limit = limit;
-    if (offset != 0) config.params.offset = offset;
+    if (fields != null) config.params.fields = fields.toString();
+    if (limit != null) config.params.limit = limit;
+    if (offset != null) config.params.offset = offset;
 
     return new MalRequest<any>(config);
   }
@@ -82,9 +79,9 @@ export class MalManga {
       | "special"
       | "bypopularity"
       | "favorite",
-    fields?: MangaFields<T>,
-    limit: number = 100,
-    offset: number = 0
+    fields?: MangaFields<T> | null,
+    limit?: number | null,
+    offset?: number | null
   ): MalRequest<Paging<RankingItem & MangaItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "manga", "ranking"].join("/"),
@@ -96,9 +93,9 @@ export class MalManga {
       },
     };
 
-    if (fields) config.params.fields = fields.toString();
-    if (limit != 100) config.params.limit = limit;
-    if (offset != 0) config.params.offset = offset;
+    if (fields != null) config.params.fields = fields.toString();
+    if (limit != null) config.params.limit = limit;
+    if (offset != null) config.params.offset = offset;
 
     return new MalRequest<any>(config);
   }

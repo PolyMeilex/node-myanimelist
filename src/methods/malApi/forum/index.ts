@@ -29,8 +29,8 @@ export class MalForum {
 
   details(
     topic_id: number,
-    limit: number = 100,
-    offset: number = 0
+    limit?: number | null,
+    offset?: number | null
   ): MalRequest<Paging<ForumTopicData>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "forum", "topic", topic_id.toString()].join("/"),
@@ -40,8 +40,8 @@ export class MalForum {
       params: {},
     };
 
-    if (limit != 100) config.params.limit = limit;
-    if (offset != 0) config.params.offset = offset;
+    if (limit != null) config.params.limit = limit;
+    if (offset != null) config.params.offset = offset;
 
     return new MalRequest<any>(config);
   }

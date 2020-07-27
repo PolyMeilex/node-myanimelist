@@ -20,9 +20,9 @@ export class MalAnime {
 
   search<T>(
     q: string,
-    fields?: AnimeFields<T>,
-    limit: number = 100,
-    offset: number = 0
+    fields?: AnimeFields<T> | null,
+    limit?: number | null,
+    offset?: number | null
   ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "anime"].join("/"),
@@ -34,9 +34,9 @@ export class MalAnime {
       },
     };
 
-    if (fields) config.params.fields = fields.toString();
-    if (limit != 100) config.params.limit = limit;
-    if (offset != 0) config.params.offset = offset;
+    if (fields != null) config.params.fields = fields.toString();
+    if (limit != null) config.params.limit = limit;
+    if (offset != null) config.params.offset = offset;
 
     return new MalRequest<any>(config);
   }
@@ -50,7 +50,7 @@ export class MalAnime {
       params: {},
     };
 
-    if (fields) config.params.fields = fields.toString();
+    if (fields != null) config.params.fields = fields.toString();
 
     return new MalRequest<any>(config);
   }
@@ -79,9 +79,9 @@ export class MalAnime {
       | "special"
       | "bypopularity"
       | "favorite",
-    fields?: AnimeFields<T>,
-    limit: number = 100,
-    offset: number = 0
+    fields?: AnimeFields<T> | null,
+    limit?: number | null,
+    offset?: number | null
   ): MalRequest<Paging<RankingItem & AnimeItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "anime", "ranking"].join("/"),
@@ -93,9 +93,9 @@ export class MalAnime {
       },
     };
 
-    if (fields) config.params.fields = fields.toString();
-    if (limit != 100) config.params.limit = limit;
-    if (offset != 0) config.params.offset = offset;
+    if (fields != null) config.params.fields = fields.toString();
+    if (limit != null) config.params.limit = limit;
+    if (offset != null) config.params.offset = offset;
 
     return new MalRequest<any>(config);
   }
@@ -103,10 +103,10 @@ export class MalAnime {
   seasonal<T>(
     year: number,
     season: string,
-    fields?: AnimeFields<T>,
-    sort?: "anime_score" | "anime_num_list_users",
-    limit: number = 100,
-    offset: number = 0
+    fields?: AnimeFields<T> | null,
+    sort?: "anime_score" | "anime_num_list_users" | null,
+    limit?: number | null,
+    offset?: number | null
   ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "anime", "season", year.toString(), season].join("/"),
@@ -116,18 +116,18 @@ export class MalAnime {
       params: {},
     };
 
-    if (fields) config.params.fields = fields.toString();
-    if (sort) config.params.sort = sort;
-    if (limit != 100) config.params.limit = limit;
-    if (offset != 0) config.params.offset = offset;
+    if (fields != null) config.params.fields = fields.toString();
+    if (sort != null) config.params.sort = sort;
+    if (limit != null) config.params.limit = limit;
+    if (offset != null) config.params.offset = offset;
 
     return new MalRequest<any>(config);
   }
 
   suggested<T>(
-    fields?: AnimeFields<T>,
-    limit: number = 100,
-    offset: number = 0
+    fields?: AnimeFields<T> | null,
+    limit?: number | null,
+    offset?: number | null
   ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "anime", "suggestions"].join("/"),
@@ -137,9 +137,9 @@ export class MalAnime {
       params: {},
     };
 
-    if (fields) config.params.fields = fields.toString();
-    if (limit != 100) config.params.limit = limit;
-    if (offset != 0) config.params.offset = offset;
+    if (fields != null) config.params.fields = fields.toString();
+    if (limit != null) config.params.limit = limit;
+    if (offset != null) config.params.offset = offset;
 
     return new MalRequest<any>(config);
   }
