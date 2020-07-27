@@ -62,6 +62,7 @@ import { MalUser } from "./user";
 import { MalAnime } from "./anime";
 import { MalManga } from "./manga";
 import { MalForum } from "./forum";
+import { AxiosRequestConfig } from "axios";
 
 export * as User from "./user";
 export * as Anime from "./anime";
@@ -141,15 +142,21 @@ export class MalToken {
     username: string,
     password: string
   ): Promise<MalToken> {
-    const req = new MalRequest([apiUrl, "/auth/token"]);
-    req.method = "post";
-    req.headers = { "content-type": "application/x-www-form-urlencoded" };
-    req.data = queryEncode({
-      client_id: clientId,
-      username,
-      password,
-      grant_type: "password",
-    });
+    const config: AxiosRequestConfig = {
+      method: "POST",
+      url: [apiUrl, "/auth/token"].join("/"),
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      data: queryEncode({
+        client_id: clientId,
+        username,
+        password,
+        grant_type: "password",
+      }),
+    };
+
+    const req = new MalRequest(config);
 
     const token: any = await req.call();
 
@@ -168,14 +175,21 @@ export class MalToken {
     clientId: string,
     refreshToken: string
   ): Promise<MalToken> {
-    const req = new MalRequest([secondaryApiUrl, "/oauth2/token"]);
-    req.method = "post";
-    req.headers = { "content-type": "application/x-www-form-urlencoded" };
-    req.data = queryEncode({
-      client_id: clientId,
-      refresh_token: refreshToken,
-      grant_type: "password",
-    });
+    const config: AxiosRequestConfig = {
+      method: "POST",
+      url: [secondaryApiUrl, "/oauth2/token"].join("/"),
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      data: queryEncode({
+        client_id: clientId,
+        refresh_token: refreshToken,
+        grant_type: "refresh_token",
+      }),
+    };
+
+    const req = new MalRequest(config);
+
     const token: any = await req.call();
 
     return new MalToken(
@@ -194,15 +208,21 @@ export class MalToken {
     code: string,
     codeVerifier: string
   ): Promise<MalToken> {
-    const req = new MalRequest([apiUrl, "/auth/token"]);
-    req.method = "post";
-    req.headers = { "content-type": "application/x-www-form-urlencoded" };
-    req.data = queryEncode({
-      client_id: clientId,
-      grant_type: "authorization_code",
-      code,
-      code_verifier: codeVerifier,
-    });
+    const config: AxiosRequestConfig = {
+      method: "POST",
+      url: [secondaryApiUrl, "/oauth2/token"].join("/"),
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      data: queryEncode({
+        client_id: clientId,
+        grant_type: "authorization_code",
+        code,
+        code_verifier: codeVerifier,
+      }),
+    };
+
+    const req = new MalRequest(config);
 
     const token: any = await req.call();
 

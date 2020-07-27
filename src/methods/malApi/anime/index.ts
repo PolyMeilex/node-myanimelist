@@ -6,6 +6,7 @@ import { AnimeFields, AnimeDetailsFields } from "./fields";
 import { AnimeItem, UpdateAnimeParams, AnimeListStatusBase } from "./types";
 import { WorkBase, Paging, RankingItem } from "../common";
 import { queryEncode } from "../util";
+import axios, { AxiosRequestConfig } from "axios";
 
 export * from "./fields";
 export * from "./types";
@@ -23,39 +24,35 @@ export class MalAnime {
     limit: number = 100,
     offset: number = 0
   ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
-    let fieldsStr;
+    const config: AxiosRequestConfig = {
+      url: [apiUrl, "anime"].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+      params: {
+        q,
+      },
+    };
 
-    if (fields) {
-      fieldsStr = fields.toString();
-    } else {
-      fieldsStr = "";
-    }
+    if (fields) config.params.fields = fields.toString();
+    if (limit != 100) config.params.limit = limit;
+    if (offset != 0) config.params.offset = offset;
 
-    let quary = `?q=${q}`;
-
-    if (fieldsStr.length > 0) quary += `&fields=${fieldsStr}`;
-    if (limit != 100) quary += `&limit=${limit}`;
-    if (offset != 0) quary += `&offset=${offset}`;
-
-    return new MalRequest<any>([apiUrl, "anime", quary], this.acount.malToken);
+    return new MalRequest<any>(config);
   }
 
   details<T>(id: number, fields?: AnimeDetailsFields<WorkBase & T>) {
-    let fieldsStr;
+    const config: AxiosRequestConfig = {
+      url: [apiUrl, "anime", id.toString()].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+      params: {},
+    };
 
-    if (fields) {
-      fieldsStr = fields.toString();
-    } else {
-      fieldsStr = "";
-    }
+    if (fields) config.params.fields = fields.toString();
 
-    let quary = "";
-    if (fieldsStr.length > 0) quary = "?fields=" + fieldsStr;
-
-    return new MalRequest<T>(
-      [apiUrl, "anime", id.toString(), quary],
-      this.acount.malToken
-    );
+    return new MalRequest<any>(config);
   }
 
   /**
@@ -86,24 +83,21 @@ export class MalAnime {
     limit: number = 100,
     offset: number = 0
   ): MalRequest<Paging<RankingItem & AnimeItem<WorkBase & T>>> {
-    let fieldsStr;
+    const config: AxiosRequestConfig = {
+      url: [apiUrl, "anime", "ranking"].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+      params: {
+        ranking_type: rankingType,
+      },
+    };
 
-    if (fields) {
-      fieldsStr = fields.toString();
-    } else {
-      fieldsStr = "";
-    }
+    if (fields) config.params.fields = fields.toString();
+    if (limit != 100) config.params.limit = limit;
+    if (offset != 0) config.params.offset = offset;
 
-    let quary = `?ranking_type=${rankingType}`;
-
-    if (fieldsStr.length > 0) quary += `&fields=${fieldsStr}`;
-    if (limit != 100) quary += `&limit=${limit}`;
-    if (offset != 0) quary += `&offset=${offset}`;
-
-    return new MalRequest<any>(
-      [apiUrl, "anime", "ranking", quary],
-      this.acount.malToken
-    );
+    return new MalRequest<any>(config);
   }
 
   seasonal<T>(
@@ -114,25 +108,20 @@ export class MalAnime {
     limit: number = 100,
     offset: number = 0
   ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
-    let fieldsStr;
+    const config: AxiosRequestConfig = {
+      url: [apiUrl, "anime", "season", year.toString(), season].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+      params: {},
+    };
 
-    if (fields) {
-      fieldsStr = fields.toString();
-    } else {
-      fieldsStr = "";
-    }
+    if (fields) config.params.fields = fields.toString();
+    if (sort) config.params.sort = sort;
+    if (limit != 100) config.params.limit = limit;
+    if (offset != 0) config.params.offset = offset;
 
-    let quary = `?`;
-
-    if (fieldsStr.length > 0) quary += `&fields=${fieldsStr}`;
-    if (sort) quary += `&sort=${sort}`;
-    if (limit != 100) quary += `&limit=${limit}`;
-    if (offset != 0) quary += `&offset=${offset}`;
-
-    return new MalRequest<any>(
-      [apiUrl, "anime", "season", year.toString(), season, quary],
-      this.acount.malToken
-    );
+    return new MalRequest<any>(config);
   }
 
   suggested<T>(
@@ -140,50 +129,48 @@ export class MalAnime {
     limit: number = 100,
     offset: number = 0
   ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
-    let fieldsStr;
+    const config: AxiosRequestConfig = {
+      url: [apiUrl, "anime", "suggestions"].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+      params: {},
+    };
 
-    if (fields) {
-      fieldsStr = fields.toString();
-    } else {
-      fieldsStr = "";
-    }
+    if (fields) config.params.fields = fields.toString();
+    if (limit != 100) config.params.limit = limit;
+    if (offset != 0) config.params.offset = offset;
 
-    let quary = `?`;
-
-    if (fieldsStr.length > 0) quary += `&fields=${fieldsStr}`;
-    if (limit != 100) quary += `&limit=${limit}`;
-    if (offset != 0) quary += `&offset=${offset}`;
-
-    return new MalRequest<any>(
-      [apiUrl, "anime", "suggestions", quary],
-      this.acount.malToken
-    );
+    return new MalRequest<any>(config);
   }
 
   updateMyAnime(
     id: number,
-    params?: UpdateAnimeParams
+    params: UpdateAnimeParams = {}
   ): MalRequest<AnimeListStatusBase> {
-    if (!params) params = {};
+    const config: AxiosRequestConfig = {
+      method: "PATCH",
+      url: [apiUrl, "anime", id.toString(), "my_list_status"].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      params: {},
+      data: queryEncode(params),
+    };
 
-    const req = new MalRequest<AnimeListStatusBase>(
-      [apiUrl, "anime", id.toString(), "my_list_status"],
-      this.acount.malToken
-    );
-    req.method = "patch";
-    req.headers = { "content-type": "application/x-www-form-urlencoded" };
-    req.data = queryEncode(params);
-
-    return req;
+    return new MalRequest<any>(config);
   }
 
   deleteMyAnime(id: number): MalRequest<any[]> {
-    const req = new MalRequest<any[]>(
-      [apiUrl, "anime", id.toString(), "my_list_status"],
-      this.acount.malToken
-    );
-    req.method = "delete";
+    const config: AxiosRequestConfig = {
+      method: "DELETE",
+      url: [apiUrl, "anime", id.toString(), "my_list_status"].join("/"),
+      headers: {
+        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+      },
+    };
 
-    return req;
+    return new MalRequest<any[]>(config);
   }
 }
