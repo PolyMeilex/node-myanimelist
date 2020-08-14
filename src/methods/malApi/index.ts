@@ -144,7 +144,7 @@ export class MalToken {
   ): Promise<MalToken> {
     const config: AxiosRequestConfig = {
       method: "POST",
-      url: [apiUrl, "/auth/token"].join("/"),
+      url: [apiUrl, "auth", "token"].join("/"),
       headers: {
         "content-type": "application/x-www-form-urlencoded",
       },
@@ -177,7 +177,7 @@ export class MalToken {
   ): Promise<MalToken> {
     const config: AxiosRequestConfig = {
       method: "POST",
-      url: [secondaryApiUrl, "/oauth2/token"].join("/"),
+      url: [secondaryApiUrl, "oauth2", "token"].join("/"),
       headers: {
         "content-type": "application/x-www-form-urlencoded",
       },
@@ -210,7 +210,7 @@ export class MalToken {
   ): Promise<MalToken> {
     const config: AxiosRequestConfig = {
       method: "POST",
-      url: [secondaryApiUrl, "/oauth2/token"].join("/"),
+      url: [secondaryApiUrl, "oauth2", "token"].join("/"),
       headers: {
         "content-type": "application/x-www-form-urlencoded",
       },
