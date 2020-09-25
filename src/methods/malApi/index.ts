@@ -282,8 +282,8 @@ export class MalAcount {
 
   async refreshToken(): Promise<MalAcount> {
     this.malToken = await MalToken.fromRefreshToken(
-      this.malToken.refresh_token,
-      this.clientId
+      this.clientId,
+      this.malToken.refresh_token
     );
     return this;
   }
