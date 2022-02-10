@@ -29,7 +29,7 @@ export default async function () {
   })();
 
   const { MALSESSIONID, MALHLOGSESSID } = (() => {
-    const cookiesHeader: string[] | null = res.headers["set-cookie"];
+    const cookiesHeader: string[] | undefined = res.headers["set-cookie"];
 
     if (cookiesHeader) {
       const cookies = cookiesHeader.map((cookie) =>

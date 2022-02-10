@@ -32,18 +32,18 @@ export default async function (
 
   let res = await axios(options);
 
-  let cookies = res.headers["set-cookie"];
+  let cookiesHeader = res.headers["set-cookie"];
 
-  cookies = cookies.map((cookie: any) => cookie.split(";")[0]);
+  let cookiesValues = cookiesHeader?.map((cookie: any) => cookie.split(";")[0]);
 
-  cookies = cookies.map((cookie: any) => {
+  let cookies = cookiesValues?.map((cookie: any) => {
     cookie = cookie.split("=");
     return { name: cookie[0], value: cookie[1] };
   });
 
-  const MALSESSIONID = cookies.find(
+  const MALSESSIONID = cookies?.find(
     (cookie: any) => cookie.name == "MALSESSIONID"
-  ).value;
+  )?.value;
 
   return {
     MALSESSIONID: MALSESSIONID,
