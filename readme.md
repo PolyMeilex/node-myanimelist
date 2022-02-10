@@ -4,12 +4,6 @@
 Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
 Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package
 
-## Quick 2.0 to 3.0 Migration guide
-- Jikan module is now imported with `import { Jikan } from 'node-myanimelist'`
-- Jikan module now returns jikan json directly you no longer need to use `res.data`, data will be returned directly
-- There is new way of choosing GenreId.Rating,etc you should check [genre](https://polymeilex.github.io/node-myanimelist/classes/_jikan_index_._jikan_genre_.genre.html) and [search](https://polymeilex.github.io/node-myanimelist/classes/_jikan_index_._jikan_search_.search.html) for examples of usage
-- Wiki is deprecated use [Doc](https://polymeilex.github.io/node-myanimelist/) instead
-
 ## Intellisens Support (Typescript)
 ![Gif](https://i.imgur.com/J1dUQf2.gif)
 
@@ -118,29 +112,3 @@ For more detalis visit [doc](https://polymeilex.github.io/node-myanimelist/)
 	* Jikan.**[magazine](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id, page?)
 	* Jikan.**[user](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(username)
 	* Jikan.**[club](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id)
-
-# Buildin Scraper
-```js
-import { Scraper } from "node-myanimelist";
-
-// Login into Mal acount
-let loginData = await Scraper.login("username","password");
-
-// loginData == {
-//   MALSESSIONID: "***",
-//   csrf_token: "***"
-// };
-
-// Get Mal User Notifications
-let notifications = await Scraper.notifications(loginData);
-
-// Update Episode On Mal
-const animeUpdate = {
-   num_watched_episodes: 20,
-   anime_id: 24833,
-   status: 1
-};
-let res = await Scraper.animeEdit(loginData,animeUpdate);
-
-```
-Notifications response [example](https://github.com/PolyMeilex/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json)
