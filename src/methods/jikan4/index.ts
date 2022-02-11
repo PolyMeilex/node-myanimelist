@@ -1,5 +1,9 @@
 export * as Types from "./types";
+
 export { anime, animeSearch, Anime } from "./anime";
+export { manga, mangaSearch, Manga } from "./manga";
+export { character, characterSearch, Character } from "./character";
+export { club, clubSearch, Club } from "./club";
 
 import axios from "axios";
 
