@@ -142,6 +142,9 @@ export type AnimeEpisode = {
 };
 
 export type AnimeRelations = { data: { relation?: string; entry: MalUrl[] }[] };
+export type ManagaRelations = {
+  data: { relation?: string; entry: MalUrl[] }[];
+};
 
 export type Anime = {
   mal_id?: number;
