@@ -11,7 +11,8 @@
     "removeComments": false,
     "outDir": "./dist/",
     "declarationDir": "./typings/",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "resolveJsonModule": true
   },
   "include": ["./src"]
 }
