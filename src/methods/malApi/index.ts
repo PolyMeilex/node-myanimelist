@@ -378,12 +378,13 @@ export class Auth {
     /**
      * ### Login to API using login and password `(Unstable!)`
      *
-     * This endpoint makes the whole idea of OAuth API pointless, so it will probably be removed soonish
+     * This endpoint makes the whole idea of OAuth API pointless, so it will probably be removed soonish (EDIT: 4 years have passed it's still here)
      *
      * Example of paradox related to this endpoint is that you can use someone's app id to get access to API.
      * So basically it allows you to go around API request limits
      *
      * `(works reliably since 2018)`
+     * `(2022 still works fine!)
      */
     login: async (username: string, password: string): Promise<MalAcount> => {
       const malToken = await MalToken.fromCredential(
