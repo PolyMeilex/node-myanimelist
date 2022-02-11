@@ -4,6 +4,7 @@ export { anime, animeSearch, Anime } from "./anime";
 export { manga, mangaSearch, Manga } from "./manga";
 export { character, characterSearch, Character } from "./character";
 export { club, clubSearch, Club } from "./club";
+export { animeGenres, mangaGenres } from "./genres";
 
 import axios from "axios";
 
