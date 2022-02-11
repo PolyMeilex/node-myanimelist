@@ -36,8 +36,9 @@ export class Anime {
     return jikanGet(url);
   }
 
-  // TODO: topic enum type
-  forum(params?: { topic?: string }): Promise<Types.Forum> {
+  forum(params?: {
+    topic?: "all" | "episode" | "other";
+  }): Promise<Types.Forum> {
     const url = urljoin(this.baseUrl, "forum") + queryJoin({ ...params });
     return jikanGet(url);
   }
