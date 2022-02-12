@@ -429,7 +429,7 @@ export type Genre = {
   count?: number;
 };
 
-export type Magazines = { data?: Pagination & Magazine };
+export type Magazines = Pagination & { data?: Magazine };
 
 export type Magazine = {
   mal_id?: number;
