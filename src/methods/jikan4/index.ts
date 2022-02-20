@@ -14,6 +14,7 @@ export {
   randomPerson,
   randomUser,
 } from "./random";
+export { animeRecommendations, mangaRecommendations } from "./recommendations";
 
 import axios from "axios";
 
