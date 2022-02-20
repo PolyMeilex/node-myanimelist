@@ -80,6 +80,10 @@ export class Anime {
   themes(): Promise<Types.AnimeThemes> {
     return jikanGet(urljoin(this.baseUrl, "themes"));
   }
+
+  external(): Promise<Types.ExternalLinks> {
+    return jikanGet(urljoin(this.baseUrl, "external"));
+  }
 }
 
 export function anime(id: number): Anime {

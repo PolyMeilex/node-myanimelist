@@ -59,6 +59,10 @@ export class Manga {
   relations(): Promise<Types.ManagaRelations> {
     return jikanGet(urljoin(this.baseUrl, "relations"));
   }
+
+  external(): Promise<Types.ExternalLinks> {
+    return jikanGet(urljoin(this.baseUrl, "external"));
+  }
 }
 
 export function manga(id: number): Manga {
