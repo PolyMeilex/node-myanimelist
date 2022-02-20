@@ -16,6 +16,7 @@ export {
 } from "./random";
 export { animeRecommendations, mangaRecommendations } from "./recommendations";
 export { animeReviews, mangaReviews } from "./reviews";
+export { schedules } from "./schedules";
 
 import axios from "axios";
 
