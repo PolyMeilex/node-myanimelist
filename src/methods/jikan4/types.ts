@@ -233,6 +233,7 @@ export type Character = {
   url?: string;
   images: CharacterImages;
   name?: string;
+  name_kanji?: string;
   nicknames: string[];
   favorites?: number;
   about?: string;
@@ -322,7 +323,7 @@ export type EntryMeta = {
   name?: string;
 };
 
-export type Relation = { relation?: string; items: MalUrl[] }[];
+export type Relation = { relation?: string; entry: MalUrl[] };
 
 export type Pagination = {
   pagination: { last_visible_page?: number; has_next_page?: boolean };
@@ -400,6 +401,8 @@ export type PeopleImages = { jpg: { image_url?: string } };
 
 export type CommonImages = { jpg: { image_url?: string } };
 
+export type ExternalLinks = { data: { name?: string; url?: string }[] };
+
 export type Forum = {
   data: {
     mal_id?: number;
@@ -429,7 +432,7 @@ export type Genre = {
   count?: number;
 };
 
-export type Magazines = Pagination & { data?: Magazine };
+export type Magazines = { data: Magazine[] } & Pagination;
 
 export type Magazine = {
   mal_id?: number;
@@ -531,7 +534,7 @@ export type Pictures = { data: { images: AnimeImages }[] };
 
 export type PicturesVariants = { data: { images: CommonImages }[] };
 
-export type Producers = { data?: Pagination & Producer };
+export type Producers = { data: Producer[] } & Pagination;
 
 export type Producer = {
   mal_id?: number;
@@ -731,8 +734,8 @@ export type AnimeUserupdates = {
   }[];
 } & Pagination;
 
-export type MangaUserupdates = Pagination &
-  {
+export type MangaUserupdates = {
+  data: {
     user: UserMeta;
     score: number;
     status?: string;
@@ -742,3 +745,4 @@ export type MangaUserupdates = Pagination &
     chapters_total?: number;
     date?: string;
   }[];
+} & Pagination;
