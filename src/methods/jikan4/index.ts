@@ -7,6 +7,13 @@ export { club, clubSearch, Club } from "./club";
 export { animeGenres, mangaGenres } from "./genres";
 export { person, personSearch, Person } from "./person";
 export { producers } from "./producers";
+export {
+  randomAnime,
+  randomManga,
+  randomCharacters,
+  randomPerson,
+  randomUser,
+} from "./random";
 
 import axios from "axios";
 
