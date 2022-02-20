@@ -10,7 +10,7 @@ export class Manga {
     this.baseUrl = `${jikanUrl}/manga/${id}`;
   }
 
-  info(): Promise<Types.Manga> {
+  info(): Promise<{ data: Types.Manga }> {
     return jikanGet(this.baseUrl);
   }
 

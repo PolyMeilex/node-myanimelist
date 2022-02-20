@@ -10,7 +10,7 @@ export class Anime {
     this.baseUrl = `${jikanUrl}/anime/${id}`;
   }
 
-  info(): Promise<Types.Anime> {
+  info(): Promise<{ data: Types.Anime }> {
     return jikanGet(this.baseUrl);
   }
 
