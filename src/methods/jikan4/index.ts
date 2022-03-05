@@ -17,6 +17,7 @@ export {
 export { animeRecommendations, mangaRecommendations } from "./recommendations";
 export { animeReviews, mangaReviews } from "./reviews";
 export { schedules } from "./schedules";
+export { season, seasonNow, seasonsList, seasonUpcoming } from "./season";
 
 import axios from "axios";
 
