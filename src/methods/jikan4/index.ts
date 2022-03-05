@@ -25,6 +25,12 @@ export {
   topCharacters,
   topReviews,
 } from "./top";
+export {
+  watchRecentEpisodes,
+  watchPopularEpisodes,
+  watchRecentPromos,
+  watchPopularPromos,
+} from "./watch";
 
 import axios from "axios";
 
