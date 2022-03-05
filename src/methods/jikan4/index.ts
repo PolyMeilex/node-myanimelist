@@ -18,6 +18,13 @@ export { animeRecommendations, mangaRecommendations } from "./recommendations";
 export { animeReviews, mangaReviews } from "./reviews";
 export { schedules } from "./schedules";
 export { season, seasonNow, seasonsList, seasonUpcoming } from "./season";
+export {
+  topAnime,
+  topManga,
+  topPeople,
+  topCharacters,
+  topReviews,
+} from "./top";
 
 import axios from "axios";
 
