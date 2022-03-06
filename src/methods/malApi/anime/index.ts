@@ -26,9 +26,7 @@ export class MalAnime {
   ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "anime"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {
         q,
       },
@@ -44,9 +42,7 @@ export class MalAnime {
   details<T>(id: number, fields?: AnimeDetailsFields<WorkBase & T>) {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "anime", id.toString()].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {},
     };
 
@@ -85,9 +81,7 @@ export class MalAnime {
   ): MalRequest<Paging<RankingItem & AnimeItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "anime", "ranking"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {
         ranking_type: rankingType,
       },
@@ -110,9 +104,7 @@ export class MalAnime {
   ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "anime", "season", year.toString(), season].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {},
     };
 
@@ -131,9 +123,7 @@ export class MalAnime {
   ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "anime", "suggestions"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {},
     };
 
@@ -152,7 +142,7 @@ export class MalAnime {
       method: "PATCH",
       url: [apiUrl, "anime", id.toString(), "my_list_status"].join("/"),
       headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+        ...this.acount.getHttpHeaders(),
         "content-type": "application/x-www-form-urlencoded",
       },
       params: {},
@@ -166,9 +156,7 @@ export class MalAnime {
     const config: AxiosRequestConfig = {
       method: "DELETE",
       url: [apiUrl, "anime", id.toString(), "my_list_status"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
     };
 
     return new MalRequest<any[]>(config);

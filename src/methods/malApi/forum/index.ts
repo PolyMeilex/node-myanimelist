@@ -19,9 +19,7 @@ export class MalForum {
   boards(): MalRequest<{ categories: ForumCategory }> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "forum", "boards"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
     };
 
     return new MalRequest<any>(config);
@@ -34,9 +32,7 @@ export class MalForum {
   ): MalRequest<Paging<ForumTopicData>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "forum", "topic", topic_id.toString()].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {},
     };
 
@@ -58,9 +54,7 @@ export class MalForum {
   }): MalRequest<Paging<ForumTopicsData>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "forum", "topics"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: params,
     };
 

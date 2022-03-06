@@ -28,9 +28,7 @@ export class MalUser {
   info<T>(fields?: UserFields<T>): MalRequest<UserBase & T> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "users", "@me"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {},
     };
 
@@ -47,9 +45,7 @@ export class MalUser {
   ): MalRequest<Paging<AnimeListItem<WorkBase & T, AnimeListStatusBase & S>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "users", name, "animelist"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {
         fields: "",
       },
@@ -81,9 +77,7 @@ export class MalUser {
   ): MalRequest<Paging<MangaListItem<WorkBase & T, MangaListStatusBase & S>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "users", name, "mangalist"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {
         fields: "",
       },

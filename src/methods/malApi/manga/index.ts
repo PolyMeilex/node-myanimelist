@@ -26,9 +26,7 @@ export class MalManga {
   ): MalRequest<Paging<MangaItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "manga"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {
         q,
       },
@@ -44,9 +42,7 @@ export class MalManga {
   details<T>(id: number, fields?: MangaDetailsFields<WorkBase & T>) {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "manga", id.toString()].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {},
     };
 
@@ -85,9 +81,7 @@ export class MalManga {
   ): MalRequest<Paging<RankingItem & MangaItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "manga", "ranking"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
       params: {
         ranking_type: rankingType,
       },
@@ -108,7 +102,7 @@ export class MalManga {
       method: "PATCH",
       url: [apiUrl, "manga", id.toString(), "my_list_status"].join("/"),
       headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
+        ...this.acount.getHttpHeaders(),
         "content-type": "application/x-www-form-urlencoded",
       },
       params: {},
@@ -122,9 +116,7 @@ export class MalManga {
     const config: AxiosRequestConfig = {
       method: "DELETE",
       url: [apiUrl, "manga", id.toString(), "my_list_status"].join("/"),
-      headers: {
-        Authorization: `Bearer ${this.acount.malToken["access_token"]}`,
-      },
+      headers: this.acount.getHttpHeaders(),
     };
 
     return new MalRequest<any[]>(config);

@@ -264,9 +264,9 @@ export class MalAcount {
   /** @hidden */
   private clientId: string;
   /** @hidden */
-  malToken: MalToken;
+  malToken: MalToken | null;
 
-  constructor(clientId: string, malToken: MalToken) {
+  constructor(clientId: string, malToken: MalToken | null) {
     this.clientId = clientId;
     this.malToken = malToken;
   }
@@ -281,15 +281,33 @@ export class MalAcount {
   forum: MalForum = new MalForum(this);
 
   async refreshToken(): Promise<MalAcount> {
-    this.malToken = await MalToken.fromRefreshToken(
-      this.clientId,
-      this.malToken.refresh_token
-    );
+    if (this.malToken !== null) {
+      this.malToken = await MalToken.fromRefreshToken(
+        this.clientId,
+        this.malToken.refresh_token
+      );
+    }
     return this;
   }
 
-  stringifyToken(): string {
-    return JSON.stringify(this.malToken);
+  getHttpHeaders() {
+    const headers: { Authorization?: string; "X-MAL-CLIENT-ID": string } = {
+      "X-MAL-CLIENT-ID": this.clientId,
+    };
+
+    if (this.malToken !== null) {
+      headers["Authorization"] = `Bearer ${this.malToken["access_token"]}`;
+    }
+
+    return headers;
+  }
+
+  stringifyToken(): string | null {
+    if (this.malToken !== null) {
+      return JSON.stringify(this.malToken);
+    } else {
+      return null;
+    }
   }
 }
 
@@ -369,7 +387,9 @@ export class Auth {
     return new MalAcount(this.clientId, malToken);
   }
 
-  // async authorizationCode(refreshToken: string): Promise<MalAcount> {}
+  async guestLogin(): Promise<MalAcount> {
+    return new MalAcount(this.clientId, null);
+  }
 
   /**
    * Undocumented Endpoints, those can disperse at any moment
