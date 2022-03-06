@@ -8,7 +8,7 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "./node_modules/ts-mocha/bin/ts-mocha test/*.ts",
-    "doc": "typedoc --mode library --out docs ./src/index.ts --theme node_modules/typedoc-neo-theme/bin/default",
+    "doc": "typedoc src/index.ts",
     "postdoc": "touch docs/.nojekyll"
   },
   "keywords": [
@@ -37,8 +37,7 @@
     "npm": "^6.14.5",
     "pkce-challenge": "^2.2.0",
     "ts-mocha": "^9.0.2",
-    "typedoc": "^0.17.0-3",
-    "typedoc-neo-theme": "^1.0.9",
+    "typedoc": "^0.22.11",
     "typescript": "^4.5.5"
   }
 }

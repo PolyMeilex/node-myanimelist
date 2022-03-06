@@ -237,27 +237,27 @@ export class MalToken {
 
 /**
  * - {@link user} ({@link MalUser})
- *  - {@link MalUser.animelist}
- *  - {@link MalUser.mangalist}
- *  - {@link MalUser.info}
+ *    - {@link MalUser.animelist}
+ *    - {@link MalUser.mangalist}
+ *    - {@link MalUser.info}
  * - {@link anime} ({@link MalAnime})
- *  - {@link MalAnime.search}
- *  - {@link MalAnime.details}
- *  - {@link MalAnime.ranking}
- *  - {@link MalAnime.seasonal}
- *  - {@link MalAnime.suggested}
- *  - {@link MalAnime.updateMyAnime}
- *  - {@link MalAnime.deleteMyAnime}
+ *    - {@link MalAnime.search}
+ *    - {@link MalAnime.details}
+ *    - {@link MalAnime.ranking}
+ *    - {@link MalAnime.seasonal}
+ *    - {@link MalAnime.suggested}
+ *    - {@link MalAnime.updateMyAnime}
+ *    - {@link MalAnime.deleteMyAnime}
  * - {@link manga} ({@link MalManga})
- *  - {@link MalManga.search}
- *  - {@link MalManga.details}
- *  - {@link MalManga.ranking}
- *  - {@link MalManga.updateMyManga}
- *  - {@link MalManga.deleteMyManga}
+ *    - {@link MalManga.search}
+ *    - {@link MalManga.details}
+ *    - {@link MalManga.ranking}
+ *    - {@link MalManga.updateMyManga}
+ *    - {@link MalManga.deleteMyManga}
  * - {@link forum} ({@link MalForum})
- *  - {@link MalForum.boards}
- *  - {@link MalForum.details}
- *  - {@link MalForum.topics}
+ *    - {@link MalForum.boards}
+ *    - {@link MalForum.details}
+ *    - {@link MalForum.topics}
  */
 
 export class MalAcount {

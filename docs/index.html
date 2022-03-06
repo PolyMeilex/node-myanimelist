@@ -1,264 +1,88 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>node-myanimelist</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<ul class="results-priority" style="display:none">
-					</ul>
-					<a href="index.html" class="title">node-myanimelist</a>
-					&emsp;<a href="https://github.com/PolyMeilex/node-myanimelist/" class="title">GitHub</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-			</ul>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-3 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation outline primary">
-				<a style="margin-left:0em" href="globals.html">Globals</a>
-				<ul style="display:none">
-					{&quot;MalAPI&quot;:{&quot;Overview&quot;:&quot;modules/_malapi_index_&quot;,&quot;Auth&quot;:&quot;classes/_malapi_index_.auth&quot;,&quot;Acount&quot;:{&quot;Overview&quot;:&quot;classes/_malapi_index_.malacount&quot;,&quot;User&quot;:&quot;classes/_malapi_index_._malapi_user_index_.maluser&quot;,&quot;Anime&quot;:&quot;classes/_malapi_index_._malapi_anime_index_.malanime&quot;,&quot;Manga&quot;:&quot;classes/_malapi_index_._malapi_manga_index_.malmanga&quot;,&quot;Forum&quot;:&quot;classes/_malapi_index_._malapi_forum_index_.malforum&quot;}},&quot;JikanAPI&quot;:{&quot;Overview&quot;:&quot;modules/_jikan_index_&quot;,&quot;Anime&quot;:&quot;modules/_jikan_index_._jikan_anime_&quot;,&quot;Manga&quot;:&quot;modules/_jikan_index_._jikan_manga_&quot;,&quot;Person&quot;:&quot;modules/_jikan_index_._jikan_person_&quot;,&quot;Character&quot;:&quot;modules/_jikan_index_._jikan_character_&quot;,&quot;Search&quot;:&quot;modules/_jikan_index_._jikan_search_&quot;,&quot;Season&quot;:&quot;modules/_jikan_index_._jikan_season_&quot;,&quot;SeasonArchive&quot;:&quot;modules/_jikan_index_._jikan_seasonarchive_&quot;,&quot;SeasonLater&quot;:&quot;modules/_jikan_index_._jikan_seasonlater_&quot;,&quot;Schedule&quot;:&quot;modules/_jikan_index_._jikan_schedule_&quot;,&quot;Top&quot;:&quot;modules/_jikan_index_._jikan_top_&quot;,&quot;Genre&quot;:&quot;modules/_jikan_index_._jikan_genre_&quot;,&quot;Producer&quot;:&quot;modules/_jikan_index_._jikan_producer_&quot;,&quot;Magazine&quot;:&quot;modules/_jikan_index_._jikan_magazine_&quot;,&quot;User&quot;:&quot;modules/_jikan_index_._jikan_user_&quot;,&quot;Club&quot;:&quot;modules/_jikan_index_._jikan_club_&quot;},&quot;Scraper&quot;:{&quot;Overview&quot;:&quot;modules/_scraper_index_.html&quot;}}
-				</ul>
-			</nav>
-		</div>
-		<div class="col-7 offset-3 col-content">
-			<h1>node-myanimelist</h1>
-			<div class="tsd-panel tsd-typography">
-				<p><img src="https://i.imgur.com/IcBShyO.png" alt="NodeMal API Banner"></p>
-				<a href="#node-myanimelist" id="node-myanimelist" style="color: inherit; text-decoration: none;">
-					<h1>Node-MyAnimeList</h1>
-				</a>
-				<p>Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
-				Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package</p>
-				<a href="#quick-20-to-30-migration-guide" id="quick-20-to-30-migration-guide" style="color: inherit; text-decoration: none;">
-					<h2>Quick 2.0 to 3.0 Migration guide</h2>
-				</a>
-				<ul>
-					<li>Jikan module is now imported with <code>import { Jikan } from &#39;node-myanimelist&#39;</code></li>
-					<li>Jikan module now returns jikan json directly you no longer need to use <code>res.data</code>, data will be returned directly</li>
-					<li>There is new way of choosing GenreId.Rating,etc you should check <a href="https://polymeilex.github.io/node-myanimelist/classes/_jikan_index_._jikan_genre_.genre.html">genre</a> and <a href="https://polymeilex.github.io/node-myanimelist/classes/_jikan_index_._jikan_search_.search.html">search</a> for examples of usage</li>
-					<li>Wiki is deprecated use <a href="https://polymeilex.github.io/node-myanimelist/">Doc</a> instead</li>
-				</ul>
-				<a href="#intellisens-support-typescript" id="intellisens-support-typescript" style="color: inherit; text-decoration: none;">
-					<h2>Intellisens Support (Typescript)</h2>
-				</a>
-				<p><img src="https://i.imgur.com/J1dUQf2.gif" alt="Gif"></p>
-				<a href="#instalation" id="instalation" style="color: inherit; text-decoration: none;">
-					<h1>Instalation</h1>
-				</a>
-				<p><a href="https://nodei.co/npm/node-myanimelist/"><img src="https://nodei.co/npm/node-myanimelist.png" alt="NPM"></a></p>
-				<pre><code class="language-sh">npm i node-myanimelist</code></pre>
-				<a href="#import" id="import" style="color: inherit; text-decoration: none;">
-					<h3>Import</h3>
-				</a>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> { Mal, Jikan } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"node-myanimelist"</span>);
-<span class="hljs-comment">// Or</span>
-<span class="hljs-keyword">import</span> { Mal, Jikan } <span class="hljs-keyword">from</span> <span class="hljs-string">'node-myanimelist'</span>;</code></pre>
-				<a href="#malapi-example" id="malapi-example" style="color: inherit; text-decoration: none;">
-					<h3>MalAPI Example</h3>
-				</a>
-				<pre><code class="language-ts"><span class="hljs-keyword">const</span> auth = Mal.auth(<span class="hljs-string">"6114d00ca681b7701d1e15fe11a4987e"</span> <span class="hljs-comment">/* app_id */</span> );
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>node-myanimelist</title><meta name="description" content="Documentation for node-myanimelist"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script><link rel="stylesheet" href="assets/custom.css"/></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">node-myanimelist</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>node-myanimelist</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography"><p><img src="https://i.imgur.com/IcBShyO.png" alt="NodeMal API Banner"></p>
 
-<span class="hljs-comment">// Unoffical way to login (not recomended)</span>
-<span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> auth.Unstable.login(<span class="hljs-string">"username"</span>,<span class="hljs-string">"password"</span>);
+<a href="#node-myanimelist" id="node-myanimelist" style="color: inherit; text-decoration: none;">
+  <h1>Node-MyAnimeList</h1>
+</a>
+<p>Node-MyAnimeList is a small promise based package for downloading information from MyAnimeList.
+Node-MyAnimeList is using Jikan.moe API and flew methods created by me specially for this package</p>
 
-<span class="hljs-comment">// Offical way to login (recomended)</span>
-<span class="hljs-comment">// import pkceChallenge from "pkce-challenge";</span>
-<span class="hljs-comment">// const pkce = pkceChallenge();</span>
+<a href="#intellisens-support-typescript" id="intellisens-support-typescript" style="color: inherit; text-decoration: none;">
+  <h2>Intellisens Support (Typescript)</h2>
+</a>
+<p><img src="https://i.imgur.com/J1dUQf2.gif" alt="Gif"></p>
 
-<span class="hljs-keyword">const</span> url = auth.getOAuthUrl(pkce.code_challenge)
-<span class="hljs-comment">// Open returned url, accept oauth and use returned code to authorize</span>
-<span class="hljs-keyword">const</span> acount = <span class="hljs-keyword">await</span> auth.authorizeWithCode(code,pkce.code_challenge);
-
-<span class="hljs-keyword">let</span> search = <span class="hljs-keyword">await</span> acount.manga.search(
-   <span class="hljs-string">"Sakurasou"</span>,
-   Mal.Manga.fields()
-      .alternativeTitles()
-      .startDate()
-      .endDate()
-      .synopsis()
-      .mean()
-      .rank()
-      .popularity()
-      .numListUsers()
-      .numScoringUsers()
-      .nsfw()
-      .genres()
-      .createdAt()
-      .updatedAt()
-      .mediaType()
-      .status()
-      .myListStatus(
-         Mal.Manga.listStatusFields()
-            .startDate()
-            .finishDate()
-            .priority()
-            .numTimesReread()
-            .rereadValue()
-            .tags()
-            .comments()
-      )
-      .numVolumes()
-      .numChapters()
-      .authors()
-).call();
-
-<span class="hljs-comment">// Alternative if you don't care about choosing fields</span>
-<span class="hljs-keyword">let</span> searchIDC = <span class="hljs-keyword">await</span> acount.manga.search(
-   <span class="hljs-string">"Sakurasou"</span>,
-   Mal.Manga.fields().all()
-).call();</code></pre>
-				<a href="#list-of-functions" id="list-of-functions" style="color: inherit; text-decoration: none;">
-					<h1>List of functions</h1>
-				</a>
-				<p>For more detalis visit <a href="https://polymeilex.github.io/node-myanimelist/">doc</a></p>
-				<ul>
-					<li>MalApi Methods<ul>
-							<li>OAuth PKCE Auth</li>
-							<li>OAuth Login And Passwor Auth (unofficial)<ul>
-									<li>Anime</li>
-								</ul>
-							</li>
-							<li>Search</li>
-							<li>Details</li>
-							<li>Ranking</li>
-							<li>Seasonal anime</li>
-							<li>Suggested anime<ul>
-									<li>Manga</li>
-								</ul>
-							</li>
-							<li>Search</li>
-							<li>Details</li>
-							<li>Ranking<ul>
-									<li>Forum</li>
-								</ul>
-							</li>
-							<li>Boards</li>
-							<li>Topics</li>
-							<li>Topic details <ul>
-									<li>User</li>
-								</ul>
-							</li>
-							<li>Info</li>
-							<li>Animelist</li>
-							<li>Mangalist</li>
-						</ul>
-					</li>
-					<li>JikanApi Methods<ul>
-							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">anime</a></strong>(id)</li>
-							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">manga</a></strong>(id) </li>
-							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">person</a></strong>(id) </li>
-							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">character</a></strong>(id) <ul>
-									<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">search</a></strong>()</li>
-									<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">season</a></strong>(year,season)</li>
-									<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">seasonArchive</a></strong>()</li>
-									<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">seasonLater</a></strong>() </li>
-								</ul>
-							</li>
-							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">schedule</a></strong>()</li>
-							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">top</a></strong>()</li>
-							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">genre</a></strong>()</li>
-							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">producer</a></strong>(id, page?)</li>
-							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">magazine</a></strong>(id, page?)</li>
-							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">user</a></strong>(username)</li>
-							<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">club</a></strong>(id)</li>
-						</ul>
-					</li>
-				</ul>
-				<a href="#buildin-scraper" id="buildin-scraper" style="color: inherit; text-decoration: none;">
-					<h1>Buildin Scraper</h1>
-				</a>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> { Scraper } <span class="hljs-keyword">from</span> <span class="hljs-string">"node-myanimelist"</span>;
-
-<span class="hljs-comment">// Login into Mal acount</span>
-<span class="hljs-keyword">let</span> loginData = <span class="hljs-keyword">await</span> Scraper.login(<span class="hljs-string">"username"</span>,<span class="hljs-string">"password"</span>);
-
-<span class="hljs-comment">// loginData == {</span>
-<span class="hljs-comment">//   MALSESSIONID: "***",</span>
-<span class="hljs-comment">//   csrf_token: "***"</span>
-<span class="hljs-comment">// };</span>
-
-<span class="hljs-comment">// Get Mal User Notifications</span>
-<span class="hljs-keyword">let</span> notifications = <span class="hljs-keyword">await</span> Scraper.notifications(loginData);
-
-<span class="hljs-comment">// Update Episode On Mal</span>
-<span class="hljs-keyword">const</span> animeUpdate = {
-   <span class="hljs-attr">num_watched_episodes</span>: <span class="hljs-number">20</span>,
-   <span class="hljs-attr">anime_id</span>: <span class="hljs-number">24833</span>,
-   <span class="hljs-attr">status</span>: <span class="hljs-number">1</span>
-};
-<span class="hljs-keyword">let</span> res = <span class="hljs-keyword">await</span> Scraper.animeEdit(loginData,animeUpdate);
+<a href="#instalation" id="instalation" style="color: inherit; text-decoration: none;">
+  <h1>Instalation</h1>
+</a>
+<p><a href="https://nodei.co/npm/node-myanimelist/"><img src="https://nodei.co/npm/node-myanimelist.png" alt="NPM"></a></p>
+<pre><code class="language-sh"><span class="hl-0">npm i node-myanimelist</span>
 </code></pre>
-				<p>Notifications response <a href="https://github.com/PolyMeilex/node-myanimelist/blob/master/dataExamples/exampleNotyfications.json">example</a></p>
-			</div>
-			<!--{&quot;options&quot;:&quot;/home/poly/Documents/Programing/js/node-myanimelist&quot;,&quot;tsconfig&quot;:&quot;/home/poly/Documents/Programing/js/node-myanimelist&quot;,&quot;inputFiles&quot;:[&quot;./src/index.ts&quot;],&quot;mode&quot;:2,&quot;includeDeclarations&quot;:false,&quot;entryPoint&quot;:&quot;&quot;,&quot;exclude&quot;:[],&quot;externalPattern&quot;:[],&quot;excludeExternals&quot;:false,&quot;excludeNotExported&quot;:false,&quot;excludePrivate&quot;:false,&quot;excludeProtected&quot;:false,&quot;ignoreCompilerErrors&quot;:false,&quot;disableSources&quot;:false,&quot;includes&quot;:&quot;&quot;,&quot;media&quot;:&quot;&quot;,&quot;out&quot;:&quot;docs&quot;,&quot;json&quot;:&quot;&quot;,&quot;theme&quot;:&quot;node_modules/typedoc-neo-theme/bin/default&quot;,&quot;name&quot;:&quot;&quot;,&quot;includeVersion&quot;:false,&quot;readme&quot;:&quot;&quot;,&quot;defaultCategory&quot;:&quot;Other&quot;,&quot;categoryOrder&quot;:[],&quot;categorizeByGroup&quot;:true,&quot;gitRevision&quot;:&quot;&quot;,&quot;gitRemote&quot;:&quot;origin&quot;,&quot;gaID&quot;:&quot;&quot;,&quot;gaSite&quot;:&quot;auto&quot;,&quot;hideGenerator&quot;:false,&quot;toc&quot;:[],&quot;disableOutputCheck&quot;:false,&quot;help&quot;:false,&quot;version&quot;:false,&quot;plugin&quot;:[],&quot;logger&quot;:&quot;console&quot;,&quot;listInvalidSymbolLinks&quot;:false,&quot;links&quot;:[{&quot;label&quot;:&quot;GitHub&quot;,&quot;url&quot;:&quot;https://github.com/PolyMeilex/node-myanimelist/&quot;}],&quot;outline&quot;:[{&quot;MalAPI&quot;:{&quot;Overview&quot;:&quot;modules/_malapi_index_&quot;,&quot;Auth&quot;:&quot;classes/_malapi_index_.auth&quot;,&quot;Acount&quot;:{&quot;Overview&quot;:&quot;classes/_malapi_index_.malacount&quot;,&quot;User&quot;:&quot;classes/_malapi_index_._malapi_user_index_.maluser&quot;,&quot;Anime&quot;:&quot;classes/_malapi_index_._malapi_anime_index_.malanime&quot;,&quot;Manga&quot;:&quot;classes/_malapi_index_._malapi_manga_index_.malmanga&quot;,&quot;Forum&quot;:&quot;classes/_malapi_index_._malapi_forum_index_.malforum&quot;}},&quot;JikanAPI&quot;:{&quot;Overview&quot;:&quot;modules/_jikan_index_&quot;,&quot;Anime&quot;:&quot;modules/_jikan_index_._jikan_anime_&quot;,&quot;Manga&quot;:&quot;modules/_jikan_index_._jikan_manga_&quot;,&quot;Person&quot;:&quot;modules/_jikan_index_._jikan_person_&quot;,&quot;Character&quot;:&quot;modules/_jikan_index_._jikan_character_&quot;,&quot;Search&quot;:&quot;modules/_jikan_index_._jikan_search_&quot;,&quot;Season&quot;:&quot;modules/_jikan_index_._jikan_season_&quot;,&quot;SeasonArchive&quot;:&quot;modules/_jikan_index_._jikan_seasonarchive_&quot;,&quot;SeasonLater&quot;:&quot;modules/_jikan_index_._jikan_seasonlater_&quot;,&quot;Schedule&quot;:&quot;modules/_jikan_index_._jikan_schedule_&quot;,&quot;Top&quot;:&quot;modules/_jikan_index_._jikan_top_&quot;,&quot;Genre&quot;:&quot;modules/_jikan_index_._jikan_genre_&quot;,&quot;Producer&quot;:&quot;modules/_jikan_index_._jikan_producer_&quot;,&quot;Magazine&quot;:&quot;modules/_jikan_index_._jikan_magazine_&quot;,&quot;User&quot;:&quot;modules/_jikan_index_._jikan_user_&quot;,&quot;Club&quot;:&quot;modules/_jikan_index_._jikan_club_&quot;},&quot;Scraper&quot;:{&quot;Overview&quot;:&quot;modules/_scraper_index_.html&quot;}}],&quot;source&quot;:[{&quot;path&quot;:&quot;https://github.com/PolyMeilex/node-myanimelist/blob/master/src/&quot;,&quot;line&quot;:&quot;L&quot;}]}-->
-		</div>
-		<div class="col-2 col-menu secondary-menu">
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-variable root">
-						<a href="globals.html#version" class="tsd-kind-icon">version</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
-</body>
-</html>
+
+<a href="#import" id="import" style="color: inherit; text-decoration: none;">
+  <h3>Import</h3>
+</a>
+<pre><code class="language-js"><span class="hl-1">const</span><span class="hl-0"> { </span><span class="hl-2">Mal</span><span class="hl-0">, </span><span class="hl-2">Jikan</span><span class="hl-0"> } = </span><span class="hl-3">require</span><span class="hl-0">(</span><span class="hl-4">&quot;node-myanimelist&quot;</span><span class="hl-0">);</span><br/><span class="hl-5">// Or</span><br/><span class="hl-6">import</span><span class="hl-0"> { </span><span class="hl-7">Mal</span><span class="hl-0">, </span><span class="hl-7">Jikan</span><span class="hl-0"> } </span><span class="hl-6">from</span><span class="hl-0"> </span><span class="hl-4">&#39;node-myanimelist&#39;</span><span class="hl-0">;</span>
+</code></pre>
+
+<a href="#malapi-example" id="malapi-example" style="color: inherit; text-decoration: none;">
+  <h3>MalAPI Example</h3>
+</a>
+<pre><code class="language-ts"><span class="hl-1">const</span><span class="hl-0"> </span><span class="hl-2">auth</span><span class="hl-0"> = </span><span class="hl-7">Mal</span><span class="hl-0">.</span><span class="hl-3">auth</span><span class="hl-0">(</span><span class="hl-4">&quot;6114d00ca681b7701d1e15fe11a4987e&quot;</span><span class="hl-0"> </span><span class="hl-5">/* app_id */</span><span class="hl-0"> );</span><br/><br/><span class="hl-5">// Unoffical way to login (not recomended)</span><br/><span class="hl-1">const</span><span class="hl-0"> </span><span class="hl-2">acount</span><span class="hl-0"> = </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-7">auth</span><span class="hl-0">.</span><span class="hl-7">Unstable</span><span class="hl-0">.</span><span class="hl-3">login</span><span class="hl-0">(</span><span class="hl-4">&quot;username&quot;</span><span class="hl-0">,</span><span class="hl-4">&quot;password&quot;</span><span class="hl-0">);</span><br/><br/><span class="hl-5">// Offical way to login (recomended)</span><br/><span class="hl-5">// import pkceChallenge from &quot;pkce-challenge&quot;;</span><br/><span class="hl-5">// const pkce = pkceChallenge();</span><br/><br/><span class="hl-1">const</span><span class="hl-0"> </span><span class="hl-2">url</span><span class="hl-0"> = </span><span class="hl-7">auth</span><span class="hl-0">.</span><span class="hl-3">getOAuthUrl</span><span class="hl-0">(</span><span class="hl-7">pkce</span><span class="hl-0">.</span><span class="hl-7">code_challenge</span><span class="hl-0">)</span><br/><span class="hl-5">// Open returned url, accept oauth and use returned code to authorize</span><br/><span class="hl-1">const</span><span class="hl-0"> </span><span class="hl-2">acount</span><span class="hl-0"> = </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-7">auth</span><span class="hl-0">.</span><span class="hl-3">authorizeWithCode</span><span class="hl-0">(</span><span class="hl-7">code</span><span class="hl-0">,</span><span class="hl-7">pkce</span><span class="hl-0">.</span><span class="hl-7">code_challenge</span><span class="hl-0">);</span><br/><br/><span class="hl-1">let</span><span class="hl-0"> </span><span class="hl-7">search</span><span class="hl-0"> = </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-7">acount</span><span class="hl-0">.</span><span class="hl-7">manga</span><span class="hl-0">.</span><span class="hl-3">search</span><span class="hl-0">(</span><br/><span class="hl-0">   </span><span class="hl-4">&quot;Sakurasou&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">   </span><span class="hl-7">Mal</span><span class="hl-0">.</span><span class="hl-7">Manga</span><span class="hl-0">.</span><span class="hl-3">fields</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">alternativeTitles</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">startDate</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">endDate</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">synopsis</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">mean</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">rank</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">popularity</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">numListUsers</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">numScoringUsers</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">nsfw</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">genres</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">createdAt</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">updatedAt</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">mediaType</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">status</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">myListStatus</span><span class="hl-0">(</span><br/><span class="hl-0">         </span><span class="hl-7">Mal</span><span class="hl-0">.</span><span class="hl-7">Manga</span><span class="hl-0">.</span><span class="hl-3">listStatusFields</span><span class="hl-0">()</span><br/><span class="hl-0">            .</span><span class="hl-3">startDate</span><span class="hl-0">()</span><br/><span class="hl-0">            .</span><span class="hl-3">finishDate</span><span class="hl-0">()</span><br/><span class="hl-0">            .</span><span class="hl-3">priority</span><span class="hl-0">()</span><br/><span class="hl-0">            .</span><span class="hl-3">numTimesReread</span><span class="hl-0">()</span><br/><span class="hl-0">            .</span><span class="hl-3">rereadValue</span><span class="hl-0">()</span><br/><span class="hl-0">            .</span><span class="hl-3">tags</span><span class="hl-0">()</span><br/><span class="hl-0">            .</span><span class="hl-3">comments</span><span class="hl-0">()</span><br/><span class="hl-0">      )</span><br/><span class="hl-0">      .</span><span class="hl-3">numVolumes</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">numChapters</span><span class="hl-0">()</span><br/><span class="hl-0">      .</span><span class="hl-3">authors</span><span class="hl-0">()</span><br/><span class="hl-0">).</span><span class="hl-3">call</span><span class="hl-0">();</span><br/><br/><span class="hl-5">// Alternative if you don&#39;t care about choosing fields</span><br/><span class="hl-1">let</span><span class="hl-0"> </span><span class="hl-7">searchIDC</span><span class="hl-0"> = </span><span class="hl-6">await</span><span class="hl-0"> </span><span class="hl-7">acount</span><span class="hl-0">.</span><span class="hl-7">manga</span><span class="hl-0">.</span><span class="hl-3">search</span><span class="hl-0">(</span><br/><span class="hl-0">   </span><span class="hl-4">&quot;Sakurasou&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">   </span><span class="hl-7">Mal</span><span class="hl-0">.</span><span class="hl-7">Manga</span><span class="hl-0">.</span><span class="hl-3">fields</span><span class="hl-0">().</span><span class="hl-3">all</span><span class="hl-0">()</span><br/><span class="hl-0">).</span><span class="hl-3">call</span><span class="hl-0">();</span>
+</code></pre>
+
+<a href="#list-of-functions" id="list-of-functions" style="color: inherit; text-decoration: none;">
+  <h1>List of functions</h1>
+</a>
+<p>For more detalis visit <a href="https://polymeilex.github.io/node-myanimelist/">doc</a></p>
+<ul>
+<li>MalApi Methods<ul>
+<li>OAuth PKCE Auth</li>
+<li>OAuth Login And Passwor Auth (unofficial)</li>
+<li>Anime<ul>
+<li>Search</li>
+<li>Details</li>
+<li>Ranking</li>
+<li>Seasonal anime</li>
+<li>Suggested anime</li>
+</ul>
+</li>
+<li>Manga<ul>
+<li>Search</li>
+<li>Details</li>
+<li>Ranking</li>
+</ul>
+</li>
+<li>Forum<ul>
+<li>Boards</li>
+<li>Topics</li>
+<li>Topic details</li>
+</ul>
+</li>
+<li>User<ul>
+<li>Info</li>
+<li>Animelist</li>
+<li>Mangalist</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>JikanApi Methods<ul>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">anime</a></strong>(id)</li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">manga</a></strong>(id) </li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">person</a></strong>(id) </li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">character</a></strong>(id) </li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">search</a></strong>()</li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">season</a></strong>(year,season)</li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">seasonArchive</a></strong>()</li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">seasonLater</a></strong>() </li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">schedule</a></strong>()</li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">top</a></strong>()</li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">genre</a></strong>()</li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">producer</a></strong>(id, page?)</li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">magazine</a></strong>(id, page?)</li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">user</a></strong>(username)</li>
+<li>Jikan.<strong><a href="https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html">club</a></strong>(id)</li>
+</ul>
+</li>
+</ul>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/Jikan.html">Jikan</a></li><li class=" tsd-kind-namespace"><a href="modules/Jikan4.html">Jikan4</a></li><li class=" tsd-kind-namespace"><a href="modules/Mal.html">Mal</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-variable"><a href="modules.html#version" class="tsd-kind-icon">version</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script><script src="assets/custom.js"></script></body></html>
