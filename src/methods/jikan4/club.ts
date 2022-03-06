@@ -2,6 +2,7 @@ import { jikanGet, jikanUrl, queryJoin } from "./index";
 import urljoin from "url-join";
 import * as Types from "./types";
 
+/** @category Club*/
 export class Club {
   /** @ignore */
   private baseUrl: string;
@@ -28,10 +29,12 @@ export class Club {
   }
 }
 
+/** @category Club*/
 export function club(id: number): Club {
   return new Club(id);
 }
 
+/** @category Club*/
 export function clubSearch(params?: {
   page?: number;
   limit?: number;

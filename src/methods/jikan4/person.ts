@@ -2,6 +2,7 @@ import { jikanGet, jikanUrl, queryJoin } from "./index";
 import urljoin from "url-join";
 import * as Types from "./types";
 
+/** @category Person*/
 export class Person {
   /** @ignore */
   private baseUrl: string;
@@ -31,10 +32,12 @@ export class Person {
   }
 }
 
+/** @category Person*/
 export function person(id: number): Person {
   return new Person(id);
 }
 
+/** @category Person*/
 export function personSearch(params?: {
   page?: number;
   limit?: number;

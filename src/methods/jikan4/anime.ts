@@ -2,6 +2,7 @@ import { jikanGet, jikanUrl, queryJoin } from "./index";
 import urljoin from "url-join";
 import * as Types from "./types";
 
+/** @category Anime*/
 export class Anime {
   /** @ignore */
   private baseUrl: string;
@@ -86,10 +87,12 @@ export class Anime {
   }
 }
 
+/** @category Anime*/
 export function anime(id: number): Anime {
   return new Anime(id);
 }
 
+/** @category Anime*/
 export function animeSearch(params?: {
   page?: number;
   limit?: number;

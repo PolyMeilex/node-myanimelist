@@ -2,6 +2,7 @@ import { jikanGet, jikanUrl, queryJoin } from "./index";
 import urljoin from "url-join";
 import * as Types from "./types";
 
+/** @category Top*/
 export function topAnime(params?: {
   page?: number;
   limit?: number;
@@ -10,6 +11,7 @@ export function topAnime(params?: {
   return jikanGet(url);
 }
 
+/** @category Top*/
 export function topManga(params?: {
   page?: number;
   limit?: number;
@@ -18,6 +20,7 @@ export function topManga(params?: {
   return jikanGet(url);
 }
 
+/** @category Top*/
 export function topPeople(params?: {
   page?: number;
   limit?: number;
@@ -26,6 +29,7 @@ export function topPeople(params?: {
   return jikanGet(url);
 }
 
+/** @category Top*/
 export function topCharacters(params?: {
   page?: number;
   limit?: number;
@@ -34,6 +38,7 @@ export function topCharacters(params?: {
   return jikanGet(url);
 }
 
+/** @category Top*/
 export function topReviews(params?: {
   page?: number;
   limit?: number;

@@ -34,6 +34,7 @@ export {
 
 import axios from "axios";
 
+/** @ignore */
 export function queryJoin(params: { [key: string]: any }): string {
   const url_params = Object.entries(params)
     .filter(([_, value]) => value != null && value != undefined)
@@ -46,6 +47,7 @@ export function queryJoin(params: { [key: string]: any }): string {
   }
 }
 
+/** @ignore */
 export async function jikanGet<D>(url: string): Promise<D> {
   const res = await axios.get(url);
   const data: D = res.data;

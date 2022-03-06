@@ -8,7 +8,7 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "./node_modules/ts-mocha/bin/ts-mocha test/*.ts",
-    "doc": "typedoc src/index.ts",
+    "doc": "typedoc",
     "postdoc": "touch docs/.nojekyll"
   },
   "keywords": [

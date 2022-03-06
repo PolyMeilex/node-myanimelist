@@ -2,6 +2,7 @@ import { jikanGet, jikanUrl, queryJoin } from "./index";
 import urljoin from "url-join";
 import * as Types from "./types";
 
+/** @category Manga*/
 export class Manga {
   /** @ignore */
   private baseUrl: string;
@@ -65,10 +66,12 @@ export class Manga {
   }
 }
 
+/** @category Manga*/
 export function manga(id: number): Manga {
   return new Manga(id);
 }
 
+/** @category Manga*/
 export function mangaSearch(params?: {
   page?: number;
   limit?: number;

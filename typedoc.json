@@ -1,3 +1,6 @@
 {
-  "out": "docs"
+  "out": "docs",
+  "entryPoints": ["./src/index.ts"],
+  "categorizeByGroup": false,
+  "categoryOrder": ["*", "Other"]
 }

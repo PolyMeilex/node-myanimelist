@@ -2,6 +2,7 @@ import { jikanGet, jikanUrl, queryJoin } from "./index";
 import urljoin from "url-join";
 import * as Types from "./types";
 
+/** @category Season*/
 export function season(
   year: number,
   season: "spring" | "summer" | "fall" | "winter",
@@ -16,6 +17,7 @@ export function season(
   return jikanGet(url);
 }
 
+/** @category Season*/
 export function seasonNow(params?: {
   page?: number;
   limit?: number;
@@ -24,11 +26,13 @@ export function seasonNow(params?: {
   return jikanGet(url);
 }
 
+/** @category Season*/
 export function seasonsList(): Promise<Types.Seasons> {
   const url = urljoin(jikanUrl, "seasons");
   return jikanGet(url);
 }
 
+/** @category Season*/
 export function seasonUpcoming(params?: {
   page?: number;
   limit?: number;

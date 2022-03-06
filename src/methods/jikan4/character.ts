@@ -2,6 +2,7 @@ import { jikanGet, jikanUrl, queryJoin } from "./index";
 import urljoin from "url-join";
 import * as Types from "./types";
 
+/** @category Character*/
 export class Character {
   /** @ignore */
   private baseUrl: string;
@@ -31,10 +32,12 @@ export class Character {
   }
 }
 
+/** @category Character*/
 export function character(id: number): Character {
   return new Character(id);
 }
 
+/** @category Character*/
 export function characterSearch(params?: {
   page?: number;
   limit?: number;
