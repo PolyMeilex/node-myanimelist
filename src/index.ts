@@ -1,4 +1,3 @@
-export * as Jikan from "./methods/jikan";
 export * as Jikan4 from "./methods/jikan4";
 export * as Mal from "./methods/malApi";
 
