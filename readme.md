@@ -75,40 +75,5 @@ let searchIDC = await acount.manga.search(
 ```
 # List of functions
 For more detalis visit [doc](https://polymeilex.github.io/node-myanimelist/)
-* MalApi Methods
-	* OAuth PKCE Auth
-	* OAuth Login And Passwor Auth (unofficial)
-  * Anime
-    * Search
-    * Details
-    * Ranking
-    * Seasonal anime
-    * Suggested anime
-  * Manga
-    * Search
-    * Details
-    * Ranking
-  * Forum
-    * Boards
-    * Topics
-    * Topic details 
-  * User
-    * Info
-    * Animelist
-    * Mangalist
-* JikanApi Methods
-	* Jikan.**[anime](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id)
-	* Jikan.**[manga](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id) 
-	* Jikan.**[person](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id) 
-	* Jikan.**[character](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id) 
- 	* Jikan.**[search](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**()
- 	* Jikan.**[season](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(year,season)
- 	* Jikan.**[seasonArchive](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**()
- 	* Jikan.**[seasonLater](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**() 
-	* Jikan.**[schedule](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**()
-	* Jikan.**[top](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**()
-	* Jikan.**[genre](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**()
-	* Jikan.**[producer](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id, page?)
-	* Jikan.**[magazine](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id, page?)
-	* Jikan.**[user](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(username)
-	* Jikan.**[club](https://polymeilex.github.io/node-myanimelist/modules/_jikan_index_.html)**(id)
+* [MalApi Methods](https://polymeilex.github.io/node-myanimelist/modules/Mal.html)
+* [JikanApi Methods](https://polymeilex.github.io/node-myanimelist/modules/Jikan4.html)
