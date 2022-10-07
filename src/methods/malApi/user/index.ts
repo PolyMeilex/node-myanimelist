@@ -41,6 +41,7 @@ export class MalUser {
     name: string = "@me",
     fields?: AnimeFields<T> | null,
     listStatusFields?: AnimeListStatusFields<S> | null,
+    includeNsfw?: boolean,
     args?: { status?: string; sort?: string; limit?: number; offset?: number }
   ): MalRequest<Paging<AnimeListItem<WorkBase & T, AnimeListStatusBase & S>>> {
     const config: AxiosRequestConfig = {
@@ -48,6 +49,7 @@ export class MalUser {
       headers: this.acount.getHttpHeaders(),
       params: {
         fields: "",
+        nsfw: includeNsfw ? "1" : "0",
       },
     };
 
