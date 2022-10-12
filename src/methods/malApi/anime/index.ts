@@ -22,7 +22,9 @@ export class MalAnime {
     q: string,
     fields?: AnimeFields<T> | null,
     limit?: number | null,
-    offset?: number | null
+    offset?: number | null,
+    nsfw? : boolean | true
+
   ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "anime"].join("/"),
@@ -35,6 +37,7 @@ export class MalAnime {
     if (fields != null) config.params.fields = fields.toString();
     if (limit != null) config.params.limit = limit;
     if (offset != null) config.params.offset = offset;
+    config.params.nsfw = nsfw;
 
     return new MalRequest<any>(config);
   }
