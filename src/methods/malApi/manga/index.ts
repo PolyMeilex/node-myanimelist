@@ -36,7 +36,7 @@ export class MalManga {
     if (fields != null) config.params.fields = fields.toString();
     if (limit != null) config.params.limit = limit;
     if (offset != null) config.params.offset = offset;
-    if (offset != null) config.params.nsfw = nsfw;
+    if (nsfw != null) config.params.nsfw = nsfw;
 
     return new MalRequest<any>(config);
   }
