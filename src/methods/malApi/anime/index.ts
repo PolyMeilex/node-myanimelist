@@ -24,7 +24,6 @@ export class MalAnime {
     limit?: number | null,
     offset?: number | null,
     nsfw? : boolean | null
-
   ): MalRequest<Paging<AnimeItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "anime"].join("/"),
