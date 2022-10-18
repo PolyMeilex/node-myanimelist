@@ -22,7 +22,8 @@ export class MalManga {
     q: string,
     fields?: MangaFields<T> | null,
     limit?: number | null,
-    offset?: number | null
+    offset?: number | null,
+    nsfw?: boolean | null
   ): MalRequest<Paging<MangaItem<WorkBase & T>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "manga"].join("/"),
@@ -35,6 +36,7 @@ export class MalManga {
     if (fields != null) config.params.fields = fields.toString();
     if (limit != null) config.params.limit = limit;
     if (offset != null) config.params.offset = offset;
+    if (nsfw != null) config.params.nsfw = nsfw;
 
     return new MalRequest<any>(config);
   }
