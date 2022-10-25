@@ -48,7 +48,7 @@ export class MalUser {
       headers: this.acount.getHttpHeaders(),
       params: {
         fields: "",
-        nsfw: includeNsfw ? "1" : "0",
+        nsfw: args?.includeNsfw ? "1" : "0",
       },
     };
 
