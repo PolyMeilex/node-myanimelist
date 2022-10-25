@@ -41,8 +41,7 @@ export class MalUser {
     name: string = "@me",
     fields?: AnimeFields<T> | null,
     listStatusFields?: AnimeListStatusFields<S> | null,
-    includeNsfw?: boolean,
-    args?: { status?: string; sort?: string; limit?: number; offset?: number }
+    args?: { status?: string; sort?: string; limit?: number; offset?: number, includeNsfw?: boolean }
   ): MalRequest<Paging<AnimeListItem<WorkBase & T, AnimeListStatusBase & S>>> {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "users", name, "animelist"].join("/"),
