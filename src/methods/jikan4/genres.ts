@@ -9,5 +9,5 @@ export function animeGenres(): Promise<Types.Genres> {
 
 /** @category Genres*/
 export function mangaGenres(): Promise<Types.Genres> {
-  return jikanGet(urljoin(jikanUrl, "genres", "managa"));
+  return jikanGet(urljoin(jikanUrl, "genres", "manga"));
 }

@@ -5,6 +5,7 @@ export { manga, mangaSearch, Manga } from "./manga";
 export { character, characterSearch, Character } from "./character";
 export { club, clubSearch, Club } from "./club";
 export { animeGenres, mangaGenres } from "./genres";
+export { magazines } from "./magazines";
 export { person, personSearch, Person } from "./person";
 export { producers } from "./producers";
 export {
@@ -47,11 +48,16 @@ export function queryJoin(params: { [key: string]: any }): string {
   }
 }
 
-/** @ignore */
-export async function jikanGet<D>(url: string): Promise<D> {
+// @ts-ignore
+global.__jikanGet = async (url: string) => {
   const res = await axios.get(url);
-  const data: D = res.data;
-  return data;
+  return res.data;
+};
+
+/** @ignore */
+export function jikanGet<D>(url: string): Promise<D> {
+  // @ts-ignore
+  return global.__jikanGet(url);
 }
 
 export const jikanUrl = `https://api.jikan.moe/v4`;

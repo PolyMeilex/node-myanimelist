@@ -1,4 +1,4 @@
-import { Jikan } from "../";
+import { Jikan4 } from "../";
 import axios from "axios";
 import assert from "assert";
 
@@ -6,7 +6,7 @@ describe("Online Anime", () => {
   it("/anime/1", async () => {
     // Bring back oryginal get function
     // @ts-ignore
-    global.jikanGet = function jikanGet(url: string): Promise<any> {
+    global.__jikanGet = function(url: string): Promise<any> {
       return new Promise((res, rej) => {
         axios
           .get(url)
@@ -15,7 +15,7 @@ describe("Online Anime", () => {
       });
     };
 
-    const data = await Jikan.anime(1).info();
+    const data = (await Jikan4.anime(1).info()).data;
 
     assert.equal(1, data.mal_id);
 
