@@ -677,7 +677,7 @@ export type Recommendations = {
 } & Pagination;
 
 export type EntryRecommendations = {
-  data: { entry: (AnimeMeta | MangaMeta)[]; url?: string; votes?: number }[];
+  data: { entry: AnimeMeta | MangaMeta; url?: string; votes?: number }[];
 };
 
 export type MangaReview = {
