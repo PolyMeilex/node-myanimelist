@@ -24,5 +24,5 @@ export function randomPerson(): Promise<{ data: Types.Person }> {
 
 /** @category Random*/
 export function randomUser(): Promise<{ data: Types.UserProfile }> {
-  return jikanGet(urljoin(jikanUrl, "random", "user"));
+  return jikanGet(urljoin(jikanUrl, "random", "users"));
 }
