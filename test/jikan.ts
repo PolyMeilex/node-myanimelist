@@ -362,3 +362,21 @@ describe("/club", () => {
     jikanIt(club.members({ page: 2 }), `${jikanUrl}/clubs/1/members?page=2`);
   });
 });
+
+describe("/random", () => {
+  describe("/anime", () => {
+    jikanIt(Jikan.randomAnime(), `${jikanUrl}/random/anime`);
+  });
+  describe("/manga", () => {
+    jikanIt(Jikan.randomManga(), `${jikanUrl}/random/manga`);
+  });
+  describe("/characters", () => {
+    jikanIt(Jikan.randomCharacters(), `${jikanUrl}/random/characters`);
+  });
+  describe("/people", () => {
+    jikanIt(Jikan.randomPerson(), `${jikanUrl}/random/people`);
+  });
+  describe("/users", () => {
+    jikanIt(Jikan.randomUser(), `${jikanUrl}/random/users`);
+  });
+});
