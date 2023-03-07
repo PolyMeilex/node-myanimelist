@@ -47,18 +47,20 @@ export class MalUser {
       url: [apiUrl, "users", name, "animelist"].join("/"),
       headers: this.acount.getHttpHeaders(),
       params: {
-        fields: "",
         nsfw: args?.includeNsfw ? "1" : "0",
       },
     };
 
-    if (fields != null) config.params.fields += fields.toString();
-
-    if (listStatusFields != null) {
-      config.params.fields += `list_status{${listStatusFields.toString()}}`;
-    } else {
-      config.params.fields += "list_status";
+    const serializedFields: string[] = []
+    if (fields != null) {
+      serializedFields.push(fields.toString());
     }
+    if (listStatusFields != null) {
+      serializedFields.push(`list_status{${listStatusFields.toString()}}`);
+    } else {
+      serializedFields.push("list_status");
+    }
+    config.params.fields = serializedFields.join(',')
 
     if (args) {
       if (args.status != null) config.params.status = args.status;
@@ -79,18 +81,19 @@ export class MalUser {
     const config: AxiosRequestConfig = {
       url: [apiUrl, "users", name, "mangalist"].join("/"),
       headers: this.acount.getHttpHeaders(),
-      params: {
-        fields: "",
-      },
+      params: {},
     };
 
-    if (fields != null) config.params.fields += fields.toString();
-
-    if (listStatusFields != null) {
-      config.params.fields += `list_status{${listStatusFields.toString()}}`;
-    } else {
-      config.params.fields += "list_status";
+    const serializedFields: string[] = []
+    if (fields != null) {
+      serializedFields.push(fields.toString());
     }
+    if (listStatusFields != null) {
+      serializedFields.push(`list_status{${listStatusFields.toString()}}`);
+    } else {
+      serializedFields.push("list_status");
+    }
+    config.params.fields = serializedFields.join(',')
 
     if (args) {
       if (args.status != null) config.params.status = args.status;
