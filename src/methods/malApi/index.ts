@@ -352,9 +352,11 @@ export class MalAcount {
  */
 export class Auth {
   private clientId: string;
+  private clientSecret: string;
 
-  constructor(clientId: string) {
+  constructor(clientId: string,clientSecret:string) {
     this.clientId = clientId;
+    this.clientSecret = clientSecret;
   }
 
   loadToken(token: MalToken) {
@@ -377,12 +379,13 @@ export class Auth {
   async authorizeWithCode(
     code: string,
     /** it is actually a `code_verifier` but mal accepts code_challenge here instead */
-    codeChallenge: string
+    code_verifier: string
   ): Promise<MalAcount> {
     const malToken = await MalToken.fromAuthorizationCode(
       this.clientId,
+      this.clientSecret,
       code,
-      codeChallenge
+      code_verifier
     );
     return new MalAcount(this.clientId, malToken);
   }
@@ -418,7 +421,8 @@ export class Auth {
 }
 
 export function auth(
-  clientId: string = "6114d00ca681b7701d1e15fe11a4987e"
+  clientId: string = "6114d00ca681b7701d1e15fe11a4987e",
+  clientSecret: string = "1d1e15fe11a4987e6114d00ca681b7701d1e15fe11a4987e"
 ): Auth {
   return new Auth(clientId);
 }
